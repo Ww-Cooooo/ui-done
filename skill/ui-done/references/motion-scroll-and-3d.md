@@ -1,0 +1,100 @@
+# Motion, Scroll, and 3D
+
+For substantial frontend work, motion, scroll enhancement, and 3D/Canvas are default layers. Give each one a role that communicates hierarchy, feedback, state, narrative, atmosphere, or spatial continuity, then tune its intensity to the product. A restrained dashboard and an expressive campaign page should use the layers differently, not omit the ecosystem automatically.
+
+## Choose one primary owner per layer
+
+| Layer | Default owner | Boundary |
+|---|---|---|
+| Hover, press, focus, simple reveal | CSS for isolated states, coordinated by the selected motion system when sequencing matters | Do not split ownership of the same property between CSS and the motion library |
+| Component state, presence, layout continuity | One maintained UI-motion library or framework-native motion layer | Keep scroll pinning and scrubbing in the scroll layer |
+| Scroll storytelling | One maintained scroll-trigger/orchestration tool | Limit pinning and scrubbing to the narrative regions that need it |
+| Smooth scrolling | One maintained smooth-scroll layer | Preserve native behavior for reduced motion, nested controls, focus navigation, and regions where smoothing reduces precision |
+| Signature 3D scene | Three.js or one comparable engine | Keep it in one bounded product-aligned region with a static fallback |
+| 2D particles or data canvas | One focused Canvas/SVG renderer | Use DOM controls and labels for essential interaction |
+
+Research current APIs, maintenance, license, and bundle behavior before choosing the owners. For substantial work, missing motion, scroll, or 3D coverage requires a hard constraint, not merely “native is simpler.”
+
+## Fit before scale
+
+Name the existing host, the interface job, and the smallest useful footprint before implementing a visible effect. The selected library adapts to the page; the page does not grow a showcase block for the library.
+
+- Motion attaches to an existing state change, hierarchy cue, or feedback loop. Do not invent extra entrances, carousels, or controls to make the animation system visible.
+- Smooth scrolling improves an existing scroll path. Do not create a long narrative section merely to demonstrate smoothing or scroll triggers.
+- 3D/Canvas uses a product object, spatial relationship, real visualization, or established visual motif when one exists. Without a natural primary position, embed a small context-aligned mark, texture, object, or ambient detail inside an existing region.
+- Never add a large standalone 3D panel, scene label, explanatory copy, or control cluster whose only job is to prove that the engine was installed.
+
+If removing a new visual region changes no product meaning and only hides evidence of the library, the region is filler. Remove it, then relocate the effect at a smaller scale or attach it to a real interaction.
+
+## Prove host, meaning, and control
+
+Answer these questions for every visible effect before implementation:
+
+1. **Host:** What existing product object, content, data, state, interaction, or visual motif owns the effect?
+2. **Meaning:** What does the user understand, accomplish, notice, or feel because it moves or gains depth?
+3. **Control:** Why would the user need to pause, reset, rotate, scrub, change speed, or switch views?
+
+If the host or meaning cannot be stated specifically, the effect is arbitrary. “More dynamic,” “more premium,” and “adds visual interest” are not sufficient unless they connect to the brief's content or established visual language. Rework the effect, shrink it into a genuine accent, or give the tool a different role. A decorative scene name such as “field,” “orbit,” or “spatial view” does not create meaning; if removing the label makes the effect inexplicable, the label was compensating for weak integration.
+
+Prefer motion on a surface the product already expects—a promotional strip, schedule card, product object, map path, progress state, or real chart transition—over a separate animation surface. The reusable lesson is integration into existing content, not copying any particular marquee, orbit, or visual style.
+
+Treat visible controls as product features. Do not surface pause, reset, rotate, speed, view, or scene controls simply because the library provides them. Use them only when direct manipulation serves a real task or when an accessibility requirement calls for a user-operated mechanism. For ambient or decorative motion, prefer brief or bounded behavior plus automatic reduced-motion, hidden-tab, offscreen, and low-power handling. If continuous motion needs a pause mechanism, integrate it into the product's interaction language instead of attaching a generic engine toolbar.
+
+## Assign ownership
+
+- Give one system ownership of each animated property and scroll container.
+- Keep UI motion, scroll timelines, and 3D render loops in separate components/modules with explicit inputs.
+- Do not let CSS, a UI-motion library, and a timeline engine all animate the same transform.
+- Do not run multiple uncontrolled `requestAnimationFrame` loops for one visual region.
+- Keep 3D/Canvas decorative output separate from semantic navigation and content. Provide DOM controls and labels only for essential interactions, using the product's language rather than engine terminology.
+- Keep small decorative accents non-interactive and outside the accessibility tree; render them statically or stop them quickly instead of adding controls that make the accent larger than its purpose.
+- Reuse lifecycle, cleanup, failure, and rendering infrastructure freely, but keep public controls opt-in. A shared scene component must not stamp the same toolbar onto unrelated products.
+- In server-rendered frameworks, isolate browser-only motion/Canvas/WebGL in client boundaries and avoid hydrating static layout unnecessarily.
+
+## Runtime lifecycle
+
+Implement and test applicable items:
+
+- Start only after the host element exists and has measurable size.
+- Use `ResizeObserver` or an equivalent bounded resize path; cap device pixel ratio for GPU cost.
+- Pause or reduce work when `document.hidden`, the element is offscreen, or the user requests reduced motion.
+- Cancel animation frames/timelines and remove pointer, resize, visibility, and context listeners on teardown.
+- Dispose geometries, materials, textures, render targets, controls, workers, and renderer contexts as applicable.
+- Handle loading, decoding, shader/model/texture failure, unsupported APIs, initialization exceptions, and WebGL context loss.
+- Avoid per-frame React/state updates. Keep continuous values in the animation/render layer.
+- Animate `transform` and `opacity` for ordinary UI; avoid layout-triggering properties in continuous motion.
+- Budget main-thread, GPU, memory, texture dimensions, draw calls, and bundle size for mobile/low-power hardware.
+
+## Reduced motion and input safety
+
+- Honor `prefers-reduced-motion` for every automatic, parallax, looping, scroll-scrubbed, or spatial effect.
+- Observe preference changes during the session through a framework hook or media-query change listener; do not read reduced motion only once at mount when the effect can remain running.
+- Reduced motion must preserve content, state, and navigation; it is not a blank canvas.
+- Keep focus order, anchor navigation, browser history, keyboard scrolling, screen-reader announcements, touch inertia, and selection usable.
+- Avoid scroll hijacking. If used for a justified narrative, provide an immediate reduced-motion/static layout and an escape from pinned regions.
+- Do not rely on hover, pointer parallax, drag, or 3D picking as the only way to reach an action.
+- Keep user-triggered feedback interruptible and avoid blocking input until animation completes.
+
+## Fallback ladder
+
+Design fallback before the premium path:
+
+1. Full effect on capable devices within budget.
+2. Reduced/paused effect for reduced-motion, low-power, hidden, or offscreen conditions.
+3. Static local image/CSS illustration or simplified DOM visualization when the engine/resource is unavailable.
+4. Semantic text and controls that preserve the task even if all visual enhancement fails.
+
+For WebGL, cover both initialization failure and runtime `webglcontextlost`. A fallback message alone is insufficient if the visual also carries navigation; retain equivalent DOM navigation.
+
+## Acceptance evidence
+
+- State the purpose of each automatic effect in one sentence.
+- Record its host, meaning, and control rationale; “the library supports it” is not a rationale.
+- Test normal and reduced-motion modes.
+- Test mouse, keyboard, touch where relevant, and at least one low/mobile viewport.
+- Confirm no competing scroll regions, clipped pinned content, focus jumps, or input-blocking timelines.
+- Exercise initialization/resource/context failure for advanced visuals.
+- Navigate away/unmount and return; check for duplicate canvases, loops, listeners, or rising memory.
+- Capture screenshots of the full, reduced, and fallback states.
+
+If an enhanced layer fails, the coherent static fallback must still work. A required fallback is not a reason to omit the enhanced layer by default.

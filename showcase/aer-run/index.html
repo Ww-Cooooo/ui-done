@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AER Run, a fictional premium footwear concept created as a UI Done showcase.">
+  <title>AER Run | UI Done Showcase</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <style>
+    @font-face {
+      font-family: "Outfit";
+      src: url("../shared/fonts/Outfit-Variable.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Red Hat Mono";
+      src: url("../shared/fonts/RedHatMono-Variable.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 300 700;
+      font-display: swap;
+    }
+
+    :root {
+      color-scheme: dark;
+      --ink: #090b10;
+      --surface: #10141c;
+      --surface-2: #171c25;
+      --line: rgba(230, 238, 255, 0.16);
+      --text: #f4f7ff;
+      --muted: #a9b2c2;
+      --accent: #4e7bff;
+      --max: 1380px;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--ink);
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--ink);
+      color: var(--text);
+      font-family: "Outfit", "Segoe UI", sans-serif;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 20;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--text);
+      color: var(--ink);
+      transform: translateY(-180%);
+      transition: transform 180ms ease;
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .shell {
+      width: min(calc(100% - 48px), var(--max));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 10;
+      height: 72px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(9, 11, 16, 0.88), rgba(9, 11, 16, 0));
+    }
+
+    .site-header .shell {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 760;
+      letter-spacing: -0.035em;
+      font-size: 1.15rem;
+    }
+
+    .brand-mark {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--text);
+      border-right-color: var(--accent);
+      border-radius: 50%;
+      transform: rotate(-24deg);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      white-space: nowrap;
+      font: 520 0.78rem/1 "Red Hat Mono", monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 180ms ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .concept-label {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100dvh;
+      display: grid;
+      align-items: center;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 68% center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(9, 11, 16, 0.98) 0%, rgba(9, 11, 16, 0.9) 31%, rgba(9, 11, 16, 0.18) 66%, rgba(9, 11, 16, 0.36) 100%),
+        linear-gradient(0deg, rgba(9, 11, 16, 0.68), transparent 42%);
+    }
+
+    .hero-content {
+      max-width: 660px;
+      padding-top: 72px;
+      animation: copy-arrival 900ms 120ms cubic-bezier(.16, 1, .3, 1) both;
+    }
+
+    .eyebrow {
+      margin: 0 0 22px;
+      color: #c8d5ff;
+      font: 600 0.78rem/1.2 "Red Hat Mono", monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 620px;
+      margin: 0;
+      font-size: clamp(4rem, 8vw, 7.7rem);
+      font-weight: 650;
+      line-height: 0.86;
+      letter-spacing: -0.07em;
+    }
+
+    .hero-copy {
+      max-width: 490px;
+      margin: 30px 0 0;
+      color: #c5cad4;
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 650;
+      white-space: nowrap;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+    .button:active { transform: translateY(0) scale(0.98); }
+
+    .button-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .button-secondary {
+      border-color: var(--line);
+      background: rgba(12, 15, 21, 0.44);
+      color: var(--text);
+      backdrop-filter: blur(14px);
+    }
+
+    .button .arrow { font-size: 1.1rem; }
+
+    .build-section {
+      padding: 128px 0;
+      background: linear-gradient(180deg, var(--ink), #0c1017);
+    }
+
+    .section-intro {
+      max-width: 760px;
+      margin-bottom: 68px;
+    }
+
+    h2 {
+      margin: 0;
+      max-width: 720px;
+      font-size: clamp(2.8rem, 6vw, 5.6rem);
+      font-weight: 560;
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .section-intro p {
+      max-width: 590px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+
+    .material-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(310px, 0.65fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .detail-image {
+      min-height: 660px;
+      margin: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .detail-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 700ms cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .detail-image:hover img { transform: scale(1.025); }
+
+    .feature-list {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+    }
+
+    .feature {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 26px;
+      padding: 30px 8px 30px 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .feature strong {
+      font-size: clamp(1.45rem, 2.7vw, 2.25rem);
+      font-weight: 520;
+      letter-spacing: -0.035em;
+    }
+
+    .feature p {
+      margin: 0;
+      max-width: 34ch;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .feature-index {
+      color: var(--accent);
+      font: 540 0.76rem/1 "Red Hat Mono", monospace;
+    }
+
+    .closing {
+      padding: 0 0 128px;
+      background: #0c1017;
+    }
+
+    .closing-panel {
+      min-height: 420px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 36px;
+      padding: clamp(32px, 7vw, 88px);
+      border: 1px solid rgba(78, 123, 255, 0.44);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 86% 22%, rgba(78, 123, 255, 0.2), transparent 35%),
+        var(--surface);
+    }
+
+    .closing-panel h2 { max-width: 800px; }
+
+    .closing-note {
+      max-width: 380px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    footer .shell {
+      min-height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      font-size: 0.9rem;
+    }
+
+    footer a { color: var(--text); }
+
+    @keyframes copy-arrival {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links a:not(.concept-label) { display: none; }
+
+      .hero {
+        align-items: end;
+        padding-bottom: 54px;
+      }
+
+      .hero-image img { object-position: 66% center; }
+
+      .hero::after {
+        background: linear-gradient(0deg, rgba(9, 11, 16, 0.99) 5%, rgba(9, 11, 16, 0.74) 48%, rgba(9, 11, 16, 0.08) 88%);
+      }
+
+      .hero-content { max-width: 620px; }
+      h1 { font-size: clamp(3.7rem, 14vw, 6.4rem); }
+
+      .material-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-image { min-height: min(72vw, 620px); }
+      .feature { padding-left: 0; }
+
+      .closing-panel {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .shell { width: min(calc(100% - 32px), var(--max)); }
+      .site-header { height: 64px; }
+      .concept-label { font-size: 0.72rem; }
+      .hero-content { padding-top: 64px; }
+      .hero-copy { max-width: 32ch; }
+      .actions { align-items: stretch; }
+      .button { width: 100%; }
+      .build-section { padding: 88px 0; }
+      .section-intro { margin-bottom: 42px; }
+      .closing { padding-bottom: 88px; }
+      footer .shell { align-items: flex-start; flex-direction: column; justify-content: center; padding-block: 24px; }
+    }
+
+    .hero > .shell {
+      position: relative;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .hero-content { pointer-events: auto; }
+    .hero::after,
+    .hero-image { pointer-events: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="../shared/runtime/ui-done-core.css?v=210cb2dc1679">
+  <script defer src="../shared/runtime/ui-done-core.js?v=cce570297183"></script>
+</head>
+<body data-showcase="aer">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell">
+      <a class="brand" href="#top" aria-label="AER Run home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>AER Run</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#build">Construction</a>
+        <a href="#release">Release</a>
+        <a class="concept-label" href="../gallery/index.html">UI Done concept</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-image">
+        <img src="assets/aer-run-shoe.webp" width="1536" height="1024" alt="Unbranded silver technical running shoe on a dark mineral surface">
+      </div>
+      <div class="shell">
+        <div class="hero-content">
+          <p class="eyebrow">A fictional footwear study</p>
+          <h1 id="hero-title">Built to move before you do.</h1>
+          <p class="hero-copy">A responsive shell, pressure-split sole and quiet stability tuned as one continuous system.</p>
+          <div class="actions">
+            <a class="button button-primary" href="#build">Explore the build <span class="arrow" aria-hidden="true">↘</span></a>
+            <a class="button button-secondary" href="#release">See the concept</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="build-section" id="build" aria-labelledby="build-title" data-ui-reveal>
+      <div class="shell">
+        <div class="section-intro">
+          <h2 id="build-title">Structure you can feel, not see.</h2>
+          <p>The upper flexes where the foot asks. The frame holds where the road answers. Every layer has one job.</p>
+        </div>
+
+        <div class="material-layout">
+          <figure class="detail-image">
+            <img src="assets/aer-run-detail.webp" width="1536" height="1024" loading="lazy" alt="Close view of the shoe mesh, silver heel frame and translucent segmented sole">
+          </figure>
+          <div class="feature-list" aria-label="Construction features">
+            <article class="feature">
+              <span class="feature-index">01</span>
+              <div>
+                <strong>Adaptive weave</strong>
+                <p>Open zones release heat while the denser collar locks the heel without excess padding.</p>
+              </div>
+            </article>
+            <article class="feature">
+              <span class="feature-index">02</span>
+              <div>
+                <strong>Split pressure</strong>
+                <p>Independent sole chambers soften the landing while keeping the next step direct.</p>
+              </div>
+            </article>
+            <article class="feature">
+              <span class="feature-index">03</span>
+              <div>
+                <strong>Quiet frame</strong>
+                <p>A lightweight external structure guides rotation without turning the shoe into armor.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" id="release" aria-labelledby="closing-title">
+      <div class="shell">
+        <div class="closing-panel">
+          <div>
+            <h2 id="closing-title">One object. One direction.</h2>
+            <p class="closing-note">AER Run is a fictional UI Done showcase. The page demonstrates cold-luxury product art direction, local assets and a responsive layout.</p>
+          </div>
+          <a class="button button-primary" href="../gallery/index.html">Back to gallery</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <span>Concept page created with UI Done.</span>
+      <a href="../../README.md">Project README</a>
+    </div>
+  </footer>
+</body>
+</html>

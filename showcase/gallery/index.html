@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="UI Done turns frontend requests into finished interfaces and verifies them in a real browser.">
+  <title>UI Done | Frontend work, checked in the browser</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <style>
+    @font-face {
+      font-family: "Outfit";
+      src: url("../shared/fonts/Outfit-Variable.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Red Hat Mono";
+      src: url("../shared/fonts/RedHatMono-Variable.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 300 700;
+      font-display: swap;
+    }
+
+    :root {
+      color-scheme: dark;
+      --ink: #0b0d0f;
+      --surface: #121518;
+      --surface-2: #191d20;
+      --text: #f2f6f5;
+      --muted: #9ca6a2;
+      --line: rgba(230, 242, 237, 0.16);
+      --accent: #8ce8bd;
+      --accent-ink: #092419;
+      --max: 1400px;
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--ink);
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      overflow-x: hidden;
+      background:
+        linear-gradient(rgba(140, 232, 189, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(140, 232, 189, 0.035) 1px, transparent 1px),
+        var(--ink);
+      background-size: 72px 72px;
+      color: var(--text);
+      font-family: "Outfit", "Segoe UI", sans-serif;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { display: block; max-width: 100%; }
+    button, a { font: inherit; }
+    a { color: inherit; }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 40;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--text);
+      color: var(--ink);
+      transform: translateY(-180%);
+      transition: transform 160ms ease;
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .shell {
+      width: min(calc(100% - 48px), var(--max));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      height: 72px;
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(11, 13, 15, 0.72);
+      backdrop-filter: blur(18px);
+    }
+
+    .site-header .shell {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 1.18rem;
+      font-weight: 760;
+      letter-spacing: -0.035em;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      flex: 0 0 30px;
+      border-radius: 50%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .brand-mark > .ui-scene-fallback {
+      inset: 3px;
+      border: 2px solid var(--text);
+      border-radius: 50%;
+      opacity: 1;
+      background: none;
+    }
+
+    .brand-mark > .ui-scene-fallback::after {
+      content: "";
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      top: 2px;
+      right: 0;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      white-space: nowrap;
+      font: 560 0.76rem/1 "Red Hat Mono", monospace;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 160ms ease;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    .hero {
+      min-height: 100dvh;
+      display: grid;
+      align-items: center;
+      padding: 112px 0 70px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(520px, 1.08fr);
+      align-items: center;
+      gap: clamp(44px, 7vw, 104px);
+    }
+
+    .hero-copy {
+      animation: copy-in 820ms cubic-bezier(.16, 1, .3, 1) both;
+    }
+
+    .eyebrow {
+      margin: 0 0 22px;
+      color: var(--accent);
+      font: 620 0.76rem/1.4 "Red Hat Mono", monospace;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin: 0;
+      font-size: clamp(4.2rem, 8.2vw, 8.2rem);
+      font-weight: 600;
+      line-height: 0.86;
+      letter-spacing: -0.072em;
+    }
+
+    h1 em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .hero-text {
+      max-width: 560px;
+      margin: 30px 0 0;
+      color: #bdc6c2;
+      font-size: clamp(1.06rem, 1.7vw, 1.24rem);
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .button {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 22px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 660;
+      white-space: nowrap;
+      transition: transform 170ms ease, border-color 170ms ease, background 170ms ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+    .button:active { transform: translateY(0) scale(0.98); }
+
+    .button-primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--accent-ink);
+    }
+
+    .button-secondary { background: rgba(18, 21, 24, 0.62); }
+
+    .preview-stage {
+      position: relative;
+      min-height: 670px;
+      animation: stage-in 1s 100ms cubic-bezier(.16, 1, .3, 1) both;
+    }
+
+    .orbit {
+      position: absolute;
+      inset: 8% 4% 6% 14%;
+      border: 1px solid rgba(140, 232, 189, 0.34);
+      border-radius: 50%;
+      transform: rotate(-12deg);
+    }
+
+    .orbit::before,
+    .orbit::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(140, 232, 189, 0.17);
+      border-radius: inherit;
+    }
+
+    .orbit::before { inset: 14%; }
+    .orbit::after { inset: 29%; }
+
+    .preview {
+      position: absolute;
+      display: block;
+      overflow: hidden;
+      border: 1px solid rgba(236, 245, 241, 0.26);
+      border-radius: 16px;
+      background: var(--surface);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.44);
+      text-decoration: none;
+      transition: transform 320ms cubic-bezier(.16, 1, .3, 1), border-color 180ms ease;
+    }
+
+    .preview:hover {
+      z-index: 8;
+      border-color: var(--accent);
+      transform: translateY(-10px) rotate(0deg) !important;
+    }
+
+    .preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .preview-a {
+      width: 52%;
+      height: 29%;
+      top: 2%;
+      left: 0;
+      z-index: 3;
+      transform: rotate(-3deg);
+    }
+
+    .preview-b {
+      width: 51%;
+      height: 29%;
+      right: 0;
+      top: 5%;
+      z-index: 4;
+      transform: rotate(3.5deg);
+    }
+
+    .preview-c {
+      width: 52%;
+      height: 29%;
+      left: 1%;
+      top: 35%;
+      z-index: 5;
+      transform: rotate(2deg);
+    }
+
+    .preview-d {
+      width: 51%;
+      height: 29%;
+      right: 0;
+      top: 37%;
+      z-index: 6;
+      transform: rotate(-3deg);
+    }
+
+    .preview-e {
+      width: 52%;
+      height: 29%;
+      left: 0;
+      bottom: 1%;
+      z-index: 7;
+      transform: rotate(-2deg);
+    }
+
+    .preview-f {
+      width: 51%;
+      height: 29%;
+      right: 0;
+      bottom: 0;
+      z-index: 8;
+      transform: rotate(3deg);
+    }
+
+    .workflow {
+      padding: 118px 0;
+      border-block: 1px solid var(--line);
+      background: rgba(18, 21, 24, 0.86);
+    }
+
+    .workflow-head {
+      max-width: 790px;
+      margin-bottom: 66px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(3.2rem, 7vw, 6.8rem);
+      font-weight: 560;
+      line-height: 0.94;
+      letter-spacing: -0.06em;
+    }
+
+    .workflow-head p,
+    .showcase-head p,
+    .prompt-copy {
+      max-width: 590px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.65;
+    }
+
+    .workflow-line {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-top: 1px solid var(--line);
+    }
+
+    .phase {
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 26px 22px 24px 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .phase + .phase { padding-left: 22px; }
+    .phase:last-child { border-right: 0; }
+
+    .phase-index {
+      color: var(--accent);
+      font: 500 0.76rem/1 "Red Hat Mono", monospace;
+    }
+
+    .phase strong {
+      display: block;
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+      font-weight: 540;
+      letter-spacing: -0.035em;
+    }
+
+    .phase span:last-child {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .showcase {
+      padding: 124px 0;
+    }
+
+    .showcase-head {
+      max-width: 800px;
+      margin-bottom: 62px;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 52px 18px;
+    }
+
+    .case {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .case-media {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .case-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 600ms cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .case:hover .case-media img { transform: scale(1.025); }
+
+    .case-meta {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 2px 0;
+    }
+
+    .case-title {
+      font-size: clamp(1.65rem, 3vw, 2.6rem);
+      font-weight: 540;
+      letter-spacing: -0.04em;
+    }
+
+    .case-style {
+      color: var(--muted);
+      font: 440 0.72rem/1.4 "Red Hat Mono", monospace;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .prompt-section {
+      padding: 0 0 124px;
+    }
+
+    .prompt-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(480px, 1.2fr);
+      gap: 54px;
+      padding: clamp(32px, 6vw, 78px);
+      border: 1px solid rgba(140, 232, 189, 0.4);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 92% 10%, rgba(140, 232, 189, 0.12), transparent 30%),
+        var(--surface);
+    }
+
+    .prompt-panel h2 { font-size: clamp(3rem, 6vw, 5.8rem); }
+
+    .prompt-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+      min-height: 280px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #0a0c0e;
+    }
+
+    .prompt-box code {
+      color: #dce5e1;
+      font: 420 0.92rem/1.75 "Red Hat Mono", monospace;
+      white-space: pre-wrap;
+    }
+
+    .copy-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .copy-button {
+      min-height: 44px;
+      padding: 0 16px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-weight: 680;
+      cursor: pointer;
+      transition: transform 160ms ease;
+    }
+
+    .copy-button:hover { transform: translateY(-2px); }
+
+    .copy-status {
+      min-height: 1.3em;
+      color: var(--muted);
+      font: 420 0.72rem/1.3 "Red Hat Mono", monospace;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    footer .shell {
+      min-height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      font-size: 0.9rem;
+    }
+
+    footer a { color: var(--text); }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @keyframes copy-in {
+      from { opacity: 0; transform: translateY(26px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes stage-in {
+      from { opacity: 0; transform: translateX(34px) scale(0.97); }
+      to { opacity: 1; transform: translateX(0) scale(1); }
+    }
+
+    @media (max-width: 980px) {
+      nav a:not(:last-child) { display: none; }
+
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-copy { padding-top: 28px; }
+      .preview-stage { min-height: 610px; }
+
+      .workflow-line { grid-template-columns: 1fr 1fr; }
+      .phase { border-bottom: 1px solid var(--line); }
+      .phase:nth-child(even) { border-right: 0; }
+      .phase:nth-child(5) { grid-column: 1 / -1; }
+
+      .case-grid { grid-template-columns: 1fr 1fr; }
+
+      .prompt-panel { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .shell { width: min(calc(100% - 32px), var(--max)); }
+      .site-header { height: 64px; }
+      nav a:last-child { font-size: 0.72rem; }
+      .hero { padding: 102px 0 50px; }
+      h1 { font-size: clamp(4rem, 20vw, 6.2rem); }
+      .hero-actions { align-items: stretch; }
+      .button { width: 100%; }
+      .preview-stage { min-height: 480px; }
+      .preview { border-radius: 11px; }
+      .preview-a, .preview-c, .preview-e { width: 56%; }
+      .preview-b, .preview-d, .preview-f { width: 55%; }
+      .workflow, .showcase { padding: 88px 0; }
+      .workflow-head, .showcase-head { margin-bottom: 42px; }
+      .workflow-line { grid-template-columns: 1fr; }
+      .phase, .phase + .phase { min-height: 150px; padding: 22px 0; border-right: 0; }
+      .phase:nth-child(5) { grid-column: auto; }
+      .prompt-section { padding-bottom: 88px; }
+      .prompt-panel { padding: 28px 18px; }
+      .prompt-box { min-height: 330px; padding: 20px; }
+      .copy-row { align-items: flex-start; flex-direction: column; }
+      .case-grid { grid-template-columns: 1fr; }
+      footer .shell { min-height: 140px; align-items: flex-start; flex-direction: column; justify-content: center; }
+    }
+
+    .gallery-scene.ui-scene-slot {
+      width: 30px;
+      height: 30px;
+      min-height: 0;
+      margin: 0;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      contain: strict;
+      touch-action: auto;
+    }
+
+    .gallery-scene .ui-scene-static {
+      color: var(--accent);
+      background: none;
+    }
+
+    .gallery-scene .ui-scene-static svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="../shared/runtime/ui-done-core.css?v=210cb2dc1679">
+  <script defer src="../shared/runtime/ui-done-core.js?v=cce570297183"></script>
+</head>
+<body data-showcase="gallery">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell">
+      <a class="brand" href="#top" aria-label="UI Done home">
+        <span
+          class="brand-mark gallery-scene ui-scene-slot"
+          data-ui-scene="gallery"
+          data-scene-mode="mark"
+          data-scene-label="UI Done orbit mark"
+          data-scene-accent="#8ce8bd"
+          data-scene-ink="#ecf5f1"
+          aria-hidden="true"
+        ><span class="ui-scene-fallback"></span></span>
+        <span>UI Done</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#showcase">Showcase</a>
+        <a href="#workflow">How it works</a>
+        <a href="#prompt">Try the prompt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Frontend craft for agents</p>
+          <h1 id="hero-title">The page is not done until it <em>works.</em></h1>
+          <p class="hero-text">UI Done turns a frontend request into a working interface, then opens it in a real browser to check the result.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#showcase">See real pages</a>
+            <a class="button button-secondary" href="#prompt">Copy a prompt</a>
+          </div>
+        </div>
+
+        <div class="preview-stage" aria-label="Six UI Done concept previews">
+          <div class="orbit" aria-hidden="true"></div>
+          <a class="preview preview-a" href="../aer-run/index.html"><img src="../../assets/readme/aer-run.jpg" width="1440" height="900" alt="Open the cold-luxury AER Run product page"></a>
+          <a class="preview preview-b" href="../tide-journal/index.html"><img src="../../assets/readme/tide-journal.jpg" width="1440" height="900" alt="Open the editorial Tide Journal page"></a>
+          <a class="preview preview-c" href="../form-shift/index.html"><img src="../../assets/readme/form-shift.jpg" width="1440" height="900" alt="Open the experimental Form Shift event page"></a>
+          <a class="preview preview-d" href="../control-room/index.html"><img src="../../assets/readme/control-room.jpg" width="1440" height="900" alt="Open the Control Room operations dashboard"></a>
+          <a class="preview preview-e" href="../corner-store/index.html"><img src="../../assets/readme/corner-store.jpg" width="1440" height="900" alt="Open the playful Corner Store retail page"></a>
+          <a class="preview preview-f" href="../pocket-planner/index.html"><img src="../../assets/readme/pocket-planner.jpg" width="1440" height="900" alt="Open the mobile-first Pocket Planner page"></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase" id="showcase" aria-labelledby="showcase-title" data-ui-reveal>
+      <div class="shell">
+        <div class="showcase-head">
+          <h2 id="showcase-title">Six pages for six different jobs.</h2>
+          <p>Choose by the job the page needs to do: sell a product, tell a story, promote an event, run operations, show a collection or introduce an app.</p>
+        </div>
+        <div class="case-grid">
+          <a class="case" href="../aer-run/index.html">
+            <div class="case-media">
+              <img src="../../assets/readme/aer-run.jpg" width="1440" height="900" loading="lazy" alt="Open the AER Run concept page">
+            </div>
+            <div class="case-meta">
+              <span class="case-title">AER Run</span>
+              <span class="case-style">Cold luxury<br>Product</span>
+            </div>
+          </a>
+          <a class="case" href="../tide-journal/index.html">
+            <div class="case-media">
+              <img src="../../assets/readme/tide-journal.jpg" width="1440" height="900" loading="lazy" alt="Open the Tide Journal concept page">
+            </div>
+            <div class="case-meta">
+              <span class="case-title">Tide Journal</span>
+              <span class="case-style">Editorial<br>Culture</span>
+            </div>
+          </a>
+          <a class="case" href="../form-shift/index.html">
+            <div class="case-media">
+              <img src="../../assets/readme/form-shift.jpg" width="1440" height="900" loading="lazy" alt="Open the Form Shift concept page">
+            </div>
+            <div class="case-meta">
+              <span class="case-title">Form Shift</span>
+              <span class="case-style">Graphic<br>Experimental</span>
+            </div>
+          </a>
+          <a class="case" href="../control-room/index.html">
+            <div class="case-media">
+              <img src="../../assets/readme/control-room.jpg" width="1440" height="900" loading="lazy" alt="Open the Control Room concept page">
+            </div>
+            <div class="case-meta">
+              <span class="case-title">Control Room</span>
+              <span class="case-style">Live<br>Operations</span>
+            </div>
+          </a>
+          <a class="case" href="../corner-store/index.html">
+            <div class="case-media">
+              <img src="../../assets/readme/corner-store.jpg" width="1440" height="900" loading="lazy" alt="Open the Corner Store concept page">
+            </div>
+            <div class="case-meta">
+              <span class="case-title">Corner Store</span>
+              <span class="case-style">Playful<br>Retail</span>
+            </div>
+          </a>
+          <a class="case" href="../pocket-planner/index.html">
+            <div class="case-media">
+              <img src="../../assets/readme/pocket-planner.jpg" width="1440" height="900" loading="lazy" alt="Open the Pocket Planner concept page">
+            </div>
+            <div class="case-meta">
+              <span class="case-title">Pocket Planner</span>
+              <span class="case-style">Soft<br>Mobile app</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="workflow" id="workflow" aria-labelledby="workflow-title">
+      <div class="shell">
+        <div class="workflow-head">
+          <h2 id="workflow-title">Taste is only useful when it ships.</h2>
+          <p>UI Done connects visual judgment to real delivery constraints. It keeps the stack honest and the final browser render authoritative.</p>
+        </div>
+        <div class="workflow-line">
+          <article class="phase">
+            <span class="phase-index">01</span>
+            <strong>Read</strong>
+            <span>Audience, brand, content and delivery mode.</span>
+          </article>
+          <article class="phase">
+            <span class="phase-index">02</span>
+            <strong>Audit</strong>
+            <span>Current stack, assets, states and real constraints.</span>
+          </article>
+          <article class="phase">
+            <span class="phase-index">03</span>
+            <strong>Choose</strong>
+            <span>One proven tool for each layer, all serving the same direction.</span>
+          </article>
+          <article class="phase">
+            <span class="phase-index">04</span>
+            <strong>Build</strong>
+            <span>One visual system with explicit ownership.</span>
+          </article>
+          <article class="phase">
+            <span class="phase-index">05</span>
+            <strong>Verify</strong>
+            <span>Screenshots, interaction, overflow and fallbacks.</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="prompt-section" id="prompt" aria-labelledby="prompt-title">
+      <div class="shell prompt-panel">
+        <div>
+          <h2 id="prompt-title">Start with one sentence.</h2>
+          <p class="prompt-copy">You do not need to name the libraries. Describe the result and let the skill assemble a coherent UI, motion, scroll, 3D and performance stack.</p>
+        </div>
+        <div class="prompt-box">
+          <code id="starter-prompt">Use $ui-done to redesign this page. Keep the existing content, choose one strong tool for each UI, motion, scroll, 3D and performance layer, and verify the result in a real browser.</code>
+          <div class="copy-row">
+            <button class="copy-button" type="button" id="copy-prompt">Copy prompt</button>
+            <span class="copy-status" id="copy-status" role="status" aria-live="polite"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <span>UI Done code is available under the MIT License.</span>
+      <span class="footer-links">
+        <a href="../../README.md">Project README</a>
+        <a href="../../THIRD_PARTY_NOTICES.md">Third-party notices</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    const copyButton = document.querySelector("#copy-prompt");
+    const promptText = document.querySelector("#starter-prompt").textContent;
+    const copyStatus = document.querySelector("#copy-status");
+
+    copyButton.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(promptText);
+        copyStatus.textContent = "Copied.";
+      } catch {
+        const field = document.createElement("textarea");
+        field.value = promptText;
+        field.setAttribute("readonly", "");
+        field.style.position = "fixed";
+        field.style.opacity = "0";
+        document.body.appendChild(field);
+        field.select();
+        const copied = document.execCommand("copy");
+        field.remove();
+        copyStatus.textContent = copied ? "Copied." : "Select the prompt and copy it manually.";
+      }
+    });
+  </script>
+</body>
+</html>

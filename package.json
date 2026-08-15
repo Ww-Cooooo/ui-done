@@ -1,0 +1,43 @@
+{
+  "name": "ui-done-showcase",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.19.0",
+  "scripts": {
+    "build": "pnpm run build:core && pnpm run build:chart && pnpm run notices && pnpm run stamp:runtime",
+    "build:core": "vite build --config tooling/vite.core.config.mjs",
+    "build:chart": "vite build --config tooling/vite.chart.config.mjs",
+    "notices": "node tooling/generate-runtime-notices.mjs",
+    "stamp:runtime": "node tooling/stamp-runtime-version.mjs",
+    "size": "size-limit",
+    "check": "pnpm run build && pnpm run size"
+  },
+  "dependencies": {
+    "chart.js": "4.5.1",
+    "lenis": "1.3.25",
+    "motion": "12.42.2",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-intersection-observer": "9.16.0",
+    "three": "0.185.1"
+  },
+  "devDependencies": {
+    "@size-limit/file": "13.0.2",
+    "@vitejs/plugin-react": "6.0.4",
+    "size-limit": "13.0.2",
+    "vite": "8.1.5"
+  },
+  "size-limit": [
+    {
+      "name": "Shared showcase enhancement runtime",
+      "path": "showcase/shared/runtime/ui-done-core.js",
+      "limit": "780 kB"
+    },
+    {
+      "name": "Control Room chart runtime",
+      "path": "showcase/shared/runtime/ui-done-control-chart.js",
+      "limit": "260 kB"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Done"
+  short_description: "把前端需求做成能用的页面，并在真实浏览器里检查结果"
+  default_prompt: "Use $ui-done to turn this frontend request into a finished interface and verify the result in a real browser."
