@@ -10,6 +10,7 @@ Reject or pause a candidate when any applicable gate fails:
 - Its visible role becomes understandable only after inventing a scene name, explanatory label, or generic pause/reset/rotate/view controls that the product itself does not need.
 - It duplicates the existing design system, icon family, animation owner, router, form layer, or chart stack without a migration plan.
 - Its license is unclear, incompatible with intended redistribution, closed/paid without approval, or missing required attribution terms.
+- Copied source code lacks an official upstream page or repository, identifiable author/project, exact license text, or a planned notice location.
 - Offline/portable delivery requires a remote runtime service, CDN, account, or system-installed font that the user did not authorize.
 - Keyboard, screen reader, touch, reduced-motion, or essential static fallback cannot be made usable.
 - Maintenance/security evidence is inadequate for the role it would occupy.
@@ -60,7 +61,7 @@ Record the total only when comparing several close candidates. A high score cann
 ## After selection
 
 1. State the selected owner for every capability category and the hard-gate reason for any omission.
-2. Confirm package name/source and compatible current usage from official evidence.
+2. Confirm package or copied-component name, official source, author/project, exact license, and compatible current usage from official evidence.
 3. Install with the existing package manager and update the lockfile.
 4. Re-run build, license/offline checks, browser QA, and bundle/performance checks proportional to impact.
 5. Remove superseded dependencies/assets only after proving they are unused and preserving user work.

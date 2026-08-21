@@ -37,6 +37,7 @@ Turn the gap into a question, for example: “Need keyboard-safe accessible dial
 |---|---|---|
 | App/runtime | React, Vue, Svelte, Astro, Next.js, Nuxt, Vite, or existing native stack | Does migration improve the user's experience enough to repay rewrite and delivery risk? |
 | UI/accessibility | Native elements, Radix, shadcn/ui, Material, Fluent, Carbon, Ark UI, or existing system | Is a second design system being introduced? Who owns focus, semantics, and tokens? |
+| Isolated UI element | Existing primitives first; Uiverse when one MIT-licensed HTML/CSS, Tailwind, or React treatment fills a real gap | Can it be adapted into the current system without importing a second visual language or demo content? |
 | UI motion | CSS, Web Animations API, Motion, GSAP, Anime.js | Is this state feedback or scroll narrative, and can current capability do it? |
 | Scrolling | Native scroll, CSS Scroll Snap, ScrollTrigger, Lenis | Will it preserve keyboard, touch, anchors, nested scroll, and reduced motion? |
 | 3D/Canvas/particles | Three.js, React Three Fiber, Babylon.js, PixiJS, p5.js | Is it a product signature with a usable static fallback, or decoration? |
@@ -48,6 +49,8 @@ Turn the gap into a question, for example: “Need keyboard-safe accessible dial
 | QA/build | Existing tests, browser automation, performance/a11y tooling, offline validator | Can the final artifact, not just source, be verified? |
 
 Names above are starting points. Actively investigate the relevant field, then choose from current evidence rather than copying the list mechanically.
+
+Read `open-source-ui-sources.md` before copying a Uiverse element or treating Anime.js as a serious motion candidate. That reference defines their different roles, trigger conditions, provenance record, and notice obligations.
 
 ## Evidence order
 

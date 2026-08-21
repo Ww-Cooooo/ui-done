@@ -15,6 +15,8 @@ For substantial frontend work, motion, scroll enhancement, and 3D/Canvas are def
 
 Research current APIs, maintenance, license, and bundle behavior before choosing the owners. For substantial work, missing motion, scroll, or 3D coverage requires a hard constraint, not merely “native is simpler.”
 
+When Anime.js is a serious candidate, read `open-source-ui-sources.md` before selection. Use it as the primary motion or timeline owner for a defined region, not as an extra engine layered over Motion, GSAP, CSS, or another system controlling the same behavior.
+
 ## Fit before scale
 
 Name the existing host, the interface job, and the smallest useful footprint before implementing a visible effect. The selected library adapts to the page; the page does not grow a showcase block for the library.

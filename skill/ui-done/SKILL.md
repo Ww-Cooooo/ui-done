@@ -30,6 +30,7 @@ Read these files directly from this `SKILL.md` when their condition applies:
 
 - [Capability boundaries](references/capability-boundaries.md): read before routing companion Skills, and whenever one is unavailable.
 - [Technology scouting](references/technology-scouting.md): read for every substantial build or redesign, before adding dependencies, and whenever a current ecosystem choice could improve the result.
+- [Open-source UI sources](references/open-source-ui-sources.md): read when an isolated interface element may benefit from an external source, or when Anime.js is a serious motion candidate.
 - [Selection scorecard](references/selection-scorecard.md): read before installing, replacing, or removing a framework, design system, font, icon set, animation/scroll/3D/chart library, or build tool.
 - [Font and asset packaging](references/font-and-asset-packaging.md): read for multilingual typography, local fonts, imagery/icons, portable builds, `file://`, or open-source distribution.
 - [Motion, scroll, and 3D](references/motion-scroll-and-3d.md): read when automatic animation, scroll choreography, Canvas, WebGL, particles, or 3D is in scope.
@@ -120,11 +121,15 @@ Use one primary owner per category. Existing project choices count when they fit
 
 Read `technology-scouting.md`. For substantial builds and redesigns, scan every category in the matrix, including 3D and scroll enhancement, even when the user did not request specific packages. Use `$web-access` for current maintenance, license, API, compatibility, and security evidence. Prefer official documentation, official repositories and releases, package-manager metadata, and full license texts.
 
+When a real gap fits Uiverse or Anime.js, read `open-source-ui-sources.md` and follow its intake and notice rules. Treat Uiverse as a source for one bounded interface element and Anime.js as a possible primary animation owner; they are neither a mandatory pair nor a fixed workflow. Recheck their official source and license at use time instead of relying on a bundled snapshot.
+
 If no network-capable Skill or tool is available, do not assert freshness. Reuse already verified project dependencies when they fit; otherwise state the evidence limitation and do not add a dependency whose maintenance or license cannot be established.
 
 ### 5. Score consequential choices without turning every package into a meeting
 
 Read `selection-scorecard.md` before changing dependencies. Use its ten criteria internally for every serious candidate. Show the exact 10-column decision table before a consequential framework, design-system, animation/scroll engine, 3D/charting, or build-tool choice, and whenever the user asks to compare options. For a small compatible component or utility inside an already authorized implementation, make the choice, update the lockfile, and record the reason in the handoff without interrupting the task.
+
+An isolated Uiverse element can follow the small-component path after source, license, fit, and accessibility review. Selecting Anime.js as the primary motion engine follows the consequential-choice path even when its MIT license is compatible.
 
 Include existing tools when they can own a category cleanly. “Adopt nothing” is not a routine candidate for substantial work; use it only when a hard gate prevents safe adoption. Reject unclear licensing, mandatory remote runtime assets that break delivery, duplicated design systems, or competing owners within the same category unless the user explicitly accepts the tradeoff.
 
@@ -186,6 +191,7 @@ Report:
 - The design read and delivery mode.
 - What was preserved and what changed.
 - The ecosystem choices: what was adopted, reused, or rejected and the practical reason for each consequential decision.
+- Any copied interface element or installed animation source: upstream author/project, exact source, modifications, license obligation, and notice location.
 - Font/asset sources, licenses, and offline behavior.
 - Build, static preflight, browser sizes/states, accessibility, reduced-motion, and fallback results.
 - Remaining limitations, untested browsers/devices, and any terminal or network requirement.
