@@ -1,105 +1,60 @@
 import { useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import * as THREE from "three";
 
-function FrameNode({ position, color, scale = 1 }) {
-  const thickness = 0.055 * scale;
-  const width = 1.45 * scale;
-  const height = 0.92 * scale;
-  return (
-    <group position={position}>
-      <mesh position={[0, height / 2, 0]}><boxGeometry args={[width, thickness, thickness]} /><meshStandardMaterial color={color} /></mesh>
-      <mesh position={[0, -height / 2, 0]}><boxGeometry args={[width, thickness, thickness]} /><meshStandardMaterial color={color} /></mesh>
-      <mesh position={[width / 2, 0, 0]}><boxGeometry args={[thickness, height, thickness]} /><meshStandardMaterial color={color} /></mesh>
-      <mesh position={[-width / 2, 0, 0]}><boxGeometry args={[thickness, height, thickness]} /><meshStandardMaterial color={color} /></mesh>
-    </group>
-  );
+function Shape({ type, index }) {
+  if (type === "tide") return <torusGeometry args={[0.62 + index * 0.08, 0.045, 12, 48]} />;
+  if (type === "orbit") return index === 0 ? <sphereGeometry args={[0.78, 24, 24]} /> : <torusGeometry args={[0.95 + index * 0.14, 0.025, 8, 64]} />;
+  if (type === "form") return index % 2 ? <tetrahedronGeometry args={[0.58, 0]} /> : <octahedronGeometry args={[0.58, 0]} />;
+  if (type === "stack") return <boxGeometry args={[1.8 - index * 0.12, 0.24, 1.1 - index * 0.08]} />;
+  if (type === "pebble") return <sphereGeometry args={[0.55 + (index % 2) * 0.16, 24, 18]} />;
+  if (type === "ribbon") return <torusKnotGeometry args={[0.54, 0.1, 88, 12, 2, 3]} />;
+  if (type === "rift") return <octahedronGeometry args={[0.68 - index * 0.035, 0]} />;
+  if (type === "fold") return <dodecahedronGeometry args={[0.58, 0]} />;
+  if (type === "grid") return <boxGeometry args={[0.82, 0.82, 0.18]} />;
+  if (type === "velocity") return <torusKnotGeometry args={[0.5, 0.09, 72, 10, 2, 5]} />;
+  return index % 3 === 0 ? <icosahedronGeometry args={[0.5, 1]} /> : <boxGeometry args={[0.62, 0.62, 0.62]} />;
 }
 
-function Connection({ end, color }) {
-  const { length, midpoint, quaternion } = useMemo(() => {
-    const target = new THREE.Vector3(...end);
-    return {
-      length: target.length(),
-      midpoint: target.clone().multiplyScalar(0.5),
-      quaternion: new THREE.Quaternion().setFromUnitVectors(
-        new THREE.Vector3(0, 1, 0),
-        target.clone().normalize()
-      )
-    };
-  }, [end]);
-
-  return (
-    <mesh position={midpoint} quaternion={quaternion}>
-      <cylinderGeometry args={[0.012, 0.012, length, 6, 1, true]} />
-      <meshBasicMaterial color={color} transparent opacity={0.38} />
-    </mesh>
-  );
-}
-
-function SceneObjects({ page, active }) {
-  const groupRef = useRef(null);
-  const id = page.id;
-  const count = id === "motion-foundry" ? 10 : id === "viewport-lab" ? 3 : id === "open-studio" ? 6 : 8;
+function MaterialObjects({ page, active }) {
+  const root = useRef(null);
+  const type = page.shape;
+  const count = type === "orbit" ? 5 : type === "stack" ? 6 : 7;
   const positions = useMemo(() => Array.from({ length: count }, (_, index) => {
-    if (id === "brief-machine") {
-      const row = index % 4;
-      const column = Math.floor(index / 4);
-      return [-1.6 + row * 1.05, 0.65 - column * 1.3, (row - 1.5) * 0.16];
-    }
-    if (id === "viewport-lab") return [[-1.7, 0, 0], [0, 0, 0.25], [1.7, 0, 0]][index];
-    if (id === "motion-foundry") return [-2.2 + index * 0.49, Math.sin(index * 0.9) * 0.42, (index - 5) * 0.1];
-    if (id === "open-studio") return [0, -1.1 + index * 0.44, (index % 2) * 0.22 - 0.1];
+    if (type === "stack") return [0, -1 + index * 0.38, (index % 2) * 0.12];
+    if (type === "grid") return [-1.45 + (index % 3) * 1.45, 0.75 - Math.floor(index / 3) * 1.25, (index % 2) * 0.18];
+    if (type === "orbit") return [0, 0, index * 0.045];
+    if (type === "velocity") return [-1.8 + index * 0.58, Math.sin(index * 1.3) * 0.44, (index - 3) * 0.12];
+    if (type === "tide") return [0, 0, (index - 3) * 0.18];
     const angle = (index / count) * Math.PI * 2;
-    const radius = id === "source-atlas" ? 1.75 + (index % 2) * 0.45 : 2;
-    return [Math.cos(angle) * radius, Math.sin(angle) * radius * 0.66, Math.sin(angle * 2) * 0.35];
-  }), [count, id]);
+    const radius = type === "pebble" ? 1.45 : 1.7;
+    return [Math.cos(angle) * radius, Math.sin(angle) * radius * 0.64, Math.sin(angle * 2) * 0.28];
+  }), [count, type]);
 
   useFrame((state, delta) => {
-    if (!active || !groupRef.current) return;
-    groupRef.current.rotation.y += delta * 0.09;
-    groupRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.28) * 0.07;
+    if (!active || !root.current) return;
+    const speed = type === "velocity" || type === "rift" ? 0.2 : 0.08;
+    root.current.rotation.y += delta * speed;
+    root.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.3) * 0.08;
   });
 
-  const colorA = page.theme.accent;
-  const colorB = page.theme.accent2;
-
   return (
-    <group ref={groupRef}>
-      {id === "viewport-lab" ? positions.map((position, index) => (
-        <FrameNode key={index} position={position} color={index === 1 ? colorA : colorB} scale={[1.1, 0.82, 0.62][index]} />
-      )) : positions.map((position, index) => (
-        <mesh key={index} position={position} rotation={[index * 0.08, index * 0.22, index * 0.06]}>
-          {id === "source-atlas" ? (
-            <icosahedronGeometry args={[index % 3 === 0 ? 0.24 : 0.16, 1]} />
-          ) : id === "open-studio" ? (
-            <boxGeometry args={[2.15 - index * 0.16, 0.26, 1.22 - index * 0.08]} />
-          ) : id === "motion-foundry" ? (
-            <boxGeometry args={[0.36, 1.25, 0.18]} />
-          ) : id === "brief-machine" ? (
-            <boxGeometry args={[0.72, 0.42, 0.24]} />
-          ) : (
-            <boxGeometry args={[0.42, 1.18, 0.24]} />
-          )}
+    <group ref={root} rotation={[0.08, 0.12, type === "velocity" ? -0.2 : 0]}>
+      {positions.map((position, index) => (
+        <mesh
+          key={index}
+          position={position}
+          rotation={[index * 0.17, index * 0.31, index * 0.11]}
+          scale={type === "pebble" ? [1.25, 0.7, 0.88] : 1}
+        >
+          <Shape type={type} index={index} />
           <meshStandardMaterial
-            color={index % 2 ? colorA : colorB}
-            roughness={0.42}
-            metalness={id === "motion-foundry" ? 0.72 : 0.28}
+            color={index % 2 ? page.theme.accent : page.theme.accent2}
+            roughness={type === "pebble" || type === "fold" ? 0.78 : 0.3}
+            metalness={type === "orbit" || type === "ribbon" || type === "velocity" ? 0.72 : 0.24}
             transparent
-            opacity={0.9}
+            opacity={type === "tide" ? 0.64 : 0.9}
           />
         </mesh>
-      ))}
-
-      {id !== "viewport-lab" && id !== "open-studio" && (
-        <mesh>
-          <octahedronGeometry args={[id === "brief-machine" ? 0.58 : 0.72, 0]} />
-          <meshStandardMaterial color={page.theme.ink} roughness={0.22} metalness={0.35} />
-        </mesh>
-      )}
-
-      {(id === "source-atlas" || id === "signal-room" || id === "gallery") && positions.map((position, index) => (
-        <Connection key={`connection-${index}`} end={position} color={index % 2 ? colorA : colorB} />
       ))}
     </group>
   );
@@ -108,16 +63,16 @@ function SceneObjects({ page, active }) {
 export default function SpatialScene({ page, active }) {
   return (
     <Canvas
-      camera={{ position: [0, 0, 6.4], fov: 42 }}
+      camera={{ position: [0, 0, 6.2], fov: 42 }}
       dpr={[1, 1.5]}
       frameloop={active ? "always" : "demand"}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       fallback={null}
     >
-      <ambientLight intensity={1.4} />
-      <directionalLight position={[3, 4, 5]} intensity={2.4} color={page.theme.ink} />
-      <pointLight position={[-4, -2, 3]} intensity={3} color={page.theme.accent} />
-      <SceneObjects page={page} active={active} />
+      <ambientLight intensity={1.25} />
+      <directionalLight position={[3, 4, 5]} intensity={2.2} color={page.theme.ink} />
+      <pointLight position={[-4, -2, 3]} intensity={3.2} color={page.theme.accent} />
+      <MaterialObjects page={page} active={active} />
     </Canvas>
   );
 }

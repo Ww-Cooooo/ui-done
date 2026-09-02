@@ -13,6 +13,7 @@ Reject or pause a candidate when any applicable gate fails:
 - Its license is unclear, incompatible with intended redistribution, closed/paid without approval, or missing required attribution terms.
 - Copied source code lacks an official upstream page or repository, identifiable author/project, exact license text, or a planned notice location.
 - Offline/portable delivery requires a remote runtime service, CDN, account, or system-installed font that the user did not authorize.
+- A new or materially redesigned page has no deliberately selected open-source primary typeface, the exact font license/files cannot be traced to an official source, relevant specimens were not inspected, or normal rendering depends on a browser/operating-system default.
 - Keyboard, screen reader, touch, reduced-motion, or essential static fallback cannot be made usable.
 - Maintenance/security evidence is inadequate for the role it would occupy.
 - It adds hidden install scripts, native binaries, telemetry, or operational burden disproportionate to its benefit.
@@ -68,7 +69,7 @@ Record the total only when comparing several close candidates. A high score cann
 - 2D Canvas: select a separate owner and shipped role; prefer Pts for creative/programmed drawing or Fabric.js for editable objects. A Three.js/R3F scene cannot satisfy this row. Shrink the Canvas footprint or change its host before claiming it cannot fit.
 - Visualization: inspect real quantitative, relational, temporal, hierarchical, geographic, and flow content before scoring omission. Prefer AntV G2 or Ant Design Charts and adapt its visual grammar to the product; select ECharts instead when it fits better. Use one primary owner, not both for generic variety. A no-adoption result must state the inspected surfaces and prove that no authentic visualizable object exists and creating one would fabricate data or meaning.
 - Performance: select the framework-native path plus focused tooling that can prove a user-visible or delivery gain; do not add overlapping optimizers for the same bottleneck.
-- Fonts: score glyph coverage, required weights, file size, layout metrics, redistribution, self-hosting, and provenance, not beauty alone.
+- Fonts: every new or materially redesigned page must select or explicitly reuse at least one current, widely adopted open-source primary family after inspecting official specimens with representative page text. Score subject/tone fit, language and symbol coverage, required weights, file size, layout metrics, maintenance/adoption evidence, exact license, self-hosting, and provenance—not beauty or popularity alone. Generic and operating-system fonts are failure fallbacks, not candidates. Record the choice compactly; do not force a full ten-column installation table when an already verified local open-source family cleanly fits.
 
 ## After selection
 

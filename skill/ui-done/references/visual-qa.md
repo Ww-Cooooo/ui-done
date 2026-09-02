@@ -45,7 +45,7 @@ Do not manufacture irrelevant states, but do not skip states the implementation 
 - Reject leftover sample copy, fabricated demo data, generic demo controls, gallery framing, or attribution/license omissions. When example code or assets were copied, verify the recorded upstream, modifications, license obligations, and notice location.
 - On phone layouts, check whether decorative controls enter the reading order, cover meaningful imagery, or become more prominent than the content they supposedly support.
 - Enumerate visible text and inspect computed `font-size`, `line-height`, `font-family`, overflow, and truncation. Treat 11px as a floor reserved for short low-priority metadata; keep labels/card copy around 13px+, controls around 14px+, and continuous body copy around 15–16px+ unless the product has a justified accessible scale.
-- Verify the intended fonts truly loaded with computed styles and `document.fonts`; detect fallback or missing glyphs.
+- Verify the deliberately selected open-source fonts truly loaded with computed styles and `document.fonts`; test representative Chinese, English, numerals, code, punctuation, math, and special symbols that the page uses. Treat normal-operation fallback to a browser/operating-system default, an unlicensed face, or tofu/missing glyphs as an acceptance failure.
 - Check headings and real long content at each viewport. Prefer wrapping/reflow over silent clipping.
 - Detect horizontal overflow by comparing document/element scroll widths with viewport/client widths.
 - Confirm sticky/fixed headers, rails, bottom navigation, cookie bars, and CTA bars do not cover the first or final content.
@@ -87,7 +87,7 @@ Report a compact matrix containing:
 - Screenshot locations when artifacts are retained.
 - Host, meaning, and control decisions for visible motion, scroll, Canvas, 3D, and visualization layers.
 - Official demos inspected for selected or serious candidates, what was adopted or rejected, how adopted behavior was retuned to the product, idea-only versus code use, and any hard demo-review exemption.
-- Font loading, external requests, console/page errors, overflow, focus/touch, reduced-motion, and fallback results.
+- Selected open-source font families/roles, exact source/license, specimen evidence, computed loading and glyph coverage, plus external requests, console/page errors, overflow, focus/touch, reduced-motion, and fallback results.
 - Performance/accessibility tool results only when actually run.
 - Fixes made after screenshot review and the checks rerun.
 - Untested browsers/devices and remaining limitations.

@@ -1,16 +1,24 @@
 # Bundled font notices
 
-The font files in this directory are unmodified copies from the [Google Fonts repository at commit `352f6b7d9d6cc4fa9e242b931291d31b21a6dc84`](https://github.com/google/fonts/commit/352f6b7d9d6cc4fa9e242b931291d31b21a6dc84). They remain licensed under the SIL Open Font License 1.1 (OFL-1.1).
+Every font shipped with the showcase is open-source and remains licensed under the SIL Open Font License 1.1 (OFL-1.1), not UI Done's root MIT License. The complete license text is distributed beside the fonts in [`OFL-1.1.txt`](./OFL-1.1.txt).
 
-The complete license text is distributed beside the fonts in [`OFL-1.1.txt`](./OFL-1.1.txt). These font files are not covered by UI Done's MIT License.
+No font is requested from a CDN at runtime. Latin font binaries are local copies from the official [Google Fonts repository](https://github.com/google/fonts). The Chinese families are the unmodified WOFF2 unicode-range files selected from official Google Fonts CSS for the fixed showcase character corpus; their exact CSS queries, upstream file URLs, local hashes, and corpus hash are recorded in [`cjk-showcase.manifest.json`](./cjk-showcase.manifest.json).
 
 ## Copyright notices
 
 - `Outfit-Variable.ttf`: Copyright 2021 The Outfit Project Authors (https://github.com/Outfitio/Outfit-Fonts)
-- `IBMPlexSerif-Regular.ttf` and `IBMPlexSerif-Bold.ttf`: Copyright © 2017 IBM Corp. with Reserved Font Name "Plex"
 - `RedHatMono-Variable.ttf`: Copyright 2024 The Red Hat Project Authors (https://github.com/RedHatOfficial/RedHatFont)
 - `BigShoulders-Variable.ttf`: Copyright 2019 The Big Shoulders Project Authors (https://github.com/xotypeco/big_shoulders)
+- `CormorantGaramond-Variable.ttf`: Copyright 2015 the Cormorant Project Authors (https://github.com/CatharsisFonts/Cormorant)
+- `Syne-Variable.ttf`: Copyright 2017 The Syne Project Authors (https://gitlab.com/bonjour-monde/fonderie/syne-typeface)
+- `Fraunces-Variable.ttf`: Copyright 2018 The Fraunces Project Authors (https://github.com/undercasetype/Fraunces)
+- `BodoniModa-Variable.ttf`: Copyright 2020 The Bodoni Moda Project Authors (https://github.com/indestructible-type/Bodoni)
+- `ChakraPetch-SemiBold.ttf`: Copyright 2018 The Chakra Petch Project Authors (https://github.com/m4rc1e/Chakra-Petch.git)
+- `Archivo-Variable.ttf`: Copyright 2020 The Archivo Project Authors (https://github.com/Omnibus-Type/Archivo)
+- `noto-sans-sc/`: Copyright 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name "Source"
+- `noto-serif-sc/`: Copyright 2012 Google Inc. All Rights Reserved.
+- `zcool-qingke/`: Copyright 2018 The ZCOOL QingKe HuangYou Project Authors (https://www.github.com/googlefonts/zcool-qingke-huangyou)
 
-The Outfit, Red Hat Mono, and Big Shoulders variable-font filenames were shortened for this repository. The font binaries and their internal names were not changed.
+The local filenames were shortened for this repository. The Latin font bytes and internal names were not changed. The WOFF2 files were selected by their upstream unicode ranges and were not rewritten; unused upstream ranges are simply not distributed.
 
-Exact upstream filenames, versions, source links, and SHA-256 values are recorded in the repository's [`THIRD_PARTY_NOTICES.md`](../../../THIRD_PARTY_NOTICES.md).
+Exact local SHA-256 values, upstream paths, and packaging details are also summarized in the repository's [`THIRD_PARTY_NOTICES.md`](../../../THIRD_PARTY_NOTICES.md). Keep this file, `OFL-1.1.txt`, and the CJK manifest with the fonts when redistributing the showcase.

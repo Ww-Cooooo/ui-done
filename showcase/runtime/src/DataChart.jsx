@@ -3,21 +3,6 @@ import { Chart } from "@antv/g2";
 import { Alert, Tag } from "antd";
 import { BarChartOutlined, CheckCircleOutlined } from "@ant-design/icons";
 
-function palette(page) {
-  return [
-    page.theme.accent,
-    page.theme.accent2,
-    page.theme.ink,
-    page.theme.muted,
-    page.theme.surfaceAlt,
-    page.theme.accent,
-    page.theme.accent2,
-    page.theme.ink,
-    page.theme.muted,
-    page.theme.surfaceAlt
-  ];
-}
-
 function baseAxis(page) {
   return {
     labelFill: page.theme.muted,
@@ -32,83 +17,42 @@ function baseAxis(page) {
 }
 
 function chartSpec(page, reduced) {
+  const horizontal = page.chartKind === "blocks";
   const common = {
-    autoFit: true,
     data: page.chartData,
-    animate: reduced ? false : { enter: { type: "growInY", duration: 460 } },
-    theme: {
-      type: "classic",
-      color: page.theme.accent,
-      view: { viewFill: "transparent" }
-    },
+    autoFit: true,
+    encode: { x: "label", y: "value", color: "label" },
     scale: {
-      color: { range: palette(page) }
+      y: { domain: [0, 255], nice: false },
+      color: { range: [page.theme.accent, page.theme.accent2, page.theme.ink, page.theme.muted, page.theme.surfaceAlt] }
     },
-    legend: { color: false }
+    legend: { color: false },
+    animate: reduced ? false : { enter: { type: "growInY", duration: 520 } },
+    theme: { type: "classic", view: { viewFill: "transparent" } }
   };
-
-  if (page.chartKind === "radialEqual") {
-    return {
-      ...common,
-      type: "interval",
-      animate: false,
-      coordinate: { type: "theta", innerRadius: 0.56, outerRadius: 0.88 },
-      transform: [{ type: "stackY" }],
-      encode: { y: "value", color: "label" },
-      style: { stroke: page.theme.bg, lineWidth: 3 },
-      axis: false
-    };
-  }
-
-  if (page.chartKind === "radial") {
-    return {
-      ...common,
-      type: "interval",
-      animate: false,
-      coordinate: { type: "polar", innerRadius: 0.18, outerRadius: 0.84 },
-      encode: { x: "label", y: "value", color: "label" },
-      scale: {
-        color: { range: palette(page) },
-        y: { nice: true }
-      },
-      style: { radius: 5, stroke: page.theme.bg, lineWidth: 2 },
-      axis: {
-        x: { ...baseAxis(page), grid: false, line: false, tick: false },
-        y: { ...baseAxis(page), label: false, title: false }
-      }
-    };
-  }
-
-  if (page.chartKind === "grouped") {
-    return {
-      ...common,
-      type: "interval",
-      encode: { x: "label", y: "value", color: "metric" },
-      transform: [{ type: "dodgeX" }],
-      style: { radiusTopLeft: 5, radiusTopRight: 5 },
-      axis: {
-        x: { ...baseAxis(page), grid: false, title: false },
-        y: { ...baseAxis(page), title: false }
-      },
-      legend: {
-        color: {
-          position: "top",
-          itemLabelFill: page.theme.muted,
-          itemLabelFontFamily: page.theme.body
-        }
-      }
-    };
-  }
 
   if (page.chartKind === "line") {
     return {
       ...common,
       type: "line",
       encode: { x: "label", y: "value" },
-      style: { stroke: page.theme.accent, lineWidth: 4 },
+      style: { stroke: page.theme.accent, lineWidth: 4, shape: "smooth" },
       axis: {
-        x: { ...baseAxis(page), grid: false, title: false, labelAutoRotate: true },
-        y: { ...baseAxis(page), title: false, tickCount: 5 }
+        x: { ...baseAxis(page), grid: false, title: false },
+        y: { ...baseAxis(page), title: false, tickCount: 6 }
+      }
+    };
+  }
+
+  if (page.chartKind === "area") {
+    return {
+      ...common,
+      type: "area",
+      encode: { x: "label", y: "value" },
+      style: { fill: page.theme.accent, fillOpacity: 0.62 },
+      axis: {
+        x: { ...baseAxis(page), grid: false, title: false },
+        y: { ...baseAxis(page), title: false, tickCount: 6 }
       }
     };
   }
@@ -116,33 +60,23 @@ function chartSpec(page, reduced) {
   return {
     ...common,
     type: "interval",
-    coordinate: { transform: [{ type: "transpose" }] },
-    encode: { x: "label", y: "value", color: "label" },
-    style: { radiusTopRight: 7, radiusBottomRight: 7 },
+    coordinate: horizontal ? { transform: [{ type: "transpose" }] } : undefined,
+    style: horizontal
+      ? { radiusTopRight: 2, radiusBottomRight: 2, insetTop: 7, insetBottom: 7 }
+      : { radiusTopLeft: page.layout === "soft" ? 16 : 1, radiusTopRight: page.layout === "soft" ? 16 : 1, insetLeft: 10, insetRight: 10 },
     axis: {
       x: { ...baseAxis(page), grid: false, title: false },
-      y: { ...baseAxis(page), title: false }
+      y: { ...baseAxis(page), title: false, tickCount: 6 }
     }
   };
 }
 
 function DataTable({ page }) {
-  const hasMetric = page.chartData.some(item => item.metric);
   return (
     <table className="visually-hidden">
       <caption>{page.chartTitle}：{page.chartSummary}</caption>
-      <thead>
-        <tr><th>项目</th>{hasMetric && <th>维度</th>}<th>值</th></tr>
-      </thead>
-      <tbody>
-        {page.chartData.map((item, index) => (
-          <tr key={`${item.label}-${item.metric || index}`}>
-            <td>{item.label}</td>
-            {hasMetric && <td>{item.metric || "—"}</td>}
-            <td>{item.value}</td>
-          </tr>
-        ))}
-      </tbody>
+      <thead><tr><th>图片</th><th>平均明度，0 到 255</th></tr></thead>
+      <tbody>{page.chartData.map(item => <tr key={item.label}><td>{item.label}</td><td>{item.value}</td></tr>)}</tbody>
     </table>
   );
 }
@@ -156,7 +90,7 @@ export default function DataChart({ page, reduced }) {
     if (!host) return undefined;
     let chart;
     let cancelled = false;
-
+    setError(null);
     try {
       chart = new Chart({ container: host, autoFit: true, height: 330 });
       chart.options(chartSpec(page, reduced));
@@ -166,7 +100,6 @@ export default function DataChart({ page, reduced }) {
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : String(reason));
     }
-
     return () => {
       cancelled = true;
       chart?.destroy();
@@ -176,27 +109,12 @@ export default function DataChart({ page, reduced }) {
   return (
     <section className="chart-panel" data-scroll-reveal aria-labelledby={`${page.id}-chart-title`}>
       <div className="chart-heading">
-        <div>
-          <Tag bordered={false} icon={<BarChartOutlined />}>ANTV G2 / REAL DATA</Tag>
-          <h2 id={`${page.id}-chart-title`}>{page.chartTitle}</h2>
-        </div>
+        <div><Tag bordered={false} icon={<BarChartOutlined />}>ANTV G2 / MEASURED IMAGE DATA</Tag><h2 id={`${page.id}-chart-title`}>{page.chartTitle}</h2></div>
         <p>{page.chartSummary}</p>
       </div>
-      {error ? (
-        <Alert
-          type="warning"
-          showIcon
-          message="图形层已回退"
-          description="真实数据仍完整保留在文字表格中。"
-        />
-      ) : <div ref={hostRef} className="g2-host" aria-hidden="true" />}
+      {error ? <Alert type="warning" showIcon message="图形层已回退" description="真实数值仍完整保留在页面的无障碍数据表中。" /> : <div ref={hostRef} className="g2-host" aria-hidden="true" />}
       <DataTable page={page} />
-      <div className="chart-proof" aria-label="图表数据说明">
-        <CheckCircleOutlined />
-        <span>本地数据</span>
-        <span>无远程请求</span>
-        <span>有文字等价内容</span>
-      </div>
+      <div className="chart-proof" aria-label="图表数据说明"><CheckCircleOutlined /><span>本地图片实测</span><span>0–255 明度</span><span>无虚构经营指标</span></div>
     </section>
   );
 }

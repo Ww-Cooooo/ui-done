@@ -3,13 +3,17 @@ import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 const showcasePages = [
-  "brief-machine",
+  "atelier-noir",
+  "corner-goods",
   "gallery",
-  "motion-foundry",
-  "open-studio",
-  "signal-room",
-  "source-atlas",
-  "viewport-lab"
+  "grid-01",
+  "neon-rift",
+  "north-tide",
+  "orbital-grid",
+  "red-form",
+  "shanshui-now",
+  "still-day",
+  "velocity-works"
 ];
 
 const runtimeAssets = [

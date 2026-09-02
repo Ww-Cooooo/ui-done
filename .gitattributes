@@ -2,3 +2,4 @@
 # authored runtime under showcase/runtime/src/ as the reviewable source.
 showcase/shared/runtime/*.js linguist-generated=true -diff
 showcase/shared/runtime/chunks/*.js linguist-generated=true -diff
+showcase/shared/fonts/cjk-showcase.generated.css linguist-generated=true -diff

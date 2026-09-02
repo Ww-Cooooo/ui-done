@@ -1,5 +1,4 @@
 import { Component, lazy, Suspense, useEffect, useRef, useState } from "react";
-import { capabilities } from "./data";
 import { useReducedMotion } from "./useReducedMotion";
 
 const SpatialScene = lazy(() => import("./visuals/SpatialScene"));
@@ -25,7 +24,7 @@ class VisualErrorBoundary extends Component {
 }
 
 function StaticSpatialFallback({ page }) {
-  const count = page.id === "motion-foundry" ? 10 : page.id === "viewport-lab" ? 3 : 8;
+  const count = page.layout === "soft" ? 5 : page.layout === "swiss" ? 7 : 6;
   return (
     <div className={`static-spatial static-${page.id}`} aria-hidden="true">
       {Array.from({ length: count }, (_, index) => (
@@ -95,12 +94,12 @@ export default function VisualStage({ page, compact = false }) {
       </div>
 
       <div className="stage-corner stage-corner-top">
-        <span>LIVE STACK</span>
+        <span>LIVE MATERIAL</span>
         <strong>{page.number}</strong>
       </div>
       <div className="stage-corner stage-corner-bottom">
         <span>{page.signature}</span>
-        <strong>{capabilities.length} / 8</strong>
+        <strong>3D + 2D</strong>
       </div>
     </div>
   );

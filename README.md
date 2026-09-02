@@ -20,42 +20,64 @@
   <strong><a href="https://ww-cooooo.github.io/ui-done/showcase/gallery/">点上面的图，直接看页面展厅 →</a></strong>
 </p>
 
-展厅里的六个页面全部由当前版本的 UI Done 从零重建。它们不是把同一模板换六套颜色：每一页都围绕 UI Done 的真实规则、素材来源、三端验收或安装结构展开，并把 React、Ant Design、Anime.js、Lenis、R3F、Pts 与 AntV G2 融进同一个页面任务。页面没有调用远程运行时，也没有为了展示图表编造业务数据。
+展厅里的十个作品全部由当前版本的 UI Done 从零重建。运动性能、海岸编辑、当代艺术、航天科技、复古街角、柔和生活、奢侈时装、赛博娱乐、当代新中式和瑞士网格，不是同一个模板换十套颜色：每一页都有自己的真实图片组、版式、动效语气、空间对象和经过官方字体样张比较后确定的开源字体组合。
+
+它们共用 React、Ant Design、Anime.js、Lenis、Three.js / R3F、Pts 与 AntV G2，但每种技术都围绕当页内容承担具体工作。全部图片和字体随仓库本地打包；图表只读取图片自身实测明度，不编造销量、用户数或其他经营数据。
 
 <details>
-<summary><img src="./assets/readme/expand.svg" alt="点开看大图和说明" height="30"> <strong>6 个页面的大图和在线链接</strong></summary>
+<summary><img src="./assets/readme/expand.svg" alt="点开看大图和说明" height="30"> <strong>10 种风格的大图和在线链接</strong></summary>
 
 <br>
 
 <table>
   <tr>
     <td width="50%" align="center">
-      <a href="https://ww-cooooo.github.io/ui-done/showcase/signal-room/"><img src="./assets/readme/signal-room.jpg" alt="Signal Room 完整能力协调台" width="390"></a><br>
-      <strong>Signal Room</strong><br>完整能力协调台 · <a href="https://ww-cooooo.github.io/ui-done/showcase/signal-room/">打开页面</a>
+      <a href="https://ww-cooooo.github.io/ui-done/showcase/velocity-works/"><img src="./assets/readme/velocity-works.jpg" alt="Velocity Works 运动性能视觉页面" width="390"></a><br>
+      <strong>Velocity Works</strong><br>运动性能 · <a href="https://ww-cooooo.github.io/ui-done/showcase/velocity-works/">打开页面</a>
     </td>
     <td width="50%" align="center">
-      <a href="https://ww-cooooo.github.io/ui-done/showcase/brief-machine/"><img src="./assets/readme/brief-machine.jpg" alt="Brief Machine 一句话展开八层前端能力" width="390"></a><br>
-      <strong>Brief Machine</strong><br>一句话展开八层 · <a href="https://ww-cooooo.github.io/ui-done/showcase/brief-machine/">打开页面</a>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <a href="https://ww-cooooo.github.io/ui-done/showcase/source-atlas/"><img src="./assets/readme/source-atlas.jpg" alt="Source Atlas 官方素材来源地图" width="390"></a><br>
-      <strong>Source Atlas</strong><br>官方素材来源地图 · <a href="https://ww-cooooo.github.io/ui-done/showcase/source-atlas/">打开页面</a>
-    </td>
-    <td width="50%" align="center">
-      <a href="https://ww-cooooo.github.io/ui-done/showcase/viewport-lab/"><img src="./assets/readme/viewport-lab.jpg" alt="Viewport Lab 电脑平板手机响应式实验台" width="390"></a><br>
-      <strong>Viewport Lab</strong><br>三端响应实验台 · <a href="https://ww-cooooo.github.io/ui-done/showcase/viewport-lab/">打开页面</a>
+      <a href="https://ww-cooooo.github.io/ui-done/showcase/north-tide/"><img src="./assets/readme/north-tide.jpg" alt="North Tide 海岸自然编辑页面" width="390"></a><br>
+      <strong>North Tide</strong><br>海岸自然编辑 · <a href="https://ww-cooooo.github.io/ui-done/showcase/north-tide/">打开页面</a>
     </td>
   </tr>
   <tr>
     <td width="50%" align="center">
-      <a href="https://ww-cooooo.github.io/ui-done/showcase/motion-foundry/"><img src="./assets/readme/motion-foundry.jpg" alt="Motion Foundry 十段完整前端生产线" width="390"></a><br>
-      <strong>Motion Foundry</strong><br>十段完整生产线 · <a href="https://ww-cooooo.github.io/ui-done/showcase/motion-foundry/">打开页面</a>
+      <a href="https://ww-cooooo.github.io/ui-done/showcase/red-form/"><img src="./assets/readme/red-form.jpg" alt="Red Form 当代艺术粗野主义页面" width="390"></a><br>
+      <strong>Red Form</strong><br>当代艺术粗野主义 · <a href="https://ww-cooooo.github.io/ui-done/showcase/red-form/">打开页面</a>
     </td>
     <td width="50%" align="center">
-      <a href="https://ww-cooooo.github.io/ui-done/showcase/open-studio/"><img src="./assets/readme/open-studio.jpg" alt="Open Studio 跨 Agent 可读的 Skill 文件结构" width="390"></a><br>
-      <strong>Open Studio</strong><br>跨 Agent 可读文件 · <a href="https://ww-cooooo.github.io/ui-done/showcase/open-studio/">打开页面</a>
+      <a href="https://ww-cooooo.github.io/ui-done/showcase/orbital-grid/"><img src="./assets/readme/orbital-grid.jpg" alt="Orbital Grid 未来航天科技页面" width="390"></a><br>
+      <strong>Orbital Grid</strong><br>未来航天科技 · <a href="https://ww-cooooo.github.io/ui-done/showcase/orbital-grid/">打开页面</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <a href="https://ww-cooooo.github.io/ui-done/showcase/corner-goods/"><img src="./assets/readme/corner-goods.jpg" alt="Corner Goods 温暖复古街角页面" width="390"></a><br>
+      <strong>Corner Goods</strong><br>温暖复古街角 · <a href="https://ww-cooooo.github.io/ui-done/showcase/corner-goods/">打开页面</a>
+    </td>
+    <td width="50%" align="center">
+      <a href="https://ww-cooooo.github.io/ui-done/showcase/still-day/"><img src="./assets/readme/still-day.jpg" alt="Still Day 柔和生活方式页面" width="390"></a><br>
+      <strong>Still Day</strong><br>柔和生活方式 · <a href="https://ww-cooooo.github.io/ui-done/showcase/still-day/">打开页面</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <a href="https://ww-cooooo.github.io/ui-done/showcase/atelier-noir/"><img src="./assets/readme/atelier-noir.jpg" alt="Atelier Noir 奢侈时装编辑页面" width="390"></a><br>
+      <strong>Atelier Noir</strong><br>奢侈时装编辑 · <a href="https://ww-cooooo.github.io/ui-done/showcase/atelier-noir/">打开页面</a>
+    </td>
+    <td width="50%" align="center">
+      <a href="https://ww-cooooo.github.io/ui-done/showcase/neon-rift/"><img src="./assets/readme/neon-rift.jpg" alt="Neon Rift 赛博游戏与电竞页面" width="390"></a><br>
+      <strong>Neon Rift</strong><br>赛博游戏与电竞 · <a href="https://ww-cooooo.github.io/ui-done/showcase/neon-rift/">打开页面</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <a href="https://ww-cooooo.github.io/ui-done/showcase/shanshui-now/"><img src="./assets/readme/shanshui-now.jpg" alt="Shanshui Now 当代新中式页面" width="390"></a><br>
+      <strong>Shanshui Now</strong><br>当代新中式 · <a href="https://ww-cooooo.github.io/ui-done/showcase/shanshui-now/">打开页面</a>
+    </td>
+    <td width="50%" align="center">
+      <a href="https://ww-cooooo.github.io/ui-done/showcase/grid-01/"><img src="./assets/readme/grid-01.jpg" alt="Grid 01 瑞士国际主义建筑页面" width="390"></a><br>
+      <strong>Grid 01</strong><br>瑞士国际主义 · <a href="https://ww-cooooo.github.io/ui-done/showcase/grid-01/">打开页面</a>
     </td>
   </tr>
 </table>
@@ -81,6 +103,7 @@ UI Done 不是一套固定模板。它是一份给 Agent 的工作说明，入�
 | 视觉增强 | 动画、滚动、3D 或 Canvas 要逐项提出 | 先为动画、Lenis 滚动、真实 3D/WebGL 和独立 2D Canvas 各规划一个真实角色 |
 | 数据看板 | 用户先决定要不要图表、用什么图表 | 发现真实可视化对象时主动选一个主人，优先 AntV，适合时改用 ECharts，不编造数据 |
 | 组件、动效、可视化或素材来源 | 知道库名才可能去找示例 | 认真比较或采用一个来源前，默认先看与当前用途相关的官方 Demo，再按整站调性改造 |
+| 字体 | 没指定时容易落回浏览器或系统默认字体 | 每个新页面或较大改版都先选或确认一套与页面调性匹配、当前广泛采用且许可证明确的开源字体 |
 | 图标与性能 | 容易留到最后或被漏掉 | 同时规划图标/资源和实际需要的性能手段 |
 | 设备检查 | 用户逐个给出尺寸 | 能使用浏览器时，默认检查电脑、平板和手机，再按特殊要求扩展 |
 | Agent 自己工作时 | 可能只在用户最初提到时生效 | 调研、增删改代码、重构、测试、打包和交付阶段都继续遵守同一套规则 |
@@ -177,6 +200,7 @@ https://github.com/Ww-Cooooo/ui-done
 - 现有项目不是 React 时，先说明完整迁移的范围和影响；不能偷偷混入 React 小岛，也不能未经同意改掉用户已经批准的架构。用户不批准迁移时，停止实施并只提供审查结果或迁移方案，不继续编写原框架的新页面；只要求审查时，报告迁移影响而不改代码。
 - React 项目已经有一套被批准的主 UI 组件系统时，优先保留它；新项目或没有主人的界面默认使用 Ant Design，不能为了采用 Ant Design 再叠一套并行组件系统。
 - 做完整页面或较大改版时，即使用户没有点名，也会先为 React UI、动画、滚动、真实 3D、独立 2D Canvas、可视化、图标和性能工具规划主方案并实际使用；省略必须有明确硬理由。
+- 每个新页面或较大改版都必须先查看候选字体的官方字样展示，选择或明确复用至少一套适合页面语言与调性的开源字体。中文、英文、数字、代码、标点和特殊符号都要覆盖；浏览器默认字体、系统字体和来源不明的“免费字体”不能作为正式设计方案。正常交付优先把字体随项目本地打包，并保留来源和许可证。
 - 认真比较或采用组件库、动效库、可视化库或素材来源时，先看与当前用途相关的官方 Demo，记录采用、改造或拒绝的原因；除非存在明确的访问、安全或网络硬限制，否则不能跳过。
 - 不为了凑技术栈编造内容。动画跟着内容和状态走；3D 要帮助表达产品或空间；图表只在真有数据时出现。没有合适主位，就收成贴合页面的小点缀。
 - 能打开浏览器时，会用代表性的电脑、平板和手机视口检查主要操作、缺图、溢出和报错；这不等于已经在三台真实设备和所有移动浏览器上测试。检查不了的部分要写清楚。
@@ -187,17 +211,17 @@ https://github.com/Ww-Cooooo/ui-done
 
 <br>
 
-当前示例展厅就是最新版 UI Done 的一套完整实现。总入口和六个作品都是 React 页面，共享生命周期、故障回退和构建基础设施，但每页的字体、色彩、密度、布局骨架、3D 物体、Canvas 图形和 AntV 图表都根据各自任务重新设计。
+当前示例展厅就是最新版 UI Done 的一套完整实现。总入口和十个作品都是 React 页面，共享生命周期、故障回退和构建基础设施，但每页的图片题材、开源字体、色彩、密度、布局骨架、3D 物体、Canvas 图形和 AntV 图表都根据各自调性重新设计。
 
 | 工作 | 示例展厅选用 |
 | --- | --- |
-| 页面主体与交互 | React 19 + Ant Design 6；按钮、Drawer、Steps、表单、分段选择、卡片与主题 token 都由同一组件系统负责 |
+| 页面主体与交互 | React 19 + Ant Design 6；按钮、Drawer、分段选择、卡片、标签与主题 token 都由同一组件系统负责 |
 | 动画 | Anime.js 4；负责首屏编排、滚动进入与状态连续性，降低动效时切成静态完成态 |
 | 平滑滚动 | Lenis 1；负责电脑、平板、手机的同一滚动路径，并保留锚点、历史返回、键盘和 Ant Design 浮层 |
 | 真实 3D/WebGL | Three.js + React Three Fiber；每页使用不同的程序化空间对象，并提供不支持 WebGL 时的静态等价层 |
 | 独立 2D Canvas | Pts；负责与页面主题一致的程序化线场，和 3D 生命周期分开，2D context 不可用时不阻断正文 |
-| 数据可视化 | AntV G2；只使用仓库与 UI Done 的真实数据，滚动接近图表时才加载，并保留隐藏文字表格作为等价内容 |
-| 图标与字体 | Ant Design Icons 按需导入；Outfit、IBM Plex Serif、Red Hat Mono、Big Shoulders 全部本地打包 |
+| 数据可视化 | AntV G2；只使用本地图片逐像素测得的明度数据，滚动接近图表时才加载，并保留隐藏文字表格作为等价内容 |
+| 图标与字体 | Ant Design Icons 按需导入；12 套 OFL-1.1 开源字体按十种调性配对，中文子集和全部字体均本地打包 |
 | 性能 | React lazy、Vite 分块、离屏/隐藏暂停、高级层故障回退和 Size Limit |
 | 构建 | Vite 8；生成相对资源路径、第三方许可证汇总和入口内容哈希 |
 
@@ -206,7 +230,7 @@ https://github.com/Ww-Cooooo/ui-done
 - [`skill/ui-done/SKILL.md`](./skill/ui-done/SKILL.md)：Skill 本体
 - [`skill/ui-done/references/`](./skill/ui-done/references/)：选型、字体、动效和浏览器检查
 - [`skill/ui-done/scripts/`](./skill/ui-done/scripts/)：静态预检脚本
-- [`showcase/`](./showcase/)：总展厅、六个独立作品和共享 React 运行时
+- [`showcase/`](./showcase/)：总展厅、十个独立作品和共享 React 运行时
 
 静态预检需要 Python 3.10 或更高版本：
 
@@ -230,7 +254,8 @@ macOS 或 Linux 把 `python` 改成 `python3`。重新构建并检查示例时�
 <br>
 
 - React、Ant Design、Ant Design Icons、Anime.js、Lenis、Three.js、React Three Fiber、Pts、AntV G2 等示例运行时依赖使用各自的 MIT、Apache-2.0、0BSD 或 ISC 许可。精确版本、版权文字和完整许可证随打包文件保存在 [`showcase/shared/runtime/THIRD_PARTY_LICENSES.txt`](./showcase/shared/runtime/THIRD_PARTY_LICENSES.txt)。
-- Outfit、IBM Plex Serif、Red Hat Mono 和 Big Shoulders 字体使用 SIL Open Font License 1.1，原作者版权声明和许可证文件保留在仓库中。
+- Outfit、Big Shoulders、Noto、Cormorant、Syne、Fraunces、Bodoni Moda、Chakra Petch、Archivo、ZCOOL 和 Red Hat Mono 等字体使用 SIL Open Font License 1.1，原作者版权声明、中文子集来源清单和许可证文件保留在仓库中。
+- 展厅的 30 张 WebP 主视觉由图像生成工具为本仓库创建，不是第三方图库素材；提示方向、处理方式和内容边界见 [`showcase/assets/IMAGE_NOTICES.md`](./showcase/assets/IMAGE_NOTICES.md)。
 - 文件清单、哈希、来源、作者声明和适用范围见 [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md)。再分发仓库或打包后的示例时，请一并保留适用的声明和许可证。
 
 </details>

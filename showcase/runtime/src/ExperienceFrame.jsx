@@ -113,6 +113,7 @@ function Header({ page, onMenu }) {
       <div className="header-center" aria-label="当前作品">
         <span>{page.number}</span>
         <strong>{page.shortTitle}</strong>
+        <small>{isGallery ? "TEN DIRECTIONS" : page.styleName}</small>
       </div>
 
       <nav className="desktop-nav" aria-label="主要导航">
@@ -121,6 +122,7 @@ function Header({ page, onMenu }) {
             全部作品
           </Button>
         )}
+        <Button type="text" href={isGallery ? "#works" : "#design"}>{isGallery ? "十种风格" : "视觉系统"}</Button>
         <Button type="text" icon={<GithubOutlined />} href={repositoryUrl} target="_blank" rel="noreferrer">
           GitHub
         </Button>
@@ -153,7 +155,8 @@ function MobileSheet({ page, open, onClose }) {
       }}
     >
       <nav className="mobile-nav-links" aria-label="移动端导航">
-        <Button type="text" block icon={<ArrowLeftOutlined />} href="../gallery/">全部作品</Button>
+        {page.id !== "gallery" && <Button type="text" block icon={<ArrowLeftOutlined />} href="../gallery/">全部作品</Button>}
+        <Button type="text" block href={page.id === "gallery" ? "#works" : "#design"}>{page.id === "gallery" ? "十种风格" : "视觉系统"}</Button>
         <Button type="text" block icon={<GithubOutlined />} href={repositoryUrl} target="_blank" rel="noreferrer">GitHub 仓库</Button>
         <Button block onClick={onClose}>关闭</Button>
       </nav>
@@ -173,8 +176,10 @@ function ThemedContent({ page, children, reduced }) {
     "--page-accent": page.theme.accent,
     "--page-accent-2": page.theme.accent2,
     "--page-line": page.theme.line,
-    "--font-display": `"${page.theme.display}"`,
-    "--font-body": `"${page.theme.body}"`,
+    "--font-display-latin": `"${page.theme.display}"`,
+    "--font-display-cjk": `"${page.theme.displayCjk || page.theme.cjk}"`,
+    "--font-body-latin": `"${page.theme.body}"`,
+    "--font-cjk": `"${page.theme.cjk}"`,
     "--font-mono": `"${page.theme.mono}"`
   }), [page]);
 
@@ -190,6 +195,7 @@ function ThemedContent({ page, children, reduced }) {
 }
 
 export default function ExperienceFrame({ page, children, reduced }) {
+  const radii = { brutal: 0, command: 2, swiss: 0, soft: 24, retro: 8, luxury: 0, editorial: 2, velocity: 3, cyber: 2 };
   const tokens = useMemo(() => ({
     colorPrimary: page.theme.accent,
     colorInfo: page.theme.accent2,
@@ -197,8 +203,8 @@ export default function ExperienceFrame({ page, children, reduced }) {
     colorTextSecondary: page.theme.muted,
     colorBgContainer: page.theme.surface,
     colorBorder: page.theme.line,
-    borderRadius: page.id === "brief-machine" ? 4 : page.id === "viewport-lab" ? 2 : 10,
-    fontFamily: `"${page.theme.body}", sans-serif`,
+    borderRadius: radii[page.layout] ?? 10,
+    fontFamily: `"${page.theme.body}", "${page.theme.cjk}", sans-serif`,
     controlHeight: 42,
     motion: !reduced
   }), [page, reduced]);

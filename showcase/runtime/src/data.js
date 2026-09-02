@@ -1,331 +1,254 @@
 export const capabilities = [
-  {
-    key: "ui",
-    short: "UI",
-    label: "React UI 基础",
-    owner: "React + Ant Design",
-    footprint: "结构",
-    description: "组件、语义、表单、布局与设计 token 由一套系统统一。"
-  },
-  {
-    key: "motion",
-    short: "MOTION",
-    label: "动效编排",
-    owner: "Anime.js",
-    footprint: "行为",
-    description: "让层级、反馈和叙事连续，不制造多余的播放器控件。"
-  },
-  {
-    key: "scroll",
-    short: "SCROLL",
-    label: "平滑滚动",
-    owner: "Lenis",
-    footprint: "行为",
-    description: "统一电脑、平板和手机的阅读节奏，同时保留原生回退。"
-  },
-  {
-    key: "spatial",
-    short: "3D",
-    label: "真实 3D / WebGL",
-    owner: "Three.js + R3F",
-    footprint: "强调",
-    description: "用空间关系表达真实对象，并为低性能设备保留静态版本。"
-  },
-  {
-    key: "canvas",
-    short: "2D",
-    label: "独立 2D Canvas",
-    owner: "Pts",
-    footprint: "强调",
-    description: "让线场、节点和程序化纹理承担独立的二维视觉角色。"
-  },
-  {
-    key: "data",
-    short: "DATA",
-    label: "数据可视化",
-    owner: "AntV G2",
-    footprint: "结构",
-    description: "只解释真实规则、来源和交付事实，不为图表编造业务指标。"
-  },
-  {
-    key: "assets",
-    short: "ICON",
-    label: "图标与资产",
-    owner: "Ant Design Icons + 本地字体",
-    footprint: "结构",
-    description: "普通界面图标只有一个家族，关键文字和字体均可离线读取。"
-  },
-  {
-    key: "performance",
-    short: "PERF",
-    label: "性能与交付",
-    owner: "Vite + React lazy + Size Limit",
-    footprint: "基础设施",
-    description: "高级视觉按需加载，失败时不阻断核心内容与操作。"
-  }
-];
+  ["UI", "React + Ant Design"],
+  ["MOTION", "Anime.js"],
+  ["SCROLL", "Lenis"],
+  ["3D", "Three.js + R3F"],
+  ["2D", "Pts"],
+  ["DATA", "AntV G2"],
+  ["TYPE", "Open-source fonts"],
+  ["PERF", "Vite + lazy loading"]
+].map(([short, owner]) => ({ short, owner }));
 
-export const workflow = [
-  ["FRAME", "读懂人、任务、内容与交付边界"],
-  ["AUDIT", "盘点现有代码、页面与可回退基线"],
-  ["STACK", "为八类能力安排真实工作"],
-  ["DEMO", "查看相关官方 Demo 与当前 API"],
-  ["SCORE", "比较收益、代价、许可与离线能力"],
-  ["SYSTEM", "统一颜色、字体、密度和动效语言"],
-  ["BUILD", "在明确生命周期边界内实现"],
-  ["PACKAGE", "固定依赖、字体、许可与构建产物"],
-  ["VERIFY", "在电脑、平板、手机中真实检查"],
-  ["HANDOFF", "交付证据、边界和未验证事项"]
-].map(([code, label], index) => ({ code, label, index: index + 1 }));
-
-export const sources = [
-  ["Ant Design", "UI", "必用主系统"],
-  ["Uiverse", "UI", "孤立组件参考"],
-  ["Anime.js", "动效 / 滚动", "唯一编排主人"],
-  ["Lenis", "动效 / 滚动", "唯一滚动机械"],
-  ["Three.js + R3F", "空间 / Canvas", "真实 3D"],
-  ["Pts", "空间 / Canvas", "程序化 2D"],
-  ["Fabric.js", "空间 / Canvas", "可编辑对象"],
-  ["AntV G2", "数据 / 物理", "首选可视化"],
-  ["ECharts", "数据 / 物理", "适配时替代 AntV"],
-  ["p2.js", "数据 / 物理", "真实物理模拟"],
-  ["background-effects", "发现", "只作上游索引"]
-].map(([name, category, role]) => ({ name, category, role }));
-
-export const viewports = [
-  { key: "desktop", label: "电脑", width: 1440, height: 900, note: "主信息密度与完整空间层" },
-  { key: "tablet", label: "平板", width: 768, height: 1024, note: "双列收束、触摸路径保留" },
-  { key: "phone", label: "手机", width: 390, height: 844, note: "单列重排、高级层降载" }
-];
-
-export const skillFiles = [
-  { key: "contract", label: "核心契约", path: "SKILL.md", count: 1 },
-  { key: "references", label: "专项参考", path: "references/", count: 8 },
-  { key: "scripts", label: "预检脚本", path: "scripts/", count: 1 },
-  { key: "adapters", label: "宿主适配", path: "agents/", count: 1 }
-];
+const mono = "Red Hat Mono";
+const sansCjk = "Noto Sans SC";
+const serifCjk = "Noto Serif SC";
 
 const themes = {
   gallery: {
-    mode: "dark",
-    bg: "#090c12",
-    surface: "#111722",
-    surfaceAlt: "#171e2a",
-    ink: "#f6f2e8",
-    muted: "#9ba6b5",
-    accent: "#ff5c35",
-    accent2: "#87f5cf",
-    line: "rgba(246,242,232,.16)",
-    display: "Big Shoulders",
-    body: "Outfit",
-    mono: "Red Hat Mono"
+    mode: "dark", bg: "#0b0c0e", surface: "#15171a", surfaceAlt: "#202328",
+    ink: "#f4f1e8", muted: "#a7abb2", accent: "#ff5a36", accent2: "#a8ffcf",
+    line: "rgba(244,241,232,.18)", display: "Big Shoulders", body: "Outfit", cjk: sansCjk, mono
   },
-  signal: {
-    mode: "dark",
-    bg: "#04131e",
-    surface: "#092333",
-    surfaceAlt: "#0d2d3f",
-    ink: "#e6fbff",
-    muted: "#83a5b3",
-    accent: "#38f2c2",
-    accent2: "#ff7a45",
-    line: "rgba(117,228,229,.2)",
-    display: "Big Shoulders",
-    body: "Outfit",
-    mono: "Red Hat Mono"
+  velocity: {
+    mode: "dark", bg: "#0b1117", surface: "#131c24", surfaceAlt: "#1c2833",
+    ink: "#f3f7f8", muted: "#8fa2b2", accent: "#d8ff3e", accent2: "#70a7d9",
+    line: "rgba(216,255,62,.22)", display: "Big Shoulders", body: "Outfit", cjk: sansCjk, mono
   },
-  brief: {
-    mode: "light",
-    bg: "#f3eadb",
-    surface: "#fff8ed",
-    surfaceAlt: "#eadcc9",
-    ink: "#271f19",
-    muted: "#756657",
-    accent: "#e44a32",
-    accent2: "#2158d6",
-    line: "rgba(39,31,25,.18)",
-    display: "IBM Plex Serif",
-    body: "Outfit",
-    mono: "Red Hat Mono"
+  coast: {
+    mode: "light", bg: "#e7e4dc", surface: "#f4f1e8", surfaceAlt: "#cbc6ba",
+    ink: "#253032", muted: "#697476", accent: "#b55d3d", accent2: "#6f8d8a",
+    line: "rgba(37,48,50,.2)", display: "Cormorant Garamond", body: "Cormorant Garamond", cjk: serifCjk, mono
   },
-  source: {
-    mode: "dark",
-    bg: "#110b2c",
-    surface: "#1b1440",
-    surfaceAlt: "#261d55",
-    ink: "#f8f2ff",
-    muted: "#aaa0c7",
-    accent: "#b596ff",
-    accent2: "#62e7dd",
-    line: "rgba(216,200,255,.18)",
-    display: "Outfit",
-    body: "Outfit",
-    mono: "Red Hat Mono"
+  red: {
+    mode: "light", bg: "#e8e5df", surface: "#f7f3eb", surfaceAlt: "#d2cec6",
+    ink: "#101010", muted: "#535353", accent: "#e41d16", accent2: "#1d5fff",
+    line: "rgba(16,16,16,.76)", display: "Syne", body: "Syne", cjk: sansCjk, mono
   },
-  viewport: {
-    mode: "light",
-    bg: "#f4f4ef",
-    surface: "#ffffff",
-    surfaceAlt: "#e8ebef",
-    ink: "#172033",
-    muted: "#687184",
-    accent: "#ff5738",
-    accent2: "#246bfe",
-    line: "rgba(23,32,51,.16)",
-    display: "Outfit",
-    body: "Outfit",
-    mono: "Red Hat Mono"
+  orbital: {
+    mode: "dark", bg: "#02070d", surface: "#07131f", surfaceAlt: "#0b2032",
+    ink: "#e8f4ff", muted: "#7690a6", accent: "#ffb52b", accent2: "#3fb7ff",
+    line: "rgba(63,183,255,.22)", display: "Chakra Petch", body: "Outfit", cjk: sansCjk, mono
   },
-  motion: {
-    mode: "dark",
-    bg: "#171717",
-    surface: "#242321",
-    surfaceAlt: "#302e2b",
-    ink: "#f3eee4",
-    muted: "#aaa298",
-    accent: "#d97c47",
-    accent2: "#c7d0d8",
-    line: "rgba(243,238,228,.16)",
-    display: "Big Shoulders",
-    body: "Outfit",
-    mono: "Red Hat Mono"
+  corner: {
+    mode: "light", bg: "#e8d1a7", surface: "#f3e3bf", surfaceAlt: "#d49b66",
+    ink: "#3e241a", muted: "#765b4d", accent: "#bd3c28", accent2: "#356858",
+    line: "rgba(62,36,26,.24)", display: "Fraunces", body: "Outfit", cjk: sansCjk, displayCjk: "ZCOOL QingKe HuangYou", mono
   },
-  open: {
-    mode: "light",
-    bg: "#f3eccb",
-    surface: "#fff9df",
-    surfaceAlt: "#e3d8ab",
-    ink: "#173c31",
-    muted: "#62736b",
-    accent: "#e6492d",
-    accent2: "#b6922f",
-    line: "rgba(23,60,49,.18)",
-    display: "IBM Plex Serif",
-    body: "Outfit",
-    mono: "Red Hat Mono"
+  still: {
+    mode: "light", bg: "#f2eee7", surface: "#fbf8f2", surfaceAlt: "#dfd7e5",
+    ink: "#4c4651", muted: "#817987", accent: "#8b6ccf", accent2: "#819d73",
+    line: "rgba(76,70,81,.13)", display: "Outfit", body: "Outfit", cjk: sansCjk, mono
+  },
+  atelier: {
+    mode: "dark", bg: "#0d0b0a", surface: "#171310", surfaceAlt: "#28201a",
+    ink: "#f3e7d6", muted: "#a69788", accent: "#d6a96f", accent2: "#e9d9c4",
+    line: "rgba(243,231,214,.2)", display: "Bodoni Moda", body: "Cormorant Garamond", cjk: serifCjk, mono
+  },
+  neon: {
+    mode: "dark", bg: "#050313", surface: "#0d0924", surfaceAlt: "#17103d",
+    ink: "#f6efff", muted: "#9a8eb5", accent: "#ff3bd4", accent2: "#43d9ff",
+    line: "rgba(112,72,255,.32)", display: "Chakra Petch", body: "Syne", cjk: sansCjk, mono
+  },
+  ink: {
+    mode: "light", bg: "#e8e0d1", surface: "#f5efe5", surfaceAlt: "#cfc1aa",
+    ink: "#221c17", muted: "#74695c", accent: "#a82d25", accent2: "#776245",
+    line: "rgba(34,28,23,.2)", display: "Cormorant Garamond", body: "Noto Serif SC", cjk: serifCjk, mono
+  },
+  swiss: {
+    mode: "light", bg: "#e9e9e5", surface: "#f8f8f4", surfaceAlt: "#d3d4d1",
+    ink: "#101214", muted: "#60656a", accent: "#ee2b21", accent2: "#1249ba",
+    line: "rgba(16,18,20,.28)", display: "Archivo", body: "Archivo", cjk: sansCjk, mono
   }
 };
 
+function images(id, items) {
+  return items.map((item, index) => ({ ...item, src: `../assets/${id}/0${index + 1}.webp` }));
+}
+
 export const showcasePages = [
   {
-    id: "signal-room",
-    number: "01",
-    theme: themes.signal,
-    eyebrow: "PRO SYSTEM / ALL SIGNALS ONLINE",
-    title: "把前端所有能力，接上同一个信号。",
-    shortTitle: "Signal Room",
-    audience: "给需要完整能力覆盖的开发者",
-    intro: "不是把八个库排成展板，而是让 UI、动效、滚动、3D、Canvas、数据、资产和性能围绕同一个产品逻辑协作。",
-    signature: "八轨空间核心",
-    chartKind: "radial",
-    chartTitle: "八类能力的执行顺序",
-    chartSummary: "数值只表示 UI Done 真实工作流中的排列顺序，不是虚构评分。",
-    chartData: capabilities.map((item, index) => ({ label: item.short, value: index + 1, group: item.footprint }))
+    id: "velocity-works", number: "01", shortTitle: "Velocity Works", styleName: "运动性能",
+    layout: "velocity", theme: themes.velocity, chartKind: "bars", shape: "velocity",
+    eyebrow: "PERFORMANCE STUDY / 01", audience: "运动品牌与训练产品概念页",
+    title: "快，不是一句口号。", latinTitle: "BUILT FOR THE NEXT SECOND.",
+    intro: "冷雨、呼吸与碳纤维被压进同一条速度线。页面以强对比排版和倾斜摄影建立冲刺感。",
+    signature: "倾斜速度轨道", fontStatement: "Big Shoulders + Noto Sans SC + Red Hat Mono",
+    quote: "动作发生以前，界面已经把方向说清楚。",
+    details: [["PACE", "倾斜轴线让阅读像一次起跑"], ["GRIP", "局部材质承担产品可信度"], ["AIR", "留白和冷蓝压住速度噪音"]],
+    images: images("velocity-works", [
+      { label: "MOTION", alt: "雨后跑道上向前冲刺的运动员" },
+      { label: "MATERIAL", alt: "带水珠的黑色跑鞋织物与鞋带特写" },
+      { label: "SPACE", alt: "阴天混凝土建筑下独自训练的跑者" }
+    ]), luminance: [103, 51, 91]
   },
   {
-    id: "brief-machine",
-    number: "02",
-    theme: themes.brief,
-    eyebrow: "BEGINNER FRIENDLY / BRIEF IN, SYSTEM OUT",
-    title: "你只说四件事。剩下的，让 Agent 展开。",
-    shortTitle: "Brief Machine",
-    audience: "给不想先学一整套设计术语的人",
-    intro: "说清楚给谁用、要做什么、不能改什么、希望是什么感觉。UI Done 会主动补齐八类前端能力和三端验收。",
-    signature: "纸面机械展开器",
-    chartKind: "bars",
-    chartTitle: "一句自然语言会展开多少层",
-    chartSummary: "4 项来自 README 的用户输入，8 项来自 Skill 的能力矩阵，3 项是默认验收视口。",
-    chartData: [
-      { label: "你说清", value: 4, group: "输入" },
-      { label: "Agent 补齐", value: 8, group: "规划" },
-      { label: "默认验收", value: 3, group: "视口" }
-    ]
+    id: "north-tide", number: "02", shortTitle: "North Tide", styleName: "海岸自然编辑",
+    layout: "editorial", theme: themes.coast, chartKind: "line", shape: "tide",
+    eyebrow: "COASTAL JOURNAL / 02", audience: "旅行杂志与自然观察概念页",
+    title: "沿着风，走到陆地尽头。", latinTitle: "THE SEA KEEPS ITS OWN TIME.",
+    intro: "没有旅游海报的甜味，只有风、盐、岩层和雾。缓慢的衬线字与横向留白把海岸写成一篇长文章。",
+    signature: "潮汐编辑折页", fontStatement: "Cormorant Garamond + Noto Serif SC + Red Hat Mono",
+    quote: "真正的远方，不需要把颜色调得更响。",
+    details: [["WIND", "宽行距给海风留下经过的空间"], ["SALT", "岩石微距成为整页的触觉锚点"], ["FOG", "低饱和图像维持安静的叙事温度"]],
+    images: images("north-tide", [
+      { label: "PATH", alt: "穿浅色外套的人沿海岸草坡走向远方" },
+      { label: "TIDE", alt: "海浪冲刷带贝壳和藤壶的深色岩石" },
+      { label: "SHELTER", alt: "雾中坐落在海崖上的白色圆顶建筑" }
+    ]), luminance: [143, 74, 140]
   },
   {
-    id: "source-atlas",
-    number: "03",
-    theme: themes.source,
-    eyebrow: "DEMO FIRST / CURATED BEFORE CUSTOM",
-    title: "先看最会做的人怎么做，再做成自己的。",
-    shortTitle: "Source Atlas",
-    audience: "给重视来源、Demo 和许可证的人",
-    intro: "UI Done 把组件、动效、滚动、3D、Canvas、图表和素材来源连成一张地图；采用前先看相关官方 Demo，再按整站调性改造。",
-    signature: "来源星图",
-    chartKind: "bars",
-    chartTitle: "React 实现目录里的来源分布",
-    chartSummary: "统计来自 UI Done 当前素材库；Element Plus 因非 React 路线没有计入实现目录。",
-    chartData: [
-      { label: "UI", value: 2, group: "来源" },
-      { label: "动效 / 滚动", value: 2, group: "来源" },
-      { label: "空间 / Canvas", value: 3, group: "来源" },
-      { label: "数据 / 物理", value: 3, group: "来源" },
-      { label: "发现", value: 1, group: "来源" }
-    ]
+    id: "red-form", number: "03", shortTitle: "Red Form", styleName: "当代艺术粗野主义",
+    layout: "brutal", theme: themes.red, chartKind: "blocks", shape: "form",
+    eyebrow: "EXHIBITION STUDY / 03", audience: "当代艺术展览与文化机构概念页",
+    title: "红色不是装饰，是事件。", latinTitle: "FORM BREAKS THE ROOM.",
+    intro: "硬边、粗线、冲突色与巨型编号把白盒子打破。图像不被温柔地摆放，而是直接占领网格。",
+    signature: "破框红色展签", fontStatement: "Syne + Noto Sans SC + Red Hat Mono",
+    quote: "如果一切都很和谐，作品就失去了抵抗。",
+    details: [["SCALE", "巨型数字先建立展览的公共尺度"], ["TENSION", "红、黑、蓝形成不妥协的视觉冲突"], ["BODY", "人物动作把静态展签变成现场"]],
+    images: images("red-form", [
+      { label: "OBJECT", alt: "混凝土展厅里的大型红色与金属悬挂装置" },
+      { label: "SURFACE", alt: "透明材料、红色颜料和钢索组成的装置细节" },
+      { label: "BODY", alt: "强烈光影下身穿红色服装的舞者" }
+    ]), luminance: [77, 128, 81]
   },
   {
-    id: "viewport-lab",
-    number: "04",
-    theme: themes.viewport,
-    eyebrow: "RESPONSIVE BY DEFAULT / 3 REAL VIEWPORTS",
-    title: "一个设计，必须穿过三种屏幕。",
-    shortTitle: "Viewport Lab",
-    audience: "给需要可验证响应式交付的人",
-    intro: "电脑、平板、手机不是三张缩放图。信息密度、触摸路径、3D 质量和 Canvas 点数都要分别收束，再在真实浏览器里检查。",
-    signature: "三框光学实验台",
-    chartKind: "grouped",
-    chartTitle: "本次展厅的三个验收视口",
-    chartSummary: "宽高均是本次浏览器验收的真实像素值，不代表所有真实设备。",
-    chartData: viewports.flatMap(item => [
-      { label: item.label, metric: "宽", value: item.width },
-      { label: item.label, metric: "高", value: item.height }
-    ])
+    id: "orbital-grid", number: "04", shortTitle: "Orbital Grid", styleName: "未来航天科技",
+    layout: "command", theme: themes.orbital, chartKind: "line", shape: "orbit",
+    eyebrow: "ORBITAL SYSTEM / 04", audience: "深科技、航天与数据平台概念页",
+    title: "把地面，连接到轨道。", latinTitle: "ONE SYSTEM ABOVE THE HORIZON.",
+    intro: "这不是用霓虹假装科技。卫星、碳纤维与控制室给每一层信息一个真实对象，橙色只负责关键状态。",
+    signature: "轨道控制舷窗", fontStatement: "Chakra Petch + Noto Sans SC + Red Hat Mono",
+    quote: "复杂系统最需要的，是一眼可辨的优先级。",
+    details: [["ORBIT", "轨道弧线只解释空间关系"], ["MATERIAL", "碳纤维近景带来工程触感"], ["CONTROL", "数据界面以高密度但清晰的节奏组织"]],
+    images: images("orbital-grid", [
+      { label: "ORBIT", alt: "卫星掠过夜色地球上空" },
+      { label: "SHELL", alt: "航天设备碳纤维外壳与管线特写" },
+      { label: "CONTROL", alt: "操作员面向全球轨迹屏幕的深色控制室" }
+    ]), luminance: [22, 41, 19]
   },
   {
-    id: "motion-foundry",
-    number: "05",
-    theme: themes.motion,
-    eyebrow: "FULL LOOP / TEN CONTROLLED GATES",
-    title: "好看的页面，要经过一条完整生产线。",
-    shortTitle: "Motion Foundry",
-    audience: "给希望 Agent 从调研一直管到验收的人",
-    intro: "UI Done 不在用户说完需求后就消失。它持续管理审计、选型、设计、实现、打包、浏览器验证和交付证据。",
-    signature: "十段受控装配线",
-    chartKind: "line",
-    chartTitle: "UI Done 的十阶段工作流",
-    chartSummary: "纵轴只表示阶段顺序；每一项都来自当前 SKILL.md，不是工时或完成率。",
-    chartData: workflow.map(item => ({ label: item.code, value: item.index, group: "阶段" }))
+    id: "corner-goods", number: "05", shortTitle: "Corner Goods", styleName: "温暖复古街角",
+    layout: "retro", theme: themes.corner, chartKind: "bars", shape: "stack",
+    eyebrow: "NEIGHBORHOOD STUDY / 05", audience: "社区零售、餐饮与生活品牌概念页",
+    title: "今天的好东西，就在街角。", latinTitle: "GOOD THINGS, CLOSE TO HOME.",
+    intro: "旧纸张、手写价签般的节奏和晚灯颜色，让页面像一家已经在这里很多年的小店。",
+    signature: "街角票据拼贴", fontStatement: "Fraunces + ZCOOL QingKe HuangYou + Noto Sans SC",
+    quote: "亲切不是做旧滤镜，而是让每个东西都有来处。",
+    details: [["HELLO", "门店正面先建立人与地点的关系"], ["WEIGHT", "秤、陶碗和果实组成可信的日常细节"], ["HANDS", "人的动作让商品陈列不再像样板间"]],
+    images: images("corner-goods", [
+      { label: "STREET", alt: "傍晚暖灯下带自行车的社区杂货店门面" },
+      { label: "COUNTER", alt: "木台上的柑橘、老式秤与条纹纸袋" },
+      { label: "KEEPER", alt: "店员在绿色瓷砖背景前整理新鲜蔬果" }
+    ]), luminance: [71, 67, 75]
   },
   {
-    id: "open-studio",
-    number: "06",
-    theme: themes.open,
-    eyebrow: "VENDOR-NEUTRAL CORE / READABLE FILES",
-    title: "规则写在文件里，不锁在某一家 Agent 里。",
-    shortTitle: "Open Studio",
-    audience: "给开源使用者和 Skill 维护者",
-    intro: "核心契约、专项参考、预检脚本和宿主适配分层存放。任何能读取 Agent Skills 的执行者，都能看到同一份前端规则。",
-    signature: "可拆解文件模块盒",
-    chartKind: "bars",
-    chartTitle: "当前 Skill 文件结构",
-    chartSummary: "数量来自仓库当前 skill/ui-done 目录；README 和展示网页不计入 Skill 本体。",
-    chartData: skillFiles.map(item => ({ label: item.label, value: item.count, group: "文件" }))
+    id: "still-day", number: "06", shortTitle: "Still Day", styleName: "柔和生活方式",
+    layout: "soft", theme: themes.still, chartKind: "area", shape: "pebble",
+    eyebrow: "MINDFUL ROUTINE / 06", audience: "健康、日记与轻生活应用概念页",
+    title: "慢一点，日子会重新出现。", latinTitle: "MAKE SPACE FOR A QUIETER DAY.",
+    intro: "柔光、圆角和浅紫只承担安定感，不拿空洞渐变代替内容。每张照片都对应一个可以被感知的日常动作。",
+    signature: "漂浮日光胶囊", fontStatement: "Outfit + Noto Sans SC + Red Hat Mono",
+    quote: "好的数字体验，也可以像把手机放下。",
+    details: [["PAUSE", "大留白让信息主动降低音量"], ["TOUCH", "纸、石头与手势建立真实触感"], ["WALK", "最终把注意力带回屏幕之外"]],
+    images: images("still-day", [
+      { label: "MORNING", alt: "晨光桌面上的空白笔记本、清水与枝叶" },
+      { label: "MAKE", alt: "双手在浅色纸张、石头和植物旁整理拼贴" },
+      { label: "WALK", alt: "背帆布袋的人走在阳光与绿荫间" }
+    ]), luminance: [155, 147, 120]
+  },
+  {
+    id: "atelier-noir", number: "07", shortTitle: "Atelier Noir", styleName: "奢侈时装编辑",
+    layout: "luxury", theme: themes.atelier, chartKind: "line", shape: "ribbon",
+    eyebrow: "ATELIER STUDY / 07", audience: "时装、珠宝与高端品牌概念页",
+    title: "克制，才让材质发声。", latinTitle: "CUT BY LIGHT. HELD BY FORM.",
+    intro: "黑色不是背景色，而是控制注意力的舞台。高反差衬线、贴肤金属和石材楼梯构成一段不急于解释的叙事。",
+    signature: "黑金杂志跨页", fontStatement: "Bodoni Moda + Cormorant Garamond + Noto Serif SC",
+    quote: "奢侈感来自选择的准确，不来自元素的数量。",
+    details: [["CUT", "锋利轮廓先说出品牌姿态"], ["SKIN", "珠宝特写把尺度拉到最私密的位置"], ["SPACE", "建筑留白把衣料的流动放大"]],
+    images: images("atelier-noir", [
+      { label: "SILHOUETTE", alt: "浅色石墙前身穿黑色结构西装的模特" },
+      { label: "OBJECT", alt: "深色皮肤、白色织物与银色项圈的局部特写" },
+      { label: "MOVEMENT", alt: "米色石材旋梯上流动的白色长裙" }
+    ]), luminance: [104, 50, 82]
+  },
+  {
+    id: "neon-rift", number: "08", shortTitle: "Neon Rift", styleName: "赛博娱乐",
+    layout: "cyber", theme: themes.neon, chartKind: "blocks", shape: "rift",
+    eyebrow: "LIVE EXPERIENCE / 08", audience: "游戏、电竞与数字娱乐概念页",
+    title: "进入裂隙，规则重新加载。", latinTitle: "ENTER THE RIFT.",
+    intro: "紫蓝光、透明控制器和巨构空间组成同一条世界观。界面像入口，不像贴满发光按钮的设备面板。",
+    signature: "霓虹裂隙舞台", fontStatement: "Chakra Petch + Syne + Noto Sans SC + Red Hat Mono",
+    quote: "氛围不是特效总量，而是每一层都相信同一个世界。",
+    details: [["LIVE", "人物与场馆建立事件正在发生的尺度"], ["INPUT", "控制器特写让交互拥有物理入口"], ["WORLD", "巨构空间承担想象，不挤压真实操作"]],
+    images: images("neon-rift", [
+      { label: "ARENA", alt: "紫蓝灯光电竞场馆中走过舞台的人" },
+      { label: "INPUT", alt: "霓虹灯下透明游戏控制器的细节" },
+      { label: "RIFT", alt: "人物站在紫蓝色未来巨构裂隙前" }
+    ]), luminance: [40, 41, 54]
+  },
+  {
+    id: "shanshui-now", number: "09", shortTitle: "Shanshui Now", styleName: "当代新中式",
+    layout: "ink", theme: themes.ink, chartKind: "area", shape: "fold",
+    eyebrow: "CONTEMPORARY CULTURE / 09", audience: "文化空间、展览与东方生活方式概念页",
+    title: "山水不是旧图案，是今天的空间。", latinTitle: "TRADITION, STILL IN MOTION.",
+    intro: "夯土、宣纸、青铜与竹影被放进当代建筑尺度。页面保留东方留白，也拒绝把文化缩成几个符号。",
+    signature: "墨迹空间长卷", fontStatement: "Noto Serif SC + Cormorant Garamond + Red Hat Mono",
+    quote: "传统真正活着的时候，不需要穿上仿古外壳。",
+    details: [["VOID", "留白不是空，而是控制观看速度"], ["TRACE", "纸纤维与青铜纹样连接时间尺度"], ["GARDEN", "建筑、竹影和水面完成当代语境"]],
+    images: images("shanshui-now", [
+      { label: "HALL", alt: "夯土展厅中人物观看悬浮的红色纱质装置" },
+      { label: "TRACE", alt: "红黑墨迹宣纸与古铜器纹样的近景" },
+      { label: "COURT", alt: "竹林、水面与黑白建筑围合的安静庭院" }
+    ]), luminance: [45, 94, 76]
+  },
+  {
+    id: "grid-01", number: "10", shortTitle: "Grid 01", styleName: "瑞士国际主义",
+    layout: "swiss", theme: themes.swiss, chartKind: "bars", shape: "grid",
+    eyebrow: "INTERNATIONAL STUDY / 10", audience: "建筑事务所、设计机构与公共文化概念页",
+    title: "网格不是限制，是共同语言。", latinTitle: "ORDER MAKES THE IMAGE LOUDER.",
+    intro: "红、蓝、黑和严格坐标把内容组织得像一张公共海报。照片可以大胆，信息仍然一眼找到。",
+    signature: "十二列公共海报", fontStatement: "Archivo + Noto Sans SC + Red Hat Mono",
+    quote: "最自由的画面，往往站在最清楚的结构上。",
+    details: [["AXIS", "十二列网格明确每块信息的责任"], ["SIGNAL", "原色只用于关键坐标与行动"], ["SERIES", "三张照片用重复比例建立公共秩序"]],
+    images: images("grid-01", [
+      { label: "FIELD", alt: "蓝天下白色几何建筑前身穿红衣的人" },
+      { label: "DETAIL", alt: "红色几何家具与金属构件的俯视构图" },
+      { label: "SYSTEM", alt: "白色柱廊中排列整齐的黑蓝座椅" }
+    ]), luminance: [122, 114, 101]
   }
 ];
 
+showcasePages.forEach(page => {
+  page.chartTitle = "三张主视觉的真实明度";
+  page.chartSummary = "数值由仓库内三张 WebP 图片逐像素测得，只描述画面明暗，不是虚构业务指标。";
+  page.chartData = page.images.map((image, index) => ({ label: image.label, value: page.luminance[index], group: page.styleName }));
+});
+
 export const galleryPage = {
-  id: "gallery",
-  number: "00",
-  theme: themes.gallery,
-  eyebrow: "UI DONE / LIVE PROOF, NOT A TEMPLATE",
-  title: "一句话，展开成一整套前端。",
-  shortTitle: "UI Done Gallery",
-  audience: "给第一次看到 UI Done 的人",
-  intro: "六个全新页面、六种完全不同的调性，同一套 React、Ant Design、Anime.js、Lenis、R3F、Pts、AntV 和性能边界。",
-  signature: "能力切面引擎",
-  chartKind: "radialEqual",
-  chartTitle: "本次展厅实际覆盖的八类能力",
-  chartSummary: "每一段代表一类已经在页面中承担真实工作的能力；长度相同，不表达虚构优劣。",
-  chartData: capabilities.map(item => ({ label: item.short, value: 1, group: item.footprint }))
+  id: "gallery", number: "00", shortTitle: "UI Done Gallery", styleName: "十种设计方向",
+  layout: "gallery", theme: themes.gallery, chartKind: "blocks", shape: "gallery",
+  eyebrow: "UI DONE / TEN VISUAL DIRECTIONS", audience: "给第一次看到 UI Done 的人",
+  title: "同一句“做帅一点”，可以有十种完全不同的答案。",
+  latinTitle: "ONE SKILL. TEN WORLDS.",
+  intro: "每个作品都有真实图片、独立开源字体、自己的版式与空间语言；共用的是 React、Ant Design 和一套完整的前端能力边界。",
+  signature: "十风格视觉索引", fontStatement: "Big Shoulders + Outfit + Noto Sans SC + Red Hat Mono",
+  chartTitle: "十套图片组的平均明度",
+  chartSummary: "每个数值是对应三张仓库图片的平均明度，用来证明图表来自真实资产，不编造产品经营数据。",
+  chartData: showcasePages.map(page => ({
+    label: page.number,
+    value: Math.round(page.luminance.reduce((sum, value) => sum + value, 0) / page.luminance.length),
+    group: page.styleName
+  }))
 };
 
 export const allPages = [galleryPage, ...showcasePages];
