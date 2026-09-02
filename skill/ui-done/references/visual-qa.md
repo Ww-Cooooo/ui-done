@@ -11,17 +11,15 @@ Visual acceptance is an iterative browser workflow, not a code review checkbox.
 
 ## Minimum viewport matrix
 
-Use exact sizes appropriate to the product, including at least:
+By default, use one representative size for each ordinary device class:
 
 | Class | Suggested viewport | Purpose |
 |---|---:|---|
-| Desktop | 1440×900 | Full composition and wide navigation |
-| Common laptop | 1366×768 or 1280×800 | Fold, fixed UI, short-height stress |
+| Computer | 1440×900 or 1366×768 | Full composition, navigation, fold, and fixed UI |
 | Tablet | 768×1024 | Breakpoint and touch layout |
 | Phone | 390×844 | Primary mobile experience |
-| Narrow sanity check | 320×568 | Overflow and text resilience when supported |
 
-Test portrait and landscape when orientation materially changes the product.
+Add an extra-wide desktop, extra-narrow phone, landscape orientation, TV, kiosk, embedded panel, or another special target only when the user or explicit delivery contract names it. Do not expand the default matrix speculatively.
 
 ## Pages and states
 
@@ -43,6 +41,8 @@ Do not manufacture irrelevant states, but do not skip states the implementation 
 - For every visible enhancement, identify its existing host and product meaning. If either answer is vague, treat the placement as arbitrary even when the colors and spacing match.
 - Temporarily disregard scene names and explanatory labels. If the effect becomes incomprehensible without a label invented for it, the label is compensating for weak integration rather than describing product content.
 - Inspect controls as product features. Reject repeated generic pause, reset, rotate, speed, or view toolbars across unrelated pages unless each control has a page-specific task or accessibility rationale.
+- For demo-derived work, compare the shipped behavior with the recorded official demo while judging it as part of this product. Verify that tokens, typography, density, motion, interaction, responsive behavior, and fallback were adapted to the interface rather than copied as an isolated gallery piece.
+- Reject leftover sample copy, fabricated demo data, generic demo controls, gallery framing, or attribution/license omissions. When example code or assets were copied, verify the recorded upstream, modifications, license obligations, and notice location.
 - On phone layouts, check whether decorative controls enter the reading order, cover meaningful imagery, or become more prominent than the content they supposedly support.
 - Enumerate visible text and inspect computed `font-size`, `line-height`, `font-family`, overflow, and truncation. Treat 11px as a floor reserved for short low-priority metadata; keep labels/card copy around 13px+, controls around 14px+, and continuous body copy around 15–16px+ unless the product has a justified accessible scale.
 - Verify the intended fonts truly loaded with computed styles and `document.fonts`; detect fallback or missing glyphs.
@@ -58,7 +58,11 @@ Do not manufacture irrelevant states, but do not skip states the implementation 
 - Reload and navigate directly to supported routes. For `file://`, open the actual entry without a server and test relative paths.
 - Confirm images/media reserve dimensions, font loading does not cause damaging layout shift, and heavy features load lazily when appropriate.
 - Exercise reduced-motion emulation and verify automatic motion, smooth scrolling, parallax, loops, and scroll pinning collapse safely.
-- For Canvas/WebGL/3D, exercise unsupported/initialization/resource/context-loss fallback and confirm equivalent semantic controls remain.
+- When Lenis is selected, verify wheel, touch, keyboard, anchor links, browser back/forward and restoration, text selection, nested scroll areas, and Ant Design Modal/Drawer/Table behavior on computer, tablet, and phone. Confirm teardown/remount does not duplicate the scroll owner or animation frame.
+- For the separate 2D Canvas owner, verify resize, pixel ratio, redraw cost, teardown/remount, resource failure, and its static/DOM fallback on computer, tablet, and phone.
+- For WebGL/3D, exercise unsupported/initialization/resource/context-loss fallback and confirm equivalent semantic controls remain.
+- For R3F/Three.js, inspect phone/tablet rendering cost as well as desktop: device-pixel ratio, model/texture loading, draw calls or an equivalent profiler signal, hidden/offscreen pause, resize, and the actual static/DOM fallback.
+- When authentic visualizable data exists, confirm one AntV-first or justified ECharts owner is actually rendered, uses real data, matches the interface tokens and tone, and remains readable and usable at all three device classes. If visualization is absent, verify the recorded hard exemption names the inspected data/content surfaces and proves that creating a chart would fabricate data or meaning.
 - Use Lighthouse or an equivalent performance/accessibility check when performance risk, public launch, or user requirements justify it. Record the tested build and environment; do not invent scores.
 
 ## Iteration loop
@@ -82,6 +86,7 @@ Report a compact matrix containing:
 - Viewports, routes, states, and interaction paths tested.
 - Screenshot locations when artifacts are retained.
 - Host, meaning, and control decisions for visible motion, scroll, Canvas, 3D, and visualization layers.
+- Official demos inspected for selected or serious candidates, what was adopted or rejected, how adopted behavior was retuned to the product, idea-only versus code use, and any hard demo-review exemption.
 - Font loading, external requests, console/page errors, overflow, focus/touch, reduced-motion, and fallback results.
 - Performance/accessibility tool results only when actually run.
 - Fixes made after screenshot review and the checks rerun.

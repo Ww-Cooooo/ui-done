@@ -1,21 +1,39 @@
 ---
 name: ui-done
-description: "Orchestrate end-to-end frontend experience work for websites, Web applications, dashboards, admin interfaces, portfolios, and local/offline boards. For substantial builds and redesigns, proactively assemble a full enhancement stack even when the user does not name tools: one primary UI framework/component system, motion library, scroll enhancement, 3D/Canvas engine, visualization system when data exists, icon/asset system, and performance tooling. Use for building, redesigning, polishing, reviewing, packaging, or real-browser testing a frontend. Keep simple copy or isolated token edits scoped unless they reveal a broader need."
+description: "Use for any frontend or UI work—designing, building, redesigning, reviewing, researching, or adding, modifying, deleting, refactoring, debugging, testing, and packaging code—whether the user names it, the task implies it, an Agent discovers it during execution, or an authorized subtask introduces it. Once invoked, keep it governing selection, implementation, cleanup, QA, and handoff until all frontend work ends. Covers websites, React components, Web applications, dashboards, admin interfaces, portfolios, and offline boards. Require React and an Ant Design-first primary UI system; proactively plan and adopt motion, Lenis scrolling, separate Three.js/R3F 3D and 2D Canvas roles, AntV-first visualization when real data exists, icons/assets, and performance tooling."
 ---
 
 # UI Done
 
-Orchestrate the complete experience and engineering loop. Deliver a coherent, distinctive interface that feels effortless to the user. For substantial frontend work, default to a full enhancement stack: use a UI framework or component system, a motion library, scroll enhancement, a 3D/Canvas layer, visualization where data exists, one icon/asset system, and focused performance tooling. Make every layer serve the same visual direction.
+Orchestrate the complete React experience and engineering loop. React is the required application framework, and every delivered interface must have one primary React UI component system. Prefer Ant Design for greenfield or ownerless work because it can coordinate components, design tokens, forms, and responsive layout; retain another established React system only when it already owns the product or a hard constraint makes Ant Design unsuitable. For substantial frontend work, also use a motion library, Lenis for compatible smooth-scroll mechanics, Three.js through React Three Fiber for real 3D/WebGL, a separate 2D Canvas owner, one AntV-first visualization owner when real data exists, one icon/asset system, and focused performance tooling. Make every layer serve the same visual direction.
 
 Capability coverage is an implementation plan, never permission to invent product content. Attach every selected tool to an existing user task, content need, interaction, or visual motif. Do not add a section, card, copy block, control, dataset, scene, or decorative panel merely to prove that a library is present. When a category has no natural primary role, give it the smallest context-aligned supporting role or accent inside an existing region; infrastructure tools may remain invisible. Never fabricate data or interactions to create a role.
 
 Treat enhancement as assimilation, not placement. Do not ask where a selected tool can be displayed; ask which existing product element becomes clearer, more useful, or more characteristic through it. A successful enhancement still reads as part of the product when the library name is unknown and its implementation is invisible. A scene title, explanatory label, or generic toolbar added only to make an arbitrary effect seem purposeful is evidence that the effect has not been integrated.
 
+## Cross-agent trigger and continuity contract
+
+- Treat this `SKILL.md` and its referenced files as the vendor-neutral source of truth. Host-specific metadata, menus, commands, or adapters may improve discovery, but they only mirror this contract and must never own a rule that other Agents cannot read.
+- On an Agent Skills-compatible host, use `name` and `description` for implicit discovery and the host's own explicit invocation syntax when the Skill is named. `$ui-done`, `/ui-done`, `@ui-done`, a picker, or another command are host aliases, not part of the core contract.
+- If a host does not implement Agent Skills discovery, the installer or project must register or inject this `SKILL.md` and make its referenced files available before frontend work. Do not claim automatic triggering on a host that never exposes Skill metadata to the Agent.
+- Select this Skill whenever frontend or UI scope is explicit or implicit. Do not depend on the user's original wording. Scope includes research, review, dependency selection, adding/modifying/deleting code, refactoring, debugging, testing, packaging, and handoff—not only greenfield page design.
+- At the start of each investigation, planning, mutation, verification, packaging, or delegated phase, check whether the phase contains frontend work. If inspection, research, or execution reveals frontend scope mid-task, read this `SKILL.md` before continuing frontend-specific investigation, selection, or mutation.
+- Once selected, keep this Skill governing the frontend work through research, planning, implementation, cleanup, verification, packaging, and handoff. Do not treat it as a prompt-intake step or replace its current instructions with memory or generic frontend habits.
+- When an already-authorized delegation or Agent-created subtask contains frontend work, pass the `ui-done` Skill through the host's delegation mechanism or explicitly instruct the executor to load this `SKILL.md` before acting. Ensure the executor can access the whole Skill folder; do not assume that a parent Agent's loaded context automatically carries over.
+- After context compaction, handoff, or resumption, re-read this `SKILL.md` and the references needed for the remaining frontend work before continuing.
+- Keep small copy, token, or isolated code edits scoped, but keep these rules active and preserve the established capability owners. This is a phase-boundary discovery check, not a demand to reload the Skill before every file operation when it is already active.
+
 ## Operating contract
 
 - Honor the requested action: inspect and report for review-only work; edit only for build, redesign, fix, or implementation work.
-- For a substantial build or redesign, choose and use one primary tool from every frontend capability category that can fit the delivery contract. The user does not need to name the tools. Omission is the exception and requires a hard reason such as incompatible delivery, license, accessibility, security, or runtime support.
-- Do not begin by asking whether an enhancement category is necessary. Begin by assigning every category a restrained, product-aligned job, then test it against the hard gates. "Native is enough," fewer dependencies, or personal preference are not omission reasons for substantial work.
+- Use React for all new application code and substantial redesigns. Do not select, recommend, or author Vue, Svelte, Angular, or another competing UI framework as the implementation route.
+- When the input project is not React, treat a clean React migration as the required implementation direction. Record the migration boundary and preserve product contracts; do not create a mixed-framework result or quietly add isolated React islands. For review-only work, report the migration impact without changing code.
+- Require one primary React UI component system in every interface implementation. Use Ant Design by default when no approved system exists. A review-only or copy-only task does not install dependencies, but any delivered component work must use the established primary system rather than ad hoc bespoke controls.
+- Search the user's curated `source-library.md` before proposing an unlisted package or a native-only implementation. When a compatible curated source passes the hard gates, prefer it. When the catalog has no owner, record the exact catalog gap before choosing an external React package or native platform capability.
+- Once a curated or external source becomes a serious candidate, and always before selecting or implementing it, open its official demo gallery and inspect every official demo reasonably relevant to the proposed role. Do not exhaust unrelated gallery entries. Record the exact demo, observed behavior, intended product host and meaning, and how it will be adapted to the interface's visual tone. Prefer adapting a strong relevant demo over rebuilding blindly, but treat a demo as capability evidence—not permission to copy code, sample content, controls, or data.
+- Demo review is default-mandatory. Skip it only with recorded hard evidence: no official demo exists; the official route remains unreachable after bounded safe attempts and has no official alternative; access would require unauthorized login or private material; the only route requires unsafe execution; or the user forbids network access or the network is unavailable. Familiarity with the library, time pressure, fewer dependencies, native simplicity, or an intention to reject the candidate are not exemptions. License ambiguity can block copying or adoption, but not safe viewing.
+- For a substantial build or redesign, first plan one compatible owner and at least one concrete shipped job for every frontend capability category. The user does not need to name the tools. Only after this inclusion plan exists may a category be tested for exclusion.
+- Treat omission as a defect until a specific hard constraint proves it unavoidable. First try a smaller footprint, lower intensity, compatible alternative, bounded host, or stronger fallback. "Native is enough," fewer dependencies, personal preference, schedule convenience, or a generic desire to keep the page simple are not omission reasons.
 - Preserve the product hierarchy while covering the stack. A library must adapt to the interface; the interface must not gain filler content, fake data, or a conspicuous demo surface to advertise the library.
 - Treat visible controls as product features, not library furniture. Do not inject pause, reset, rotate, speed, view, or scene controls merely because an engine exposes those APIs. Add a control only for a real user task or a context-appropriate accessibility requirement.
 - Preserve brand, content, information architecture, analytics contracts, and user changes unless the brief authorizes changing them.
@@ -30,6 +48,8 @@ Read these files directly from this `SKILL.md` when their condition applies:
 
 - [Capability boundaries](references/capability-boundaries.md): read before routing companion Skills, and whenever one is unavailable.
 - [Technology scouting](references/technology-scouting.md): read for every substantial build or redesign, before adding dependencies, and whenever a current ecosystem choice could improve the result.
+- [React application stack](references/react-application-stack.md): read for every React implementation because it defines the required UI component system and default device coverage; also use it when theme modes, routing, URL state, data requests/server state, client state, or forms are present or may need an owner.
+- [Curated source library](references/source-library.md): read when choosing a UI system, visualization engine, creative Canvas tool, physics engine, or background-effect source; it owns the demo-first review, adaptation, provenance, and exemption contract.
 - [Open-source UI sources](references/open-source-ui-sources.md): read when an isolated interface element may benefit from an external source, or when Anime.js is a serious motion candidate.
 - [Selection scorecard](references/selection-scorecard.md): read before installing, replacing, or removing a framework, design system, font, icon set, animation/scroll/3D/chart library, or build tool.
 - [Font and asset packaging](references/font-and-asset-packaging.md): read for multilingual typography, local fonts, imagery/icons, portable builds, `file://`, or open-source distribution.
@@ -41,6 +61,8 @@ For a substantial project, load `capability-boundaries.md`, `technology-scouting
 ## Route companion Skills without duplicating them
 
 Use only the applicable available Skills and follow their own instructions:
+
+Names shown with a `$` prefix are capability labels, not a required vendor syntax. Invoke an available companion through the current Agent's own mechanism; when it is unavailable, use the documented fallback instead of failing or pretending it ran.
 
 - Use `$design-taste-frontend` for landing pages, portfolios, and redesign aesthetics that need anti-template direction. Do not force its marketing-page rules onto dense dashboards.
 - Use `$frontend-design` to ground a new interface in its subject, audience, content, visual thesis, and deliberate aesthetic risk.
@@ -76,7 +98,7 @@ For an existing project, do not edit until the audit and a reversible checkpoint
 
 1. Read project instructions and inspect version-control status without discarding or overwriting user changes.
 2. Record the current revision/diff. If version control cannot restore affected files, make a scoped backup of only the files that will change.
-3. Inspect routes, information architecture, representative screens/states, content, brand tokens, CSS strategy, component library, icons, fonts, animation ownership, data/charting, tests, build scripts, package manifest, lockfile, licenses, and distribution entry points.
+3. Confirm whether the implementation is already React. Inspect routes, information architecture, representative screens/states, content, brand tokens, CSS strategy, component library, theme ownership, icons, fonts, animation ownership, requests/server data, client state, forms, data/charting, tests, build scripts, package manifest, lockfile, licenses, and distribution entry points.
 4. Run the current build/tests when practical and capture baseline browser screenshots for redesigns.
 5. List what to preserve, what is broken, what is merely dated, and what creates user value if changed.
 
@@ -86,15 +108,24 @@ Do not silently change URLs, navigation labels, form field contracts, analytics 
 
 For every substantial build or redesign, fill this capability matrix. Reuse a suitable installed tool or add one maintained option for each category:
 
-1. Application/UI foundation: framework plus one primary component or design-system layer.
+1. React application/UI foundation: React plus one required primary React component system. Default to Ant Design for greenfield or ownerless work; keep another established React system only when it is already the approved owner or Ant Design fails a hard gate.
 2. Motion: one animation library for presence, layout, transitions, and coordinated feedback.
-3. Scrolling: one smooth-scroll or scroll-orchestration layer, tuned to the product rather than applied with a generic preset.
-4. 3D/Canvas: Three.js or one comparable engine for a signature scene, spatial data view, texture, or restrained ambient layer.
-5. Data visualization: one charting/visualization system whenever the product contains quantitative or relational data.
-6. Icons and visual assets: one icon family plus approved or original imagery.
-7. Performance: framework-native optimization plus focused open-source tooling for real needs such as virtualization, images, workers, asset compression, or bundle inspection.
+3. Scrolling: Lenis through `lenis/react` as the default smooth-scroll mechanics owner, plus Anime.js `onScroll` when scroll-triggered or synchronized choreography is present. Keep one owner per responsibility and tune both to the product rather than applying a generic preset.
+4. True 3D/WebGL: Three.js through React Three Fiber as the default spatial-rendering route. `@react-three/drei` may supply focused R3F helpers but is not a second renderer.
+5. 2D Canvas: choose a separate real Canvas owner and job; prefer Pts for creative/programmed drawing or Fabric.js for editable object Canvas according to the product need. A 3D scene does not satisfy this row.
+6. Data visualization: select exactly one primary visualization owner whenever authentic quantitative, relational, temporal, hierarchical, geographic, or flow data exists. Prefer AntV G2 or Ant Design Charts and match its visual grammar to the interface; use ECharts when it fits the real data, interaction, delivery, or existing stack better. Do not add both for generic variety.
+7. Icons and visual assets: use `@ant-design/icons` as the default interface icon family when Ant Design owns the UI, plus approved brand assets or original imagery; choose another single family only when the primary system or domain requires it.
+8. Performance: framework-native optimization plus focused open-source tooling for real needs such as virtualization, images, workers, asset compression, or bundle inspection.
 
-Treat every category as included by default, even when the user did not mention it. Find a role that matches the interface: motion can be quiet, smooth scrolling can be restrained, and 3D can occupy one bounded region rather than becoming a full-screen spectacle. Omit a category only when it cannot be shipped safely within the delivery, license, accessibility, security, or runtime constraints; record the exact reason.
+Before scoring or excluding anything, write an inclusion plan for all eight rows. Each row names the proposed owner, an existing host, one concrete product-aligned job, the meaning it adds, the smallest honest footprint, and its device/fallback path. A blank row, unused import, dependency-only installation, or opening answer of “not needed” does not satisfy planning or adoption. Every adopted owner must ship at least one visible or measurable job.
+
+Treat every category as included by default, even when the user did not mention it. The primary UI component system is mandatory for interface implementation and cannot use a no-adoption row; if Ant Design is blocked, select another established React system and record the hard reason. True 3D/WebGL and 2D Canvas are independent categories: plan and adopt one product-aligned role for each rather than letting either substitute for the other. Use Lenis on computer, tablet, and phone when the real touch/nested-scroll path passes, and scale R3F/Three.js and Canvas roles for smaller devices before omitting them. Motion can be quiet, smooth scrolling can be restrained, and 3D or Canvas can occupy a bounded accent rather than becoming a full-screen spectacle.
+
+Visualization is also default-required, with one owner rather than two. Inspect the product's real numbers, changes over time, comparisons, relationships, hierarchy, geography, processes, and status flows before considering exclusion. Prefer AntV and tune its palette, typography, density, geometry, interaction, and motion to the interface; choose ECharts when it is the better fit. If the audit establishes that no authentic visualization object exists and creating one would fabricate data or product meaning, record `hard visualization exemption: no real visualizable object and fabrication prohibited`, together with the content and data surfaces inspected. This is an extremely narrow exemption, not a shortcut for text-heavy or visually restrained work.
+
+For any other default category, omission requires an observed delivery, license, accessibility, security, performance, compatibility, or runtime failure that remains after trying a smaller role, a compatible owner, and a fallback. Record the attempted role, alternatives tried, evidence, and retained fallback. The burden of proof belongs to omission.
+
+Also inspect five React application concerns: theme modes, routing/URL state, requests and server state, client state, and forms. These are conditional product plumbing, not visible enhancement checkboxes. Reuse the current React owner when it fits, select one compatible owner when the product has a real need, and record “not applicable” when the interface has no such behavior. Never invent a second theme, route, API, global store, or form merely to demonstrate coverage. Read `react-application-stack.md` before changing any of these owners.
 
 Choose the smallest honest footprint for each owner:
 
@@ -119,9 +150,13 @@ Use one primary owner per category. Existing project choices count when they fit
 
 ### 4. Research the useful parts of the ecosystem
 
-Read `technology-scouting.md`. For substantial builds and redesigns, scan every category in the matrix, including 3D and scroll enhancement, even when the user did not request specific packages. Use `$web-access` for current maintenance, license, API, compatibility, and security evidence. Prefer official documentation, official repositories and releases, package-manager metadata, and full license texts.
+Read `technology-scouting.md`. For substantial builds and redesigns, scan every category in the matrix, including 3D and scroll enhancement, even when the user did not request specific packages. Begin with `source-library.md`; use its compatible user-curated sources before broad ecosystem candidates or native-only routes. Use `$web-access` for current demos, maintenance, license, API, compatibility, and security evidence. Prefer official live demos and example galleries, official example source and documentation, official repositories and releases, package-manager metadata, and full license texts.
 
-When a real gap fits Uiverse or Anime.js, read `open-source-ui-sources.md` and follow its intake and notice rules. Treat Uiverse as a source for one bounded interface element and Anime.js as a possible primary animation owner; they are neither a mandatory pair nor a fixed workflow. Recheck their official source and license at use time instead of relying on a bundled snapshot.
+React is fixed by this Skill, so ecosystem research chooses React-compatible companions rather than comparing UI frameworks. Read `react-application-stack.md` for theme, routing, request/server-state, client-state, and form decisions. Do not spend research time establishing a Vue route or recommend a Vue-only package.
+
+When a real gap may fit a named UI system, smooth-scroll engine, true 3D/WebGL tool, 2D Canvas tool, visualization engine, physics engine, or background-effect source, read `source-library.md` to distinguish native framework support, separate adapters, lifecycle integration, and discovery-only catalogs. Use its Lenis and Three.js/R3F routes as the starting owners for compatible smooth scrolling and true 3D. If the selected route is Uiverse or Anime.js, also read `open-source-ui-sources.md` and follow its intake and notice rules. Recheck every selected project's official source and license at use time instead of relying on a bundled snapshot.
+
+For every serious candidate, inspect the official rendered demo and every official example reasonably relevant to the assigned product role; do not substitute README claims or screenshots when a live demo is safely available. Check the visible result, interactions, responsive behavior, fallback clues, and related official example source. Record the demo URL or name, what it proves, the intended host and meaning, the planned tone adaptation, and whether only the idea or actual code/package will be used. Viewing and rejecting a demo is valid when the mismatch is recorded. Not viewing it requires the hard demo-review exemption from `source-library.md`.
 
 If no network-capable Skill or tool is available, do not assert freshness. Reuse already verified project dependencies when they fit; otherwise state the evidence limitation and do not add a dependency whose maintenance or license cannot be established.
 
@@ -129,11 +164,13 @@ If no network-capable Skill or tool is available, do not assert freshness. Reuse
 
 Read `selection-scorecard.md` before changing dependencies. Use its ten criteria internally for every serious candidate. Show the exact 10-column decision table before a consequential framework, design-system, animation/scroll engine, 3D/charting, or build-tool choice, and whenever the user asks to compare options. For a small compatible component or utility inside an already authorized implementation, make the choice, update the lockfile, and record the reason in the handoff without interrupting the task.
 
+Do not complete a selection until every serious candidate has a relevant official-demo record or a hard demo-review exemption. A demo may be viewed and rejected for product-tone, content, interaction, accessibility, performance, compatibility, delivery, or lifecycle mismatch. Unclear licensing prevents copying or adoption until resolved; it is not a reason to avoid viewing a safely accessible official demo.
+
 An isolated Uiverse element can follow the small-component path after source, license, fit, and accessibility review. Selecting Anime.js as the primary motion engine follows the consequential-choice path even when its MIT license is compatible.
 
 Include existing tools when they can own a category cleanly. “Adopt nothing” is not a routine candidate for substantial work; use it only when a hard gate prevents safe adoption. Reject unclear licensing, mandatory remote runtime assets that break delivery, duplicated design systems, or competing owners within the same category unless the user explicitly accepts the tradeoff.
 
-Ask before a choice changes the framework, distribution mode, major configuration, paid/closed service, or user-approved architecture. Otherwise install the selected compatible option with the project's package manager and lockfile. Inspect install scripts and unexpected transitive risk before accepting the result.
+React is not a scored alternative: it is the framework contract of this Skill. For an existing non-React product, state the migration boundary, impact, and rollback point before writing. Do not solve the migration by mixing frameworks. Ask before a choice changes the distribution mode, major configuration beyond the React migration, paid/closed service, or another user-approved architecture. Otherwise install the selected compatible option with the project's package manager and lockfile. Inspect install scripts and unexpected transitive risk before accepting the result.
 
 ### 6. Define one visual system
 
@@ -144,7 +181,7 @@ Create a compact implementation contract derived from the brief:
 - Spacing, grid, container, breakpoint, density, and text-measure rules.
 - Component and icon ownership; use one primary design system and one icon family.
 - Motion tokens and ownership boundaries; every automatic effect must explain hierarchy, feedback, state, narrative, or spatial continuity.
-- A bounded role for scroll enhancement and 3D/Canvas that supports the same typography, color, density, and product tone as the rest of the interface.
+- Separate bounded roles for scroll enhancement, true 3D/WebGL, 2D Canvas, and authentic data visualization that support the same typography, color, density, and product tone as the rest of the interface.
 - A named existing host, product meaning, footprint level, and control rationale for every visible capability; no library-proof sections or invented content.
 - One recognizable signature element when the product benefits from it; keep surrounding design restrained.
 - Real content and all relevant empty, loading, error, success, long-text, disabled, and destructive states.
@@ -153,10 +190,14 @@ Use companion design Skills for their specialty. Do not copy their long checklis
 
 ### 7. Implement with explicit boundaries
 
-- Preserve the existing framework unless migration has a scored, user-visible benefit.
-- Isolate animation, scrolling, charts, and 3D into clear component/lifecycle boundaries.
+- Preserve a sound existing React runtime and its product contracts. For a non-React input, implement through an explicit React migration boundary; do not author new Vue code or leave an accidental mixed-framework architecture.
+- Isolate animation, scrolling, visualization, 2D Canvas, and 3D into clear component/lifecycle boundaries.
 - Avoid two libraries controlling the same property, scroll container, focus behavior, or animation loop.
+- Let Lenis own smooth-scroll mechanics and let Anime.js `onScroll` own choreography. Coordinate their signals deliberately, preserve anchors/focus/nested scroll, and do not add a second smooth-scroll engine.
+- Prefer React Three Fiber as the React boundary around Three.js. Lazy-load substantial scenes, cap quality for the measured device budget, pause hidden/offscreen work, and retain an equivalent static/DOM path.
+- Keep the 2D Canvas owner separate from the R3F scene lifecycle. Use AntV as the default visualization owner when authentic data exists, or ECharts when the recorded fit is stronger; synchronize both with the interface tokens and never fabricate a dataset.
 - Confirm that every selected category is actually used in the shipped experience. Remove placeholder imports, library-proof sections, fabricated datasets, and decorative demos that do not support the product; shrink a weak visible role into a context-aligned accent inside an existing region.
+- When implementation draws from an official demo, preserve only the useful behavior or visual grammar and retune its tokens, density, motion, interaction, responsive path, and fallback to the product. Remove sample copy, fabricated data, generic demo controls, and gallery framing; copy source code only when provenance and license gates pass.
 - Share lifecycle, rendering, cleanup, fallback, and performance infrastructure where useful, but make visible controls opt-in per product task. Do not let a shared scene wrapper impose the same labels or control cluster on unrelated interfaces.
 - Prefer low-cost `transform` and `opacity`; reserve layout space for images, fonts, charts, and asynchronous data.
 - Build semantic HTML, visible focus, usable keyboard order, descriptive names, adequate targets, and readable responsive typography as part of the implementation.
@@ -178,7 +219,7 @@ python <this-skill>/scripts/frontend_preflight.py <project-or-built-output> --he
 python <this-skill>/scripts/frontend_preflight.py <project-or-built-output> --offline
 ```
 
-Then use `$webapp-testing` or the available browser tooling. Test desktop, common laptop, tablet, and phone sizes; representative pages and states; keyboard/focus; reduced motion; fonts; console/page errors; failed requests; horizontal overflow; fixed navigation clearance; and relevant WebGL/high-end visual fallbacks. For offline delivery, open the actual artifact with its intended mechanism and confirm no required external network resources.
+Then use `$webapp-testing` or the available browser tooling. By default test one representative computer viewport, one tablet viewport, and one phone viewport. Add extra-wide, extra-narrow, orientation-specific, TV, kiosk, embedded, or other special targets only when the user or explicit delivery contract requires them. Also test representative pages and states; keyboard/focus; reduced motion; fonts; console/page errors; failed requests; horizontal overflow; fixed navigation clearance; Lenis wheel/touch/anchor/nested-overlay behavior; and R3F/WebGL performance plus failure fallbacks. For offline delivery, open the actual artifact with its intended mechanism and confirm no required external network resources.
 
 Inspect screenshots and computed styles, fix issues, and repeat the affected checks. The first successful render is not acceptance.
 
@@ -190,7 +231,9 @@ Report:
 
 - The design read and delivery mode.
 - What was preserved and what changed.
-- The ecosystem choices: what was adopted, reused, or rejected and the practical reason for each consequential decision.
+- The eight-row inclusion plan and final coverage: what was adopted, reused, or rejected; the shipped job for every adopted owner; and the evidence for every hard exemption.
+- The React application owners for theme, routing, request/server data, client state, and forms when those concerns exist; state “not applicable” instead of inventing product behavior.
+- The relevant official demos inspected for every selected or seriously considered source: exact URL or name, observed capability, adopted or rejected decision, product-tone adaptation, idea-only versus code use, and any hard demo-review exemption.
 - Any copied interface element or installed animation source: upstream author/project, exact source, modifications, license obligation, and notice location.
 - Font/asset sources, licenses, and offline behavior.
 - Build, static preflight, browser sizes/states, accessibility, reduced-motion, and fallback results.

@@ -1,6 +1,6 @@
 # Selection Scorecard
 
-Use this to choose one primary tool for each frontend capability category before changing dependencies, design systems, fonts, icons, motion/scroll/3D/charting, performance, or build tooling.
+Use this to choose one primary React-compatible tool for each frontend capability category before changing dependencies, design systems, fonts, icons, motion/scroll/3D/charting, theme, routing, data/state/form ownership, performance, or build tooling. React itself is fixed by this Skill and is not compared against Vue or another UI framework.
 
 ## Hard gates
 
@@ -8,6 +8,7 @@ Reject or pause a candidate when any applicable gate fails:
 
 - It has no credible shipped role that supports the user's product, visual direction, interaction, or delivery; an unused import does not count as adoption.
 - Its visible role becomes understandable only after inventing a scene name, explanatory label, or generic pause/reset/rotate/view controls that the product itself does not need.
+- Its relevant official demos have not been inspected and no recorded `hard demo-review exemption` from `source-library.md` applies.
 - It duplicates the existing design system, icon family, animation owner, router, form layer, or chart stack without a migration plan.
 - Its license is unclear, incompatible with intended redistribution, closed/paid without approval, or missing required attribution terms.
 - Copied source code lacks an official upstream page or repository, identifiable author/project, exact license text, or a planned notice location.
@@ -18,9 +19,13 @@ Reject or pause a candidate when any applicable gate fails:
 
 ## Decision table
 
-Show this concise table before consequential installation. Reproduce all ten columns exactly; do not merge or rename them. For substantial work, include one selected row for UI foundation, motion, scrolling, 3D/Canvas, data visualization when data exists, icons/assets, and performance. Use a no-adoption row only when a hard gate blocks that category.
+Show this concise table before consequential installation. Reproduce all ten columns exactly; do not merge or rename them. For substantial work, begin with one proposed-adoption row for the React UI foundation, motion, scrolling, true 3D/WebGL, 2D Canvas, visualization, icons/assets, and performance. The React UI row must select a primary component system; Ant Design is the default for greenfield or ownerless work, and a no-adoption row is invalid. True 3D and 2D Canvas require separate rows and jobs. Visualization selects one owner, preferably AntV and otherwise ECharts when it fits better; use a no-adoption row only for the narrow proven absence of any authentic visualizable object or when another hard gate remains after alternatives and fallbacks.
+
+Theme modes, routing/URL state, request/server state, client state, and forms are conditional React application concerns. Inspect all five, but include a selection row only when the product exposes that concern or ownership is changing. Record “not applicable” in the audit instead of inventing a theme toggle, route, API, global store, or form.
 
 Before scoring a visible owner, name the existing page region or interaction that will host it, the product meaning it adds, the reason for any direct user control, and the smallest honest footprint: structural, behavioral, accent, or infrastructure. A proposal that needs a new showcase section, invented copy, fake data, compensatory label, or extra controls solely to reveal the library has failed product fit even if its technical score is high.
+
+Before the table, add a compact demo note for every serious candidate: exact official demo URL or example name, what was actually observed, intended host and tone adaptation, idea-only versus code/package use, and adopted or rejected status. Keep the required decision table at exactly ten columns; do not add a demo column. If no relevant official demo was viewed, cite the exact hard exemption. An unclear license may pause copying or adoption, but it is not an exemption from safely viewing the official demo.
 
 | 需求 | 候选 | 是否采用 | 视觉收益 | 性能代价 | 无障碍 | 维护状态 | 许可证 | 离线能力 | 结论 |
 |---|---|---|---|---|---|---|---|---|---|
@@ -48,20 +53,28 @@ Record the total only when comparing several close candidates. A high score cann
 
 ## Selection rules by category
 
-- Framework: for greenfield substantial work, choose a modern framework and UI/component layer by default. In an existing product, keep the framework when sound and add compatible layers; migrate only with a clear boundary and sustained benefit.
-- Design system: use one primary system. Extend tokens before layering a second visual language.
-- Icons: use one family and consistent stroke/fill rules; use official brand assets for brands.
-- Animation: select one motion library for substantial work. Let it own presence, layout, coordinated state, and signature transitions on existing product surfaces; keep CSS for isolated micro-states that do not compete with it. Do not expose library controls unless the user has a real manipulation task or an accessibility mechanism requires them.
-- Smooth scrolling: select one maintained scrolling layer and tune its strength to the interface. Preserve native behavior inside forms, tables, nested panels, keyboard paths, reduced-motion mode, and any region where enhancement would harm control.
-- 3D: select Three.js or one comparable engine and give it one bounded, purposeful role aligned with an existing product object, relationship, dataset, or motif. Budget it, provide a static fallback, and keep pause/reset/rotate/view UI opt-in rather than part of a generic scene wrapper.
-- Charts: when quantitative or relational data exists, select one charting system. Use lower-level tools when bespoke interaction or visual grammar justifies them.
+- Framework: React is required. For greenfield substantial work, use a sound React runtime and one required React UI component system. Keep a sound existing React runtime; for non-React inputs define a clean migration boundary and do not create a mixed-framework result.
+- Design system: default to Ant Design when no approved React system exists. Keep another established system only when it already owns the product or Ant Design fails a documented hard gate. Never layer two primary component systems.
+- Source priority: after naming the real need, check `source-library.md` before unlisted packages or native-only work. Prefer a compatible curated source that passes the gates; otherwise record `curated-catalog gap` and the fallback.
+- Theme modes: use Ant Design tokens/`ConfigProvider` as the default component-theme owner, synchronized with semantic CSS and platform color-scheme behavior. Add a manual switch only when the product requires it.
+- Routing/URL state: keep the current React router when it fits. Use one router for real navigation and shareable URL state; do not add routing to a true single-surface artifact.
+- Requests/server state: keep server data out of generic client stores. Use native requests for simple isolated flows, a query/cache owner for shared server state, or RTK Query when Redux Toolkit already owns the application.
+- Client state: start with local React state/reducer/context. Add one global owner only for genuinely shared client state; do not duplicate URL, server, or form state.
+- Forms: use Ant Design Form and Ant Design controls by default while preserving native semantics. Add React Hook Form or TanStack Form only when validation, composition, dynamic fields, or rendering scale justifies a separate owner.
+- Icons: when Ant Design owns the UI, start with `@ant-design/icons` for ordinary interface symbols. Use one family and consistent stroke/fill rules; use official brand assets for brands and separately verify domain-specific assets.
+- Animation: prefer Anime.js from the curated catalog when it fits; otherwise select one justified motion library. Let it own presence, layout, coordinated state, and signature transitions on existing product surfaces; keep CSS for isolated micro-states that do not compete with it. Do not expose library controls unless the user has a real manipulation task or an accessibility mechanism requires them.
+- Scrolling: use Lenis through `lenis/react` as the default dedicated smooth-scroll owner and Anime.js `onScroll` as the choreography owner. Keep Lenis on computer, tablet, and phone when real-device-class checks pass; a native-only/no-adoption result requires an observed hard constraint, not convenience. Preserve forms, tables, Ant Design overlays, nested panels, anchors, keyboard paths, touch behavior, and reduced-motion mode.
+- 3D: use Three.js through React Three Fiber as the default real 3D/WebGL route; add `@react-three/drei` only for helpers the scene uses. Give it one bounded, purposeful role aligned with an existing product object, relationship, dataset, or motif. Scale DPR/assets/effects for phone and tablet before omitting it, provide a static fallback, and keep pause/reset/rotate/view UI opt-in rather than part of a generic scene wrapper.
+- 2D Canvas: select a separate owner and shipped role; prefer Pts for creative/programmed drawing or Fabric.js for editable objects. A Three.js/R3F scene cannot satisfy this row. Shrink the Canvas footprint or change its host before claiming it cannot fit.
+- Visualization: inspect real quantitative, relational, temporal, hierarchical, geographic, and flow content before scoring omission. Prefer AntV G2 or Ant Design Charts and adapt its visual grammar to the product; select ECharts instead when it fits better. Use one primary owner, not both for generic variety. A no-adoption result must state the inspected surfaces and prove that no authentic visualizable object exists and creating one would fabricate data or meaning.
 - Performance: select the framework-native path plus focused tooling that can prove a user-visible or delivery gain; do not add overlapping optimizers for the same bottleneck.
 - Fonts: score glyph coverage, required weights, file size, layout metrics, redistribution, self-hosting, and provenance, not beauty alone.
 
 ## After selection
 
-1. State the selected owner for every capability category and the hard-gate reason for any omission.
-2. Confirm package or copied-component name, official source, author/project, exact license, and compatible current usage from official evidence.
-3. Install with the existing package manager and update the lockfile.
-4. Re-run build, license/offline checks, browser QA, and bundle/performance checks proportional to impact.
-5. Remove superseded dependencies/assets only after proving they are unused and preserving user work.
+1. State the selected owner and shipped job for every capability category, plus the attempted smaller role, alternatives, evidence, and hard-gate reason for any omission.
+2. Attach the official-demo record for every selected or seriously considered source: exact demo, observed capability, adopted or rejected decision, planned adaptation, and idea-only versus code use; otherwise attach the hard demo-review exemption.
+3. Confirm package or copied-component name, official source, author/project, exact license, and compatible current usage from official evidence.
+4. Install with the existing package manager and update the lockfile.
+5. Re-run build, license/offline checks, browser QA, and bundle/performance checks proportional to impact.
+6. Remove superseded dependencies/assets only after proving they are unused and preserving user work.

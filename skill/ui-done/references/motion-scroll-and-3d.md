@@ -1,6 +1,6 @@
 # Motion, Scroll, and 3D
 
-For substantial frontend work, motion, scroll enhancement, and 3D/Canvas are default layers. Give each one a role that communicates hierarchy, feedback, state, narrative, atmosphere, or spatial continuity, then tune its intensity to the product. A restrained dashboard and an expressive campaign page should use the layers differently, not omit the ecosystem automatically.
+For substantial frontend work, motion, scroll enhancement, true 3D/WebGL, and 2D Canvas are four distinct default layers. Give each one a role that communicates hierarchy, feedback, state, narrative, atmosphere, drawing, or spatial continuity, then tune its intensity to the product. A restrained dashboard and an expressive campaign page should use the layers differently, not omit the ecosystem automatically.
 
 ## Choose one primary owner per layer
 
@@ -8,14 +8,18 @@ For substantial frontend work, motion, scroll enhancement, and 3D/Canvas are def
 |---|---|---|
 | Hover, press, focus, simple reveal | CSS for isolated states, coordinated by the selected motion system when sequencing matters | Do not split ownership of the same property between CSS and the motion library |
 | Component state, presence, layout continuity | One maintained UI-motion library or framework-native motion layer | Keep scroll pinning and scrubbing in the scroll layer |
-| Scroll storytelling | One maintained scroll-trigger/orchestration tool | Limit pinning and scrubbing to the narrative regions that need it |
-| Smooth scrolling | One maintained smooth-scroll layer | Preserve native behavior for reduced motion, nested controls, focus navigation, and regions where smoothing reduces precision |
-| Signature 3D scene | Three.js or one comparable engine | Keep it in one bounded product-aligned region with a static fallback |
-| 2D particles or data canvas | One focused Canvas/SVG renderer | Use DOM controls and labels for essential interaction |
+| Scroll storytelling | Anime.js `onScroll` | Limit pinning and scrubbing to the narrative regions that need it; it owns choreography, not scroll mechanics |
+| Smooth scrolling | Lenis through `lenis/react` | Default to it on computer, tablet, and phone when the tested path works; preserve reduced motion, nested controls, anchors, focus navigation, and precise regions |
+| Signature 3D scene | Three.js through React Three Fiber | Use R3F as the React scene boundary, keep it in one bounded product-aligned region, and provide a static/DOM fallback |
+| Separate 2D Canvas role | Pts for creative/programmed drawing or Fabric.js for editable objects | This is independent from the R3F scene; use DOM controls and labels for essential interaction |
 
-Research current APIs, maintenance, license, and bundle behavior before choosing the owners. For substantial work, missing motion, scroll, or 3D coverage requires a hard constraint, not merely “native is simpler.”
+Research current APIs, maintenance, license, and bundle behavior before choosing the owners. Lenis and Three.js/R3F are the starting selections, not immutable version pins; recheck them at adoption time. For substantial work, missing motion, scroll, true 3D, or separate 2D Canvas coverage requires an observed hard constraint, not merely “native is simpler.”
 
 When Anime.js is a serious candidate, read `open-source-ui-sources.md` before selection. Use it as the primary motion or timeline owner for a defined region, not as an extra engine layered over Motion, GSAP, CSS, or another system controlling the same behavior.
+
+Use Lenis as the only smooth-scroll mechanics owner. Its official React component/hook should wrap the intended root or bounded container; Anime.js may consume scroll progress for choreography without becoming a second mechanics engine. Keep Lenis active across the default device matrix when it passes, and prefer excluding one incompatible nested region or scaling behavior before disabling it globally.
+
+For true 3D/WebGL in React, begin with `three` plus `@react-three/fiber`. Add `@react-three/drei` only for named helpers the scene needs. Use direct Three.js lifecycle code only when a low-level integration does not fit R3F; do not choose Pts, Fabric.js, CSS transforms, or a static fake merely to avoid implementing real spatial rendering.
 
 ## Fit before scale
 
@@ -23,7 +27,8 @@ Name the existing host, the interface job, and the smallest useful footprint bef
 
 - Motion attaches to an existing state change, hierarchy cue, or feedback loop. Do not invent extra entrances, carousels, or controls to make the animation system visible.
 - Smooth scrolling improves an existing scroll path. Do not create a long narrative section merely to demonstrate smoothing or scroll triggers.
-- 3D/Canvas uses a product object, spatial relationship, real visualization, or established visual motif when one exists. Without a natural primary position, embed a small context-aligned mark, texture, object, or ambient detail inside an existing region.
+- True 3D uses a product object, spatial relationship, real visualization, or established visual motif when one exists. Without a natural primary position, embed a small context-aligned object or spatial accent inside an existing region.
+- 2D Canvas receives a different host and job, such as a restrained programmed texture, drawing layer, particle response, or editable object surface. It cannot be counted as the 3D role, and the 3D scene cannot be counted again as Canvas.
 - Never add a large standalone 3D panel, scene label, explanatory copy, or control cluster whose only job is to prove that the engine was installed.
 
 If removing a new visual region changes no product meaning and only hides evidence of the library, the region is filler. Remove it, then relocate the effect at a smaller scale or attach it to a real interaction.
@@ -48,7 +53,8 @@ Treat visible controls as product features. Do not surface pause, reset, rotate,
 - Keep UI motion, scroll timelines, and 3D render loops in separate components/modules with explicit inputs.
 - Do not let CSS, a UI-motion library, and a timeline engine all animate the same transform.
 - Do not run multiple uncontrolled `requestAnimationFrame` loops for one visual region.
-- Keep 3D/Canvas decorative output separate from semantic navigation and content. Provide DOM controls and labels only for essential interactions, using the product's language rather than engine terminology.
+- When Lenis, Anime.js, or R3F share time or scroll signals, coordinate them through one explicit scheduler/bridge where supported; do not let each layer poll and mutate the same target independently.
+- Keep 3D and 2D Canvas decorative output separate from semantic navigation and content. Provide DOM controls and labels only for essential interactions, using the product's language rather than engine terminology.
 - Keep small decorative accents non-interactive and outside the accessibility tree; render them statically or stop them quickly instead of adding controls that make the accent larger than its purpose.
 - Reuse lifecycle, cleanup, failure, and rendering infrastructure freely, but keep public controls opt-in. A shared scene component must not stamp the same toolbar onto unrelated products.
 - In server-rendered frameworks, isolate browser-only motion/Canvas/WebGL in client boundaries and avoid hydrating static layout unnecessarily.
@@ -66,6 +72,13 @@ Implement and test applicable items:
 - Avoid per-frame React/state updates. Keep continuous values in the animation/render layer.
 - Animate `transform` and `opacity` for ordinary UI; avoid layout-triggering properties in continuous motion.
 - Budget main-thread, GPU, memory, texture dimensions, draw calls, and bundle size for mobile/low-power hardware.
+
+## Computer, tablet, and phone policy
+
+- Exercise Lenis on all three default device classes. On touch devices, keep upstream-safe touch behavior unless a stronger synchronization mode has passed the supported iOS/Android checks; a desktop success is not evidence for phone. Verify anchor links, keyboard focus, route restoration, nested Ant Design overlays/tables, text selection, overscroll, and reduced motion.
+- Exercise R3F/Three.js on phone and tablet instead of removing it by assumption. Reduce device-pixel ratio, model/texture size, lights, post-processing, draw calls, update frequency, and interaction density to meet the budget; lazy-load the scene and pause hidden/offscreen work.
+- Exercise the separate 2D Canvas role on phone and tablet. Reduce pixel ratio, particle/object count, redraw frequency, and interaction density before omitting it; verify resize, teardown, and a static/DOM fallback independently from the 3D scene.
+- Fall back only after a reproducible compatibility, accessibility, performance, delivery, or runtime failure. Record the failing device/path and retain a coherent static/DOM result rather than silently shipping an empty region.
 
 ## Reduced motion and input safety
 
