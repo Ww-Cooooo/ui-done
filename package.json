@@ -5,21 +5,23 @@
   "type": "module",
   "packageManager": "pnpm@11.19.0",
   "scripts": {
-    "build": "pnpm run build:core && pnpm run build:chart && pnpm run notices && pnpm run stamp:runtime",
+    "build": "pnpm run build:core && pnpm run notices && pnpm run stamp:runtime",
     "build:core": "vite build --config tooling/vite.core.config.mjs",
-    "build:chart": "vite build --config tooling/vite.chart.config.mjs",
     "notices": "node tooling/generate-runtime-notices.mjs",
     "stamp:runtime": "node tooling/stamp-runtime-version.mjs",
     "size": "size-limit",
     "check": "pnpm run build && pnpm run size"
   },
   "dependencies": {
-    "chart.js": "4.5.1",
-    "lenis": "1.3.25",
-    "motion": "12.42.2",
+    "@ant-design/icons": "6.3.4",
+    "@antv/g2": "5.4.8",
+    "@react-three/fiber": "9.7.0",
+    "animejs": "4.5.0",
+    "antd": "6.6.2",
+    "lenis": "1.3.26",
+    "pts": "0.12.9",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "react-intersection-observer": "9.16.0",
     "three": "0.185.1"
   },
   "devDependencies": {
@@ -30,14 +32,19 @@
   },
   "size-limit": [
     {
-      "name": "Shared showcase enhancement runtime",
-      "path": "showcase/shared/runtime/ui-done-core.js",
-      "limit": "780 kB"
+      "name": "Showcase application entry",
+      "path": "showcase/shared/runtime/ui-done-app.js",
+      "limit": "180 kB"
     },
     {
-      "name": "Control Room chart runtime",
-      "path": "showcase/shared/runtime/ui-done-control-chart.js",
-      "limit": "260 kB"
+      "name": "Complete showcase JavaScript",
+      "path": "showcase/shared/runtime/**/*.js",
+      "limit": "3.4 MB"
+    },
+    {
+      "name": "Showcase visual system CSS",
+      "path": "showcase/shared/runtime/ui-done-app.css",
+      "limit": "180 kB"
     }
   ]
 }

@@ -3,19 +3,18 @@ import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 const showcasePages = [
-  "aer-run",
-  "control-room",
-  "corner-store",
-  "form-shift",
+  "brief-machine",
   "gallery",
-  "pocket-planner",
-  "tide-journal"
+  "motion-foundry",
+  "open-studio",
+  "signal-room",
+  "source-atlas",
+  "viewport-lab"
 ];
 
 const runtimeAssets = [
-  "ui-done-core.css",
-  "ui-done-core.js",
-  "ui-done-control-chart.js"
+  "ui-done-app.css",
+  "ui-done-app.js"
 ];
 
 function contentVersion(filePath) {
@@ -33,7 +32,7 @@ const versions = new Map(
 for (const page of showcasePages) {
   const pagePath = path.resolve("showcase", page, "index.html");
   const source = readFileSync(pagePath, "utf8");
-  let next = source;
+  let next = `${source.replace(/\r\n?/g, "\n").trimEnd()}\n`;
 
   for (const [asset, version] of versions) {
     const escapedAsset = asset.replaceAll(".", "\\.");

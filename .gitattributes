@@ -1,3 +1,4 @@
 # Prebuilt browser bundles contain upstream shader source strings. Keep the
 # authored runtime under showcase/runtime/src/ as the reviewable source.
 showcase/shared/runtime/*.js linguist-generated=true -diff
+showcase/shared/runtime/chunks/*.js linguist-generated=true -diff
