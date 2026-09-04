@@ -190,6 +190,7 @@ Create a compact implementation contract derived from the brief:
 - Separate bounded roles for scroll enhancement, true 3D/WebGL, 2D Canvas, and authentic data visualization that support the same typography, color, density, and product tone as the rest of the interface.
 - A named existing host, product meaning, footprint level, and control rationale for every visible capability; no library-proof sections or invented content.
 - One recognizable signature element when the product benefits from it; keep surrounding design restrained.
+- When a multi-page showcase, portfolio, campaign family, or concept set promises distinct directions, define a route-by-route structure matrix before coding. Vary the content journey, hero thesis, media rhythm, module order, interaction, and ending where the subjects differ; palette, font, imagery, labels, and swapped geometry do not make a shared visible skeleton distinct.
 - Real content and all relevant empty, loading, error, success, long-text, disabled, and destructive states.
 
 Use companion design Skills for their specialty. Do not copy their long checklists into project code or invent a generic aesthetic unrelated to the customer.
@@ -205,6 +206,7 @@ Use companion design Skills for their specialty. Do not copy their long checklis
 - Confirm that every selected category is actually used in the shipped experience. Remove placeholder imports, library-proof sections, fabricated datasets, and decorative demos that do not support the product; shrink a weak visible role into a context-aligned accent inside an existing region.
 - When implementation draws from an official demo, preserve only the useful behavior or visual grammar and retune its tokens, density, motion, interaction, responsive path, and fallback to the product. Remove sample copy, fabricated data, generic demo controls, and gallery framing; copy source code only when provenance and license gates pass.
 - Share lifecycle, rendering, cleanup, fallback, and performance infrastructure where useful, but make visible controls opt-in per product task. Do not let a shared scene wrapper impose the same labels or control cluster on unrelated interfaces.
+- Share invisible infrastructure across related pages, not a visible proof template. If several routes repeat the same hero/media selector, numbered cards, 3D block, chart block, form, capability strip, and CTA order without an information-architecture reason, treat the repetition as a design defect and give each subject its own content journey.
 - Prefer low-cost `transform` and `opacity`; reserve layout space for images, fonts, charts, and asynchronous data.
 - Build semantic HTML, visible focus, usable keyboard order, descriptive names, adequate targets, and readable responsive typography as part of the implementation.
 - Apply the selected open-source families through semantic tokens, including Ant Design theme tokens and chart/Canvas/3D labels where text is rendered. Use an explicitly selected open-source monospace family for code and technical symbols; use the interface icon system instead of random Unicode glyphs or icon fonts.

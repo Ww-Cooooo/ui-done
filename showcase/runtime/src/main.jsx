@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./runtime.css";
+import "./project-experiences.css";
 
 const rootNode = document.getElementById("root");
 const pageId = document.body.dataset.page || "gallery";

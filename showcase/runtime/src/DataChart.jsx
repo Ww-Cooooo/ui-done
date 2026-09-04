@@ -75,7 +75,7 @@ function DataTable({ page }) {
   return (
     <table className="visually-hidden">
       <caption>{page.chartTitle}：{page.chartSummary}</caption>
-      <thead><tr><th>图片</th><th>平均明度，0 到 255</th></tr></thead>
+      <thead><tr><th>视觉方向</th><th>三张本地图片的平均明度，0 到 255</th></tr></thead>
       <tbody>{page.chartData.map(item => <tr key={item.label}><td>{item.label}</td><td>{item.value}</td></tr>)}</tbody>
     </table>
   );
@@ -92,7 +92,7 @@ export default function DataChart({ page, reduced }) {
     let cancelled = false;
     setError(null);
     try {
-      chart = new Chart({ container: host, autoFit: true, height: 330 });
+      chart = new Chart({ container: host, autoFit: true, height: 440 });
       chart.options(chartSpec(page, reduced));
       Promise.resolve(chart.render()).catch(reason => {
         if (!cancelled) setError(reason instanceof Error ? reason.message : String(reason));
@@ -109,12 +109,12 @@ export default function DataChart({ page, reduced }) {
   return (
     <section className="chart-panel" data-scroll-reveal aria-labelledby={`${page.id}-chart-title`}>
       <div className="chart-heading">
-        <div><Tag bordered={false} icon={<BarChartOutlined />}>ANTV G2 / MEASURED IMAGE DATA</Tag><h2 id={`${page.id}-chart-title`}>{page.chartTitle}</h2></div>
+        <div><Tag bordered={false} icon={<BarChartOutlined />}>ANTV G2 / 30 LOCAL IMAGES</Tag><h2 id={`${page.id}-chart-title`}>{page.chartTitle}</h2></div>
         <p>{page.chartSummary}</p>
       </div>
       {error ? <Alert type="warning" showIcon message="图形层已回退" description="真实数值仍完整保留在页面的无障碍数据表中。" /> : <div ref={hostRef} className="g2-host" aria-hidden="true" />}
       <DataTable page={page} />
-      <div className="chart-proof" aria-label="图表数据说明"><CheckCircleOutlined /><span>本地图片实测</span><span>0–255 明度</span><span>无虚构经营指标</span></div>
+      <div className="chart-proof" aria-label="图表数据说明"><CheckCircleOutlined /><span>30 张本地图片实测</span><span>逐像素 0–255 明度</span><span>无虚构经营指标</span></div>
     </section>
   );
 }

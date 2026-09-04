@@ -30,6 +30,8 @@ Name the existing host, the interface job, and the smallest useful footprint bef
 - True 3D uses a product object, spatial relationship, real visualization, or established visual motif when one exists. Without a natural primary position, embed a small context-aligned object or spatial accent inside an existing region.
 - 2D Canvas receives a different host and job, such as a restrained programmed texture, drawing layer, particle response, or editable object surface. It cannot be counted as the 3D role, and the 3D scene cannot be counted again as Canvas.
 - Never add a large standalone 3D panel, scene label, explanatory copy, or control cluster whose only job is to prove that the engine was installed.
+- A cluster of stock primitives with one global auto-rotation, generic three-point lighting, and palette swaps is not a finished signature scene unless the subject specifically calls for that object and motion. Establish a scene-specific subject, composition/camera, material/environment response, light hierarchy, and meaningful motion; post-processing may finish that hierarchy but cannot create it.
+- Across a set of intentionally different pages, vary the role as well as the shape: 3D may become a hero environment, an embedded product object, a scroll transition, a spatial diagram, or a quiet accent. Do not append the same framed Canvas after the same content block on every route.
 
 If removing a new visual region changes no product meaning and only hides evidence of the library, the region is filler. Remove it, then relocate the effect at a smaller scale or attach it to a real interaction.
 
@@ -57,6 +59,7 @@ Treat visible controls as product features. Do not surface pause, reset, rotate,
 - Keep 3D and 2D Canvas decorative output separate from semantic navigation and content. Provide DOM controls and labels only for essential interactions, using the product's language rather than engine terminology.
 - Keep small decorative accents non-interactive and outside the accessibility tree; render them statically or stop them quickly instead of adding controls that make the accent larger than its purpose.
 - Reuse lifecycle, cleanup, failure, and rendering infrastructure freely, but keep public controls opt-in. A shared scene component must not stamp the same toolbar onto unrelated products.
+- A shared scene registry may own quality caps, visibility, context loss, and fallback, while each unrelated subject owns its camera, lighting, material, composition, and motion. Do not reduce scene variation to a `shape` or color switch inside one generic renderer.
 - In server-rendered frameworks, isolate browser-only motion/Canvas/WebGL in client boundaries and avoid hydrating static layout unnecessarily.
 
 ## Runtime lifecycle

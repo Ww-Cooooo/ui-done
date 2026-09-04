@@ -122,7 +122,7 @@ function Header({ page, onMenu }) {
             全部作品
           </Button>
         )}
-        <Button type="text" href={isGallery ? "#works" : "#design"}>{isGallery ? "十种风格" : "视觉系统"}</Button>
+        <Button type="text" href={isGallery ? "#works" : "#story"}>{isGallery ? "十种风格" : "页面旅程"}</Button>
         <Button type="text" icon={<GithubOutlined />} href={repositoryUrl} target="_blank" rel="noreferrer">
           GitHub
         </Button>
@@ -156,7 +156,7 @@ function MobileSheet({ page, open, onClose }) {
     >
       <nav className="mobile-nav-links" aria-label="移动端导航">
         {page.id !== "gallery" && <Button type="text" block icon={<ArrowLeftOutlined />} href="../gallery/">全部作品</Button>}
-        <Button type="text" block href={page.id === "gallery" ? "#works" : "#design"}>{page.id === "gallery" ? "十种风格" : "视觉系统"}</Button>
+        <Button type="text" block href={page.id === "gallery" ? "#works" : "#story"}>{page.id === "gallery" ? "十种风格" : "页面旅程"}</Button>
         <Button type="text" block icon={<GithubOutlined />} href={repositoryUrl} target="_blank" rel="noreferrer">GitHub 仓库</Button>
         <Button block onClick={onClose}>关闭</Button>
       </nav>

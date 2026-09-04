@@ -20,9 +20,9 @@
   <strong><a href="https://ww-cooooo.github.io/ui-done/showcase/gallery/">点上面的图，直接看页面展厅 →</a></strong>
 </p>
 
-展厅里的十个作品全部由当前版本的 UI Done 从零重建。运动性能、海岸编辑、当代艺术、航天科技、复古街角、柔和生活、奢侈时装、赛博娱乐、当代新中式和瑞士网格，不是同一个模板换十套颜色：每一页都有自己的真实图片组、版式、动效语气、空间对象和经过官方字体样张比较后确定的开源字体组合。
+展厅里的十个作品全部由当前版本的 UI Done 从零重建。运动性能、海岸编辑、当代艺术、航天科技、复古街角、柔和生活、奢侈时装、赛博娱乐、当代新中式和瑞士网格，不是同一个模板换十套颜色：每一页都有自己的图片题材、内容顺序、首屏骨架、滚动节奏、场景级 3D 和经过官方字体样张比较后确定的开源字体组合。共享的只是路由、主题注入、懒加载和故障回退等看不见的工程底座。
 
-它们共用 React、Ant Design、Anime.js、Lenis、Three.js / R3F、Pts 与 AntV G2，但每种技术都围绕当页内容承担具体工作。全部图片和字体随仓库本地打包；图表只读取图片自身实测明度，不编造销量、用户数或其他经营数据。
+它们共用 React、Ant Design、Anime.js、Lenis、Three.js / R3F、针对性后期处理、Pts 与 AntV G2，但每种技术都围绕当页内容承担具体工作。全部图片和字体随仓库本地打包；总展厅的图表只读取图片自身实测明度，不编造销量、用户数或其他经营数据。
 
 <details>
 <summary><img src="./assets/readme/expand.svg" alt="点开看大图和说明" height="30"> <strong>10 种风格的大图和在线链接</strong></summary>
@@ -211,14 +211,14 @@ https://github.com/Ww-Cooooo/ui-done
 
 <br>
 
-当前示例展厅就是最新版 UI Done 的一套完整实现。总入口和十个作品都是 React 页面，共享生命周期、故障回退和构建基础设施，但每页的图片题材、开源字体、色彩、密度、布局骨架、3D 物体、Canvas 图形和 AntV 图表都根据各自调性重新设计。
+当前示例展厅就是最新版 UI Done 的一套完整实现。总入口和十个作品都是 React 页面，共享生命周期、故障回退和构建基础设施，但每页的图片题材、开源字体、色彩、密度、布局骨架、内容旅程、3D 场景和 Canvas 图形都根据各自调性重新设计；只有总展厅在确有真实比较对象时使用 AntV 图表。
 
 | 工作 | 示例展厅选用 |
 | --- | --- |
-| 页面主体与交互 | React 19 + Ant Design 6；按钮、Drawer、分段选择、卡片、标签与主题 token 都由同一组件系统负责 |
+| 页面主体与交互 | React 19 + Ant Design 6；按钮、Drawer、卡片、标签与主题 token 都由同一组件系统负责 |
 | 动画 | Anime.js 4；负责首屏编排、滚动进入与状态连续性，降低动效时切成静态完成态 |
 | 平滑滚动 | Lenis 1；负责电脑、平板、手机的同一滚动路径，并保留锚点、历史返回、键盘和 Ant Design 浮层 |
-| 真实 3D/WebGL | Three.js + React Three Fiber；每页使用不同的程序化空间对象，并提供不支持 WebGL 时的静态等价层 |
+| 真实 3D/WebGL | Three.js + React Three Fiber；分别构建气流跑道、海面着色器、程序化地球、霓虹粒子裂隙、水墨群山和建筑爆炸图等场景，只在合适的页面使用针对性后期处理，并提供不支持 WebGL 时的静态等价层 |
 | 独立 2D Canvas | Pts；负责与页面主题一致的程序化线场，和 3D 生命周期分开，2D context 不可用时不阻断正文 |
 | 数据可视化 | AntV G2；只使用本地图片逐像素测得的明度数据，滚动接近图表时才加载，并保留隐藏文字表格作为等价内容 |
 | 图标与字体 | Ant Design Icons 按需导入；12 套 OFL-1.1 开源字体按十种调性配对，中文子集和全部字体均本地打包 |
@@ -253,7 +253,7 @@ macOS 或 Linux 把 `python` 改成 `python3`。重新构建并检查示例时�
 
 <br>
 
-- React、Ant Design、Ant Design Icons、Anime.js、Lenis、Three.js、React Three Fiber、Pts、AntV G2 等示例运行时依赖使用各自的 MIT、Apache-2.0、0BSD 或 ISC 许可。精确版本、版权文字和完整许可证随打包文件保存在 [`showcase/shared/runtime/THIRD_PARTY_LICENSES.txt`](./showcase/shared/runtime/THIRD_PARTY_LICENSES.txt)。
+- React、Ant Design、Ant Design Icons、Anime.js、Lenis、Three.js、React Three Fiber、React Three Postprocessing、Postprocessing、Pts、AntV G2 等示例运行时依赖使用各自的 MIT、Zlib、Apache-2.0、0BSD 或 ISC 许可。精确版本、版权文字和完整许可证随打包文件保存在 [`showcase/shared/runtime/THIRD_PARTY_LICENSES.txt`](./showcase/shared/runtime/THIRD_PARTY_LICENSES.txt)。
 - Outfit、Big Shoulders、Noto、Cormorant、Syne、Fraunces、Bodoni Moda、Chakra Petch、Archivo、ZCOOL 和 Red Hat Mono 等字体使用 SIL Open Font License 1.1，原作者版权声明、中文子集来源清单和许可证文件保留在仓库中。
 - 展厅的 30 张 WebP 主视觉由图像生成工具为本仓库创建，不是第三方图库素材；提示方向、处理方式和内容边界见 [`showcase/assets/IMAGE_NOTICES.md`](./showcase/assets/IMAGE_NOTICES.md)。
 - 文件清单、哈希、来源、作者声明和适用范围见 [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md)。再分发仓库或打包后的示例时，请一并保留适用的声明和许可证。

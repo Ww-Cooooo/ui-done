@@ -24,7 +24,7 @@ class VisualErrorBoundary extends Component {
 }
 
 function StaticSpatialFallback({ page }) {
-  const count = page.layout === "soft" ? 5 : page.layout === "swiss" ? 7 : 6;
+  const count = page.layout === "soft" ? 5 : page.layout === "swiss" ? 9 : 7;
   return (
     <div className={`static-spatial static-${page.id}`} aria-hidden="true">
       {Array.from({ length: count }, (_, index) => (
@@ -72,7 +72,11 @@ export default function VisualStage({ page, compact = false }) {
   const fallback = <StaticSpatialFallback page={page} />;
 
   return (
-    <div ref={hostRef} className={`visual-stage ${compact ? "visual-stage-compact" : ""}`}>
+    <div
+      ref={hostRef}
+      className={`visual-stage visual-stage-${page.layout} visual-stage-${page.id} ${compact ? "visual-stage-compact" : ""}`}
+      data-scene={page.id}
+    >
       <div className="canvas-layer canvas-layer-2d" aria-hidden="true">
         {canvas2dReady && (
           <VisualErrorBoundary fallback={null}>
@@ -91,15 +95,6 @@ export default function VisualStage({ page, compact = false }) {
             </Suspense>
           </VisualErrorBoundary>
         ) : fallback}
-      </div>
-
-      <div className="stage-corner stage-corner-top">
-        <span>LIVE MATERIAL</span>
-        <strong>{page.number}</strong>
-      </div>
-      <div className="stage-corner stage-corner-bottom">
-        <span>{page.signature}</span>
-        <strong>3D + 2D</strong>
       </div>
     </div>
   );

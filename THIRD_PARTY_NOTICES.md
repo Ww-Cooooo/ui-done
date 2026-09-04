@@ -1,6 +1,6 @@
 # Third-party notices
 
-This file records material in the repository that is not covered solely by the root MIT License, together with the provenance boundary of the local showcase screenshots. The inventory was last checked on 2026-09-02.
+This file records material in the repository that is not covered solely by the root MIT License, together with the provenance boundary of the local showcase screenshots. The inventory was last checked on 2026-09-04.
 
 ## Bundled showcase runtime
 
@@ -11,7 +11,8 @@ The prebuilt files under `showcase/shared/runtime/` contain code from the produc
 | Interface runtime | React 19.2.8, React DOM 19.2.8, Scheduler 0.27.0 | MIT |
 | UI components and icons | Ant Design 6.6.2, Ant Design Icons 6.3.4 | MIT |
 | Motion and smooth scrolling | Anime.js 4.5.0, Lenis 1.3.26 | MIT |
-| 3D/WebGL | Three.js 0.185.1, React Three Fiber 9.7.0 | MIT |
+| 3D/WebGL | Three.js 0.185.1, React Three Fiber 9.7.0, React Three Postprocessing 3.1.1 | MIT |
+| WebGL postprocessing | Postprocessing 6.39.4 | Zlib |
 | 2D Canvas | Pts 0.12.9 | Apache-2.0 |
 | Visualization | AntV G2 5.4.8 | MIT |
 

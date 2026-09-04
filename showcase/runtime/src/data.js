@@ -77,7 +77,7 @@ function images(id, items) {
 
 export const showcasePages = [
   {
-    id: "velocity-works", number: "01", shortTitle: "Velocity Works", styleName: "运动性能",
+    id: "velocity-works", number: "01", shortTitle: "Velocity Works", styleName: "运动性能", journey: "全屏夜训叙事 / 气流轨道",
     layout: "velocity", theme: themes.velocity, chartKind: "bars", shape: "velocity",
     eyebrow: "PERFORMANCE STUDY / 01", audience: "运动品牌与训练产品概念页",
     title: "快，不是一句口号。", latinTitle: "BUILT FOR THE NEXT SECOND.",
@@ -92,7 +92,7 @@ export const showcasePages = [
     ]), luminance: [103, 51, 91]
   },
   {
-    id: "north-tide", number: "02", shortTitle: "North Tide", styleName: "海岸自然编辑",
+    id: "north-tide", number: "02", shortTitle: "North Tide", styleName: "海岸自然编辑", journey: "海岸长篇 / 潮汐地平线",
     layout: "editorial", theme: themes.coast, chartKind: "line", shape: "tide",
     eyebrow: "COASTAL JOURNAL / 02", audience: "旅行杂志与自然观察概念页",
     title: "沿着风，走到陆地尽头。", latinTitle: "THE SEA KEEPS ITS OWN TIME.",
@@ -107,7 +107,7 @@ export const showcasePages = [
     ]), luminance: [143, 74, 140]
   },
   {
-    id: "red-form", number: "03", shortTitle: "Red Form", styleName: "当代艺术粗野主义",
+    id: "red-form", number: "03", shortTitle: "Red Form", styleName: "当代艺术粗野主义", journey: "展览海报墙 / 动态装置",
     layout: "brutal", theme: themes.red, chartKind: "blocks", shape: "form",
     eyebrow: "EXHIBITION STUDY / 03", audience: "当代艺术展览与文化机构概念页",
     title: "红色不是装饰，是事件。", latinTitle: "FORM BREAKS THE ROOM.",
@@ -122,7 +122,7 @@ export const showcasePages = [
     ]), luminance: [77, 128, 81]
   },
   {
-    id: "orbital-grid", number: "04", shortTitle: "Orbital Grid", styleName: "未来航天科技",
+    id: "orbital-grid", number: "04", shortTitle: "Orbital Grid", styleName: "未来航天科技", journey: "任务简报 / 轨道系统",
     layout: "command", theme: themes.orbital, chartKind: "line", shape: "orbit",
     eyebrow: "ORBITAL SYSTEM / 04", audience: "深科技、航天与数据平台概念页",
     title: "把地面，连接到轨道。", latinTitle: "ONE SYSTEM ABOVE THE HORIZON.",
@@ -137,7 +137,7 @@ export const showcasePages = [
     ]), luminance: [22, 41, 19]
   },
   {
-    id: "corner-goods", number: "05", shortTitle: "Corner Goods", styleName: "温暖复古街角",
+    id: "corner-goods", number: "05", shortTitle: "Corner Goods", styleName: "温暖复古街角", journey: "街角商店 / 柜台故事",
     layout: "retro", theme: themes.corner, chartKind: "bars", shape: "stack",
     eyebrow: "NEIGHBORHOOD STUDY / 05", audience: "社区零售、餐饮与生活品牌概念页",
     title: "今天的好东西，就在街角。", latinTitle: "GOOD THINGS, CLOSE TO HOME.",
@@ -152,7 +152,7 @@ export const showcasePages = [
     ]), luminance: [71, 67, 75]
   },
   {
-    id: "still-day", number: "06", shortTitle: "Still Day", styleName: "柔和生活方式",
+    id: "still-day", number: "06", shortTitle: "Still Day", styleName: "柔和生活方式", journey: "安静日常 / 呼吸光体",
     layout: "soft", theme: themes.still, chartKind: "area", shape: "pebble",
     eyebrow: "MINDFUL ROUTINE / 06", audience: "健康、日记与轻生活应用概念页",
     title: "慢一点，日子会重新出现。", latinTitle: "MAKE SPACE FOR A QUIETER DAY.",
@@ -167,7 +167,7 @@ export const showcasePages = [
     ]), luminance: [155, 147, 120]
   },
   {
-    id: "atelier-noir", number: "07", shortTitle: "Atelier Noir", styleName: "奢侈时装编辑",
+    id: "atelier-noir", number: "07", shortTitle: "Atelier Noir", styleName: "奢侈时装编辑", journey: "横向 Lookbook / 流动材质",
     layout: "luxury", theme: themes.atelier, chartKind: "line", shape: "ribbon",
     eyebrow: "ATELIER STUDY / 07", audience: "时装、珠宝与高端品牌概念页",
     title: "克制，才让材质发声。", latinTitle: "CUT BY LIGHT. HELD BY FORM.",
@@ -182,7 +182,7 @@ export const showcasePages = [
     ]), luminance: [104, 50, 82]
   },
   {
-    id: "neon-rift", number: "08", shortTitle: "Neon Rift", styleName: "赛博娱乐",
+    id: "neon-rift", number: "08", shortTitle: "Neon Rift", styleName: "赛博娱乐", journey: "沉浸入口 / 粒子裂隙",
     layout: "cyber", theme: themes.neon, chartKind: "blocks", shape: "rift",
     eyebrow: "LIVE EXPERIENCE / 08", audience: "游戏、电竞与数字娱乐概念页",
     title: "进入裂隙，规则重新加载。", latinTitle: "ENTER THE RIFT.",
@@ -197,7 +197,7 @@ export const showcasePages = [
     ]), luminance: [40, 41, 54]
   },
   {
-    id: "shanshui-now", number: "09", shortTitle: "Shanshui Now", styleName: "当代新中式",
+    id: "shanshui-now", number: "09", shortTitle: "Shanshui Now", styleName: "当代新中式", journey: "当代长卷 / 云山视差",
     layout: "ink", theme: themes.ink, chartKind: "area", shape: "fold",
     eyebrow: "CONTEMPORARY CULTURE / 09", audience: "文化空间、展览与东方生活方式概念页",
     title: "山水不是旧图案，是今天的空间。", latinTitle: "TRADITION, STILL IN MOTION.",
@@ -212,7 +212,7 @@ export const showcasePages = [
     ]), luminance: [45, 94, 76]
   },
   {
-    id: "grid-01", number: "10", shortTitle: "Grid 01", styleName: "瑞士国际主义",
+    id: "grid-01", number: "10", shortTitle: "Grid 01", styleName: "瑞士国际主义", journey: "建筑档案 / 分解模型",
     layout: "swiss", theme: themes.swiss, chartKind: "bars", shape: "grid",
     eyebrow: "INTERNATIONAL STUDY / 10", audience: "建筑事务所、设计机构与公共文化概念页",
     title: "网格不是限制，是共同语言。", latinTitle: "ORDER MAKES THE IMAGE LOUDER.",
@@ -228,12 +228,6 @@ export const showcasePages = [
   }
 ];
 
-showcasePages.forEach(page => {
-  page.chartTitle = "三张主视觉的真实明度";
-  page.chartSummary = "数值由仓库内三张 WebP 图片逐像素测得，只描述画面明暗，不是虚构业务指标。";
-  page.chartData = page.images.map((image, index) => ({ label: image.label, value: page.luminance[index], group: page.styleName }));
-});
-
 export const galleryPage = {
   id: "gallery", number: "00", shortTitle: "UI Done Gallery", styleName: "十种设计方向",
   layout: "gallery", theme: themes.gallery, chartKind: "blocks", shape: "gallery",
@@ -242,10 +236,10 @@ export const galleryPage = {
   latinTitle: "ONE SKILL. TEN WORLDS.",
   intro: "每个作品都有真实图片、独立开源字体、自己的版式与空间语言；共用的是 React、Ant Design 和一套完整的前端能力边界。",
   signature: "十风格视觉索引", fontStatement: "Big Shoulders + Outfit + Noto Sans SC + Red Hat Mono",
-  chartTitle: "十套图片组的平均明度",
-  chartSummary: "每个数值是对应三张仓库图片的平均明度，用来证明图表来自真实资产，不编造产品经营数据。",
+  chartTitle: "十个世界的真实光线分布",
+  chartSummary: "每个数值来自对应三张本地 WebP 的逐像素平均明度。它只比较这套展示资产的明暗气质，不冒充品牌经营数据。",
   chartData: showcasePages.map(page => ({
-    label: page.number,
+    label: page.shortTitle,
     value: Math.round(page.luminance.reduce((sum, value) => sum + value, 0) / page.luminance.length),
     group: page.styleName
   }))

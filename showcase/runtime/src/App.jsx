@@ -1,44 +1,20 @@
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
-import { Button, Segmented, Tag } from "antd";
+import { Button, Tag } from "antd";
 import {
   ArrowDownOutlined,
-  ArrowLeftOutlined,
   ArrowRightOutlined,
   GithubOutlined,
   LoadingOutlined
 } from "@ant-design/icons";
 import ExperienceFrame from "./ExperienceFrame";
 import VisualStage from "./VisualStage";
+import ProjectExperience from "./ProjectExperiences";
 import { getPageConfig, showcasePages } from "./data";
-import { CapabilityStrip, GalleryModules, ProjectModules } from "./PageModules";
+import { CapabilityStrip, GalleryModules } from "./PageModules";
 import { useReducedMotion } from "./useReducedMotion";
 
 const DataChart = lazy(() => import("./DataChart"));
 const repositoryUrl = "https://github.com/Ww-Cooooo/ui-done";
-
-function ImageComposition({ page, active, onChange, compact = false }) {
-  return (
-    <div className={`image-composition layout-${page.layout} ${compact ? "is-compact" : ""}`}>
-      {page.images.map((image, index) => (
-        <button
-          type="button"
-          key={image.src}
-          className={`hero-shot shot-${index + 1} ${active === index ? "is-active" : ""}`}
-          onClick={() => onChange(index)}
-          aria-label={`查看 ${image.label}：${image.alt}`}
-          aria-pressed={active === index}
-        >
-          <img src={image.src} alt={image.alt} loading={index === 0 ? "eager" : "lazy"} />
-          <span><b>0{index + 1}</b>{image.label}</span>
-        </button>
-      ))}
-      <div className="composition-stamp" aria-hidden="true">
-        <span>{page.number}</span>
-        <b>{page.styleName}</b>
-      </div>
-    </div>
-  );
-}
 
 function GalleryHero() {
   const heroPages = showcasePages.slice(0, 6);
@@ -65,33 +41,6 @@ function GalleryHero() {
       </div>
       <div className="gallery-hero-foot" data-hero-reveal>
         <span>REACT</span><span>ANT DESIGN</span><span>ANTV</span><span>3D + CANVAS</span><span>OPEN-SOURCE TYPE</span>
-      </div>
-    </section>
-  );
-}
-
-function ProjectHero({ page, active, onChange }) {
-  const options = page.images.map((image, index) => ({ label: `${String(index + 1).padStart(2, "0")} ${image.label}`, value: index }));
-  return (
-    <section className={`project-hero project-hero-${page.layout}`}>
-      <div className="project-copy">
-        <Tag data-hero-reveal bordered={false}>{page.eyebrow}</Tag>
-        <p data-hero-reveal className="hero-audience">{page.audience} · 非真实品牌</p>
-        <h1 data-hero-reveal>{page.title}</h1>
-        <p data-hero-reveal className="latin-title">{page.latinTitle}</p>
-        <p data-hero-reveal className="hero-intro">{page.intro}</p>
-        <div data-hero-reveal className="hero-actions">
-          <Button type="primary" size="large" href="#design" icon={<ArrowDownOutlined />}>进入视觉系统</Button>
-          <Button size="large" href="../gallery/" icon={<ArrowLeftOutlined />}>返回展厅</Button>
-        </div>
-        <div data-hero-reveal className="font-proof">
-          <span>OPEN-SOURCE TYPE</span>
-          <strong>{page.fontStatement}</strong>
-        </div>
-      </div>
-      <div className="project-media" data-hero-reveal>
-        <ImageComposition page={page} active={active} onChange={onChange} />
-        <Segmented className="viewpoint-switch" aria-label="切换主视觉" options={options} value={active} onChange={onChange} />
       </div>
     </section>
   );
@@ -154,18 +103,20 @@ function Footer({ page }) {
 export default function App({ pageId }) {
   const page = getPageConfig(pageId);
   const reduced = useReducedMotion();
-  const [activeImage, setActiveImage] = useState(0);
-
-  useEffect(() => setActiveImage(0), [page.id]);
+  const isGallery = page.id === "gallery";
 
   return (
     <ExperienceFrame page={page} reduced={reduced}>
       <main>
-        {page.id === "gallery" ? <GalleryHero /> : <ProjectHero page={page} active={activeImage} onChange={setActiveImage} />}
-        {page.id === "gallery" ? <GalleryModules /> : <ProjectModules page={page} active={activeImage} onChange={setActiveImage} />}
-        <CapabilityStrip />
-        <ChartGate page={page} reduced={reduced} />
-        <FinalCall page={page} />
+        {isGallery ? (
+          <>
+            <GalleryHero />
+            <GalleryModules />
+            <CapabilityStrip />
+            <ChartGate page={page} reduced={reduced} />
+            <FinalCall page={page} />
+          </>
+        ) : <ProjectExperience page={page} />}
       </main>
       <Footer page={page} />
     </ExperienceFrame>

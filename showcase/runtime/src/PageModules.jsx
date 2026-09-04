@@ -1,7 +1,6 @@
-import { Button, Card, Tag } from "antd";
-import { ArrowRightOutlined, CheckOutlined, FontSizeOutlined, PictureOutlined } from "@ant-design/icons";
+import { Card, Tag } from "antd";
+import { ArrowRightOutlined, CheckOutlined, FontSizeOutlined } from "@ant-design/icons";
 import { capabilities, showcasePages } from "./data";
-import VisualStage from "./VisualStage";
 
 function SectionIntro({ index, eyebrow, title, copy }) {
   return (
@@ -34,7 +33,7 @@ export function GalleryModules() {
                 <div className="work-copy">
                   <p>{page.styleName}</p>
                   <h3>{page.shortTitle}</h3>
-                  <strong>{page.title}</strong>
+                  <strong>{page.journey}</strong>
                   <small><FontSizeOutlined /> {page.fontStatement}</small>
                   <b>进入作品 <ArrowRightOutlined /></b>
                 </div>
@@ -64,59 +63,6 @@ export function GalleryModules() {
         <div><FontSizeOutlined /><span>TYPE IS A DESIGN DECISION</span></div>
         <h2>每次页面设计，都要选一套真正匹配它的开源字体。</h2>
         <p>中文、英文、数字、代码和符号都必须被考虑；本地自带的普通字体只允许在资源加载失败时兜底。</p>
-      </section>
-    </>
-  );
-}
-
-export function ProjectModules({ page, active, onChange }) {
-  const activeImage = page.images[active];
-  return (
-    <>
-      <section id="design" className="content-section design-section">
-        <SectionIntro
-          index="01"
-          eyebrow={`${page.shortTitle.toUpperCase()} / DESIGN LOGIC`}
-          title="不是把照片放进去，而是让照片决定版式。"
-          copy={`这套${page.styleName}方向从三张真实主视觉出发，所有颜色、字体密度和空间层都围绕同一调性收束。`}
-        />
-        <div className="design-principles">
-          {page.details.map(([code, copy], index) => (
-            <Card key={code} bordered={false} data-scroll-reveal>
-              <span>0{index + 1}</span><h3>{code}</h3><p>{copy}</p>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      <section className={`image-essay image-essay-${page.layout}`} data-scroll-reveal>
-        <img src={activeImage.src} alt={activeImage.alt} />
-        <div className="image-essay-copy">
-          <span>{page.number} / {activeImage.label}</span>
-          <blockquote>{page.quote}</blockquote>
-          <p>{activeImage.alt}</p>
-          <div className="essay-picker" role="group" aria-label="选择当前视觉章节">
-            {page.images.map((image, index) => (
-              <Button key={image.label} type={index === active ? "primary" : "default"} onClick={() => onChange(index)} aria-pressed={index === active}>
-                {String(index + 1).padStart(2, "0")} {image.label}
-              </Button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="content-section spatial-section">
-        <div className="spatial-copy" data-scroll-reveal>
-          <Tag bordered={false} icon={<PictureOutlined />}>REAL IMAGE + LIVE MATERIAL</Tag>
-          <h2>图片负责叙事，3D 与 Canvas 负责空间气质。</h2>
-          <p>这里的 WebGL 对象和二维线场是可降级的视觉强调，不是假装成业务功能，也不会遮住核心内容。</p>
-          <ul>
-            <li><CheckOutlined /> Three.js / R3F：真实三维材质与空间关系</li>
-            <li><CheckOutlined /> Pts：独立二维程序化线场</li>
-            <li><CheckOutlined /> 减少动态、无 WebGL 或离屏时自动收束</li>
-          </ul>
-        </div>
-        <div className="spatial-work" data-scroll-reveal><VisualStage page={page} /></div>
       </section>
     </>
   );

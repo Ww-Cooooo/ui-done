@@ -36,6 +36,7 @@ Do not manufacture irrelevant states, but do not skip states the implementation 
 ## Visual and computed-style checks
 
 - Inspect full-page and focused screenshots, not just DOM structure.
+- For a multi-page set that claims different styles or subjects, compare a contact sheet and a compact section-signature list for every route. Reject a result when most routes preserve the same hero split, media count, numbered-card rhythm, advanced-visual position, chart/form position, and ending while only the skin changes.
 - Check hierarchy, alignment, spacing rhythm, color/contrast, radius/elevation consistency, icon alignment, image quality, and the intended signature element.
 - Look for library-proof content: sections, cards, labels, controls, scenes, or datasets that exist only to show a dependency was used. Remove them or shrink the capability into an existing region as a context-aligned accent.
 - For every visible enhancement, identify its existing host and product meaning. If either answer is vague, treat the placement as arbitrary even when the colors and spacing match.
@@ -62,6 +63,7 @@ Do not manufacture irrelevant states, but do not skip states the implementation 
 - For the separate 2D Canvas owner, verify resize, pixel ratio, redraw cost, teardown/remount, resource failure, and its static/DOM fallback on computer, tablet, and phone.
 - For WebGL/3D, exercise unsupported/initialization/resource/context-loss fallback and confirm equivalent semantic controls remain.
 - For R3F/Three.js, inspect phone/tablet rendering cost as well as desktop: device-pixel ratio, model/texture loading, draw calls or an equivalent profiler signal, hidden/offscreen pause, resize, and the actual static/DOM fallback.
+- For every prominent 3D scene, temporarily remove its label and judge the rendered subject, camera framing, depth, material response, lighting hierarchy, and motion. A generic primitive cluster, global auto-rotation, or color-only scene variant fails visual acceptance unless the page's content makes that exact treatment meaningful.
 - When authentic visualizable data exists, confirm one AntV-first or justified ECharts owner is actually rendered, uses real data, matches the interface tokens and tone, and remains readable and usable at all three device classes. If visualization is absent, verify the recorded hard exemption names the inspected data/content surfaces and proves that creating a chart would fabricate data or meaning.
 - Use Lighthouse or an equivalent performance/accessibility check when performance risk, public launch, or user requirements justify it. Record the tested build and environment; do not invent scores.
 
@@ -73,8 +75,9 @@ Do not manufacture irrelevant states, but do not skip states the implementation 
 4. Run the removal test on every newly added visible region: if removing it changes no product meaning and only hides a library, treat it as filler.
 5. Run the control test: if the user has no reason to manipulate an effect, remove its library-shaped controls and handle ambient motion through bounded behavior, system preferences, visibility, and context-appropriate accessibility mechanisms.
 6. Fix the shared token/layout/component cause when several screens exhibit the same defect. Shared lifecycle code is useful; repeated public UI can still be the defect.
-7. Rebuild if needed and rerun every affected viewport/state plus a nearby regression case.
-8. Repeat until no material issue remains or an explicit limitation is documented.
+7. For multi-page work, compare routes side by side after each major pass; fix repeated section order and signature placement before polishing individual colors or effects.
+8. Rebuild if needed and rerun every affected viewport/state plus a nearby regression case.
+9. Repeat until no material issue remains or an explicit limitation is documented.
 
 Never accept the first render simply because it loads.
 
