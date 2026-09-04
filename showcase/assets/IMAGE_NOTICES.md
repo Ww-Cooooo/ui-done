@@ -21,4 +21,4 @@ Every prompt used the same guardrails: a cohesive three-panel editorial triptych
 | `shanshui-now/` | Contemporary earthen gallery with a suspended red textile; inked paper and bronze detail; bamboo, water, and modern courtyard | 45 / 94 / 76 |
 | `grid-01/` | Red-clad figure at a white geometric museum; red-and-steel furniture detail; ordered black and blue chairs in a white colonnade | 122 / 114 / 101 |
 
-The luminance values above were measured from the final local WebP files and are the only data used by the showcase's AntV image-profile charts. They are not product, audience, sales, or performance metrics.
+The luminance values above were measured from the final local WebP files and are retained as asset metadata. The current AntV views instead use route capability metadata or the clearly labelled fixture records visible on each work page; they do not use product, audience, sales, or performance claims.

@@ -6,15 +6,18 @@ import {
   CompassOutlined,
   ExperimentOutlined,
   FireOutlined,
-  GlobalOutlined,
-  MoonOutlined,
-  RadarChartOutlined,
-  ShopOutlined,
-  SkinOutlined,
-  ThunderboltOutlined
+  GlobalOutlined
 } from "@ant-design/icons";
 import VisualStage from "./VisualStage";
 import { showcasePages } from "./data";
+import {
+  AtelierWorkspace,
+  CornerWorkspace,
+  GridWorkspace,
+  OrbitalWorkspace,
+  StillWorkspace,
+  VelocityWorkspace
+} from "./WorkExperiences";
 
 function ConceptFlag({ page, children }) {
   return <Tag bordered={false}>{children || `${page.styleName} · UI DONE CONCEPT`}</Tag>;
@@ -38,11 +41,7 @@ function TypefaceNote({ page }) {
 }
 
 function Scene({ page, className = "", compact = false }) {
-  return (
-    <div className={`project-scene ${className}`}>
-      <VisualStage page={page} compact={compact} />
-    </div>
-  );
+  return <div className={`project-scene ${className}`}><VisualStage page={page} compact={compact} /></div>;
 }
 
 function NextWork({ page }) {
@@ -57,47 +56,6 @@ function NextWork({ page }) {
         <ArrowRightOutlined />
       </a>
     </nav>
-  );
-}
-
-function VelocityWorks({ page }) {
-  return (
-    <>
-      <section className="velocity-cover">
-        <Image image={page.images[0]} eager />
-        <div className="velocity-shade" />
-        <div className="velocity-copy">
-          <ConceptFlag page={page}>NIGHT TRAINING / CONCEPT</ConceptFlag>
-          <p data-hero-reveal>RAIN ON CONCRETE · BREATH IN COLD AIR</p>
-          <h1 data-hero-reveal>快，不是一句口号。</h1>
-          <h2 className="latin-title" data-hero-reveal>{page.latinTitle}</h2>
-          <HeroLinks label="进入夜训" />
-        </div>
-        <Scene page={page} className="velocity-scene" />
-        <div className="velocity-rail" aria-hidden="true"><span>WET TRACK</span><span>FORWARD ONLY</span><span>NO FINISH LINE</span></div>
-      </section>
-
-      <section id="story" className="velocity-material">
-        <div className="velocity-material-copy" data-scroll-reveal>
-          <ThunderboltOutlined />
-          <p>THE SECOND BEFORE IMPACT</p>
-          <h2>速度先经过材料，<br />再抵达身体。</h2>
-          <span>水珠、织物与抓地结构被拉到近处。页面不展示虚构成绩，只让真实画面承担速度感。</span>
-          <TypefaceNote page={page} />
-        </div>
-        <figure data-scroll-reveal><Image image={page.images[1]} /><figcaption>MATERIAL / WET UPPER</figcaption></figure>
-      </section>
-
-      <section className="velocity-finish">
-        <Image image={page.images[2]} />
-        <div data-scroll-reveal>
-          <p>TRAIN ALONE / MOVE TOGETHER</p>
-          <blockquote>{page.quote}</blockquote>
-          <div className="velocity-principles">{page.details.map(([code, copy]) => <span key={code}><b>{code}</b>{copy}</span>)}</div>
-        </div>
-      </section>
-      <NextWork page={page} />
-    </>
   );
 }
 
@@ -175,127 +133,6 @@ function RedForm({ page }) {
   );
 }
 
-function OrbitalGrid({ page }) {
-  return (
-    <>
-      <section className="orbit-command">
-        <Scene page={page} className="orbit-scene" />
-        <div className="orbit-copy">
-          <ConceptFlag page={page}>ORBITAL SYSTEM / CONCEPT</ConceptFlag>
-          <p data-hero-reveal>GROUND ↔ ORBIT / ONE CONTINUOUS VIEW</p>
-          <h1 data-hero-reveal>把地面，<br />连接到轨道。</h1>
-          <p data-hero-reveal>{page.intro}</p>
-          <HeroLinks label="打开任务简报" />
-          <TypefaceNote page={page} />
-        </div>
-        <div className="orbit-crosshair" aria-hidden="true" />
-      </section>
-
-      <section id="story" className="orbit-brief">
-        <header data-scroll-reveal><RadarChartOutlined /><span>MISSION BRIEF / VISUAL EVIDENCE</span><h2>每一层信息，<br />都有真实对象。</h2></header>
-        <div className="orbit-panels">
-          {page.images.map((image, index) => (
-            <figure key={image.src} className={`orbit-panel orbit-panel-${index + 1}`} data-scroll-reveal>
-              <Image image={image} />
-              <figcaption><b>{image.label}</b><span>{page.details[index][1]}</span></figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
-
-      <section className="orbit-rule" data-scroll-reveal><span>CLARITY OVER NOISE</span><blockquote>{page.quote}</blockquote></section>
-      <NextWork page={page} />
-    </>
-  );
-}
-
-function CornerGoods({ page }) {
-  return (
-    <>
-      <section className="corner-front">
-        <Image image={page.images[0]} eager />
-        <div className="corner-sign" data-hero-reveal>
-          <ConceptFlag page={page}>NEIGHBORHOOD STORE / CONCEPT</ConceptFlag>
-          <ShopOutlined />
-          <h1>今天的好东西，<br />就在街角。</h1>
-          <p>{page.intro}</p>
-          <HeroLinks label="看看今天有什么" />
-        </div>
-      </section>
-
-      <section id="story" className="corner-counter">
-        <div className="corner-receipt" data-scroll-reveal>
-          <p>GOOD THINGS / CLOSE TO HOME</p>
-          <h2>新鲜、顺手，<br />还有一点人情味。</h2>
-          {page.details.map(([code, copy]) => <span key={code}><b>{code}</b>{copy}</span>)}
-          <TypefaceNote page={page} />
-        </div>
-        <figure data-scroll-reveal><Image image={page.images[1]} /><figcaption>COUNTER / TODAY</figcaption></figure>
-      </section>
-
-      <section className="corner-shelf">
-        <Scene page={page} className="corner-scene" />
-        <figure data-scroll-reveal><Image image={page.images[2]} /><figcaption><b>THE KEEPER</b><span>{page.quote}</span></figcaption></figure>
-      </section>
-      <NextWork page={page} />
-    </>
-  );
-}
-
-function StillDay({ page }) {
-  return (
-    <>
-      <section className="still-opening">
-        <div className="still-copy">
-          <ConceptFlag page={page}>A QUIETER ROUTINE / CONCEPT</ConceptFlag>
-          <MoonOutlined data-hero-reveal />
-          <h1 data-hero-reveal>慢一点，<br />日子会重新出现。</h1>
-          <p data-hero-reveal>{page.intro}</p>
-          <HeroLinks label="留一点空白" />
-        </div>
-        <figure data-hero-reveal><Image image={page.images[0]} eager /></figure>
-        <Scene page={page} className="still-scene" />
-      </section>
-
-      <section id="story" className="still-chapters">
-        <article data-scroll-reveal><span>MORNING</span><h2>先让光落在桌面。</h2><p>水、纸张和一枝绿叶已经足够。界面不必催促下一步。</p></article>
-        <figure data-scroll-reveal><Image image={page.images[1]} /><figcaption>MAKE / WITH YOUR HANDS</figcaption></figure>
-        <article data-scroll-reveal><span>MAKE</span><blockquote>{page.quote}</blockquote><TypefaceNote page={page} /></article>
-        <figure data-scroll-reveal><Image image={page.images[2]} /><figcaption>WALK / OUTSIDE THE SCREEN</figcaption></figure>
-      </section>
-      <NextWork page={page} />
-    </>
-  );
-}
-
-function AtelierNoir({ page }) {
-  return (
-    <>
-      <section className="atelier-cover">
-        <figure data-hero-reveal><Image image={page.images[0]} eager /></figure>
-        <div className="atelier-title">
-          <ConceptFlag page={page}>COLLECTION STUDY / CONCEPT</ConceptFlag>
-          <p data-hero-reveal>ATELIER NOIR · CUT BY LIGHT</p>
-          <h1 data-hero-reveal>克制，<br /><em>才让材质发声。</em></h1>
-          <HeroLinks label="进入系列" />
-        </div>
-        <Scene page={page} className="atelier-scene" />
-      </section>
-
-      <section id="story" className="atelier-lookbook">
-        <header data-scroll-reveal><SkinOutlined /><span>THE MATERIAL EDIT</span><h2>Cut. Skin. Space.</h2></header>
-        <div className="atelier-looks">
-          <figure data-scroll-reveal><Image image={page.images[1]} /><figcaption>OBJECT / SILVER ON SKIN</figcaption></figure>
-          <blockquote data-scroll-reveal>{page.quote}</blockquote>
-          <figure data-scroll-reveal><Image image={page.images[2]} /><figcaption>MOVEMENT / STONE STAIR</figcaption></figure>
-        </div>
-        <TypefaceNote page={page} />
-      </section>
-      <NextWork page={page} />
-    </>
-  );
-}
-
 function NeonRift({ page }) {
   return (
     <>
@@ -353,47 +190,17 @@ function ShanshuiNow({ page }) {
   );
 }
 
-function GridZeroOne({ page }) {
-  return (
-    <>
-      <section className="grid-cover">
-        <div className="grid-index" aria-hidden="true">G/01</div>
-        <div className="grid-title">
-          <ConceptFlag page={page}>ARCHITECTURE DOSSIER / CONCEPT</ConceptFlag>
-          <p data-hero-reveal>ORDER MAKES THE IMAGE LOUDER</p>
-          <h1 data-hero-reveal>网格不是限制，<br />是共同语言。</h1>
-          <HeroLinks label="打开建筑档案" />
-        </div>
-        <figure data-hero-reveal><Image image={page.images[0]} eager /><figcaption>FIELD / PUBLIC AXIS</figcaption></figure>
-      </section>
-
-      <section id="story" className="grid-dossier">
-        <header data-scroll-reveal><span>PROJECT FILE</span><h2>图像可以大胆，<br />信息仍然一眼找到。</h2><TypefaceNote page={page} /></header>
-        <figure className="grid-detail" data-scroll-reveal><Image image={page.images[1]} /><figcaption>DETAIL / PRIMARY SIGNAL</figcaption></figure>
-        <div className="grid-notes" data-scroll-reveal>{page.details.map(([code, copy]) => <p key={code}><b>{code}</b><span>{copy}</span></p>)}</div>
-        <figure className="grid-system" data-scroll-reveal><Image image={page.images[2]} /><figcaption>SYSTEM / REPEATED ORDER</figcaption></figure>
-      </section>
-
-      <section className="grid-model">
-        <div data-scroll-reveal><span>SPATIAL STUDY</span><h2>结构拆开以后，<br />秩序仍然成立。</h2><blockquote>{page.quote}</blockquote></div>
-        <Scene page={page} className="grid-scene" />
-      </section>
-      <NextWork page={page} />
-    </>
-  );
-}
-
 const experiences = {
-  "velocity-works": VelocityWorks,
+  "velocity-works": VelocityWorkspace,
   "north-tide": NorthTide,
   "red-form": RedForm,
-  "orbital-grid": OrbitalGrid,
-  "corner-goods": CornerGoods,
-  "still-day": StillDay,
-  "atelier-noir": AtelierNoir,
+  "orbital-grid": OrbitalWorkspace,
+  "corner-goods": CornerWorkspace,
+  "still-day": StillWorkspace,
+  "atelier-noir": AtelierWorkspace,
   "neon-rift": NeonRift,
   "shanshui-now": ShanshuiNow,
-  "grid-01": GridZeroOne
+  "grid-01": GridWorkspace
 };
 
 export default function ProjectExperience({ page }) {

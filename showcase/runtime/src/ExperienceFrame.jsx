@@ -102,6 +102,9 @@ function BrandMark() {
 
 function Header({ page, onMenu }) {
   const isGallery = page.id === "gallery";
+  const isWork = page.product?.mode === "work";
+  const primaryHref = isGallery ? "#works" : isWork ? "#workspace" : "#story";
+  const primaryLabel = isGallery ? "产品与风格" : isWork ? "工作台" : "页面旅程";
 
   return (
     <header className="site-header">
@@ -113,7 +116,7 @@ function Header({ page, onMenu }) {
       <div className="header-center" aria-label="当前作品">
         <span>{page.number}</span>
         <strong>{page.shortTitle}</strong>
-        <small>{isGallery ? "TEN DIRECTIONS" : page.styleName}</small>
+        <small>{isGallery ? "PRODUCT × VISUAL" : page.product?.type || page.styleName}</small>
       </div>
 
       <nav className="desktop-nav" aria-label="主要导航">
@@ -122,7 +125,7 @@ function Header({ page, onMenu }) {
             全部作品
           </Button>
         )}
-        <Button type="text" href={isGallery ? "#works" : "#story"}>{isGallery ? "十种风格" : "页面旅程"}</Button>
+        <Button type="text" href={primaryHref}>{primaryLabel}</Button>
         <Button type="text" icon={<GithubOutlined />} href={repositoryUrl} target="_blank" rel="noreferrer">
           GitHub
         </Button>
@@ -140,6 +143,8 @@ function Header({ page, onMenu }) {
 }
 
 function MobileSheet({ page, open, onClose }) {
+  const isGallery = page.id === "gallery";
+  const isWork = page.product?.mode === "work";
   return (
     <Drawer
       rootClassName="mobile-nav-drawer"
@@ -156,7 +161,7 @@ function MobileSheet({ page, open, onClose }) {
     >
       <nav className="mobile-nav-links" aria-label="移动端导航">
         {page.id !== "gallery" && <Button type="text" block icon={<ArrowLeftOutlined />} href="../gallery/">全部作品</Button>}
-        <Button type="text" block href={page.id === "gallery" ? "#works" : "#story"}>{page.id === "gallery" ? "十种风格" : "页面旅程"}</Button>
+        <Button type="text" block href={isGallery ? "#works" : isWork ? "#workspace" : "#story"}>{isGallery ? "产品与风格" : isWork ? "工作台" : "页面旅程"}</Button>
         <Button type="text" block icon={<GithubOutlined />} href={repositoryUrl} target="_blank" rel="noreferrer">GitHub 仓库</Button>
         <Button block onClick={onClose}>关闭</Button>
       </nav>
@@ -184,7 +189,7 @@ function ThemedContent({ page, children, reduced }) {
   }), [page]);
 
   return (
-    <div ref={rootRef} className={`app page-${page.id} tone-${page.theme.mode}`} style={style}>
+    <div ref={rootRef} className={`app page-${page.id} tone-${page.theme.mode} product-${page.product?.mode || "expressive"}`} style={style}>
       <MotionDirector rootRef={rootRef} reduced={reduced} />
       <div className="scroll-progress" aria-hidden="true" />
       <Header page={page} onMenu={() => setMenuOpen(true)} />
@@ -225,7 +230,7 @@ export default function ExperienceFrame({ page, children, reduced }) {
             lerp: 0.085,
             smoothWheel: true,
             syncTouch: false,
-            prevent: node => Boolean(node.closest?.(".ant-drawer, .ant-modal, .ant-table-body"))
+            prevent: node => Boolean(node.closest?.("[data-lenis-prevent], .ant-drawer, .ant-modal, .ant-table-body, .ant-picker-panel"))
           }}
         >
           <ScrollSignal />

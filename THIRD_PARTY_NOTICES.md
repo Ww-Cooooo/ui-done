@@ -58,4 +58,4 @@ The screenshots visually include output rendered by the open-source runtime pack
 
 Unless otherwise noted, the repository's project-authored Skill files, scripts, documentation, showcase source code, screenshots, and original interface artwork are licensed under the [MIT License](./LICENSE).
 
-The bundled runtime libraries and font files are excluded from the project's root MIT License and remain under their respective MIT, Apache-2.0, 0BSD, ISC, and OFL-1.1 terms. References to Google Fonts, IBM, Red Hat, and the listed open-source projects identify sources and rights holders only; they do not imply sponsorship or endorsement.
+The bundled runtime libraries and font files are excluded from the project's root MIT License and remain under their respective MIT, Zlib, Apache-2.0, 0BSD, ISC, and OFL-1.1 terms. References to Google Fonts, IBM, Red Hat, and the listed open-source projects identify sources and rights holders only; they do not imply sponsorship or endorsement.

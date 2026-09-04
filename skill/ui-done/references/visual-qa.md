@@ -26,6 +26,7 @@ Add an extra-wide desktop, extra-narrow phone, landscape orientation, TV, kiosk,
 Cover the home/entry page plus representative distinct routes. Exercise applicable states rather than only the happy path:
 
 - Navigation, deep links, browser back/forward, search/filter, dialogs/drawers/menus, forms, and destructive confirmation.
+- On every operational/work route, exercise the promised shortest loop from selection or filtering through inspection to a real action or decision and visible feedback. For mutable tasks, confirm refresh/reset behavior and verify that controls change the same records summarized by the interface or visualization. For genuinely read-only tasks, verify that filtering, selection, comparison, navigation, and decision context remain coherent without a fabricated write or success state.
 - Empty, loading, success, validation error, request error/timeout, offline, disabled, and permission-limited states.
 - Long Chinese/English text, unbroken paths/IDs, large numbers, missing optional fields, many/few items, and realistic data.
 - Hover, focus, pressed, selected, expanded, drag/touch, and keyboard-only operation.
@@ -37,6 +38,7 @@ Do not manufacture irrelevant states, but do not skip states the implementation 
 
 - Inspect full-page and focused screenshots, not just DOM structure.
 - For a multi-page set that claims different styles or subjects, compare a contact sheet and a compact section-signature list for every route. Reject a result when most routes preserve the same hero split, media count, numbered-card rhythm, advanced-visual position, chart/form position, and ending while only the skin changes.
+- For a multi-page set that claims broad product coverage, compare the route matrix as well as the contact sheet. Record each route's product model, user, core task verb, information architecture, mutable state or browsing goal, data source, and phone transformation. Reject a set whose supposed variety is still mostly brochure, campaign, poster, or dashboard-shaped decoration with renamed sections.
 - Check hierarchy, alignment, spacing rhythm, color/contrast, radius/elevation consistency, icon alignment, image quality, and the intended signature element.
 - Look for library-proof content: sections, cards, labels, controls, scenes, or datasets that exist only to show a dependency was used. Remove them or shrink the capability into an existing region as a context-aligned accent.
 - For every visible enhancement, identify its existing host and product meaning. If either answer is vague, treat the placement as arbitrary even when the colors and spacing match.
@@ -60,6 +62,7 @@ Do not manufacture irrelevant states, but do not skip states the implementation 
 - Confirm images/media reserve dimensions, font loading does not cause damaging layout shift, and heavy features load lazily when appropriate.
 - Exercise reduced-motion emulation and verify automatic motion, smooth scrolling, parallax, loops, and scroll pinning collapse safely.
 - When Lenis is selected, verify wheel, touch, keyboard, anchor links, browser back/forward and restoration, text selection, nested scroll areas, and Ant Design Modal/Drawer/Table behavior on computer, tablet, and phone. Confirm teardown/remount does not duplicate the scroll owner or animation frame.
+- For work surfaces, verify responsive task transformation rather than mere stacking: simultaneous desktop context may collapse into an explicit mobile focus, but primary actions, current state, validation feedback, and a path back to the list must remain available without horizontal document scrolling.
 - For the separate 2D Canvas owner, verify resize, pixel ratio, redraw cost, teardown/remount, resource failure, and its static/DOM fallback on computer, tablet, and phone.
 - Confirm the recorded 3D suitability decision for every substantial surface. When the gate failed, verify the surface does not mount a WebGL canvas, run an initialization probe, or request a 3D chunk. The required 2D Canvas layer remains independent.
 - When WebGL/3D was adopted, exercise unsupported/initialization/resource/context-loss fallback and confirm equivalent semantic controls remain.
@@ -79,8 +82,9 @@ Do not manufacture irrelevant states, but do not skip states the implementation 
 5. Run the control test: if the user has no reason to manipulate an effect, remove its library-shaped controls and handle ambient motion through bounded behavior, system preferences, visibility, and context-appropriate accessibility mechanisms.
 6. Fix the shared token/layout/component cause when several screens exhibit the same defect. Shared lifecycle code is useful; repeated public UI can still be the defect.
 7. For multi-page work, compare routes side by side after each major pass; fix repeated section order and signature placement before polishing individual colors or effects.
-8. Rebuild if needed and rerun every affected viewport/state plus a nearby regression case.
-9. Repeat until no material issue remains or an explicit limitation is documented.
+8. Compare product behavior as well as composition: confirm that work routes use different task-appropriate structures and each completes its declared loop, while expressive routes are not padded with fake controls or data.
+9. Rebuild if needed and rerun every affected viewport/state plus a nearby regression case.
+10. Repeat until no material issue remains or an explicit limitation is documented.
 
 Never accept the first render simply because it loads.
 
@@ -90,6 +94,7 @@ Report a compact matrix containing:
 
 - Build/entry mechanism and browser engine/version actually used.
 - Viewports, routes, states, and interaction paths tested.
+- The route-level product/task matrix and the completed action loop for each operational surface.
 - Screenshot locations when artifacts are retained.
 - Host, meaning, and control decisions for visible motion, scroll, Canvas, visualization, and any adopted 3D layer, plus the explicit suitability-gate result where 3D was omitted.
 - Official demos inspected for selected or serious candidates, what was adopted or rejected, how adopted behavior was retuned to the product, idea-only versus code use, and any hard demo-review exemption.

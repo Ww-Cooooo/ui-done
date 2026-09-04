@@ -1,5 +1,6 @@
-import { Card, Tag } from "antd";
-import { ArrowRightOutlined, CheckOutlined, FontSizeOutlined } from "@ant-design/icons";
+import { useMemo, useState } from "react";
+import { Card, Segmented, Tag } from "antd";
+import { ArrowRightOutlined, CheckOutlined, FontSizeOutlined, UserOutlined } from "@ant-design/icons";
 import { capabilities, showcasePages } from "./data";
 
 function SectionIntro({ index, eyebrow, title, copy }) {
@@ -13,29 +14,47 @@ function SectionIntro({ index, eyebrow, title, copy }) {
 }
 
 export function GalleryModules() {
+  const [mode, setMode] = useState("all");
+  const orderedPages = useMemo(() => [
+    ...showcasePages.filter(page => page.product.mode === "work"),
+    ...showcasePages.filter(page => page.product.mode === "expressive")
+  ], []);
+  const visiblePages = orderedPages.filter(page => mode === "all" || page.product.mode === mode);
+
   return (
     <>
       <section id="works" className="content-section works-section">
         <SectionIntro
           index="01"
-          eyebrow="TEN DISTINCT DIRECTIONS"
-          title="每一页，先选择自己的审美立场。"
-          copy="不是同一个组件模板换十套颜色。题材、字体、构图、图片节奏、空间对象和交互语气都会随页面目标一起改变。"
+          eyebrow="PRODUCT FIRST / VISUAL SECOND"
+          title="先看要完成什么，再看它长什么样。"
+          copy="六个工作型产品分别承担分析、监控、经营、计划、审阅和协作；四个表达型页面承担编辑、展览、娱乐与文化叙事。风格和产品结构两条轴都不同。"
         />
+        <div className="gallery-filter" data-scroll-reveal>
+          <Segmented
+            aria-label="按产品类型筛选作品"
+            value={mode}
+            onChange={setMode}
+            options={[{ label: "全部 10", value: "all" }, { label: "工作型 6", value: "work" }, { label: "表达型 4", value: "expressive" }]}
+          />
+          <span>当前显示 {visiblePages.length} 个不同产品任务</span>
+        </div>
         <div className="works-grid">
-          {showcasePages.map(page => (
-            <Card key={page.id} className={`work-card work-card-${page.layout}`} bordered={false} data-scroll-reveal>
+          {visiblePages.map(page => (
+            <Card key={page.id} className={`work-card work-card-${page.layout} work-card-${page.product.mode}`} bordered={false} data-scroll-reveal>
               <a href={`../${page.id}/`} aria-label={`打开 ${page.shortTitle}：${page.styleName}`}>
                 <div className="work-images">
-                  {page.images.map((image, index) => <img key={image.src} src={image.src} alt={index === 0 ? image.alt : ""} loading="lazy" />)}
+                  {(page.product.mode === "work" ? page.images.slice(0, 1) : page.images).map((image, index) => <img key={image.src} src={image.src} alt={index === 0 ? image.alt : ""} loading="lazy" />)}
                   <span>{page.number}</span>
+                  {page.product.mode === "work" && <div className="work-task-overlay"><small><UserOutlined /> {page.product.role}</small><b>{page.product.verb}</b><em>{page.product.ia}</em></div>}
                 </div>
                 <div className="work-copy">
-                  <p>{page.styleName}</p>
+                  <p>{page.product.mode === "work" ? "WORK PRODUCT" : "EXPRESSIVE EXPERIENCE"} / {page.styleName}</p>
                   <h3>{page.shortTitle}</h3>
-                  <strong>{page.journey}</strong>
+                  <strong>{page.product.type}</strong>
+                  <span className="work-loop">{page.product.loop}</span>
                   <small><FontSizeOutlined /> {page.fontStatement}</small>
-                  <b>进入作品 <ArrowRightOutlined /></b>
+                  <b>{page.product.mode === "work" ? "进入工作台" : "进入体验"} <ArrowRightOutlined /></b>
                 </div>
               </a>
             </Card>
@@ -47,8 +66,8 @@ export function GalleryModules() {
         <SectionIntro
           index="02"
           eyebrow="BRIEF IN / FULL SYSTEM OUT"
-          title="小白只管说人话，Agent 负责主动展开。"
-          copy="你不需要像专业设计师一样，先把字体、组件、动效、图表和每张图片逐项点名。UI Done 会主动安排各类能力；3D 单独经过严格适配判断，不为展示技术而硬塞。"
+          title="小白说人话，Agent 把产品和视觉一起展开。"
+          copy="不必先规定每张卡、每个图表和每种动效。先说谁要做什么，UI Done 会主动规划产品结构、开源字体、组件、动效、滚动、Canvas、真实数据图形和合适的素材；3D 单独经过严格适配判断。"
         />
         <div className="beginner-grid" data-scroll-reveal>
           <blockquote>“做一个有高级感的文化展览页，手机也要好看。”</blockquote>

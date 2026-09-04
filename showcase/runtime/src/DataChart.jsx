@@ -17,6 +17,27 @@ function baseAxis(page) {
 }
 
 function chartSpec(page, reduced) {
+  if (page.chartKind === "matrix") {
+    return {
+      type: "cell",
+      data: page.chartData,
+      autoFit: true,
+      encode: { x: "capability", y: "label", color: "value" },
+      scale: {
+        color: { domain: [0, 1], range: [page.theme.surfaceAlt, page.theme.accent] }
+      },
+      axis: {
+        x: { ...baseAxis(page), grid: false, title: false },
+        y: { ...baseAxis(page), grid: false, title: false }
+      },
+      legend: { color: false },
+      style: { inset: 3, radius: 5, stroke: page.theme.line, lineWidth: 1 },
+      interaction: { tooltip: { shared: false } },
+      animate: reduced ? false : { enter: { type: "fadeIn", duration: 420 } },
+      theme: { type: "classic", view: { viewFill: "transparent" } }
+    };
+  }
+
   const horizontal = page.chartKind === "blocks";
   const common = {
     data: page.chartData,
@@ -72,6 +93,16 @@ function chartSpec(page, reduced) {
 }
 
 function DataTable({ page }) {
+  if (page.chartKind === "matrix") {
+    return (
+      <table className="visually-hidden">
+        <caption>{page.chartTitle}：{page.chartSummary}</caption>
+        <thead><tr><th>页面</th><th>工作能力</th><th>是否真实覆盖</th></tr></thead>
+        <tbody>{page.chartData.map(item => <tr key={`${item.label}-${item.capability}`}><td>{item.label}</td><td>{item.capability}</td><td>{item.value ? "是" : "否"}</td></tr>)}</tbody>
+      </table>
+    );
+  }
+
   return (
     <table className="visually-hidden">
       <caption>{page.chartTitle}：{page.chartSummary}</caption>
@@ -92,7 +123,7 @@ export default function DataChart({ page, reduced }) {
     let cancelled = false;
     setError(null);
     try {
-      chart = new Chart({ container: host, autoFit: true, height: 440 });
+      chart = new Chart({ container: host, autoFit: true, height: page.chartKind === "matrix" ? 520 : 440 });
       chart.options(chartSpec(page, reduced));
       Promise.resolve(chart.render()).catch(reason => {
         if (!cancelled) setError(reason instanceof Error ? reason.message : String(reason));
@@ -109,12 +140,12 @@ export default function DataChart({ page, reduced }) {
   return (
     <section className="chart-panel" data-scroll-reveal aria-labelledby={`${page.id}-chart-title`}>
       <div className="chart-heading">
-        <div><Tag bordered={false} icon={<BarChartOutlined />}>ANTV G2 / 30 LOCAL IMAGES</Tag><h2 id={`${page.id}-chart-title`}>{page.chartTitle}</h2></div>
+        <div><Tag bordered={false} icon={<BarChartOutlined />}>{page.chartKind === "matrix" ? "ANTV G2 / ROUTE CAPABILITY MATRIX" : "ANTV G2 / LOCAL DATA"}</Tag><h2 id={`${page.id}-chart-title`}>{page.chartTitle}</h2></div>
         <p>{page.chartSummary}</p>
       </div>
       {error ? <Alert type="warning" showIcon message="图形层已回退" description="真实数值仍完整保留在页面的无障碍数据表中。" /> : <div ref={hostRef} className="g2-host" aria-hidden="true" />}
       <DataTable page={page} />
-      <div className="chart-proof" aria-label="图表数据说明"><CheckCircleOutlined /><span>30 张本地图片实测</span><span>逐像素 0–255 明度</span><span>无虚构经营指标</span></div>
+      <div className="chart-proof" aria-label="图表数据说明"><CheckCircleOutlined /><span>10 个公开路由</span><span>6 类工作能力</span><span>由当前页面配置生成</span><span>无虚构经营指标</span></div>
     </section>
   );
 }
