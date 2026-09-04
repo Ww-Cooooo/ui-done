@@ -61,9 +61,12 @@ Do not manufacture irrelevant states, but do not skip states the implementation 
 - Exercise reduced-motion emulation and verify automatic motion, smooth scrolling, parallax, loops, and scroll pinning collapse safely.
 - When Lenis is selected, verify wheel, touch, keyboard, anchor links, browser back/forward and restoration, text selection, nested scroll areas, and Ant Design Modal/Drawer/Table behavior on computer, tablet, and phone. Confirm teardown/remount does not duplicate the scroll owner or animation frame.
 - For the separate 2D Canvas owner, verify resize, pixel ratio, redraw cost, teardown/remount, resource failure, and its static/DOM fallback on computer, tablet, and phone.
-- For WebGL/3D, exercise unsupported/initialization/resource/context-loss fallback and confirm equivalent semantic controls remain.
-- For R3F/Three.js, inspect phone/tablet rendering cost as well as desktop: device-pixel ratio, model/texture loading, draw calls or an equivalent profiler signal, hidden/offscreen pause, resize, and the actual static/DOM fallback.
-- For every prominent 3D scene, temporarily remove its label and judge the rendered subject, camera framing, depth, material response, lighting hierarchy, and motion. A generic primitive cluster, global auto-rotation, or color-only scene variant fails visual acceptance unless the page's content makes that exact treatment meaningful.
+- Confirm the recorded 3D suitability decision for every substantial surface. When the gate failed, verify the surface does not mount a WebGL canvas, run an initialization probe, or request a 3D chunk. The required 2D Canvas layer remains independent.
+- When WebGL/3D was adopted, exercise unsupported/initialization/resource/context-loss fallback and confirm equivalent semantic controls remain.
+- For adopted R3F/Three.js, inspect phone/tablet rendering cost as well as desktop: device-pixel ratio, model/texture loading, draw calls or an equivalent profiler signal, hidden/offscreen pause, resize, and the actual static/DOM fallback.
+- For every prominent adopted 3D scene, temporarily remove its label and judge the rendered subject, camera framing, depth, material response, lighting hierarchy, and motion. A generic primitive cluster, global auto-rotation, or color-only scene variant fails visual acceptance unless the page's content makes that exact treatment meaningful.
+- Capture several animation phases and inspect the complete loop from more than one useful camera view. Fail accidental mesh interpenetration, self-intersection, z-fighting, coplanar flicker, near/far-plane clipping, or animated collisions. Allow deliberate joints, contact patches, and nested shells only when their structural intent is visually clear.
+- Reject finished models that look like unrelated stock boxes, cylinders, spheres, or toruses pushed together. Primitive construction is acceptable for helpers, blocking, procedural systems, or an explicitly justified low-poly/technical language; the delivered subject still needs a coherent silhouette, believable joints, intentional scale/detail hierarchy, legible materials and lighting, and subject-specific motion.
 - When authentic visualizable data exists, confirm one AntV-first or justified ECharts owner is actually rendered, uses real data, matches the interface tokens and tone, and remains readable and usable at all three device classes. If visualization is absent, verify the recorded hard exemption names the inspected data/content surfaces and proves that creating a chart would fabricate data or meaning.
 - Use Lighthouse or an equivalent performance/accessibility check when performance risk, public launch, or user requirements justify it. Record the tested build and environment; do not invent scores.
 
@@ -88,7 +91,7 @@ Report a compact matrix containing:
 - Build/entry mechanism and browser engine/version actually used.
 - Viewports, routes, states, and interaction paths tested.
 - Screenshot locations when artifacts are retained.
-- Host, meaning, and control decisions for visible motion, scroll, Canvas, 3D, and visualization layers.
+- Host, meaning, and control decisions for visible motion, scroll, Canvas, visualization, and any adopted 3D layer, plus the explicit suitability-gate result where 3D was omitted.
 - Official demos inspected for selected or serious candidates, what was adopted or rejected, how adopted behavior was retuned to the product, idea-only versus code use, and any hard demo-review exemption.
 - Selected open-source font families/roles, exact source/license, specimen evidence, computed loading and glyph coverage, plus external requests, console/page errors, overflow, focus/touch, reduced-motion, and fallback results.
 - Performance/accessibility tool results only when actually run.

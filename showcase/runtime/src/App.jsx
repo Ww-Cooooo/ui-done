@@ -24,7 +24,7 @@ function GalleryHero() {
         <Tag data-hero-reveal bordered={false}>UI DONE / OPEN-SOURCE FRONTEND SKILL</Tag>
         <p data-hero-reveal className="hero-overline">TEN VISUAL DIRECTIONS · ONE ACTIVE SYSTEM</p>
         <h1 data-hero-reveal>不是换色。<br /><em>是换一个世界。</em></h1>
-        <p data-hero-reveal className="hero-lead">同一句“做帅一点”，UI Done 会主动补齐图片、字体、组件、动效、滚动、3D、Canvas 与真实图表，再根据你的要求继续细调。</p>
+        <p data-hero-reveal className="hero-lead">同一句“做帅一点”，UI Done 会主动补齐图片、字体、组件、动效、滚动、Canvas 与真实图表；3D 只在真正适配且能做好时加入，再根据你的要求继续细调。</p>
         <div data-hero-reveal className="hero-actions">
           <Button type="primary" size="large" href="#works" icon={<ArrowDownOutlined />}>看十种风格</Button>
           <Button size="large" href={repositoryUrl} target="_blank" rel="noreferrer" icon={<GithubOutlined />}>获取 Skill</Button>
@@ -40,7 +40,7 @@ function GalleryHero() {
         <div className="gallery-spatial"><VisualStage page={getPageConfig("gallery")} compact /></div>
       </div>
       <div className="gallery-hero-foot" data-hero-reveal>
-        <span>REACT</span><span>ANT DESIGN</span><span>ANTV</span><span>3D + CANVAS</span><span>OPEN-SOURCE TYPE</span>
+        <span>REACT</span><span>ANT DESIGN</span><span>ANTV</span><span>SELECTIVE 3D + CANVAS</span><span>OPEN-SOURCE TYPE</span>
       </div>
     </section>
   );

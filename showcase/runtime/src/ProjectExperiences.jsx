@@ -70,7 +70,7 @@ function VelocityWorks({ page }) {
           <ConceptFlag page={page}>NIGHT TRAINING / CONCEPT</ConceptFlag>
           <p data-hero-reveal>RAIN ON CONCRETE · BREATH IN COLD AIR</p>
           <h1 data-hero-reveal>快，不是一句口号。</h1>
-          <h2 data-hero-reveal>{page.latinTitle}</h2>
+          <h2 className="latin-title" data-hero-reveal>{page.latinTitle}</h2>
           <HeroLinks label="进入夜训" />
         </div>
         <Scene page={page} className="velocity-scene" />

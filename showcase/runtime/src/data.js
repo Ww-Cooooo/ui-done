@@ -2,7 +2,7 @@ export const capabilities = [
   ["UI", "React + Ant Design"],
   ["MOTION", "Anime.js"],
   ["SCROLL", "Lenis"],
-  ["3D", "Three.js + R3F"],
+  ["3D", "Three.js + R3F / selective"],
   ["2D", "Pts"],
   ["DATA", "AntV G2"],
   ["TYPE", "Open-source fonts"],
@@ -94,6 +94,7 @@ export const showcasePages = [
   {
     id: "north-tide", number: "02", shortTitle: "North Tide", styleName: "海岸自然编辑", journey: "海岸长篇 / 潮汐地平线",
     layout: "editorial", theme: themes.coast, chartKind: "line", shape: "tide",
+    spatial3d: { role: "连续水面、天气与地平线的空间关系" },
     eyebrow: "COASTAL JOURNAL / 02", audience: "旅行杂志与自然观察概念页",
     title: "沿着风，走到陆地尽头。", latinTitle: "THE SEA KEEPS ITS OWN TIME.",
     intro: "没有旅游海报的甜味，只有风、盐、岩层和雾。缓慢的衬线字与横向留白把海岸写成一篇长文章。",
@@ -109,6 +110,7 @@ export const showcasePages = [
   {
     id: "red-form", number: "03", shortTitle: "Red Form", styleName: "当代艺术粗野主义", journey: "展览海报墙 / 动态装置",
     layout: "brutal", theme: themes.red, chartKind: "blocks", shape: "form",
+    spatial3d: { role: "一体成型的当代雕塑与展场光线" },
     eyebrow: "EXHIBITION STUDY / 03", audience: "当代艺术展览与文化机构概念页",
     title: "红色不是装饰，是事件。", latinTitle: "FORM BREAKS THE ROOM.",
     intro: "硬边、粗线、冲突色与巨型编号把白盒子打破。图像不被温柔地摆放，而是直接占领网格。",
@@ -124,6 +126,7 @@ export const showcasePages = [
   {
     id: "orbital-grid", number: "04", shortTitle: "Orbital Grid", styleName: "未来航天科技", journey: "任务简报 / 轨道系统",
     layout: "command", theme: themes.orbital, chartKind: "line", shape: "orbit",
+    spatial3d: { role: "地球、轨道与完整航天器的真实空间关系" },
     eyebrow: "ORBITAL SYSTEM / 04", audience: "深科技、航天与数据平台概念页",
     title: "把地面，连接到轨道。", latinTitle: "ONE SYSTEM ABOVE THE HORIZON.",
     intro: "这不是用霓虹假装科技。卫星、碳纤维与控制室给每一层信息一个真实对象，橙色只负责关键状态。",
@@ -152,7 +155,7 @@ export const showcasePages = [
     ]), luminance: [71, 67, 75]
   },
   {
-    id: "still-day", number: "06", shortTitle: "Still Day", styleName: "柔和生活方式", journey: "安静日常 / 呼吸光体",
+    id: "still-day", number: "06", shortTitle: "Still Day", styleName: "柔和生活方式", journey: "安静日常 / 柔光涟漪",
     layout: "soft", theme: themes.still, chartKind: "area", shape: "pebble",
     eyebrow: "MINDFUL ROUTINE / 06", audience: "健康、日记与轻生活应用概念页",
     title: "慢一点，日子会重新出现。", latinTitle: "MAKE SPACE FOR A QUIETER DAY.",
@@ -184,6 +187,7 @@ export const showcasePages = [
   {
     id: "neon-rift", number: "08", shortTitle: "Neon Rift", styleName: "赛博娱乐", journey: "沉浸入口 / 粒子裂隙",
     layout: "cyber", theme: themes.neon, chartKind: "blocks", shape: "rift",
+    spatial3d: { role: "粒子裂隙的纵深、速度与入口尺度" },
     eyebrow: "LIVE EXPERIENCE / 08", audience: "游戏、电竞与数字娱乐概念页",
     title: "进入裂隙，规则重新加载。", latinTitle: "ENTER THE RIFT.",
     intro: "紫蓝光、透明控制器和巨构空间组成同一条世界观。界面像入口，不像贴满发光按钮的设备面板。",
@@ -214,6 +218,7 @@ export const showcasePages = [
   {
     id: "grid-01", number: "10", shortTitle: "Grid 01", styleName: "瑞士国际主义", journey: "建筑档案 / 分解模型",
     layout: "swiss", theme: themes.swiss, chartKind: "bars", shape: "grid",
+    spatial3d: { role: "具有真实装配间隙的建筑分解体" },
     eyebrow: "INTERNATIONAL STUDY / 10", audience: "建筑事务所、设计机构与公共文化概念页",
     title: "网格不是限制，是共同语言。", latinTitle: "ORDER MAKES THE IMAGE LOUDER.",
     intro: "红、蓝、黑和严格坐标把内容组织得像一张公共海报。照片可以大胆，信息仍然一眼找到。",

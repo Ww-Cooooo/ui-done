@@ -1,6 +1,6 @@
 # Motion, Scroll, and 3D
 
-For substantial frontend work, motion, scroll enhancement, true 3D/WebGL, and 2D Canvas are four distinct default layers. Give each one a role that communicates hierarchy, feedback, state, narrative, atmosphere, drawing, or spatial continuity, then tune its intensity to the product. A restrained dashboard and an expressive campaign page should use the layers differently, not omit the ecosystem automatically.
+For substantial frontend work, motion, scroll enhancement, and 2D Canvas are three distinct default layers. Give each one a role that communicates hierarchy, feedback, state, narrative, atmosphere, or drawing, then tune its intensity to the product. Evaluate true 3D/WebGL separately and adopt it only when the subject is inherently spatial, it adds unique communication value, and the team can finish it to the required quality. A restrained dashboard and an expressive campaign page should use the default layers differently; neither should receive forced 3D.
 
 ## Choose one primary owner per layer
 
@@ -10,16 +10,16 @@ For substantial frontend work, motion, scroll enhancement, true 3D/WebGL, and 2D
 | Component state, presence, layout continuity | One maintained UI-motion library or framework-native motion layer | Keep scroll pinning and scrubbing in the scroll layer |
 | Scroll storytelling | Anime.js `onScroll` | Limit pinning and scrubbing to the narrative regions that need it; it owns choreography, not scroll mechanics |
 | Smooth scrolling | Lenis through `lenis/react` | Default to it on computer, tablet, and phone when the tested path works; preserve reduced motion, nested controls, anchors, focus navigation, and precise regions |
-| Signature 3D scene | Three.js through React Three Fiber | Use R3F as the React scene boundary, keep it in one bounded product-aligned region, and provide a static/DOM fallback |
+| Conditional signature 3D scene | Three.js through React Three Fiber, only after the suitability gate passes | Use R3F as the React scene boundary, keep it in one bounded product-aligned region, and provide a static/DOM fallback; otherwise do not mount or request WebGL |
 | Separate 2D Canvas role | Pts for creative/programmed drawing or Fabric.js for editable objects | This is independent from the R3F scene; use DOM controls and labels for essential interaction |
 
-Research current APIs, maintenance, license, and bundle behavior before choosing the owners. Lenis and Three.js/R3F are the starting selections, not immutable version pins; recheck them at adoption time. For substantial work, missing motion, scroll, true 3D, or separate 2D Canvas coverage requires an observed hard constraint, not merely “native is simpler.”
+Research current APIs, maintenance, license, and bundle behavior before choosing the owners. Lenis is the starting scroll selection; Three.js/R3F is the starting 3D selection only after the suitability gate passes. Recheck selected packages at adoption time. For substantial work, missing motion, scroll, or separate 2D Canvas coverage requires an observed hard constraint, not merely “native is simpler.” A failed 3D suitability gate is a valid conditional decision and does not require a hard exemption.
 
 When Anime.js is a serious candidate, read `open-source-ui-sources.md` before selection. Use it as the primary motion or timeline owner for a defined region, not as an extra engine layered over Motion, GSAP, CSS, or another system controlling the same behavior.
 
 Use Lenis as the only smooth-scroll mechanics owner. Its official React component/hook should wrap the intended root or bounded container; Anime.js may consume scroll progress for choreography without becoming a second mechanics engine. Keep Lenis active across the default device matrix when it passes, and prefer excluding one incompatible nested region or scaling behavior before disabling it globally.
 
-For true 3D/WebGL in React, begin with `three` plus `@react-three/fiber`. Add `@react-three/drei` only for named helpers the scene needs. Use direct Three.js lifecycle code only when a low-level integration does not fit R3F; do not choose Pts, Fabric.js, CSS transforms, or a static fake merely to avoid implementing real spatial rendering.
+When true 3D/WebGL passes the gate, begin with `three` plus `@react-three/fiber`. Add `@react-three/drei` only for named helpers the scene needs. Use direct Three.js lifecycle code only when a low-level integration does not fit R3F; do not choose Pts, Fabric.js, CSS transforms, or a static fake merely to claim that real spatial rendering exists.
 
 ## Fit before scale
 
@@ -27,13 +27,34 @@ Name the existing host, the interface job, and the smallest useful footprint bef
 
 - Motion attaches to an existing state change, hierarchy cue, or feedback loop. Do not invent extra entrances, carousels, or controls to make the animation system visible.
 - Smooth scrolling improves an existing scroll path. Do not create a long narrative section merely to demonstrate smoothing or scroll triggers.
-- True 3D uses a product object, spatial relationship, real visualization, or established visual motif when one exists. Without a natural primary position, embed a small context-aligned object or spatial accent inside an existing region.
+- True 3D uses a product object, spatial relationship, real visualization, or established visual motif only when the suitability gate passes. Without a natural host or unique spatial value, omit it instead of shrinking it into a decorative object.
 - 2D Canvas receives a different host and job, such as a restrained programmed texture, drawing layer, particle response, or editable object surface. It cannot be counted as the 3D role, and the 3D scene cannot be counted again as Canvas.
 - Never add a large standalone 3D panel, scene label, explanatory copy, or control cluster whose only job is to prove that the engine was installed.
 - A cluster of stock primitives with one global auto-rotation, generic three-point lighting, and palette swaps is not a finished signature scene unless the subject specifically calls for that object and motion. Establish a scene-specific subject, composition/camera, material/environment response, light hierarchy, and meaningful motion; post-processing may finish that hierarchy but cannot create it.
-- Across a set of intentionally different pages, vary the role as well as the shape: 3D may become a hero environment, an embedded product object, a scroll transition, a spatial diagram, or a quiet accent. Do not append the same framed Canvas after the same content block on every route.
+- Across a set of intentionally different pages, adopted 3D may become a hero environment, an embedded product object, a scroll transition, a spatial diagram, or a quiet accent when that exact role passes the gate. Some pages should have no WebGL at all. Do not append the same framed Canvas after the same content block on every route.
 
-If removing a new visual region changes no product meaning and only hides evidence of the library, the region is filler. Remove it, then relocate the effect at a smaller scale or attach it to a real interaction.
+If removing a new visual region changes no product meaning and only hides evidence of the library, the region is filler. Remove it, then relocate a default effect at a smaller scale or attach it to a real interaction. For 3D, removal means the suitability gate failed; do not force a replacement WebGL accent.
+
+## 3D suitability gate
+
+Evaluate 3D on every substantial build or redesign, but adopt it only when all four conditions pass:
+
+1. **Natural host:** an existing product object, spatial relationship, real dataset, or established motif owns the scene.
+2. **Inherently spatial subject:** material, volume, depth, or movement through space is central to the content.
+3. **Unique communication value:** real 3D explains or expresses something that DOM, photography, video, SVG, or the required 2D Canvas layer cannot express as clearly.
+4. **Finishable budget:** modeling, lighting/material response, subject-specific motion, responsive GPU cost, and a static/DOM fallback can all meet the delivery bar.
+
+If any condition fails, record `3D not adopted: suitability gate failed: <specific reason>`. Stop 3D package and demo scouting for that surface before a serious candidate exists, and do not add, mount, download, initialize, or probe a WebGL runtime there. This is a successful evaluation, not a hard exemption. If all conditions pass, inspect the relevant official demos before selection and implementation.
+
+## Geometry integrity and modeling finish
+
+An adopted scene must pass all of these checks in several camera views and across its full animation cycle:
+
+- No accidental mesh interpenetration, self-intersection, z-fighting, coplanar flicker, near/far-plane clipping, or animation-cycle collisions. Intentional structural joins, sockets, contact patches, nested shells, and atmospheric layers are valid only when their construction reads clearly.
+- Stock boxes, spheres, cylinders, and toruses may support helpers, blocking, procedural construction, or an explicitly justified low-poly/technical language. They are not a finished-model strategy by themselves.
+- The subject has one coherent silhouette, believable joins, intentional proportion and scale hierarchy, meaningful medium/small detail, and materials and lighting that reveal rather than flatten its form.
+- Motion belongs to the subject: orbiting objects follow an intelligible path and orientation, mechanisms articulate at plausible joints, environments flow continuously, and nothing clips through another object during the loop.
+- Post-processing may polish a good scene but cannot hide crude geometry, broken contacts, a generic primitive cluster, or weak framing.
 
 ## Prove host, meaning, and control
 
@@ -43,7 +64,7 @@ Answer these questions for every visible effect before implementation:
 2. **Meaning:** What does the user understand, accomplish, notice, or feel because it moves or gains depth?
 3. **Control:** Why would the user need to pause, reset, rotate, scrub, change speed, or switch views?
 
-If the host or meaning cannot be stated specifically, the effect is arbitrary. “More dynamic,” “more premium,” and “adds visual interest” are not sufficient unless they connect to the brief's content or established visual language. Rework the effect, shrink it into a genuine accent, or give the tool a different role. A decorative scene name such as “field,” “orbit,” or “spatial view” does not create meaning; if removing the label makes the effect inexplicable, the label was compensating for weak integration.
+If the host or meaning cannot be stated specifically, the effect is arbitrary. “More dynamic,” “more premium,” and “adds visual interest” are not sufficient unless they connect to the brief's content or established visual language. Rework a default effect, shrink it into a genuine accent, or give the tool a different role. For 3D, fail the suitability gate and omit it. A decorative scene name such as “field,” “orbit,” or “spatial view” does not create meaning; if removing the label makes the effect inexplicable, the label was compensating for weak integration.
 
 Prefer motion on a surface the product already expects—a promotional strip, schedule card, product object, map path, progress state, or real chart transition—over a separate animation surface. The reusable lesson is integration into existing content, not copying any particular marquee, orbit, or visual style.
 
@@ -52,7 +73,7 @@ Treat visible controls as product features. Do not surface pause, reset, rotate,
 ## Assign ownership
 
 - Give one system ownership of each animated property and scroll container.
-- Keep UI motion, scroll timelines, and 3D render loops in separate components/modules with explicit inputs.
+- Keep UI motion, scroll timelines, and any adopted 3D render loops in separate components/modules with explicit inputs.
 - Do not let CSS, a UI-motion library, and a timeline engine all animate the same transform.
 - Do not run multiple uncontrolled `requestAnimationFrame` loops for one visual region.
 - When Lenis, Anime.js, or R3F share time or scroll signals, coordinate them through one explicit scheduler/bridge where supported; do not let each layer poll and mutate the same target independently.
@@ -79,7 +100,7 @@ Implement and test applicable items:
 ## Computer, tablet, and phone policy
 
 - Exercise Lenis on all three default device classes. On touch devices, keep upstream-safe touch behavior unless a stronger synchronization mode has passed the supported iOS/Android checks; a desktop success is not evidence for phone. Verify anchor links, keyboard focus, route restoration, nested Ant Design overlays/tables, text selection, overscroll, and reduced motion.
-- Exercise R3F/Three.js on phone and tablet instead of removing it by assumption. Reduce device-pixel ratio, model/texture size, lights, post-processing, draw calls, update frequency, and interaction density to meet the budget; lazy-load the scene and pause hidden/offscreen work.
+- When 3D was adopted, exercise R3F/Three.js on phone and tablet. Reduce device-pixel ratio, model/texture size, lights, post-processing, draw calls, update frequency, and interaction density to meet the budget; lazy-load the scene and pause hidden/offscreen work. Do not confuse a suitability-gate rejection with a device-performance fallback.
 - Exercise the separate 2D Canvas role on phone and tablet. Reduce pixel ratio, particle/object count, redraw frequency, and interaction density before omitting it; verify resize, teardown, and a static/DOM fallback independently from the 3D scene.
 - Fall back only after a reproducible compatibility, accessibility, performance, delivery, or runtime failure. Record the failing device/path and retain a coherent static/DOM result rather than silently shipping an empty region.
 
@@ -112,7 +133,9 @@ For WebGL, cover both initialization failure and runtime `webglcontextlost`. A f
 - Test mouse, keyboard, touch where relevant, and at least one low/mobile viewport.
 - Confirm no competing scroll regions, clipped pinned content, focus jumps, or input-blocking timelines.
 - Exercise initialization/resource/context failure for advanced visuals.
+- For adopted 3D, capture several animation phases, inspect the complete motion cycle, and verify the geometry-integrity rules rather than judging one flattering frame.
+- For surfaces that rejected 3D, confirm no WebGL canvas, initialization probe, or 3D chunk request occurs.
 - Navigate away/unmount and return; check for duplicate canvases, loops, listeners, or rising memory.
 - Capture screenshots of the full, reduced, and fallback states.
 
-If an enhanced layer fails, the coherent static fallback must still work. A required fallback is not a reason to omit the enhanced layer by default.
+If an adopted enhanced layer fails, the coherent static fallback must still work. A required fallback is not a reason to omit a default layer. For conditional 3D, decide suitability first; once adopted, fallback quality is mandatory.

@@ -68,7 +68,8 @@ export default function VisualStage({ page, compact = false }) {
   const reduced = useReducedMotion();
   const [hostRef, visible] = useVisibility();
   const [canvas2dReady] = useState(() => supportsContext("2d"));
-  const [webglReady] = useState(() => supportsContext("webgl2") || supportsContext("webgl"));
+  const hasSpatial3d = Boolean(page.spatial3d);
+  const [webglReady] = useState(() => hasSpatial3d && (supportsContext("webgl2") || supportsContext("webgl")));
   const fallback = <StaticSpatialFallback page={page} />;
 
   return (
@@ -76,6 +77,7 @@ export default function VisualStage({ page, compact = false }) {
       ref={hostRef}
       className={`visual-stage visual-stage-${page.layout} visual-stage-${page.id} ${compact ? "visual-stage-compact" : ""}`}
       data-scene={page.id}
+      data-spatial={hasSpatial3d ? "webgl" : "canvas"}
     >
       <div className="canvas-layer canvas-layer-2d" aria-hidden="true">
         {canvas2dReady && (
@@ -87,15 +89,17 @@ export default function VisualStage({ page, compact = false }) {
         )}
       </div>
 
-      <div className="canvas-layer canvas-layer-3d" role="img" aria-label={`${page.shortTitle}：${page.signature}`}>
-        {webglReady ? (
-          <VisualErrorBoundary fallback={fallback}>
-            <Suspense fallback={fallback}>
-              <SpatialScene page={page} active={visible && !reduced} />
-            </Suspense>
-          </VisualErrorBoundary>
-        ) : fallback}
-      </div>
+      {hasSpatial3d && (
+        <div className="canvas-layer canvas-layer-3d" role="img" aria-label={`${page.shortTitle} 三维场景：${page.spatial3d.role}`}>
+          {webglReady ? (
+            <VisualErrorBoundary fallback={fallback}>
+              <Suspense fallback={fallback}>
+                <SpatialScene page={page} active={visible && !reduced} />
+              </Suspense>
+            </VisualErrorBoundary>
+          ) : fallback}
+        </div>
+      )}
     </div>
   );
 }

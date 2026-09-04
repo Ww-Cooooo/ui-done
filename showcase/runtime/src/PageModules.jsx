@@ -48,7 +48,7 @@ export function GalleryModules() {
           index="02"
           eyebrow="BRIEF IN / FULL SYSTEM OUT"
           title="小白只管说人话，Agent 负责主动展开。"
-          copy="你不需要像专业设计师一样，先把字体、组件、动效、图表和每张图片逐项点名。UI Done 会先为每一类能力安排用途，再以极严格的理由排除真正不合适的部分。"
+          copy="你不需要像专业设计师一样，先把字体、组件、动效、图表和每张图片逐项点名。UI Done 会主动安排各类能力；3D 单独经过严格适配判断，不为展示技术而硬塞。"
         />
         <div className="beginner-grid" data-scroll-reveal>
           <blockquote>“做一个有高级感的文化展览页，手机也要好看。”</blockquote>
