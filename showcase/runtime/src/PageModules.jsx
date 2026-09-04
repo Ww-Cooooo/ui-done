@@ -27,7 +27,7 @@ export function GalleryModules() {
         <SectionIntro
           index="01"
           eyebrow="PRODUCT FIRST / VISUAL SECOND"
-          title="先看要完成什么，再看它长什么样。"
+          title={<><span className="type-phrase">先看要完成什么，</span><span className="type-phrase">再看它长什么样。</span></>}
           copy="六个工作型产品分别承担分析、监控、经营、计划、审阅和协作；四个表达型页面承担编辑、展览、娱乐与文化叙事。风格和产品结构两条轴都不同。"
         />
         <div className="gallery-filter" data-scroll-reveal>
@@ -41,7 +41,7 @@ export function GalleryModules() {
         </div>
         <div className="works-grid">
           {visiblePages.map(page => (
-            <Card key={page.id} className={`work-card work-card-${page.layout} work-card-${page.product.mode}`} bordered={false} data-scroll-reveal>
+            <Card key={page.id} className={`work-card work-card-${page.id} work-card-${page.layout} work-card-${page.product.mode}`} bordered={false} data-scroll-reveal>
               <a href={`../${page.id}/`} aria-label={`打开 ${page.shortTitle}：${page.styleName}`}>
                 <div className="work-images">
                   {(page.product.mode === "work" ? page.images.slice(0, 1) : page.images).map((image, index) => <img key={image.src} src={image.src} alt={index === 0 ? image.alt : ""} loading="lazy" />)}
@@ -66,7 +66,7 @@ export function GalleryModules() {
         <SectionIntro
           index="02"
           eyebrow="BRIEF IN / FULL SYSTEM OUT"
-          title="小白说人话，Agent 把产品和视觉一起展开。"
+          title={<><span className="type-phrase">小白说人话，</span><span className="type-phrase">Agent 把产品和视觉一起展开。</span></>}
           copy="不必先规定每张卡、每个图表和每种动效。先说谁要做什么，UI Done 会主动规划产品结构、开源字体、组件、动效、滚动、Canvas、真实数据图形和合适的素材；3D 单独经过严格适配判断。"
         />
         <div className="beginner-grid" data-scroll-reveal>
@@ -80,7 +80,7 @@ export function GalleryModules() {
 
       <section className="content-section type-manifesto" data-scroll-reveal>
         <div><FontSizeOutlined /><span>TYPE IS A DESIGN DECISION</span></div>
-        <h2>每次页面设计，都要选一套真正匹配它的开源字体。</h2>
+        <h2><span className="type-phrase">每次页面设计，</span><span className="type-phrase">都要选一套真正匹配它的开源字体。</span></h2>
         <p>中文、英文、数字、代码和符号都必须被考虑；本地自带的普通字体只允许在资源加载失败时兜底。</p>
       </section>
     </>

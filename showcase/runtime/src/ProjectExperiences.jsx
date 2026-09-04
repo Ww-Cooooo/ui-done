@@ -65,7 +65,7 @@ function NorthTide({ page }) {
       <section className="tide-masthead">
         <ConceptFlag page={page}>COASTAL FIELD JOURNAL / CONCEPT</ConceptFlag>
         <p data-hero-reveal>VOL. 02 · NORTH EDGE · WIND NOTES</p>
-        <h1 data-hero-reveal>沿着风，<br /><em>走到陆地尽头。</em></h1>
+        <h1 data-hero-reveal><span className="type-line"><span className="type-lock">沿着风，</span></span><em className="type-line"><span className="type-lock">走到陆地尽头。</span></em></h1>
         <p data-hero-reveal className="tide-deck">{page.intro}</p>
         <HeroLinks label="翻开海岸笔记" />
       </section>
@@ -87,7 +87,7 @@ function NorthTide({ page }) {
 
       <section className="tide-horizon">
         <Scene page={page} className="tide-scene" />
-        <div data-scroll-reveal><p>THE SEA KEEPS ITS OWN TIME</p><h2>不用赶路。<br />让地平线慢慢靠近。</h2></div>
+        <div data-scroll-reveal><p>THE SEA KEEPS ITS OWN TIME</p><h2><span className="type-line"><span className="type-lock">不用赶路。</span></span><span className="type-line"><span className="type-lock">让地平线慢慢靠近。</span></span></h2></div>
       </section>
 
       <figure className="tide-shelter" data-scroll-reveal><Image image={page.images[2]} /><figcaption><b>SHELTER IN FOG</b><span>白色建筑不是终点，只是风里短暂的停顿。</span></figcaption></figure>
@@ -103,7 +103,7 @@ function RedForm({ page }) {
         <div className="red-poster-copy">
           <ConceptFlag page={page}>TEMPORARY EXHIBITION / CONCEPT</ConceptFlag>
           <p data-hero-reveal>FORM / BODY / RESISTANCE</p>
-          <h1 data-hero-reveal>红色不是装饰，<br /><span>是事件。</span></h1>
+          <h1 data-hero-reveal><span className="type-line"><span className="type-lock">红色不是装饰，</span></span><span className="type-line red-event"><span className="type-lock">是事件。</span></span></h1>
           <HeroLinks label="进入展场" />
         </div>
         <figure data-hero-reveal><Image image={page.images[2]} eager /><figcaption>BODY BREAKS THE GRID</figcaption></figure>
@@ -118,7 +118,7 @@ function RedForm({ page }) {
       <section className="red-wall">
         <figure data-scroll-reveal><Image image={page.images[0]} /><figcaption>OBJECT / SUSPENDED MASS</figcaption></figure>
         <div className="red-wall-copy" data-scroll-reveal>
-          <h2>不要替作品<br />保持礼貌。</h2>
+          <h2><span className="type-line"><span className="type-lock">不要替作品</span></span><span className="type-line"><span className="type-lock">保持礼貌。</span></span></h2>
           {page.details.map(([code, copy]) => <p key={code}><b>{code}</b><span>{copy}</span></p>)}
         </div>
         <figure data-scroll-reveal><Image image={page.images[1]} /><figcaption>SURFACE / TENSION</figcaption></figure>
@@ -126,7 +126,7 @@ function RedForm({ page }) {
 
       <section className="red-sculpture">
         <Scene page={page} className="red-scene" />
-        <div data-scroll-reveal><ExperimentOutlined /><span>KINETIC STUDY</span><h2>光线切开金属，<br />运动改变空间。</h2></div>
+        <div data-scroll-reveal><ExperimentOutlined /><span>KINETIC STUDY</span><h2><span className="type-line"><span className="type-lock">光线切开金属，</span></span><span className="type-line"><span className="type-lock">运动改变空间。</span></span></h2></div>
       </section>
       <NextWork page={page} />
     </>
@@ -142,7 +142,7 @@ function NeonRift({ page }) {
         <div className="rift-copy">
           <ConceptFlag page={page}>LIVE DIGITAL EXPERIENCE / CONCEPT</ConceptFlag>
           <p data-hero-reveal>THE GATE IS ALREADY OPEN</p>
-          <h1 data-hero-reveal>进入裂隙。</h1>
+          <h1 data-hero-reveal><span className="type-lock">进入裂隙。</span></h1>
           <h2 data-hero-reveal>规则重新加载。</h2>
           <HeroLinks label="穿过入口" />
         </div>
@@ -150,11 +150,11 @@ function NeonRift({ page }) {
 
       <section id="story" className="rift-arena">
         <figure data-scroll-reveal><Image image={page.images[0]} /><figcaption>ARENA / LIVE SCALE</figcaption></figure>
-        <div data-scroll-reveal><FireOutlined /><p>ONE WORLD / ONE SIGNAL</p><h2>氛围不是特效总量。</h2><blockquote>{page.quote}</blockquote></div>
+        <div data-scroll-reveal><FireOutlined /><p>ONE WORLD / ONE SIGNAL</p><h2><span className="type-phrase">氛围不是</span><span className="type-phrase">特效总量。</span></h2><blockquote>{page.quote}</blockquote></div>
       </section>
 
       <section className="rift-input" data-scroll-reveal>
-        <div><GlobalOutlined /><span>INPUT BECOMES WORLD</span><h2>手里的触感，<br />连接远处的巨构。</h2><TypefaceNote page={page} /></div>
+        <div><GlobalOutlined /><span>INPUT BECOMES WORLD</span><h2><span className="type-line"><span className="type-lock">手里的触感，</span></span><span className="type-line"><span className="type-lock">连接远处的巨构。</span></span></h2><TypefaceNote page={page} /></div>
         <figure><Image image={page.images[1]} /><figcaption>TRANSPARENT CONTROL / NEON LIGHT</figcaption></figure>
       </section>
       <NextWork page={page} />
@@ -170,7 +170,7 @@ function ShanshuiNow({ page }) {
         <div className="ink-title">
           <ConceptFlag page={page}>CONTEMPORARY CULTURE / CONCEPT</ConceptFlag>
           <p data-hero-reveal>TRADITION, STILL IN MOTION</p>
-          <h1 data-hero-reveal>山水不是旧图案，<br />是今天的空间。</h1>
+          <h1 data-hero-reveal><span className="type-line"><span className="type-lock">山水不是旧图案，</span></span><span className="type-line"><span className="type-lock">是今天的空间。</span></span></h1>
           <HeroLinks label="展开长卷" />
           <TypefaceNote page={page} />
         </div>
@@ -181,10 +181,10 @@ function ShanshuiNow({ page }) {
       <section id="story" className="ink-trace">
         <p className="ink-vertical" aria-hidden="true">留白不是空</p>
         <figure data-scroll-reveal><Image image={page.images[1]} /><figcaption>纸 · 墨 · 青铜</figcaption></figure>
-        <article data-scroll-reveal><span>TRACE</span><h2>时间留下纹理，<br />当代重新安排尺度。</h2><p>{page.intro}</p><blockquote>{page.quote}</blockquote></article>
+        <article data-scroll-reveal><span>TRACE</span><h2><span className="type-line"><span className="type-lock">时间留下纹理，</span></span><span className="type-line"><span className="type-phrase">当代重新安排</span><span className="type-phrase">尺度。</span></span></h2><p>{page.intro}</p><blockquote>{page.quote}</blockquote></article>
       </section>
 
-      <section className="ink-court" data-scroll-reveal><Image image={page.images[2]} /><div><span>COURT</span><h2>竹影、水面、黑白建筑。</h2><p>传统活着的时候，不需要仿古外壳。</p></div></section>
+      <section className="ink-court" data-scroll-reveal><Image image={page.images[2]} /><div><span>COURT</span><h2><span className="type-phrase">竹影、水面、</span><span className="type-phrase">黑白建筑。</span></h2><p>传统活着的时候，不需要仿古外壳。</p></div></section>
       <NextWork page={page} />
     </>
   );

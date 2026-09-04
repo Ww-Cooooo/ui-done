@@ -88,8 +88,25 @@ export default function PtsField({ page, active }) {
           return;
         }
 
-        if (page.id === "orbital-grid" || page.id === "gallery") {
-          const rings = page.id === "gallery" ? 7 : 10;
+        if (page.id === "gallery") {
+          const tracks = compact ? 5 : 7;
+          for (let track = 0; track < tracks; track += 1) {
+            const y = height * (0.13 + track / Math.max(1, tracks - 1) * 0.74);
+            const drift = Math.sin(time * 0.00028 + track * 0.82) * width * 0.025;
+            const bend = width * (0.34 + (track % 3) * 0.09) + drift;
+            stroke(
+              [[width * 0.04, y], [bend, y], [bend + width * 0.12, height * 0.5], [width * 0.96, height * 0.5]],
+              colorWithAlpha(track % 3 ? page.theme.accent2 : page.theme.accent, 0.11 + track * 0.012),
+              track % 3 === 0 ? 2 : 1
+            );
+            form.fillOnly(colorWithAlpha(track % 2 ? page.theme.accent2 : page.theme.accent, 0.55)).point(new Pt(width * 0.04, y), 2.2, "square");
+          }
+          form.fillOnly(colorWithAlpha(page.theme.accent, 0.72)).point(new Pt(width * 0.96, height * 0.5), 4 + Math.sin(time * 0.001) * 0.8, "square");
+          return;
+        }
+
+        if (page.id === "orbital-grid") {
+          const rings = 10;
           for (let ring = 0; ring < rings; ring += 1) {
             const points = [];
             const segments = compact ? 32 : 56;

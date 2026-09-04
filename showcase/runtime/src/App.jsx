@@ -23,29 +23,38 @@ function GalleryHero() {
       <div className="gallery-hero-copy">
         <Tag data-hero-reveal bordered={false}>UI DONE / OPEN-SOURCE FRONTEND SKILL</Tag>
         <p data-hero-reveal className="hero-overline">REAL WORK · DISTINCT VISUAL WORLDS</p>
-        <h1 data-hero-reveal>不只做漂亮。<br /><em>还把工作做完。</em></h1>
+        <h1 data-hero-reveal>
+          <span className="type-line"><span className="type-lock">说清任务。</span></span>
+          <span className="type-line"><em className="type-lock">界面开始工作。</em></span>
+        </h1>
         <p data-hero-reveal className="hero-lead">你只要说清楚给谁用、要完成什么。UI Done 会主动把组件、字体、动效、滚动、Canvas、真实图表和适合的视觉素材组织成完整页面；3D 只在空间真的有用且能做好时加入。</p>
         <div data-hero-reveal className="hero-actions">
           <Button type="primary" size="large" href="#works" icon={<ArrowDownOutlined />}>先看能做什么</Button>
           <Button size="large" href={repositoryUrl} target="_blank" rel="noreferrer" icon={<GithubOutlined />}>获取 Skill</Button>
         </div>
       </div>
-      <div className="gallery-task-board" data-hero-reveal aria-label="六种工作型产品入口">
-        <div className="task-board-canvas" aria-hidden="true"><VisualStage page={getPageConfig("gallery")} compact /></div>
-        <div className="task-board-head"><span>PRODUCT TASKS / 06</span><b>从任务进入，不从风格猜。</b></div>
-        <div className="task-board-list">
-          {workPages.map(page => (
-            <a key={page.id} className={`task-board-row task-${page.layout}`} href={`../${page.id}/`}>
-              <span>{page.number}</span>
-              <img src={page.images[0].src} alt="" />
-              <div><small>{page.product.role}</small><strong>{page.product.verb} / {page.shortTitle}</strong></div>
-              <Tag bordered={false}>{page.product.type}</Tag>
-              <ArrowRightOutlined />
-            </a>
-          ))}
+      <div className="gallery-dispatch" data-hero-reveal>
+        <div className="gallery-signal-map" aria-hidden="true">
+          <div><span>BRIEF IN</span><b>谁 / 做什么</b></div>
+          <div className="gallery-signal-canvas"><VisualStage page={getPageConfig("gallery")} compact /></div>
+          <div><span>PRODUCT OUT</span><b>可用 / 可操作</b></div>
         </div>
-        <div className="task-board-foot">
-          <span>+ 04 EXPRESSIVE EXPERIENCES</span><span>编辑 · 展览 · 娱乐 · 文化</span>
+        <div className="gallery-task-board" aria-label="六种工作型产品入口">
+          <div className="task-board-head"><span>PRODUCT TASKS / 06</span><b>从任务进入，不从风格猜。</b></div>
+          <div className="task-board-list">
+            {workPages.map(page => (
+              <a key={page.id} className={`task-board-row task-${page.layout}`} href={`../${page.id}/`}>
+                <span>{page.number}</span>
+                <img src={page.images[0].src} alt="" />
+                <div><small>{page.product.role}</small><strong>{page.product.verb} / {page.shortTitle}</strong></div>
+                <Tag bordered={false}>{page.product.type}</Tag>
+                <ArrowRightOutlined />
+              </a>
+            ))}
+          </div>
+          <div className="task-board-foot">
+            <span>+ 04 EXPRESSIVE EXPERIENCES</span><span>编辑 · 展览 · 娱乐 · 文化</span>
+          </div>
         </div>
       </div>
       <div className="gallery-hero-foot" data-hero-reveal>

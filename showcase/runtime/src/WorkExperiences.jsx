@@ -113,20 +113,34 @@ export function VelocityWorkspace({ page }) {
   return (
     <section id="workspace" className="work-surface velocity-work">
       <header className="velocity-work-head">
-        <div data-hero-reveal>
+        <div className="velocity-scoreboard" data-hero-reveal>
           <DemoLabel page={page}>5 条训练记录</DemoLabel>
+          <span>FOCUS SESSION</span>
+          <b>RUN-241</b>
+          <strong>48:20</strong>
+          <em>LOAD 87</em>
+        </div>
+        <div className="velocity-athlete" data-hero-reveal>
+          <img src={page.images[0].src} alt={page.images[0].alt} />
+          <div><b>林川 / 10K BUILD</b><span>训练周 06 · 周目标 42 km</span></div>
+        </div>
+        <div className="velocity-copy" data-hero-reveal>
           <p>VELOCITY / COACH DESK</p>
-          <h1>下一秒，<br /><em>从这次复盘开始。</em></h1>
+          <h1>
+            <span className="type-line"><span className="type-lock">下一秒，</span></span>
+            <span className="type-line"><em className="type-lock">从这次复盘开始。</em></span>
+          </h1>
           <span>{page.intro}</span>
           <div className="velocity-quick">
             <span><b>{sessions.length - reviewed}</b> 次待复盘</span>
             <Button type="primary" onClick={() => setActiveId(sessions.find(item => item.status === "待复盘")?.id)}>处理最高优先级</Button>
           </div>
         </div>
-        <div className="velocity-athlete" data-hero-reveal>
-          <img src={page.images[0].src} alt={page.images[0].alt} />
-          <div><b>林川 / 10K BUILD</b><span>训练周 06 · 周目标 42 km</span></div>
-        </div>
+        <ol className="velocity-laps" data-hero-reveal aria-label="最近三次训练负荷">
+          {sessions.slice(0, 3).map((item, index) => (
+            <li key={item.id}><span>{String(index + 1).padStart(2, "0")}</span><div><b>{item.type}</b><small>{item.date} · {item.pace}</small></div><em>{item.load}</em></li>
+          ))}
+        </ol>
         <div className="work-atmosphere" aria-hidden="true"><VisualStage page={page} compact /></div>
       </header>
 
@@ -318,9 +332,23 @@ export function CornerWorkspace({ page }) {
   return (
     <section id="workspace" className="work-surface corner-work">
       <header className="corner-work-head">
-        <div data-hero-reveal><DemoLabel page={page}>5 个商品库存</DemoLabel><p>CORNER GOODS / MORNING DESK</p><h1>先把缺的补上，<br /><em>再安心开门。</em></h1><div className="corner-quick"><span><b>{low}</b> 个低库存</span><Button type="primary" onClick={() => setActiveId(inventory.find(item => item.stock <= item.threshold)?.id)}>处理低库存</Button></div><TypefaceProof page={page} /></div>
-        <figure data-hero-reveal><img src={page.images[0].src} alt={page.images[0].alt} /><figcaption>周四 · 08:42 · 开店准备</figcaption></figure>
-        <div className="corner-canvas-accent" aria-hidden="true"><VisualStage page={page} compact /></div>
+        <div className="corner-ticket" data-hero-reveal>
+          <DemoLabel page={page}>5 个商品库存</DemoLabel>
+          <div className="corner-ticket-meta"><span>OPENING CHECK</span><b>THU / 08:42</b></div>
+          <p>CORNER GOODS / MORNING DESK</p>
+          <h1><span className="type-line"><span className="type-lock">先把缺的补上，</span></span><span className="type-line"><em className="type-lock">再安心开门。</em></span></h1>
+          <div className="corner-quick"><span><b>{low}</b> 个低库存</span><Button type="primary" onClick={() => setActiveId(inventory.find(item => item.stock <= item.threshold)?.id)}>处理低库存</Button></div>
+          <div className="corner-ticket-queue" aria-label="当前低库存商品">
+            <span>RESTOCK QUEUE / {String(low).padStart(2, "0")}</span>
+            {inventory.filter(item => item.stock <= item.threshold).map(item => <div key={item.id}><b>{item.name}</b><em>{item.stock} / {item.threshold}</em></div>)}
+          </div>
+          <TypefaceProof page={page} />
+        </div>
+        <figure className="corner-shelf-window" data-hero-reveal>
+          <img src={page.images[0].src} alt={page.images[0].alt} />
+          <div className="corner-canvas-accent" aria-hidden="true"><VisualStage page={page} compact /></div>
+          <figcaption><span>开店前最后一轮</span><b>{low} 个货位等补齐</b></figcaption>
+        </figure>
       </header>
 
       {notice && <Alert className="work-notice corner-notice" type="success" showIcon closable onClose={() => setNotice("")} message={notice} />}
@@ -398,9 +426,9 @@ export function StillWorkspace({ page }) {
   return (
     <section id="workspace" className="work-surface still-work">
       <header className="still-work-head" data-hero-reveal>
-        <div><DemoLabel page={page}>今日清单与一周习惯</DemoLabel><p>STILL DAY / DAILY PLANNER</p><h1>今天不必塞满，<br /><em>但要看得清。</em></h1><div className="still-quick"><span><b>{percent}%</b> 今日习惯</span><Button type="primary" icon={<PlusOutlined />} onClick={() => setModalOpen(true)}>新增安排</Button></div></div>
-        <figure><img src={page.images[0].src} alt={page.images[0].alt} /><figcaption>MAKE SPACE / {selectedDate}</figcaption></figure>
-        <div className="still-canvas-accent" aria-hidden="true"><VisualStage page={page} compact /></div>
+        <div className="still-date-spine" aria-label="当前日期 9月4日"><span>SEP</span><b>04</b><small>THU</small></div>
+        <div className="still-heading"><DemoLabel page={page}>今日清单与一周习惯</DemoLabel><p>STILL DAY / DAILY PLANNER</p><h1><span className="type-line"><span className="type-lock">今天不必塞满，</span></span><span className="type-line"><em className="type-lock">但要看得清。</em></span></h1><div className="still-quick"><span><b>{percent}%</b> 今日习惯</span><Button type="primary" icon={<PlusOutlined />} onClick={() => setModalOpen(true)}>新增安排</Button></div></div>
+        <figure><img src={page.images[0].src} alt={page.images[0].alt} /><div className="still-canvas-accent" aria-hidden="true"><VisualStage page={page} compact /></div><figcaption>MAKE SPACE / {selectedDate}</figcaption></figure>
       </header>
 
       {notice && <Alert className="work-notice still-notice" type="success" showIcon closable onClose={() => setNotice("")} message={notice} />}
@@ -427,7 +455,7 @@ export function StillWorkspace({ page }) {
         </aside>
 
         <Card className="still-week" bordered={false} data-scroll-reveal>
-          <div><span>WEEK / COMPLETION</span><h2>给节奏留一点余地。</h2><p>柱高来自页面中的习惯完成记录；周末尚未发生，因此保持为 0。</p></div>
+          <div><span>WEEK / COMPLETION</span><h2><span className="type-phrase">给节奏留一点</span><span className="type-phrase">余地。</span></h2><p>柱高来自页面中的习惯完成记录；周末尚未发生，因此保持为 0。</p></div>
           <ChartBlock page={page} data={week} kind="bars" label="本周习惯完成率" height={250} />
         </Card>
       </div>
@@ -488,7 +516,7 @@ export function AtelierWorkspace({ page }) {
   return (
     <section id="workspace" className="work-surface atelier-work">
       <header className="atelier-work-bar" data-hero-reveal>
-        <div><DemoLabel page={page}>3 个系列素材 · 3 组批注</DemoLabel><h1>ATELIER / REVIEW 07</h1></div>
+        <div><DemoLabel page={page}>3 个系列素材 · 3 组批注</DemoLabel><h1><span className="type-lock">ATELIER / REVIEW 07</span></h1></div>
         <Space wrap><Segmented value={filter} onChange={setFilter} options={["全部", "待审", "需修改", "已通过"]} /><Button icon={<EyeOutlined />} onClick={() => setVersionsOpen(true)}>版本记录</Button></Space>
       </header>
 
