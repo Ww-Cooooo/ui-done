@@ -89,19 +89,17 @@ export default function PtsField({ page, active }) {
         }
 
         if (page.id === "gallery") {
-          const tracks = compact ? 5 : 7;
+          const tracks = compact ? 3 : 4;
           for (let track = 0; track < tracks; track += 1) {
-            const y = height * (0.13 + track / Math.max(1, tracks - 1) * 0.74);
-            const drift = Math.sin(time * 0.00028 + track * 0.82) * width * 0.025;
-            const bend = width * (0.34 + (track % 3) * 0.09) + drift;
+            const y = height * (0.24 + track / Math.max(1, tracks - 1) * 0.52);
+            const markerX = (time * (0.018 + track * 0.003) + track * width * 0.31) % (width + 16) - 8;
             stroke(
-              [[width * 0.04, y], [bend, y], [bend + width * 0.12, height * 0.5], [width * 0.96, height * 0.5]],
-              colorWithAlpha(track % 3 ? page.theme.accent2 : page.theme.accent, 0.11 + track * 0.012),
-              track % 3 === 0 ? 2 : 1
+              [[0, y], [width, y]],
+              colorWithAlpha(track % 2 ? page.theme.accent2 : page.theme.accent, 0.13 + track * 0.025),
+              1
             );
-            form.fillOnly(colorWithAlpha(track % 2 ? page.theme.accent2 : page.theme.accent, 0.55)).point(new Pt(width * 0.04, y), 2.2, "square");
+            form.fillOnly(colorWithAlpha(track % 2 ? page.theme.accent2 : page.theme.accent, 0.72)).point(new Pt(markerX, y), 2, "square");
           }
-          form.fillOnly(colorWithAlpha(page.theme.accent, 0.72)).point(new Pt(width * 0.96, height * 0.5), 4 + Math.sin(time * 0.001) * 0.8, "square");
           return;
         }
 

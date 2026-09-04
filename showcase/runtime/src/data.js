@@ -16,57 +16,57 @@ const serifCjk = "Noto Serif SC";
 const themes = {
   gallery: {
     mode: "dark", bg: "#0b0c0e", surface: "#15171a", surfaceAlt: "#202328",
-    ink: "#f4f1e8", muted: "#a7abb2", accent: "#ff5a36", accent2: "#a8ffcf",
+    ink: "#f4f1e8", muted: "#a7abb2", accent: "#ff5a36", accent2: "#a8ffcf", onAccent: "#0b0c0e",
     line: "rgba(244,241,232,.18)", display: "Big Shoulders", body: "Outfit", cjk: sansCjk, mono
   },
   velocity: {
     mode: "dark", bg: "#0b1117", surface: "#131c24", surfaceAlt: "#1c2833",
-    ink: "#f3f7f8", muted: "#8fa2b2", accent: "#d8ff3e", accent2: "#70a7d9",
+    ink: "#f3f7f8", muted: "#8fa2b2", accent: "#d8ff3e", accent2: "#70a7d9", onAccent: "#0b1117",
     line: "rgba(216,255,62,.22)", display: "Big Shoulders", body: "Outfit", cjk: sansCjk, mono
   },
   coast: {
     mode: "light", bg: "#e7e4dc", surface: "#f4f1e8", surfaceAlt: "#cbc6ba",
-    ink: "#253032", muted: "#697476", accent: "#b55d3d", accent2: "#6f8d8a",
+    ink: "#253032", muted: "#697476", accent: "#b55d3d", accent2: "#6f8d8a", onAccent: "#ffffff", accentHover: "#9f4c31", accentActive: "#843c27",
     line: "rgba(37,48,50,.2)", display: "Cormorant Garamond", body: "Cormorant Garamond", cjk: serifCjk, mono
   },
   red: {
     mode: "light", bg: "#e8e5df", surface: "#f7f3eb", surfaceAlt: "#d2cec6",
-    ink: "#101010", muted: "#535353", accent: "#e41d16", accent2: "#1d5fff",
+    ink: "#101010", muted: "#535353", accent: "#e41d16", accent2: "#1d5fff", onAccent: "#ffffff", accentHover: "#c81812", accentActive: "#a8100d",
     line: "rgba(16,16,16,.76)", display: "Syne", body: "Syne", cjk: sansCjk, mono
   },
   orbital: {
     mode: "dark", bg: "#02070d", surface: "#07131f", surfaceAlt: "#0b2032",
-    ink: "#e8f4ff", muted: "#7690a6", accent: "#ffb52b", accent2: "#3fb7ff",
+    ink: "#e8f4ff", muted: "#7690a6", accent: "#ffb52b", accent2: "#3fb7ff", onAccent: "#02070d",
     line: "rgba(63,183,255,.22)", display: "Chakra Petch", body: "Outfit", cjk: sansCjk, mono
   },
   corner: {
     mode: "light", bg: "#e8d1a7", surface: "#f3e3bf", surfaceAlt: "#d49b66",
-    ink: "#3e241a", muted: "#765b4d", accent: "#bd3c28", accent2: "#356858",
+    ink: "#3e241a", muted: "#765b4d", accent: "#bd3c28", accent2: "#356858", onAccent: "#ffffff", accentHover: "#a12f20", accentActive: "#852619",
     line: "rgba(62,36,26,.24)", display: "Fraunces", body: "Outfit", cjk: sansCjk, displayCjk: "ZCOOL QingKe HuangYou", mono
   },
   still: {
     mode: "light", bg: "#f2eee7", surface: "#fbf8f2", surfaceAlt: "#dfd7e5",
-    ink: "#4c4651", muted: "#817987", accent: "#8b6ccf", accent2: "#819d73",
+    ink: "#4c4651", muted: "#817987", accent: "#8b6ccf", accent2: "#819d73", onAccent: "#111014",
     line: "rgba(76,70,81,.13)", display: "Outfit", body: "Outfit", cjk: sansCjk, mono
   },
   atelier: {
     mode: "dark", bg: "#0d0b0a", surface: "#171310", surfaceAlt: "#28201a",
-    ink: "#f3e7d6", muted: "#a69788", accent: "#d6a96f", accent2: "#e9d9c4",
+    ink: "#f3e7d6", muted: "#a69788", accent: "#d6a96f", accent2: "#e9d9c4", onAccent: "#0d0b0a",
     line: "rgba(243,231,214,.2)", display: "Bodoni Moda", body: "Cormorant Garamond", cjk: serifCjk, mono
   },
   neon: {
     mode: "dark", bg: "#050313", surface: "#0d0924", surfaceAlt: "#17103d",
-    ink: "#f6efff", muted: "#9a8eb5", accent: "#ff3bd4", accent2: "#43d9ff",
+    ink: "#f6efff", muted: "#9a8eb5", accent: "#ff3bd4", accent2: "#43d9ff", onAccent: "#050313",
     line: "rgba(112,72,255,.32)", display: "Chakra Petch", body: "Syne", cjk: sansCjk, mono
   },
   ink: {
     mode: "light", bg: "#e8e0d1", surface: "#f5efe5", surfaceAlt: "#cfc1aa",
-    ink: "#221c17", muted: "#74695c", accent: "#a82d25", accent2: "#776245",
+    ink: "#221c17", muted: "#74695c", accent: "#a82d25", accent2: "#776245", onAccent: "#ffffff", accentHover: "#8d231d", accentActive: "#741c18",
     line: "rgba(34,28,23,.2)", display: "Cormorant Garamond", body: "Noto Serif SC", cjk: serifCjk, mono
   },
   swiss: {
     mode: "light", bg: "#e9e9e5", surface: "#f8f8f4", surfaceAlt: "#d3d4d1",
-    ink: "#101214", muted: "#60656a", accent: "#ee2b21", accent2: "#1249ba",
+    ink: "#101214", muted: "#60656a", accent: "#ee2b21", accent2: "#1249ba", onAccent: "#090a0b",
     line: "rgba(16,18,20,.28)", display: "Archivo", body: "Archivo", cjk: sansCjk, mono
   }
 };

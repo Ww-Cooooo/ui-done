@@ -180,6 +180,7 @@ function ThemedContent({ page, children, reduced }) {
     "--page-muted": page.theme.muted,
     "--page-accent": page.theme.accent,
     "--page-accent-2": page.theme.accent2,
+    "--page-on-accent": page.theme.onAccent,
     "--page-line": page.theme.line,
     "--font-display-latin": `"${page.theme.display}"`,
     "--font-display-cjk": `"${page.theme.displayCjk || page.theme.cjk}"`,
@@ -203,6 +204,9 @@ export default function ExperienceFrame({ page, children, reduced }) {
   const radii = { brutal: 0, command: 2, swiss: 0, soft: 24, retro: 8, luxury: 0, editorial: 2, velocity: 3, cyber: 2 };
   const tokens = useMemo(() => ({
     colorPrimary: page.theme.accent,
+    colorTextLightSolid: page.theme.onAccent,
+    ...(page.theme.accentHover ? { colorPrimaryHover: page.theme.accentHover } : {}),
+    ...(page.theme.accentActive ? { colorPrimaryActive: page.theme.accentActive } : {}),
     colorInfo: page.theme.accent2,
     colorText: page.theme.ink,
     colorTextSecondary: page.theme.muted,

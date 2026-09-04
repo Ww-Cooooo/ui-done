@@ -34,11 +34,6 @@ function GalleryHero() {
         </div>
       </div>
       <div className="gallery-dispatch" data-hero-reveal>
-        <div className="gallery-signal-map" aria-hidden="true">
-          <div><span>BRIEF IN</span><b>谁 / 做什么</b></div>
-          <div className="gallery-signal-canvas"><VisualStage page={getPageConfig("gallery")} compact /></div>
-          <div><span>PRODUCT OUT</span><b>可用 / 可操作</b></div>
-        </div>
         <div className="gallery-task-board" aria-label="六种工作型产品入口">
           <div className="task-board-head"><span>PRODUCT TASKS / 06</span><b>从任务进入，不从风格猜。</b></div>
           <div className="task-board-list">
@@ -55,6 +50,9 @@ function GalleryHero() {
           <div className="task-board-foot">
             <span>+ 04 EXPRESSIVE EXPERIENCES</span><span>编辑 · 展览 · 娱乐 · 文化</span>
           </div>
+        </div>
+        <div className="gallery-task-pulse" aria-hidden="true">
+          <VisualStage page={getPageConfig("gallery")} compact />
         </div>
       </div>
       <div className="gallery-hero-foot" data-hero-reveal>
