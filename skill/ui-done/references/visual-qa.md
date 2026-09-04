@@ -37,7 +37,9 @@ Do not manufacture irrelevant states, but do not skip states the implementation 
 ## Visual and computed-style checks
 
 - Inspect full-page and focused screenshots, not just DOM structure.
-- For a multi-page set that claims different styles or subjects, compare a contact sheet and a compact section-signature list for every route. Reject a result when most routes preserve the same hero split, media count, numbered-card rhythm, advanced-visual position, chart/form position, and ending while only the skin changes.
+- For a multi-page set that claims different styles or subjects, compare a contact sheet and a compact visible-architecture signature for every route: opening composition, dominant content topology, media rhythm, module order, primary interaction or reading progression, motion grammar, ending, and phone transformation. Reject a result when most routes preserve the same hero split, media count, numbered-card rhythm, advanced-visual position, chart/form position, and ending while only the skin changes.
+- For a gallery or portfolio index, test the collection shell separately from the works. Temporarily hide titles, categories, numbers, roles, feature strings, CTAs, and other gallery metadata, then compare only the preview interiors. Reject the gallery when most previews collapse to the same image pane, overlay coordinates, copy rail, badge stack, or aspect-ratio grammar. Neutral metadata belongs outside the preview whenever possible.
+- Run a silhouette pass on intentionally distinct works: view the contact sheet with text/labels hidden and enough blur or downscaling to remove decorative detail. Each work should retain a content-derived dominant mass, whitespace pattern, media relationship, and interaction locus that distinguishes it from the others. Do not pass this test by adding random clipping, arbitrary shapes, or different colors; the difference must follow content, task, or reading behavior.
 - For a multi-page set that claims broad product coverage, compare the route matrix as well as the contact sheet. Record each route's product model, user, core task verb, information architecture, mutable state or browsing goal, data source, and phone transformation. Reject a set whose supposed variety is still mostly brochure, campaign, poster, or dashboard-shaped decoration with renamed sections.
 - Check hierarchy, alignment, spacing rhythm, color/contrast, radius/elevation consistency, icon alignment, image quality, and the intended signature element.
 - Look for library-proof content: sections, cards, labels, controls, scenes, or datasets that exist only to show a dependency was used. Remove them or shrink the capability into an existing region as a context-aligned accent.
@@ -45,6 +47,7 @@ Do not manufacture irrelevant states, but do not skip states the implementation 
 - Temporarily disregard scene names and explanatory labels. If the effect becomes incomprehensible without a label invented for it, the label is compensating for weak integration rather than describing product content.
 - Inspect controls as product features. Reject repeated generic pause, reset, rotate, speed, or view toolbars across unrelated pages unless each control has a page-specific task or accessibility rationale.
 - For demo-derived work, compare the shipped behavior with the recorded official demo while judging it as part of this product. Verify that tokens, typography, density, motion, interaction, responsive behavior, and fallback were adapted to the interface rather than copied as an isolated gallery piece.
+- For every new page or material redesign, verify the five-source creative-pass record names the exact MotionSites direction/Prompt state, React Bits Preview/Code item, Uiverse Code item, Anime.js behavior/API, and Aceternity Preview/Code item, with an honest adopt/adapt/idea-only/reject result. Fail records that list only homepages, omit Code views, imply use without adoption, or ignore license/dependency conflicts.
 - Reject leftover sample copy, fabricated demo data, generic demo controls, gallery framing, or attribution/license omissions. When example code or assets were copied, verify the recorded upstream, modifications, license obligations, and notice location.
 - On phone layouts, check whether decorative controls enter the reading order, cover meaningful imagery, or become more prominent than the content they supposedly support.
 - Enumerate visible text and inspect computed `font-size`, `line-height`, `font-family`, overflow, and truncation. Treat 11px as a floor reserved for short low-priority metadata; keep labels/card copy around 13px+, controls around 14px+, and continuous body copy around 15–16px+ unless the product has a justified accessible scale.
@@ -80,8 +83,8 @@ Do not manufacture irrelevant states, but do not skip states the implementation 
 3. Classify issues by user impact, not cosmetic convenience.
 4. Run the removal test on every newly added visible region: if removing it changes no product meaning and only hides a library, treat it as filler.
 5. Run the control test: if the user has no reason to manipulate an effect, remove its library-shaped controls and handle ambient motion through bounded behavior, system preferences, visibility, and context-appropriate accessibility mechanisms.
-6. Fix the shared token/layout/component cause when several screens exhibit the same defect. Shared lifecycle code is useful; repeated public UI can still be the defect.
-7. For multi-page work, compare routes side by side after each major pass; fix repeated section order and signature placement before polishing individual colors or effects.
+6. Fix the shared token/layout/component cause when several screens exhibit the same defect. Shared lifecycle code is useful; a shared composed preview/page component may itself be the defect.
+7. For multi-page work, compare routes and preview interiors side by side after each major pass; fix repeated section order, overlay coordinates, signature placement, and motion grammar before polishing individual colors or effects.
 8. Compare product behavior as well as composition: confirm that work routes use different task-appropriate structures and each completes its declared loop, while expressive routes are not padded with fake controls or data.
 9. Rebuild if needed and rerun every affected viewport/state plus a nearby regression case.
 10. Repeat until no material issue remains or an explicit limitation is documented.
@@ -95,6 +98,7 @@ Report a compact matrix containing:
 - Build/entry mechanism and browser engine/version actually used.
 - Viewports, routes, states, and interaction paths tested.
 - The route-level product/task matrix and the completed action loop for each operational surface.
+- For intentionally varied sets, the shared collection-shell boundary, each work's visible-architecture signature, and the contact-sheet plus text-hidden silhouette result.
 - Screenshot locations when artifacts are retained.
 - Host, meaning, and control decisions for visible motion, scroll, Canvas, visualization, and any adopted 3D layer, plus the explicit suitability-gate result where 3D was omitted.
 - Official demos inspected for selected or serious candidates, what was adopted or rejected, how adopted behavior was retuned to the product, idea-only versus code use, and any hard demo-review exemption.

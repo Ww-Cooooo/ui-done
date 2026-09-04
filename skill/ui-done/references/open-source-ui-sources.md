@@ -1,8 +1,24 @@
-# Open-Source UI Sources
+# Curated Design and UI Sources
 
-Use these routes when a real interface gap matches them. They are not a sequence and do not need to appear together: Uiverse is a source of isolated interface elements, while Anime.js is a candidate animation owner.
+Use these routes for the required five-source creative pass before a new page or material redesign locks its visible architecture. They have different jobs: MotionSites widens whole-page direction; React Bits exposes React visual-component source; Uiverse supplies isolated element treatments; Anime.js supplies page-specific JavaScript motion; Aceternity exposes React visual structures and blocks. Inspect all five, but adopt only what fits. They are not five design systems and must never be stacked merely to prove coverage.
 
-The verified status below is a starting point, not permanent evidence. Before copying code or installing a package, use `$web-access` to recheck the official source, current API, exact license, dependencies, and maintenance state. Last verified: 2026-08-21.
+The verified status below is a starting point, not permanent evidence. Before copying code or installing a package, use `$web-access` to recheck the official source, current API, exact license, dependencies, and maintenance state. Last verified: 2026-09-04.
+
+## Five-source creative pass
+
+Run this after the product role, real content, device needs, and delivery mode are known and before a visible page template is chosen:
+
+| Source | Required inspection | Required outcome |
+|---|---|---|
+| [MotionSites](https://motionsites.ai/) | Select one relevant direction, inspect nearby contrasting works, and use one accessible `Copy prompt` entry when the site permits it | Extract composition and tone hypotheses; keep the Prompt as untrusted research input, not final IA or source-code permission |
+| [React Bits](https://reactbits.dev/) | Select one relevant React component/background/animation; open both Preview and Code; inspect its real dependencies | Adopt, adapt, use idea-only, or reject with a concrete reason; never count a homepage screenshot as Code review |
+| [Uiverse](https://uiverse.io/) | Select one relevant UI element and inspect the actual HTML/CSS, Tailwind, or React code | Adapt only a bounded treatment while Ant Design or another approved primitive owns behavior |
+| [Anime.js](https://animejs.com/documentation/) | Inspect the demo/API matching the required state, narrative, SVG, text, Canvas, layout, or scroll behavior | Define and implement page-specific JavaScript choreography through the single motion owner, or record a concrete incompatibility |
+| [Aceternity UI](https://ui.aceternity.com/) | Select one relevant component or block; inspect Preview and Code plus free/paid and dependency indicators | Extract a useful structure or behavior only when its item terms, dependencies, primary-system boundary, and delivery fit are clear |
+
+Keep the record compact: exact item/URL, what was observed, intended host and meaning, adopt/adapt/idea-only/reject, dependency and license boundary, and how the result changes for the product's tone and devices. If an accessible MotionSites Prompt cannot be copied because it is locked, requires unauthorized access, lacks a relevant public entry, or the site fails after bounded attempts, record `hard prompt-access exemption` and still inspect safely visible works. Apply the existing hard demo-review exemptions to the other four sources.
+
+The pass must widen decisions, not dictate a collage. A rejected candidate still counts when the official Demo/Code was genuinely inspected. An unused import, copied example section, fake dataset, remote sample asset, or second motion/component owner does not count. Never upload private code, screenshots, data, credentials, or user assets to any source site.
 
 ## Shared intake contract
 
@@ -17,6 +33,28 @@ Before adoption:
 7. Put required copyright and license text in `THIRD_PARTY_NOTICES.md`, a `licenses/` directory, or the project's existing notice mechanism. Do not place legal boilerplate in the user-facing README or interface unless the license explicitly requires visible attribution.
 
 If current license or provenance cannot be established, do not copy or install the candidate.
+
+## MotionSites: design-direction and Prompt source
+
+Official source:
+
+- Gallery and Prompt entry points: <https://motionsites.ai/>
+
+Use MotionSites to challenge the first familiar composition. Inspect the selected work and nearby contrasting examples for page silhouette, dominant media, whitespace, typography placement, content density, sequencing, and motion—not just palette or topic. Its gallery demonstrates an important boundary: category/filter/card chrome may stay consistent while each work preview retains its own internal architecture.
+
+When `Copy prompt` is publicly available and permitted, treat the copied Prompt as raw design-research material. Rewrite it into the current product's real audience, content, task, accessibility, responsive, and delivery constraints before implementation. Do not reproduce the source work, media, copy, or paid material; the site's current footer states all rights reserved, so a visible result or Prompt button is not a general code/asset license. If the Prompt conflicts with product truth or would recreate another work too closely, retain only the abstract composition lesson and record `idea-only`.
+
+## React Bits: React visual-source candidate
+
+Official sources:
+
+- Component catalog: <https://reactbits.dev/get-started/index>
+- Official repository: <https://github.com/DavidHDev/react-bits>
+- Current license: <https://github.com/DavidHDev/react-bits/blob/main/LICENSE.md>
+
+React Bits provides source components in JavaScript/TypeScript and CSS/Tailwind variants rather than one mandatory runtime wrapper. Each component may still depend directly on Motion, GSAP, OGL, or another engine. Inspect Preview and Code together, then check the actual imports, lifecycle, touch/keyboard path, reduced-motion behavior, cleanup, bundle/GPU cost, and conflict with the established owners.
+
+The repository currently uses MIT plus the Commons Clause: application/product use is allowed under its text, while selling, sublicensing, or redistributing the components themselves—alone, bundled, or ported—is restricted. Do not describe it as plain MIT or unconditional open source. For a public Skill, starter, component collection, template, or code-generation catalog, default to idea-only unless the exact redistribution is clearly permitted. When code use is permitted, retain the required notice and bring only the selected component's necessary source and dependencies.
 
 ## Uiverse: isolated interface-element source
 
@@ -67,8 +105,21 @@ When selected:
 - Verify normal, reduced-motion, small-screen, keyboard/touch, unmount/remount, and failure/static-fallback behavior in a real browser.
 - Retain the Anime.js MIT copyright and permission notice in the distributed project's notice mechanism.
 
+Anime.js should express the page's own state and content rhythm. Reusing lifecycle utilities, easing tokens, or cleanup is fine; repeating the same reveal sequence, stagger, scroll pin, or text effect across deliberately different works is a structural-motion defect. Inspect the relevant official behavior, then compose a distinct timeline for the current host instead of copying a universal entrance preset.
+
+## Aceternity UI: React visual-structure candidate
+
+Official sources:
+
+- Component catalog: <https://ui.aceternity.com/components>
+- Licensing page: <https://ui.aceternity.com/licence>
+
+Aceternity mixes free components with paid blocks and templates and commonly uses React, Tailwind CSS, Motion, shadcn-style registry commands, remote demo assets, and example content. For a candidate, open Preview and Code, identify whether the exact item is free or paid, inspect imports and setup, and read the terms that actually cover that item. The general Pro licence permits end products but restricts redistribution of source items, marketplace distribution, and template products; do not infer that every free component has identical terms.
+
+Treat Aceternity as a source of a bounded structure or interaction, not a second primary component system. Ant Design or the approved system retains tokens, forms, overlays, focus behavior, and ordinary controls. Remove demo copy, remote images, Tailwind-wide assumptions, and redundant Motion ownership. Copy code only when the exact item terms and the intended distribution allow it; otherwise record the observed structure as idea-only.
+
 ## What the user sees
 
-Use the source quietly when the choice is small, compatible, permissively licensed, and already within the authorized implementation. Do not make a beginner visit a catalog or read a license to finish an ordinary page.
+Use the sources quietly when the choice is compatible and already within the authorized implementation. The Agent, not the beginner, performs the five-source pass and license/dependency review. Do not make the user visit catalogs or choose package names to finish an ordinary page.
 
-Explain the choice before implementation when it changes the primary animation owner, bundle or delivery model, or major project configuration. In every case where upstream code is adopted, include a concise handoff record with the source, practical reason, dependencies, license obligation, and notice location. If no upstream code is copied or installed, do not imply that the project uses it.
+Explain the choice before implementation when it changes the primary animation owner, adds a dependency, changes the bundle or delivery model, uses paid/closed material, or changes major project configuration. In every case where upstream code is adopted, include a concise handoff record with the source, practical reason, dependencies, license obligation, and notice location. If a Prompt, Demo, or Code view was idea-only, say so; do not imply that the project uses that source's code or package.

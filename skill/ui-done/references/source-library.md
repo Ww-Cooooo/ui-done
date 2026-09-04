@@ -1,22 +1,24 @@
 # Curated Source Library
 
-Use this catalog first after a real product gap has been named and before choosing a UI system, motion/scroll owner, visualization engine, creative Canvas tool, physics engine, or background-effect source. These are the user's preferred sources. A compatible curated source that passes the hard gates should win over an unlisted or native-only route. Preserve an established project owner when replacing it would create duplication or an unjustified migration; otherwise search this catalog before the broader ecosystem.
+Use this catalog first after the product role and real content are known and before choosing a design direction, source component, UI system, motion/scroll owner, visualization engine, creative Canvas tool, physics engine, or background-effect source. These are the user's preferred sources. A compatible curated source that passes the hard gates should win over an unlisted or native-only route. Preserve an established project owner when replacing it would create duplication or an unjustified migration; otherwise search this catalog before the broader ecosystem.
 
-The status below is a time-bounded starting point. Before copying code or installing a package, use `$web-access` to recheck the official source, current API, package metadata, maintenance, exact license, framework compatibility, accessibility, and delivery constraints. Catalog metadata last verified: 2026-09-02; relevant official Three.js example behavior revisited: 2026-09-04.
+The status below is a time-bounded starting point. Before copying code or installing a package, use `$web-access` to recheck the official source, current API, package metadata, maintenance, exact license, framework compatibility, accessibility, and delivery constraints. Catalog metadata last verified: 2026-09-04.
 
-## Read the React labels literally
+## Read the source and React labels literally
 
 - **Native:** the named project ships components for that framework.
 - **Adapter:** a separate named project wraps a framework-neutral core. Verify the adapter's own maintainer, version, license, and compatibility; do not attribute it to the core project without evidence.
 - **Lifecycle:** the core JavaScript/TypeScript library can run inside the framework, but the implementation owns mount, update, resize, teardown, and failure behavior.
 - **None:** the named project does not provide a credible React route. Do not port it by copying internals merely to imitate its appearance.
 - **Discovery only:** browse it to locate an upstream idea or library, then verify and retrieve from that upstream. Do not copy the aggregator itself.
+- **Direction only:** inspect visual grammar or an accessible Prompt as research input; it does not own runtime code and does not grant permission to copy a work or its assets.
+- **Source candidate:** the site exposes code intended to enter a project, but every selected item still has its own dependencies, behavior, provenance, and license/distribution gates.
 
 “Works in a React app” is not the same as native React support. Use the narrowest accurate label in selection notes and handoffs.
 
 ## Demo-first adoption contract
 
-For every serious or selected curated candidate, open its official demo or example gallery and inspect every official demo reasonably relevant to the role already named in the product. “Relevant” means the examples that exercise the needed component, chart grammar, interaction, scene technique, Canvas behavior, or effect on comparable content and devices—not every unrelated entry in the project's full gallery. Prefer a live rendered demo together with its official example source or documentation. If only screenshots, recordings, or source are available, state that limitation rather than describing the result as live-tested. For 3D, run the suitability gate before a package or demo becomes a serious candidate. If the gate fails, record the reason and stop; this is not a demo-review exemption because no candidate reached review status.
+For every serious or selected curated candidate, open its official demo or example gallery and inspect every official demo reasonably relevant to the role already named in the product. For every new page or material redesign, also complete the five-source creative pass in `open-source-ui-sources.md` before locking visible architecture. “Relevant” means the examples that exercise the needed composition, component, chart grammar, interaction, scene technique, Canvas behavior, or effect on comparable content and devices—not every unrelated entry in the project's full gallery. Prefer a live rendered demo together with its official example source or documentation. If only screenshots, recordings, or source are available, state that limitation rather than describing the result as live-tested. For 3D, run the suitability gate before a package or demo becomes a serious candidate. If the gate fails, record the reason and stop; this is not a demo-review exemption because no candidate reached review status.
 
 Keep one compact demo record per candidate:
 
@@ -37,9 +39,12 @@ Discovery-only galleries such as `background-effects` can reveal an idea, but th
 
 | Capability | Preferred supplied source | Coverage boundary |
 |---|---|---|
+| Whole-page design direction | MotionSites | **Direction only.** Select a relevant work, compare contrasting neighbors, and use one accessible Prompt when permitted; adapt the abstract composition lesson to real product content rather than reproducing the source. |
 | Primary React UI components | Ant Design | **Direct and required default** for greenfield or ownerless interfaces. It can own ordinary components, tokens, forms, Grid, and layout. |
 | Ordinary interface icons | Ant Design Icons (`@ant-design/icons`) | **Native React package in the Ant Design ecosystem** and the default icon family when Ant Design owns the UI. Import only the symbols used; this does not supply brand art, illustrations, or photography. |
+| React visual source component | React Bits | **Source candidate.** Inspect Preview, Code, real imports, and MIT + Commons Clause redistribution boundary per selected component; never introduce a competing motion owner silently. |
 | Isolated component treatment | Uiverse | **Direct or scoped adaptation** for one existing primitive; never replaces Ant Design as the primary component system. |
+| React visual structure/block | Aceternity UI | **Source candidate.** Inspect Preview, Code, free/paid status, item terms, Tailwind/Motion/shadcn dependencies, and primary-system fit; use idea-only when redistribution is unclear. |
 | UI/SVG/DOM/Canvas motion | Anime.js | **Direct lifecycle integration** and preferred motion owner when it fits. |
 | Scroll-triggered/synchronized motion | Anime.js `onScroll` | **Direct choreography owner**; it does not replace native scrolling or provide a dedicated smooth-scroll engine. |
 | Dedicated smooth-scroll mechanics | Lenis / `lenis/react` | **Official React integration and required default** for substantial work when the delivery can bundle it. Keep it enabled on computer, tablet, and phone when touch, nested-scroll, anchor, reduced-motion, and performance checks pass; use a native-only route only after an observed hard failure. |
@@ -74,8 +79,11 @@ Curated libraries own capabilities; they do not replace the browser foundation. 
 
 | Source | Best-fit role | React route | Current boundary and provenance gate |
 |---|---|---|---|
+| [MotionSites](https://motionsites.ai/) | Whole-page composition and Prompt-based design direction | Direction only | Inspect one relevant work and nearby contrasting works. Use only an accessible Prompt the site permits; current site footer states all rights reserved, so do not copy page code, media, copy, or paid content. |
+| [React Bits](https://reactbits.dev/) | React visual components, animated backgrounds, text effects, and interactions | Source candidate: JS/TS with CSS/Tailwind variants | Inspect both Preview and Code plus actual direct dependencies. Current repository license is MIT + Commons Clause, not plain MIT; component redistribution, bundling, and ports are restricted even though end-product use is allowed under the license text. |
 | [Uiverse](https://uiverse.io/) | One isolated visual treatment for an existing primitive | Native variant on some entries, or scoped HTML/CSS adaptation | Keep the existing accessible primitive as behavior owner. Read `open-source-ui-sources.md` before copying anything. |
 | [Anime.js](https://animejs.com/documentation/) | Primary timeline/SVG/DOM/Canvas motion owner | Lifecycle | Framework-neutral. Use one motion owner and read `open-source-ui-sources.md` before selection. |
+| [Aceternity UI](https://ui.aceternity.com/) | React visual components, effects, blocks, and structure ideas | Source candidate, often React + Tailwind + Motion/shadcn-style registry | Free and paid material coexist. Inspect the exact item's Preview, Code, dependencies, and covering terms; the general Pro licence restricts source-item redistribution and template/marketplace use, so never infer blanket open-source permission. |
 | [Lenis](https://github.com/darkroomengineering/lenis) | Dedicated smooth-scroll mechanics and scroll signal for WebGL/parallax synchronization | Native: official [`lenis/react`](https://github.com/darkroomengineering/lenis/tree/main/packages/react) | Selected on 2026-09-02 after current official-source comparison: MIT, 15,657 GitHub stars, active v1.3.26 release, zero runtime dependencies, reduced-motion support, and direct React context/hook integration. Stars are a popularity signal, not a substitute for project-specific QA. |
 | [Three.js](https://github.com/mrdoob/three.js) + [React Three Fiber](https://github.com/pmndrs/react-three-fiber) | Conditional true 3D/WebGL/WebGPU scenes in React | Native React renderer: `@react-three/fiber`; core: `three`; optional helpers: [`@react-three/drei`](https://github.com/pmndrs/drei) | Preferred route only after the 3D suitability gate passes. On 2026-09-02 the official repositories were MIT, active, and showed about 115,013 and 31,844 GitHub stars respectively. Match R3F and React major versions, budget the GPU path, retain a static/DOM fallback, and verify geometry integrity and modeling finish across the full motion cycle. |
 | [Apache ECharts](https://echarts.apache.org/zh/index.html) | General-purpose quantitative visualization | Adapter: [`echarts-for-react`](https://github.com/hustcc/echarts-for-react), or Lifecycle with core | Core is Apache-2.0 and framework-neutral. The adapter is a separate MIT project with its own compatibility and lifecycle contract. |
@@ -88,6 +96,13 @@ Curated libraries own capabilities; they do not replace the browser foundation. 
 | [background-effects demo](https://mofeiss.github.io/background-effects/index.html) | Discovery index for background-effect upstreams | Discovery only | The [repository](https://github.com/mofeiss/background-effects) had no repository-level license when checked and loads third-party libraries from CDNs. Resolve the selected effect to its actual upstream; do not copy the aggregator code. |
 
 ## Route by the real need
+
+### Design direction and source components
+
+- Complete the five-source creative pass for every new page or material redesign. The pass is research coverage, not dependency coverage: inspect all five and record adopt/adapt/idea-only/reject, but install or copy only the selected parts that pass every gate.
+- Use MotionSites to break the first familiar whole-page composition. Keep the collection shell separate from the work itself: shared filters, card chrome, and metadata are allowed, while each preview retains its own silhouette, content topology, media rhythm, type placement, motion, and journey.
+- Use React Bits or Aceternity only after opening both Preview and Code. Audit direct imports and setup before deciding whether a component fits the existing Anime.js, Ant Design, CSS, Canvas, and delivery owners. Source availability does not erase dependency, license, accessibility, or redistribution constraints.
+- Use Uiverse for a bounded treatment around an accessible existing primitive, and use Anime.js to author page-specific motion. Different source names do not make pages different if every route still shares the same hero, overlay, card grammar, or animation sequence.
 
 ### UI systems
 
@@ -126,4 +141,4 @@ For React Lifecycle integrations:
 
 ## Adoption record
 
-When a source is selected, record the exact core and adapter package separately: upstream project, package/repository, author or organization, version or commit, retrieval date, license, notice location, framework relationship, integration owner, and fallback. Attach the demo record above. If only a demo was viewed and no code or package was adopted, say so explicitly and record why it was rejected or retained as idea-only evidence.
+When a source is selected, record the exact core and adapter package separately: upstream project, exact Prompt/Demo/Code item, package/repository, author or organization, version or commit, retrieval date, license, notice location, framework relationship, integration owner, and fallback. Attach the demo record above. If only a Prompt, Demo, or Code view was inspected and no code or package was adopted, say so explicitly and record why it was rejected or retained as idea-only evidence.
