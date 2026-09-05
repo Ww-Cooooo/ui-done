@@ -79,7 +79,7 @@ export const showcasePages = [
   {
     id: "velocity-works", number: "01", shortTitle: "Velocity Works", styleName: "运动性能", journey: "教练复盘舱 / 触地轨迹",
     layout: "velocity", theme: themes.velocity, shape: "velocity",
-    product: { mode: "work", type: "训练分析", role: "跑步教练", verb: "分析", ia: "训练列 / 回放轨迹 / 负荷趋势 / 原位复盘", loop: "选择训练 → 比较负荷与触地 → 原位写复盘 → 标记完成", data: "页面内演示训练记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
+    product: { mode: "work", type: "训练分析", role: "跑步教练", verb: "分析", galleryAction: "复盘训练表现", ia: "训练列 / 回放轨迹 / 负荷趋势 / 原位复盘", loop: "选择训练 → 比较负荷与触地 → 原位写复盘 → 标记完成", data: "页面内演示训练记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
     eyebrow: "COACHING DESK / 01", audience: "教练与训练团队的分析工作台",
     title: "下一秒，从这次复盘开始。", latinTitle: "READ THE RUN. SHAPE THE NEXT ONE.",
     intro: "把训练负荷、节奏变化和待复盘记录放在同一工作面上，让教练从筛选直接走到判断与记录。",
@@ -95,7 +95,7 @@ export const showcasePages = [
   {
     id: "north-tide", number: "02", shortTitle: "North Tide", styleName: "海岸自然编辑", journey: "阈值滚动章节 / 扩张海岸影像",
     layout: "editorial", theme: themes.coast, shape: "tide",
-    product: { mode: "expressive", type: "自然编辑专题", role: "旅行与自然读者", verb: "探索", ia: "编辑封面 / 摄影叙事 / 海面章节", loop: "沿专题阅读海岸章节", data: "摄影与编辑文字", coverage: { filter: 0, visualization: 0, detail: 0, form: 0, state: 0, spatial: 1 } },
+    product: { mode: "expressive", type: "自然编辑专题", role: "旅行与自然读者", verb: "探索", galleryAction: "阅读海岸专题", ia: "编辑封面 / 摄影叙事 / 海面章节", loop: "沿专题阅读海岸章节", data: "摄影与编辑文字", coverage: { filter: 0, visualization: 0, detail: 0, form: 0, state: 0, spatial: 1 } },
     spatial3d: { role: "连续水面、天气与地平线的空间关系" },
     eyebrow: "COASTAL JOURNAL / 02", audience: "旅行杂志与自然观察概念页",
     title: "沿着风，走到陆地尽头。", latinTitle: "THE SEA KEEPS ITS OWN TIME.",
@@ -112,7 +112,7 @@ export const showcasePages = [
   {
     id: "red-form", number: "03", shortTitle: "Red Form", styleName: "当代艺术粗野主义", journey: "四展室切换 / 描线硬切",
     layout: "brutal", theme: themes.red, shape: "form",
-    product: { mode: "expressive", type: "当代艺术展览", role: "展览观众", verb: "观看", ia: "展室索引 / 占幅作品 / 策展展签", loop: "切换四间展室并逐件观看", data: "展览视觉与策展文字", coverage: { filter: 0, visualization: 0, detail: 0, form: 0, state: 0, spatial: 1 } },
+    product: { mode: "expressive", type: "当代艺术展览", role: "展览观众", verb: "观看", galleryAction: "浏览当代艺术展览", ia: "展室索引 / 占幅作品 / 策展展签", loop: "切换四间展室并逐件观看", data: "展览视觉与策展文字", coverage: { filter: 0, visualization: 0, detail: 0, form: 0, state: 0, spatial: 1 } },
     spatial3d: { role: "一体成型的当代雕塑与展场光线" },
     eyebrow: "EXHIBITION STUDY / 03", audience: "当代艺术展览与文化机构概念页",
     title: "红色不是装饰，是事件。", latinTitle: "FORM BREAKS THE ROOM.",
@@ -129,7 +129,7 @@ export const showcasePages = [
   {
     id: "orbital-grid", number: "04", shortTitle: "Orbital Grid", styleName: "未来航天科技", journey: "三舱值班台 / 扫描轨迹",
     layout: "command", theme: themes.orbital, shape: "orbit",
-    product: { mode: "work", type: "轨道运营监控", role: "值班控制员", verb: "处置", ia: "告警队列 / 轨道视窗 / 遥测 / 原位指令槽", loop: "选择告警 → 核对轨道与遥测 → 装填指令 → 确认处置", data: "页面内演示遥测与告警记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 1 } },
+    product: { mode: "work", type: "轨道运营监控", role: "值班控制员", verb: "处置", galleryAction: "处理轨道运行告警", ia: "告警队列 / 轨道视窗 / 遥测 / 原位指令槽", loop: "选择告警 → 核对轨道与遥测 → 装填指令 → 确认处置", data: "页面内演示遥测与告警记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 1 } },
     spatial3d: { role: "地球、轨道与完整航天器的真实空间关系" },
     eyebrow: "ORBITAL OPS / 04", audience: "轨道任务值班控制台",
     title: "先看清异常，再发出处置。", latinTitle: "ONE ORBIT. CLEAR PRIORITIES.",
@@ -146,7 +146,7 @@ export const showcasePages = [
   {
     id: "corner-goods", number: "05", shortTitle: "Corner Goods", styleName: "温暖复古街角", journey: "货架与连续小票 / 盖章补货",
     layout: "retro", theme: themes.corner, shape: "stack",
-    product: { mode: "work", type: "门店经营", role: "社区店长", verb: "补货", ia: "经营摘要 / 库存与订单 / 筛选 / 补货", loop: "找到低库存 → 填写补货 → 提交 → 库存更新", data: "页面内演示库存与订单记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
+    product: { mode: "work", type: "门店经营", role: "社区店长", verb: "补货", galleryAction: "检查库存并完成补货", ia: "经营摘要 / 库存与订单 / 筛选 / 补货", loop: "找到低库存 → 填写补货 → 提交 → 库存更新", data: "页面内演示库存与订单记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
     eyebrow: "STORE DESK / 05", audience: "社区门店的库存与订单工作台",
     title: "先把缺的补上，再安心开门。", latinTitle: "GOOD STOCK. GOOD DAY.",
     intro: "保留街角小店的温度，把低库存、今日销量和补货动作整理成店长一眼能做完的经营流程。",
@@ -162,7 +162,7 @@ export const showcasePages = [
   {
     id: "still-day", number: "06", shortTitle: "Still Day", styleName: "柔和生活方式", journey: "日期轴与时间河 / 习惯轨道",
     layout: "soft", theme: themes.still, shape: "pebble",
-    product: { mode: "work", type: "日程与习惯计划", role: "个人使用者", verb: "安排", ia: "日期脊柱 / 时间河 / 原位编辑 / 习惯环", loop: "选择日期 → 原位新增安排或完成习惯 → 节奏与周趋势更新", data: "页面内演示日程与习惯记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
+    product: { mode: "work", type: "日程与习惯计划", role: "个人用户", verb: "安排", galleryAction: "安排日程并记录习惯", ia: "日期脊柱 / 时间河 / 原位编辑 / 习惯环", loop: "选择日期 → 原位新增安排或完成习惯 → 节奏与周趋势更新", data: "页面内演示日程与习惯记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
     eyebrow: "DAILY PLANNER / 06", audience: "个人日程与习惯计划应用",
     title: "今天不必塞满，但要看得清。", latinTitle: "A QUIETER PLAN FOR TODAY.",
     intro: "日历、今日清单和习惯进度共同服务一个安静的计划动作；浅紫和柔光负责降低噪音，而不是代替内容。",
@@ -178,7 +178,7 @@ export const showcasePages = [
   {
     id: "atelier-noir", number: "07", shortTitle: "Atelier Noir", styleName: "奢侈时装编辑", journey: "胶片列与拖拽对比 / 固定审阅台",
     layout: "luxury", theme: themes.atelier, shape: "ribbon",
-    product: { mode: "work", type: "创意审阅与审批", role: "创意负责人", verb: "审批", ia: "胶片列 / 拖拽前后对比 / 批注 / 固定审批台", loop: "选择画面 → 拖拽比较版本 → 批注或批准 → 就绪度更新", data: "页面内演示素材、版本与批注", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
+    product: { mode: "work", type: "创意审阅与审批", role: "创意负责人", verb: "审批", galleryAction: "比较创意版本并完成审批", ia: "胶片列 / 拖拽前后对比 / 批注 / 固定审批台", loop: "选择画面 → 拖拽比较版本 → 批注或批准 → 就绪度更新", data: "页面内演示素材、版本与批注", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
     eyebrow: "CREATIVE REVIEW / 07", audience: "时装系列的创意审阅工作区",
     title: "把注意力留给这一版。", latinTitle: "REVIEW THE CUT. DECIDE THE RELEASE.",
     intro: "主素材、版本差异、团队批注和发布判断围绕同一画面展开；黑色舞台只负责让材质与决定更清楚。",
@@ -194,7 +194,7 @@ export const showcasePages = [
   {
     id: "neon-rift", number: "08", shortTitle: "Neon Rift", styleName: "赛博娱乐", journey: "三阶段入口 / 能量脉冲",
     layout: "cyber", theme: themes.neon, shape: "rift",
-    product: { mode: "expressive", type: "沉浸娱乐入口", role: "活动与游戏观众", verb: "进入", ia: "入口阶段 / 光场 / 能量脉冲 / 行动", loop: "经过 GATE、ARENA、INPUT 三阶段进入世界", data: "原创活动视觉", coverage: { filter: 0, visualization: 0, detail: 0, form: 0, state: 0, spatial: 1 } },
+    product: { mode: "expressive", type: "沉浸娱乐入口", role: "活动与游戏观众", verb: "进入", galleryAction: "进入沉浸式娱乐活动", ia: "入口阶段 / 光场 / 能量脉冲 / 行动", loop: "经过 GATE、ARENA、INPUT 三阶段进入世界", data: "原创活动视觉", coverage: { filter: 0, visualization: 0, detail: 0, form: 0, state: 0, spatial: 1 } },
     spatial3d: { role: "粒子裂隙的纵深、速度与入口尺度" },
     eyebrow: "LIVE EXPERIENCE / 08", audience: "游戏、电竞与数字娱乐概念页",
     title: "进入裂隙，规则重新加载。", latinTitle: "ENTER THE RIFT.",
@@ -211,7 +211,7 @@ export const showcasePages = [
   {
     id: "shanshui-now", number: "09", shortTitle: "Shanshui Now", styleName: "当代新中式", journey: "横向卷轴 / 书写显影",
     layout: "ink", theme: themes.ink, shape: "fold",
-    product: { mode: "expressive", type: "文化叙事长卷", role: "文化读者", verb: "阅读", ia: "横向卷首 / 纹理追踪 / 当代庭院", loop: "滚轮、拖动或键盘横向展开三段长卷", data: "摄影与文化文字", coverage: { filter: 0, visualization: 0, detail: 0, form: 0, state: 0, spatial: 0 } },
+    product: { mode: "expressive", type: "文化叙事长卷", role: "文化读者", verb: "阅读", galleryAction: "阅读当代文化长卷", ia: "横向卷首 / 纹理追踪 / 当代庭院", loop: "滚轮、拖动或键盘横向展开三段长卷", data: "摄影与文化文字", coverage: { filter: 0, visualization: 0, detail: 0, form: 0, state: 0, spatial: 0 } },
     eyebrow: "CONTEMPORARY CULTURE / 09", audience: "文化空间、展览与东方生活方式概念页",
     title: "山水不是旧图案，是今天的空间。", latinTitle: "TRADITION, STILL IN MOTION.",
     intro: "夯土、宣纸、青铜与竹影被放进当代建筑尺度。页面保留东方留白，也拒绝把文化缩成几个符号。",
@@ -227,7 +227,7 @@ export const showcasePages = [
   {
     id: "grid-01", number: "10", shortTitle: "Grid 01", styleName: "瑞士国际主义", journey: "坐标蓝图 / 热点与状态轨",
     layout: "swiss", theme: themes.swiss, shape: "grid",
-    product: { mode: "work", type: "建筑项目协作", role: "建筑团队", verb: "推进", ia: "专业筛选 / 坐标热点 / 锚定记录 / 横向状态轨", loop: "筛选专业 → 选择坐标热点 → 写协同记录 → 推进状态轨", data: "页面内演示建筑问题记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 1 } },
+    product: { mode: "work", type: "建筑项目协作", role: "建筑团队", verb: "推进", galleryAction: "定位问题并推进项目协作", ia: "专业筛选 / 坐标热点 / 锚定记录 / 横向状态轨", loop: "筛选专业 → 选择坐标热点 → 写协同记录 → 推进状态轨", data: "页面内演示建筑问题记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 1 } },
     spatial3d: { role: "一体化曲面壳体与连续协作路径的空间关系" },
     eyebrow: "PROJECT BOARD / 10", audience: "建筑与工程团队的协作看板",
     title: "问题归位，项目才会向前。", latinTitle: "ORDER MOVES THE PROJECT.",
@@ -246,14 +246,14 @@ export const showcasePages = [
 export const galleryPage = {
   id: "gallery", number: "00", shortTitle: "UI Done Gallery", styleName: "十种产品与视觉方向",
   layout: "gallery", theme: themes.gallery, chartKind: "matrix", shape: "gallery",
-  product: { mode: "index", type: "产品与视觉索引", role: "第一次看到 UI Done 的人", verb: "比较", ia: "任务入口 / 类型筛选 / 能力矩阵 / 作品", loop: "选择产品类型 → 比较能力 → 进入作品", data: "十个路由的实际实现元数据", coverage: { filter: 1, visualization: 1, detail: 1, form: 0, state: 1, spatial: 0 } },
-  eyebrow: "UI DONE / PRODUCT RANGE", audience: "给第一次看到 UI Done 的人",
-  title: "不只把页面做漂亮，也把工作做完整。",
+  product: { mode: "index", type: "产品与视觉索引", role: "第一次了解 UI Done 的人", verb: "比较", ia: "任务入口 / 类型筛选 / 能力矩阵 / 作品", loop: "选择产品类型 → 比较能力 → 进入作品", data: "十个路由的实际实现元数据", coverage: { filter: 1, visualization: 1, detail: 1, form: 0, state: 1, spatial: 0 } },
+  eyebrow: "UI DONE / PRODUCT RANGE", audience: "第一次了解 UI Done 的人",
+  title: "页面既要好看，也要帮助用户把事情做完。",
   latinTitle: "ONE SKILL. REAL WORK. DISTINCT WORLDS.",
-  intro: "六个页面直接承担分析、监控、经营、计划、审阅和协作；四个页面继续负责编辑、展览、娱乐与文化叙事。视觉风格是第二维度，不再代替产品任务。",
+  intro: "十个示例中，有六个是可以完成具体任务的工作页面，另外四个用于内容表达和沉浸体验。每个页面都根据自己的用途选择布局和视觉风格。",
   signature: "产品任务与视觉双轴索引", fontStatement: "Big Shoulders + Outfit + Noto Sans SC + Red Hat Mono",
-  chartTitle: "十个页面实际覆盖哪些工作能力",
-  chartSummary: "矩阵来自当前路由配置与已实现交互：亮格表示页面真实拥有该能力，暗格表示没有。它不使用虚构经营指标，也不把表达页硬改成看板。",
+  chartTitle: "这 10 个页面分别实现了哪些功能？",
+  chartSummary: "这个矩阵根据当前页面中已经实现的功能生成。亮格表示该页面具备这项功能，暗格表示没有。表达型页面不会为了凑数而加入虚构的数据或操作。",
   chartData: showcasePages.flatMap(page => [
     ["筛选", page.product.coverage.filter],
     ["可视化", page.product.coverage.visualization],

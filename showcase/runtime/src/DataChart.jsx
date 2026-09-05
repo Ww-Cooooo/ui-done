@@ -143,9 +143,9 @@ export default function DataChart({ page, reduced }) {
         <div><Tag bordered={false} icon={<BarChartOutlined />}>{page.chartKind === "matrix" ? "ANTV G2 / ROUTE CAPABILITY MATRIX" : "ANTV G2 / LOCAL DATA"}</Tag><h2 id={`${page.id}-chart-title`}>{page.chartTitle}</h2></div>
         <p>{page.chartSummary}</p>
       </div>
-      {error ? <Alert type="warning" showIcon message="图形层已回退" description="真实数值仍完整保留在页面的无障碍数据表中。" /> : <div ref={hostRef} className="g2-host" aria-hidden="true" />}
+      {error ? <Alert type="warning" showIcon message="图表暂时无法显示" description="页面仍会通过无障碍数据表提供全部内容。" /> : <div ref={hostRef} className="g2-host" aria-hidden="true" />}
       <DataTable page={page} />
-      <div className="chart-proof" aria-label="图表数据说明"><CheckCircleOutlined /><span>10 个公开路由</span><span>6 类工作能力</span><span>由当前页面配置生成</span><span>无虚构经营指标</span></div>
+      <div className="chart-proof" aria-label="图表数据来源"><CheckCircleOutlined /><span>10 个公开示例</span><span>6 类可比较功能</span><span>数据来自实际页面</span><span>没有编造经营数据</span></div>
     </section>
   );
 }

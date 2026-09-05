@@ -24,31 +24,31 @@ function GalleryHero() {
         <Tag data-hero-reveal bordered={false}>UI DONE / OPEN-SOURCE FRONTEND SKILL</Tag>
         <p data-hero-reveal className="hero-overline">REAL WORK · DISTINCT VISUAL WORLDS</p>
         <h1 data-hero-reveal>
-          <span className="type-line"><span className="type-lock">说清任务。</span></span>
-          <span className="type-line"><em className="type-lock">界面开始工作。</em></span>
+          <span className="type-line"><span className="type-lock">你只要说清需求。</span></span>
+          <span className="type-line"><em className="type-lock">页面交给 UI Done。</em></span>
         </h1>
-        <p data-hero-reveal className="hero-lead">你只要说清楚给谁用、要完成什么。UI Done 会主动把组件、字体、动效、滚动、Canvas、真实图表和适合的视觉素材组织成完整页面；3D 只在空间真的有用且能做好时加入。</p>
+        <p data-hero-reveal className="hero-lead">你只需要告诉 Agent，这个页面给谁用、要解决什么问题，以及你希望它给人什么感觉。UI Done 会主动选择组件、开源字体、动效、滚动方式、Canvas、数据图表和合适的视觉素材；只有真正适合页面时，才会加入 3D。</p>
         <div data-hero-reveal className="hero-actions">
-          <Button type="primary" size="large" href="#works" icon={<ArrowDownOutlined />}>先看能做什么</Button>
-          <Button size="large" href={repositoryUrl} target="_blank" rel="noreferrer" icon={<GithubOutlined />}>获取 Skill</Button>
+          <Button type="primary" size="large" href="#works" icon={<ArrowDownOutlined />}>直接看 10 个示例</Button>
+          <Button size="large" href={repositoryUrl} target="_blank" rel="noreferrer" icon={<GithubOutlined />}>在 GitHub 获取 Skill</Button>
         </div>
       </div>
       <div className="gallery-dispatch" data-hero-reveal>
         <div className="gallery-task-board" aria-label="六种工作型产品入口">
-          <div className="task-board-head"><span>PRODUCT TASKS / 06</span><b>从任务进入，不从风格猜。</b></div>
+          <div className="task-board-head"><span>WORK PAGES / 06</span><b>先选你要完成的工作，再看页面怎么设计。</b></div>
           <div className="task-board-list">
             {workPages.map(page => (
               <a key={page.id} className={`task-board-row task-${page.layout}`} href={`../${page.id}/`}>
                 <span>{page.number}</span>
                 <img src={page.images[0].src} alt="" />
-                <div><small>{page.product.role}</small><strong>{page.product.verb} / {page.shortTitle}</strong></div>
-                <Tag bordered={false}>{page.product.type}</Tag>
+                <div><small>{page.product.type}</small><strong>{page.product.role}可以{page.product.galleryAction}</strong></div>
+                <Tag bordered={false}>{page.shortTitle}</Tag>
                 <ArrowRightOutlined />
               </a>
             ))}
           </div>
           <div className="task-board-foot">
-            <span>+ 04 EXPRESSIVE EXPERIENCES</span><span>编辑 · 展览 · 娱乐 · 文化</span>
+            <span>另外还有 4 个表达型页面</span><span>自然专题、艺术展览、娱乐入口和文化长卷</span>
           </div>
         </div>
         <div className="gallery-task-pulse" aria-hidden="true">
@@ -97,8 +97,8 @@ function FinalCall({ page }) {
   return (
     <section className="final-call" data-scroll-reveal>
       <p>{isGallery ? "YOUR TASK / UI DONE EXPANDS" : `${page.number} / ${page.shortTitle}`}</p>
-      <h2>{isGallery ? "你不用先成为前端或设计师。" : `下一种世界：${nextPage.styleName}`}</h2>
-      <span>{isGallery ? "先说清楚谁要做什么；产品结构、视觉方向和完整能力由 Skill 主动展开，再按你的反馈细调。" : "同一套完整前端能力，不复制上一页的视觉答案。"}</span>
+      <h2>{isGallery ? "你不懂前端或设计，也能把需求说明白。" : `下一种世界：${nextPage.styleName}`}</h2>
+      <span>{isGallery ? "你只要告诉 Agent 页面给谁用、要解决什么问题。UI Done 会补全产品结构和视觉方案，并根据你的反馈继续调整。" : "同一套完整前端能力，不复制上一页的视觉答案。"}</span>
       <Button type="primary" size="large" href={href} target={isGallery ? "_blank" : undefined} rel={isGallery ? "noreferrer" : undefined} icon={<ArrowRightOutlined />}>
         {isGallery ? "在 GitHub 获取 UI Done" : `打开 ${nextPage.shortTitle}`}
       </Button>
