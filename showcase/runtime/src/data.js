@@ -77,13 +77,13 @@ function images(id, items) {
 
 export const showcasePages = [
   {
-    id: "velocity-works", number: "01", shortTitle: "Velocity Works", styleName: "运动性能", journey: "全屏夜训叙事 / 气流轨道",
+    id: "velocity-works", number: "01", shortTitle: "Velocity Works", styleName: "运动性能", journey: "教练复盘舱 / 触地轨迹",
     layout: "velocity", theme: themes.velocity, shape: "velocity",
-    product: { mode: "work", type: "训练分析", role: "跑步教练", verb: "分析", ia: "指标 / 趋势 / 训练记录 / 复盘", loop: "筛选训练 → 查看详情 → 记录复盘 → 状态更新", data: "页面内演示训练记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
+    product: { mode: "work", type: "训练分析", role: "跑步教练", verb: "分析", ia: "训练列 / 回放轨迹 / 负荷趋势 / 原位复盘", loop: "选择训练 → 比较负荷与触地 → 原位写复盘 → 标记完成", data: "页面内演示训练记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
     eyebrow: "COACHING DESK / 01", audience: "教练与训练团队的分析工作台",
     title: "下一秒，从这次复盘开始。", latinTitle: "READ THE RUN. SHAPE THE NEXT ONE.",
     intro: "把训练负荷、节奏变化和待复盘记录放在同一工作面上，让教练从筛选直接走到判断与记录。",
-    signature: "倾斜速度轨道", fontStatement: "Big Shoulders + Noto Sans SC + Red Hat Mono",
+    signature: "三栏训练复盘轨迹", fontStatement: "Big Shoulders + Noto Sans SC + Red Hat Mono",
     quote: "动作发生以前，界面已经把方向说清楚。",
     details: [["PACE", "倾斜轴线让阅读像一次起跑"], ["GRIP", "局部材质承担产品可信度"], ["AIR", "留白和冷蓝压住速度噪音"]],
     images: images("velocity-works", [
@@ -93,14 +93,14 @@ export const showcasePages = [
     ])
   },
   {
-    id: "north-tide", number: "02", shortTitle: "North Tide", styleName: "海岸自然编辑", journey: "海岸长篇 / 潮汐地平线",
+    id: "north-tide", number: "02", shortTitle: "North Tide", styleName: "海岸自然编辑", journey: "阈值滚动章节 / 扩张海岸影像",
     layout: "editorial", theme: themes.coast, shape: "tide",
     product: { mode: "expressive", type: "自然编辑专题", role: "旅行与自然读者", verb: "探索", ia: "编辑封面 / 摄影叙事 / 海面章节", loop: "沿专题阅读海岸章节", data: "摄影与编辑文字", coverage: { filter: 0, visualization: 0, detail: 0, form: 0, state: 0, spatial: 1 } },
     spatial3d: { role: "连续水面、天气与地平线的空间关系" },
     eyebrow: "COASTAL JOURNAL / 02", audience: "旅行杂志与自然观察概念页",
     title: "沿着风，走到陆地尽头。", latinTitle: "THE SEA KEEPS ITS OWN TIME.",
     intro: "没有旅游海报的甜味，只有风、盐、岩层和雾。缓慢的衬线字与横向留白把海岸写成一篇长文章。",
-    signature: "潮汐编辑折页", fontStatement: "Cormorant Garamond + Noto Serif SC + Red Hat Mono",
+    signature: "滚动扩张海岸章节", fontStatement: "Cormorant Garamond + Noto Serif SC + Red Hat Mono",
     quote: "真正的远方，不需要把颜色调得更响。",
     details: [["WIND", "宽行距给海风留下经过的空间"], ["SALT", "岩石微距成为整页的触觉锚点"], ["FOG", "低饱和图像维持安静的叙事温度"]],
     images: images("north-tide", [
@@ -110,14 +110,14 @@ export const showcasePages = [
     ])
   },
   {
-    id: "red-form", number: "03", shortTitle: "Red Form", styleName: "当代艺术粗野主义", journey: "展览海报墙 / 动态装置",
+    id: "red-form", number: "03", shortTitle: "Red Form", styleName: "当代艺术粗野主义", journey: "四展室切换 / 描线硬切",
     layout: "brutal", theme: themes.red, shape: "form",
-    product: { mode: "expressive", type: "当代艺术展览", role: "展览观众", verb: "观看", ia: "展签 / 作品焦点 / 策展文字", loop: "浏览作品与展览叙事", data: "展览视觉与策展文字", coverage: { filter: 0, visualization: 0, detail: 0, form: 0, state: 0, spatial: 1 } },
+    product: { mode: "expressive", type: "当代艺术展览", role: "展览观众", verb: "观看", ia: "展室索引 / 占幅作品 / 策展展签", loop: "切换四间展室并逐件观看", data: "展览视觉与策展文字", coverage: { filter: 0, visualization: 0, detail: 0, form: 0, state: 0, spatial: 1 } },
     spatial3d: { role: "一体成型的当代雕塑与展场光线" },
     eyebrow: "EXHIBITION STUDY / 03", audience: "当代艺术展览与文化机构概念页",
     title: "红色不是装饰，是事件。", latinTitle: "FORM BREAKS THE ROOM.",
     intro: "硬边、粗线、冲突色与巨型编号把白盒子打破。图像不被温柔地摆放，而是直接占领网格。",
-    signature: "破框红色展签", fontStatement: "Syne + Noto Sans SC + Red Hat Mono",
+    signature: "四室硬切展台", fontStatement: "Syne + Noto Sans SC + Red Hat Mono",
     quote: "如果一切都很和谐，作品就失去了抵抗。",
     details: [["SCALE", "巨型数字先建立展览的公共尺度"], ["TENSION", "红、黑、蓝形成不妥协的视觉冲突"], ["BODY", "人物动作把静态展签变成现场"]],
     images: images("red-form", [
@@ -127,14 +127,14 @@ export const showcasePages = [
     ])
   },
   {
-    id: "orbital-grid", number: "04", shortTitle: "Orbital Grid", styleName: "未来航天科技", journey: "任务简报 / 轨道系统",
+    id: "orbital-grid", number: "04", shortTitle: "Orbital Grid", styleName: "未来航天科技", journey: "三舱值班台 / 扫描轨迹",
     layout: "command", theme: themes.orbital, shape: "orbit",
-    product: { mode: "work", type: "轨道运营监控", role: "值班控制员", verb: "处置", ia: "状态 / 轨道视图 / 告警 / 遥测 / 处置", loop: "筛选告警 → 查看遥测 → 确认处置 → 状态更新", data: "页面内演示遥测与告警记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 1 } },
+    product: { mode: "work", type: "轨道运营监控", role: "值班控制员", verb: "处置", ia: "告警队列 / 轨道视窗 / 遥测 / 原位指令槽", loop: "选择告警 → 核对轨道与遥测 → 装填指令 → 确认处置", data: "页面内演示遥测与告警记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 1 } },
     spatial3d: { role: "地球、轨道与完整航天器的真实空间关系" },
     eyebrow: "ORBITAL OPS / 04", audience: "轨道任务值班控制台",
     title: "先看清异常，再发出处置。", latinTitle: "ONE ORBIT. CLEAR PRIORITIES.",
     intro: "轨道位置、链路遥测和告警队列处在同一任务上下文，橙色只标记需要值班员立即判断的状态。",
-    signature: "轨道控制舷窗", fontStatement: "Chakra Petch + Noto Sans SC + Red Hat Mono",
+    signature: "三舱轨道处置台", fontStatement: "Chakra Petch + Noto Sans SC + Red Hat Mono",
     quote: "复杂系统最需要的，是一眼可辨的优先级。",
     details: [["ORBIT", "轨道弧线只解释空间关系"], ["MATERIAL", "碳纤维近景带来工程触感"], ["CONTROL", "数据界面以高密度但清晰的节奏组织"]],
     images: images("orbital-grid", [
@@ -144,13 +144,13 @@ export const showcasePages = [
     ])
   },
   {
-    id: "corner-goods", number: "05", shortTitle: "Corner Goods", styleName: "温暖复古街角", journey: "街角商店 / 柜台故事",
+    id: "corner-goods", number: "05", shortTitle: "Corner Goods", styleName: "温暖复古街角", journey: "货架与连续小票 / 盖章补货",
     layout: "retro", theme: themes.corner, shape: "stack",
     product: { mode: "work", type: "门店经营", role: "社区店长", verb: "补货", ia: "经营摘要 / 库存与订单 / 筛选 / 补货", loop: "找到低库存 → 填写补货 → 提交 → 库存更新", data: "页面内演示库存与订单记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
     eyebrow: "STORE DESK / 05", audience: "社区门店的库存与订单工作台",
     title: "先把缺的补上，再安心开门。", latinTitle: "GOOD STOCK. GOOD DAY.",
     intro: "保留街角小店的温度，把低库存、今日销量和补货动作整理成店长一眼能做完的经营流程。",
-    signature: "街角票据拼贴", fontStatement: "Fraunces + ZCOOL QingKe HuangYou + Noto Sans SC",
+    signature: "连续补货小票", fontStatement: "Fraunces + ZCOOL QingKe HuangYou + Noto Sans SC",
     quote: "亲切不是做旧滤镜，而是让每个东西都有来处。",
     details: [["HELLO", "门店正面先建立人与地点的关系"], ["WEIGHT", "秤、陶碗和果实组成可信的日常细节"], ["HANDS", "人的动作让商品陈列不再像样板间"]],
     images: images("corner-goods", [
@@ -160,13 +160,13 @@ export const showcasePages = [
     ])
   },
   {
-    id: "still-day", number: "06", shortTitle: "Still Day", styleName: "柔和生活方式", journey: "安静日常 / 柔光涟漪",
+    id: "still-day", number: "06", shortTitle: "Still Day", styleName: "柔和生活方式", journey: "日期轴与时间河 / 习惯轨道",
     layout: "soft", theme: themes.still, shape: "pebble",
-    product: { mode: "work", type: "日程与习惯计划", role: "个人使用者", verb: "安排", ia: "日期 / 当日日程 / 习惯 / 周趋势", loop: "选择日期 → 完成或新增事项 → 进度更新", data: "页面内演示日程与习惯记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
+    product: { mode: "work", type: "日程与习惯计划", role: "个人使用者", verb: "安排", ia: "日期脊柱 / 时间河 / 原位编辑 / 习惯环", loop: "选择日期 → 原位新增安排或完成习惯 → 节奏与周趋势更新", data: "页面内演示日程与习惯记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
     eyebrow: "DAILY PLANNER / 06", audience: "个人日程与习惯计划应用",
     title: "今天不必塞满，但要看得清。", latinTitle: "A QUIETER PLAN FOR TODAY.",
     intro: "日历、今日清单和习惯进度共同服务一个安静的计划动作；浅紫和柔光负责降低噪音，而不是代替内容。",
-    signature: "漂浮日光胶囊", fontStatement: "Outfit + Noto Sans SC + Red Hat Mono",
+    signature: "时间河与习惯轨道", fontStatement: "Outfit + Noto Sans SC + Red Hat Mono",
     quote: "好的数字体验，也可以像把手机放下。",
     details: [["PAUSE", "大留白让信息主动降低音量"], ["TOUCH", "纸、石头与手势建立真实触感"], ["WALK", "最终把注意力带回屏幕之外"]],
     images: images("still-day", [
@@ -176,13 +176,13 @@ export const showcasePages = [
     ])
   },
   {
-    id: "atelier-noir", number: "07", shortTitle: "Atelier Noir", styleName: "奢侈时装编辑", journey: "横向 Lookbook / 流动材质",
+    id: "atelier-noir", number: "07", shortTitle: "Atelier Noir", styleName: "奢侈时装编辑", journey: "胶片列与拖拽对比 / 固定审阅台",
     layout: "luxury", theme: themes.atelier, shape: "ribbon",
-    product: { mode: "work", type: "创意审阅与审批", role: "创意负责人", verb: "审批", ia: "主素材 / 版本 / 批注 / 审批", loop: "选择素材 → 查看版本与批注 → 通过或退修 → 状态更新", data: "页面内演示素材、版本与批注", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
+    product: { mode: "work", type: "创意审阅与审批", role: "创意负责人", verb: "审批", ia: "胶片列 / 拖拽前后对比 / 批注 / 固定审批台", loop: "选择画面 → 拖拽比较版本 → 批注或批准 → 就绪度更新", data: "页面内演示素材、版本与批注", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
     eyebrow: "CREATIVE REVIEW / 07", audience: "时装系列的创意审阅工作区",
     title: "把注意力留给这一版。", latinTitle: "REVIEW THE CUT. DECIDE THE RELEASE.",
     intro: "主素材、版本差异、团队批注和发布判断围绕同一画面展开；黑色舞台只负责让材质与决定更清楚。",
-    signature: "黑金杂志跨页", fontStatement: "Bodoni Moda + Cormorant Garamond + Noto Serif SC",
+    signature: "胶片拖拽审阅", fontStatement: "Bodoni Moda + Cormorant Garamond + Noto Serif SC",
     quote: "奢侈感来自选择的准确，不来自元素的数量。",
     details: [["CUT", "锋利轮廓先说出品牌姿态"], ["SKIN", "珠宝特写把尺度拉到最私密的位置"], ["SPACE", "建筑留白把衣料的流动放大"]],
     images: images("atelier-noir", [
@@ -192,14 +192,14 @@ export const showcasePages = [
     ])
   },
   {
-    id: "neon-rift", number: "08", shortTitle: "Neon Rift", styleName: "赛博娱乐", journey: "沉浸入口 / 粒子裂隙",
+    id: "neon-rift", number: "08", shortTitle: "Neon Rift", styleName: "赛博娱乐", journey: "三阶段入口 / 能量脉冲",
     layout: "cyber", theme: themes.neon, shape: "rift",
-    product: { mode: "expressive", type: "沉浸娱乐入口", role: "活动与游戏观众", verb: "进入", ia: "沉浸封面 / 节目脉冲 / 夜间叙事", loop: "沿视觉节奏探索活动世界", data: "原创活动视觉", coverage: { filter: 0, visualization: 0, detail: 0, form: 0, state: 0, spatial: 1 } },
+    product: { mode: "expressive", type: "沉浸娱乐入口", role: "活动与游戏观众", verb: "进入", ia: "入口阶段 / 光场 / 能量脉冲 / 行动", loop: "经过 GATE、ARENA、INPUT 三阶段进入世界", data: "原创活动视觉", coverage: { filter: 0, visualization: 0, detail: 0, form: 0, state: 0, spatial: 1 } },
     spatial3d: { role: "粒子裂隙的纵深、速度与入口尺度" },
     eyebrow: "LIVE EXPERIENCE / 08", audience: "游戏、电竞与数字娱乐概念页",
     title: "进入裂隙，规则重新加载。", latinTitle: "ENTER THE RIFT.",
     intro: "紫蓝光、透明控制器和巨构空间组成同一条世界观。界面像入口，不像贴满发光按钮的设备面板。",
-    signature: "霓虹裂隙舞台", fontStatement: "Chakra Petch + Syne + Noto Sans SC + Red Hat Mono",
+    signature: "三阶段能量入口", fontStatement: "Chakra Petch + Syne + Noto Sans SC + Red Hat Mono",
     quote: "氛围不是特效总量，而是每一层都相信同一个世界。",
     details: [["LIVE", "人物与场馆建立事件正在发生的尺度"], ["INPUT", "控制器特写让交互拥有物理入口"], ["WORLD", "巨构空间承担想象，不挤压真实操作"]],
     images: images("neon-rift", [
@@ -209,13 +209,13 @@ export const showcasePages = [
     ])
   },
   {
-    id: "shanshui-now", number: "09", shortTitle: "Shanshui Now", styleName: "当代新中式", journey: "当代长卷 / 云山视差",
+    id: "shanshui-now", number: "09", shortTitle: "Shanshui Now", styleName: "当代新中式", journey: "横向卷轴 / 书写显影",
     layout: "ink", theme: themes.ink, shape: "fold",
-    product: { mode: "expressive", type: "文化叙事长卷", role: "文化读者", verb: "阅读", ia: "卷轴标题 / 山水摄影 / 文化短章", loop: "顺序阅读现代山水章节", data: "摄影与文化文字", coverage: { filter: 0, visualization: 0, detail: 0, form: 0, state: 0, spatial: 0 } },
+    product: { mode: "expressive", type: "文化叙事长卷", role: "文化读者", verb: "阅读", ia: "横向卷首 / 纹理追踪 / 当代庭院", loop: "滚轮、拖动或键盘横向展开三段长卷", data: "摄影与文化文字", coverage: { filter: 0, visualization: 0, detail: 0, form: 0, state: 0, spatial: 0 } },
     eyebrow: "CONTEMPORARY CULTURE / 09", audience: "文化空间、展览与东方生活方式概念页",
     title: "山水不是旧图案，是今天的空间。", latinTitle: "TRADITION, STILL IN MOTION.",
     intro: "夯土、宣纸、青铜与竹影被放进当代建筑尺度。页面保留东方留白，也拒绝把文化缩成几个符号。",
-    signature: "墨迹空间长卷", fontStatement: "Noto Serif SC + Cormorant Garamond + Red Hat Mono",
+    signature: "横向墨迹长卷", fontStatement: "Noto Serif SC + Cormorant Garamond + Red Hat Mono",
     quote: "传统真正活着的时候，不需要穿上仿古外壳。",
     details: [["VOID", "留白不是空，而是控制观看速度"], ["TRACE", "纸纤维与青铜纹样连接时间尺度"], ["GARDEN", "建筑、竹影和水面完成当代语境"]],
     images: images("shanshui-now", [
@@ -225,14 +225,14 @@ export const showcasePages = [
     ])
   },
   {
-    id: "grid-01", number: "10", shortTitle: "Grid 01", styleName: "瑞士国际主义", journey: "建筑档案 / 分解模型",
+    id: "grid-01", number: "10", shortTitle: "Grid 01", styleName: "瑞士国际主义", journey: "坐标蓝图 / 热点与状态轨",
     layout: "swiss", theme: themes.swiss, shape: "grid",
-    product: { mode: "work", type: "建筑项目协作", role: "建筑团队", verb: "推进", ia: "项目摘要 / 状态看板 / 模型上下文 / 问题详情", loop: "筛选专业 → 检查问题 → 推进状态 → 看板更新", data: "页面内演示建筑问题记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 1 } },
-    spatial3d: { role: "具有真实装配间隙的建筑分解体" },
+    product: { mode: "work", type: "建筑项目协作", role: "建筑团队", verb: "推进", ia: "专业筛选 / 坐标热点 / 锚定记录 / 横向状态轨", loop: "筛选专业 → 选择坐标热点 → 写协同记录 → 推进状态轨", data: "页面内演示建筑问题记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 1 } },
+    spatial3d: { role: "一体化曲面壳体与连续协作路径的空间关系" },
     eyebrow: "PROJECT BOARD / 10", audience: "建筑与工程团队的协作看板",
     title: "问题归位，项目才会向前。", latinTitle: "ORDER MOVES THE PROJECT.",
     intro: "用红、蓝、黑和严格坐标组织专业、楼层、负责人和状态；模型负责定位问题，看板负责把问题真正推进。",
-    signature: "十二列公共海报", fontStatement: "Archivo + Noto Sans SC + Red Hat Mono",
+    signature: "坐标热点协作板", fontStatement: "Archivo + Noto Sans SC + Red Hat Mono",
     quote: "最自由的画面，往往站在最清楚的结构上。",
     details: [["AXIS", "十二列网格明确每块信息的责任"], ["SIGNAL", "原色只用于关键坐标与行动"], ["SERIES", "三张照片用重复比例建立公共秩序"]],
     images: images("grid-01", [

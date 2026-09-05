@@ -1,6 +1,9 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { ConfigProvider, Button, Drawer, Tag } from "antd";
-import { ArrowLeftOutlined, GithubOutlined, MenuOutlined } from "@ant-design/icons";
+import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
+import { Button, ConfigProvider } from "antd";
+import {
+  ArrowLeftOutlined,
+  GithubOutlined
+} from "@ant-design/icons";
 import { ReactLenis, useLenis } from "lenis/react";
 import { animate, createTimeline, onScroll, stagger } from "animejs";
 
@@ -25,16 +28,14 @@ function ScrollSignal() {
       if (!target) return;
       event.preventDefault();
       window.history.pushState(null, "", targetUrl.hash);
-      lenis.scrollTo(target, { offset: -84 });
+      lenis.scrollTo(target, { offset: -72 });
     };
-    const restoreLocation = () => {
-      window.requestAnimationFrame(() => {
-        lenis.scrollTo(window.location.hash || 0, {
-          immediate: true,
-          offset: window.location.hash ? -84 : 0
-        });
+    const restoreLocation = () => window.requestAnimationFrame(() => {
+      lenis.scrollTo(window.location.hash || 0, {
+        immediate: true,
+        offset: window.location.hash ? -72 : 0
       });
-    };
+    });
     window.addEventListener("click", followAnchor);
     window.addEventListener("popstate", restoreLocation);
     return () => {
@@ -48,44 +49,34 @@ function ScrollSignal() {
   return null;
 }
 
-function MotionDirector({ rootRef, reduced }) {
+function GalleryMotion({ rootRef, reduced, enabled }) {
   useLayoutEffect(() => {
     const root = rootRef.current;
-    if (!root || reduced) return undefined;
-
+    if (!root || reduced || !enabled) return undefined;
+    const timeline = createTimeline({ defaults: { duration: 720, ease: "out(3)" } });
     const heroItems = root.querySelectorAll("[data-hero-reveal]");
-    const timeline = createTimeline({
-      defaults: { duration: 760, ease: "out(3)" }
-    });
-
     if (heroItems.length) {
       timeline.add(heroItems, {
         opacity: [0, 1],
-        y: [28, 0],
-        delay: stagger(90)
+        y: [24, 0],
+        delay: stagger(70)
       });
     }
-
-    const observers = [...root.querySelectorAll("[data-scroll-reveal]")].map(node =>
-      onScroll({
-        target: node,
-        repeat: false,
-        onEnter: () => {
-          animate(node, {
-            opacity: [0.55, 1],
-            y: [22, 0],
-            duration: 620,
-            ease: "out(3)"
-          });
-        }
+    const observers = [...root.querySelectorAll("[data-scroll-reveal]")].map(node => onScroll({
+      target: node,
+      repeat: false,
+      onEnter: () => animate(node, {
+        opacity: [0.62, 1],
+        y: [18, 0],
+        duration: 560,
+        ease: "out(3)"
       })
-    );
-
+    }));
     return () => {
       timeline.revert();
       observers.forEach(observer => observer.revert());
     };
-  }, [reduced, rootRef]);
+  }, [enabled, reduced, rootRef]);
 
   return null;
 }
@@ -100,12 +91,8 @@ function BrandMark() {
   );
 }
 
-function Header({ page, onMenu }) {
+function Header({ page }) {
   const isGallery = page.id === "gallery";
-  const isWork = page.product?.mode === "work";
-  const primaryHref = isGallery ? "#works" : isWork ? "#workspace" : "#story";
-  const primaryLabel = isGallery ? "产品与风格" : isWork ? "工作台" : "页面旅程";
-
   return (
     <header className="site-header">
       <a className="site-brand" href={isGallery ? "./" : "../gallery/"} aria-label="UI Done 展厅首页">
@@ -120,58 +107,21 @@ function Header({ page, onMenu }) {
       </div>
 
       <nav className="desktop-nav" aria-label="主要导航">
-        {!isGallery && (
-          <Button type="text" icon={<ArrowLeftOutlined />} href="../gallery/">
-            全部作品
-          </Button>
-        )}
-        <Button type="text" href={primaryHref}>{primaryLabel}</Button>
-        <Button type="text" icon={<GithubOutlined />} href={repositoryUrl} target="_blank" rel="noreferrer">
-          GitHub
-        </Button>
+        {!isGallery && <Button type="text" icon={<ArrowLeftOutlined />} href="../gallery/">全部作品</Button>}
+        {isGallery && <Button type="text" href="#works">产品与风格</Button>}
+        <Button type="text" icon={<GithubOutlined />} href={repositoryUrl} target="_blank" rel="noreferrer">GitHub</Button>
       </nav>
 
-      <Button
-        className="mobile-menu"
-        type="text"
-        icon={<MenuOutlined />}
-        aria-label="打开页面导航"
-        onClick={onMenu}
-      />
+      <nav className="mobile-quick-nav" aria-label="移动端快速导航">
+        {!isGallery && <Button type="text" shape="circle" icon={<ArrowLeftOutlined />} href="../gallery/" aria-label="返回全部作品" />}
+        <Button type="text" shape="circle" icon={<GithubOutlined />} href={repositoryUrl} target="_blank" rel="noreferrer" aria-label="打开 GitHub 仓库" />
+      </nav>
     </header>
-  );
-}
-
-function MobileSheet({ page, open, onClose }) {
-  const isGallery = page.id === "gallery";
-  const isWork = page.product?.mode === "work";
-  return (
-    <Drawer
-      rootClassName="mobile-nav-drawer"
-      title={<Tag bordered={false}>{page.number} / {page.shortTitle}</Tag>}
-      placement="right"
-      width={330}
-      open={open}
-      onClose={onClose}
-      styles={{
-        content: { color: page.theme.ink, background: page.theme.surface },
-        header: { borderColor: page.theme.line, background: page.theme.surface },
-        body: { background: page.theme.surface }
-      }}
-    >
-      <nav className="mobile-nav-links" aria-label="移动端导航">
-        {page.id !== "gallery" && <Button type="text" block icon={<ArrowLeftOutlined />} href="../gallery/">全部作品</Button>}
-        <Button type="text" block href={isGallery ? "#works" : isWork ? "#workspace" : "#story"}>{isGallery ? "产品与风格" : isWork ? "工作台" : "页面旅程"}</Button>
-        <Button type="text" block icon={<GithubOutlined />} href={repositoryUrl} target="_blank" rel="noreferrer">GitHub 仓库</Button>
-        <Button block onClick={onClose}>关闭</Button>
-      </nav>
-    </Drawer>
   );
 }
 
 function ThemedContent({ page, children, reduced }) {
   const rootRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(false);
   const style = useMemo(() => ({
     "--page-bg": page.theme.bg,
     "--page-surface": page.theme.surface,
@@ -191,10 +141,9 @@ function ThemedContent({ page, children, reduced }) {
 
   return (
     <div ref={rootRef} className={`app page-${page.id} tone-${page.theme.mode} product-${page.product?.mode || "expressive"}`} style={style}>
-      <MotionDirector rootRef={rootRef} reduced={reduced} />
+      <GalleryMotion rootRef={rootRef} reduced={reduced} enabled={page.id === "gallery"} />
       <div className="scroll-progress" aria-hidden="true" />
-      <Header page={page} onMenu={() => setMenuOpen(true)} />
-      <MobileSheet page={page} open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <Header page={page} />
       {children}
     </div>
   );
@@ -211,18 +160,16 @@ export default function ExperienceFrame({ page, children, reduced }) {
     colorText: page.theme.ink,
     colorTextSecondary: page.theme.muted,
     colorBgContainer: page.theme.surface,
+    colorBgElevated: page.theme.surface,
     colorBorder: page.theme.line,
+    colorBorderSecondary: page.theme.line,
     borderRadius: radii[page.layout] ?? 10,
     fontFamily: `"${page.theme.body}", "${page.theme.cjk}", sans-serif`,
     controlHeight: 42,
     motion: !reduced
   }), [page, reduced]);
 
-  const content = (
-    <ThemedContent page={page} reduced={reduced}>
-      {children}
-    </ThemedContent>
-  );
+  const content = <ThemedContent page={page} reduced={reduced}>{children}</ThemedContent>;
 
   return (
     <ConfigProvider theme={{ token: tokens }}>
@@ -234,7 +181,7 @@ export default function ExperienceFrame({ page, children, reduced }) {
             lerp: 0.085,
             smoothWheel: true,
             syncTouch: false,
-            prevent: node => Boolean(node.closest?.("[data-lenis-prevent], .ant-drawer, .ant-modal, .ant-table-body, .ant-picker-panel"))
+            prevent: node => Boolean(node.closest?.("[data-lenis-prevent], [data-native-scroll], .ant-table-body, .ant-picker-panel"))
           }}
         >
           <ScrollSignal />

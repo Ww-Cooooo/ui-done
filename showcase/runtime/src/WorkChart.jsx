@@ -17,11 +17,14 @@ function axisStyle(page) {
 
 function chartOptions({ data, kind, page }) {
   const horizontal = kind === "horizontal";
+  const isLine = kind === "line";
+  const isArea = kind === "area";
+  const isPoint = kind === "points";
   return {
-    type: kind === "line" ? "line" : "interval",
+    type: isLine ? "line" : isArea ? "area" : isPoint ? "point" : "interval",
     data,
     autoFit: true,
-    encode: { x: "label", y: "value", color: kind === "line" ? undefined : "label" },
+    encode: { x: "label", y: "value", color: isLine || isArea ? undefined : "label" },
     coordinate: horizontal ? { transform: [{ type: "transpose" }] } : undefined,
     scale: {
       y: { nice: true },
@@ -32,8 +35,12 @@ function chartOptions({ data, kind, page }) {
       y: { ...axisStyle(page), tickCount: 4 }
     },
     legend: { color: false },
-    style: kind === "line"
+    style: isLine
       ? { stroke: page.theme.accent, lineWidth: 3, shape: "smooth" }
+      : isArea
+        ? { fill: `linear-gradient(90deg, ${page.theme.accent2} 0%, ${page.theme.accent} 100%)`, fillOpacity: 0.62, shape: "smooth" }
+        : isPoint
+          ? { fill: page.theme.accent, stroke: page.theme.surface, lineWidth: 2, r: 5 }
       : horizontal
         ? { insetTop: 7, insetBottom: 7, radiusTopRight: 4, radiusBottomRight: 4 }
         : { insetLeft: 8, insetRight: 8, radiusTopLeft: 6, radiusTopRight: 6 },
@@ -57,7 +64,7 @@ export default function WorkChart({ page, data, kind = "line", label, height = 2
     try {
       chart = new Chart({ container: host, autoFit: true, height });
       const options = chartOptions({ data, kind, page });
-      options.animate = reduced ? false : { enter: { type: kind === "line" ? "growInX" : "growInY", duration: 420 } };
+      options.animate = reduced ? false : { enter: { type: kind === "line" || kind === "area" ? "growInX" : "growInY", duration: 420 } };
       chart.options(options);
       Promise.resolve(chart.render()).catch(() => {
         if (!cancelled) setError(true);

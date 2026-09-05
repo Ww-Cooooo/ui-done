@@ -134,7 +134,7 @@ export default function App({ pageId }) {
           </>
         ) : <ProjectExperience page={page} />}
       </main>
-      <Footer page={page} />
+      {isGallery && <Footer page={page} />}
     </ExperienceFrame>
   );
 }

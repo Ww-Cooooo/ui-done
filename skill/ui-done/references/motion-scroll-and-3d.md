@@ -68,6 +68,8 @@ If the host or meaning cannot be stated specifically, the effect is arbitrary. �
 
 Prefer motion on a surface the product already expects—a promotional strip, schedule card, product object, map path, progress state, or real chart transition—over a separate animation surface. The reusable lesson is integration into existing content, not copying any particular marquee, orbit, or visual style.
 
+For substantial new pages and material redesigns, motion is a planned default, not optional polish. Give every page one primary motion signature tied to its content or task, then use quieter supporting feedback only where needed. In an intentionally varied set, do not let the same reveal preset, scroll entry, direction, or looping background become the primary motion of multiple works; shared code may manage scope and cleanup, but each page owns a visibly different trigger-to-completion choreography. Omission requires an observed hard delivery, performance, accessibility, or explicit user constraint and must be recorded. Reduced-motion is a required alternate completion state, not evidence that the normal page may ship motionless.
+
 Treat visible controls as product features. Do not surface pause, reset, rotate, speed, view, or scene controls simply because the library provides them. Use them only when direct manipulation serves a real task or when an accessibility requirement calls for a user-operated mechanism. For ambient or decorative motion, prefer brief or bounded behavior plus automatic reduced-motion, hidden-tab, offscreen, and low-power handling. If continuous motion needs a pause mechanism, integrate it into the product's interaction language instead of attaching a generic engine toolbar.
 
 ## Assign ownership

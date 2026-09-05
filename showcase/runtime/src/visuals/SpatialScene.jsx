@@ -5,12 +5,15 @@ import {
   ACESFilmicToneMapping,
   AdditiveBlending,
   BackSide,
+  CatmullRomCurve3,
   Color,
   DoubleSide,
   ExtrudeGeometry,
   Path,
   PMREMGenerator,
   Shape,
+  TubeGeometry,
+  Vector3,
   Vector2
 } from "three";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
@@ -562,50 +565,55 @@ function NeonScene({ page, active }) {
   );
 }
 
-function makeFoldedModuleGeometry() {
+function makeCoordinationShellGeometry() {
   const shape = new Shape();
-  shape.moveTo(-2.1, -0.14);
-  shape.lineTo(0.34, -0.14);
-  shape.lineTo(0.34, 0.82);
-  shape.quadraticCurveTo(0.34, 0.98, 0.5, 0.98);
-  shape.lineTo(0.82, 0.98);
-  shape.quadraticCurveTo(0.98, 0.98, 0.98, 0.82);
-  shape.lineTo(0.98, 0.17);
-  shape.lineTo(2.1, 0.17);
-  shape.lineTo(2.1, 0.34);
-  shape.lineTo(0.78, 0.34);
-  shape.lineTo(0.78, 0.76);
-  shape.lineTo(0.54, 0.76);
-  shape.lineTo(0.54, 0.13);
-  shape.lineTo(-2.1, 0.13);
+  shape.moveTo(-2.48, -0.74);
+  shape.bezierCurveTo(-1.92, -1.04, -1.02, -1.02, -0.42, -0.58);
+  shape.bezierCurveTo(0.16, -0.15, 0.42, 0.58, 1.18, 0.72);
+  shape.bezierCurveTo(1.72, 0.82, 2.18, 0.52, 2.5, 0.08);
+  shape.bezierCurveTo(2.26, 0.74, 1.86, 1.12, 1.18, 1.22);
+  shape.bezierCurveTo(0.16, 1.38, -0.28, 0.58, -0.9, 0.2);
+  shape.bezierCurveTo(-1.46, -0.14, -2.02, -0.18, -2.48, 0.14);
   shape.closePath();
+  const courtyard = new Path();
+  courtyard.absellipse(0.12, 0.34, 0.7, 0.25, 0, TAU, true, 0);
+  shape.holes.push(courtyard);
   const geometry = new ExtrudeGeometry(shape, {
-    depth: 1.86,
-    steps: 1,
+    depth: 1.34,
+    steps: 2,
     bevelEnabled: true,
-    bevelSegments: 3,
-    bevelSize: 0.035,
-    bevelThickness: 0.035,
-    curveSegments: 18
+    bevelSegments: 8,
+    bevelSize: 0.09,
+    bevelThickness: 0.09,
+    curveSegments: 42
   });
   geometry.center();
   geometry.computeVertexNormals();
   return geometry;
 }
 
+function makeCoordinationRoute(points, radius) {
+  return new TubeGeometry(
+    new CatmullRomCurve3(points.map(point => new Vector3(...point))),
+    96,
+    radius,
+    12,
+    false
+  );
+}
+
 function GridScene({ page, active }) {
   const building = useRef(null);
-  const moduleGeometry = useDisposable(() => makeFoldedModuleGeometry(), []);
-  const modules = [
-    { position: [-0.58, -1.62, 0.34], rotation: [0, 0.1, 0], color: "#c9cbc9" },
-    { position: [0.42, 0, -0.28], rotation: [0, Math.PI + 0.04, 0], color: page.theme.accent },
-    { position: [-0.2, 1.62, 0.16], rotation: [0, -0.08, 0], color: "#e4e5e1" }
-  ];
+  const shellGeometry = useDisposable(() => makeCoordinationShellGeometry(), []);
+  const routeGeometries = useDisposable(() => [
+    makeCoordinationRoute([[-2.2, -.42, .78], [-1.2, -.08, .9], [-.2, .34, .74], [.86, .52, .42], [2.16, .12, .08]], .065),
+    makeCoordinationRoute([[-1.92, .08, -.78], [-.9, .54, -.9], [.18, .82, -.68], [1.18, .86, -.28], [2.06, .54, .12]], .04)
+  ], []);
 
   useFrame((state) => {
     if (!active || !building.current) return;
-    building.current.rotation.y = -0.56 + Math.sin(state.clock.elapsedTime * 0.19) * 0.055;
-    building.current.rotation.x = -0.09 + Math.cos(state.clock.elapsedTime * 0.14) * 0.018;
+    building.current.rotation.y = -0.5 + Math.sin(state.clock.elapsedTime * 0.19) * 0.045;
+    building.current.rotation.x = -0.18 + Math.cos(state.clock.elapsedTime * 0.14) * 0.014;
   });
 
   return (
@@ -613,19 +621,16 @@ function GridScene({ page, active }) {
       <ambientLight intensity={0.48} />
       <directionalLight position={[4, 7, 6]} intensity={2.9} castShadow shadow-mapSize-width={1024} shadow-mapSize-height={1024} />
       <pointLight position={[-4, 1, 3]} intensity={10} color={page.theme.accent2} />
-      <group ref={building} rotation={[-0.09, -0.56, 0]} position={[0, 0.05, 0]}>
-        {modules.map((module, index) => (
-          <mesh
-            key={index}
-            geometry={moduleGeometry}
-            position={module.position}
-            rotation={module.rotation}
-            castShadow
-            receiveShadow
-          >
-            <meshPhysicalMaterial color={module.color} metalness={index === 1 ? 0.18 : 0.06} roughness={0.62} clearcoat={0.18} />
-          </mesh>
-        ))}
+      <group ref={building} rotation={[-0.18, -0.5, 0]} position={[0, 0.05, 0]}>
+        <mesh geometry={shellGeometry} castShadow receiveShadow>
+          <meshPhysicalMaterial color="#e4e5e1" metalness={0.08} roughness={0.46} clearcoat={0.24} />
+        </mesh>
+        <mesh geometry={routeGeometries[0]} castShadow>
+          <meshPhysicalMaterial color={page.theme.accent} emissive={page.theme.accent} emissiveIntensity={0.08} metalness={0.12} roughness={0.36} />
+        </mesh>
+        <mesh geometry={routeGeometries[1]} castShadow>
+          <meshPhysicalMaterial color={page.theme.accent2} metalness={0.2} roughness={0.32} />
+        </mesh>
       </group>
       <gridHelper args={[12, 24, page.theme.accent2, "#b7b8b5"]} position={[0, -2.34, 0]} />
     </>
