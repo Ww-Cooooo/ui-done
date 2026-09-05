@@ -105,6 +105,15 @@ main { display: block; }
 
 /* Sections and gallery cards */
 .content-section { padding: clamp(80px, 10vw, 150px) 0; }
+.gallery-filter { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin: -20px 0 36px 108px; color: var(--page-ink); }
+.gallery-filter .ant-segmented { padding: 4px; color: #d9dce1; background: #22262b; }
+.gallery-filter .ant-segmented-item { color: #d9dce1; }
+.gallery-filter .ant-segmented-item:hover { color: #fff; }
+.gallery-filter .ant-segmented-item-selected { color: #15171a; background: #f4f1e8; }
+.gallery-filter .ant-segmented-item:not(.ant-segmented-item-selected) .ant-segmented-item-label { color: #d9dce1 !important; }
+.gallery-filter .ant-segmented-item-selected .ant-segmented-item-label,
+.gallery-filter .ant-segmented-item-selected .ant-segmented-item-label * { color: #15171a !important; }
+.gallery-filter > span { color: var(--page-muted); font-family: var(--font-mono), monospace; font-size: 11px; }
 .section-intro { display: grid; grid-template-columns: 80px minmax(280px, 1fr) minmax(280px, .7fr); gap: 28px; align-items: start; margin-bottom: 56px; padding-top: 18px; border-top: 1px solid var(--page-line); }
 .section-intro > span, .section-intro > div > p { color: var(--page-accent); font-family: var(--font-mono), monospace; font-size: 11px; letter-spacing: .12em; }
 .section-intro h2 { max-width: 760px; margin: 10px 0 0; font-family: var(--font-display-latin), var(--font-display-cjk), serif; font-size: clamp(38px, 4.5vw, 70px); font-weight: 650; line-height: 1.02; letter-spacing: -.035em; }
@@ -430,6 +439,7 @@ main { display: block; }
   .hero-actions .ant-btn { width: 100%; }
   .gallery-hero-foot { overflow: hidden; justify-content: flex-start; gap: 26px; white-space: nowrap; }
   .content-section { padding: 76px 0; }
+  .gallery-filter { align-items: flex-start; margin: -10px 0 28px; flex-direction: column; }
   .section-intro { grid-template-columns: 34px 1fr; gap: 16px; margin-bottom: 36px; }
   .section-intro h2 { font-size: clamp(34px, 10vw, 52px); }
   .section-intro > p { font-size: 14px; }

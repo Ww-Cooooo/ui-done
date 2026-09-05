@@ -142,8 +142,7 @@ function ThemedContent({ page, children, reduced }) {
   return (
     <div ref={rootRef} className={`app page-${page.id} tone-${page.theme.mode} product-${page.product?.mode || "expressive"}`} style={style}>
       <GalleryMotion rootRef={rootRef} reduced={reduced} enabled={page.id === "gallery"} />
-      <div className="scroll-progress" aria-hidden="true" />
-      <Header page={page} />
+      {page.id === "gallery" && <><div className="scroll-progress" aria-hidden="true" /><Header page={page} /></>}
       {children}
     </div>
   );

@@ -52,14 +52,14 @@ function NorthTide({ page }) {
     const opening = createTimeline({ defaults: { duration: 820, ease: "out(4)" } })
       .add(root.querySelector(".north-cover-copy > span"), { opacity: [0, 1], y: [20, 0] })
       .add(root.querySelector(".north-cover-copy h1"), { clipPath: ["inset(0 0 100% 0)", "inset(0 0 0% 0)"] }, "-=560")
-      .add(root.querySelector(".north-cover-window"), { scale: [0.84, 1], opacity: [0, 1] }, "-=520");
-    const media = root.querySelector(".north-cover-window");
+      .add(root.querySelector(".north-cover-image"), { scale: [1.12, 1], opacity: [0.3, 1] }, "-=520");
+    const media = root.querySelector(".north-cover-image");
     let frame = 0;
     const update = () => {
       frame = 0;
       const progress = Math.min(1, Math.max(0, window.scrollY / (window.innerHeight * .9)));
-      media.style.transform = `translate3d(${progress * -9}vw, ${progress * 8}vh, 0) scale(${1 + progress * .38})`;
-      media.style.borderRadius = `${Math.max(0, 38 - progress * 38)}px`;
+      media.style.transform = `translate3d(0, ${progress * 8}vh, 0) scale(${1 + progress * .16})`;
+      media.style.clipPath = `inset(${progress * 10}% ${progress * 5}% 0 ${progress * 5}%)`;
     };
     const onWindowScroll = () => {
       if (!frame) frame = window.requestAnimationFrame(update);
@@ -82,6 +82,9 @@ function NorthTide({ page }) {
   return (
     <article ref={rootRef} id="experience" className="north-scroll-journal" data-motion-signature="threshold-media-expansion">
       <section className="north-cover">
+        <img className="north-cover-image" src={page.images[0].src} alt={page.images[0].alt} />
+        <div className="north-cover-wash" aria-hidden="true" />
+        <a className="north-return-path" href="../gallery/"><ArrowLeftOutlined /><span>RETURN BY<br />THE NORTH PATH</span></a>
         <div className="north-cover-copy">
           <span>COASTAL FIELD JOURNAL / VOL. 02</span>
           <h1><b>沿着风，</b><em>走到陆地尽头。</em></h1>
@@ -89,24 +92,24 @@ function NorthTide({ page }) {
           <Button type="primary" size="large" href="#north-chapter-salt" icon={<ArrowDownOutlined />}>走进第一段海岸</Button>
           <small>OPEN-SOURCE TYPE / {page.fontStatement}</small>
         </div>
-        <figure className="north-cover-window"><img src={page.images[0].src} alt={page.images[0].alt} /><figcaption>THE LAST PATH / NORTH EDGE</figcaption></figure>
-        <div className="north-wind-scale" aria-hidden="true"><span>12</span><i /><span>24</span><i /><span>36</span></div>
+        <div className="north-wind-scale" aria-hidden="true"><span>12</span><i /><span>24</span><i /><span>36</span><b>THE LAST PATH / NORTH EDGE</b></div>
       </section>
 
       <section id="north-chapter-salt" className="north-threshold-chapter north-salt-chapter">
-        <aside><CompassOutlined /><span>CHAPTER 01 / SALT</span><b>必须继续滚动，岩石才从雾里出现。</b></aside>
-        <figure><img src={page.images[1].src} alt={page.images[1].alt} /><figcaption>潮水每天重新安排边界。</figcaption></figure>
-        <blockquote>{page.quote}</blockquote>
+        <img src={page.images[1].src} alt={page.images[1].alt} />
+        <div className="north-chapter-shade" aria-hidden="true" />
+        <div className="north-salt-copy"><CompassOutlined /><span>CHAPTER 01 / SALT</span><h2>潮水每天，<br />重新安排边界。</h2><blockquote>{page.quote}</blockquote></div>
+        <p className="north-threshold-note">继续滚动，岩石才从雾里出现。</p>
       </section>
 
       <section className="north-threshold-chapter north-horizon-chapter">
         <VisualStage page={page} />
-        <div><span>CHAPTER 02 / HORIZON</span><h2>海面不是背景，<br />是时间本身。</h2><p>连续水面、天气与地平线共同说明距离；这里是本页唯一的空间场景。</p></div>
+        <div className="north-horizon-copy"><span>CHAPTER 02 / HORIZON</span><h2>海面不是背景，<br />是时间本身。</h2><p>连续水面、天气与地平线共同说明距离；这里是本页唯一的空间场景。</p></div>
       </section>
 
       <section className="north-threshold-chapter north-shelter-chapter">
-        <figure><img src={page.images[2].src} alt={page.images[2].alt} /></figure>
-        <div><span>CHAPTER 03 / SHELTER</span><h2>在雾里，<br />建筑只是一次停顿。</h2><p>路没有被包装成目的地。读完这一章，海岸仍然留在画面以外。</p><Button href="../gallery/" icon={<ArrowLeftOutlined />}>合上海岸笔记</Button></div>
+        <img src={page.images[2].src} alt={page.images[2].alt} />
+        <div className="north-shelter-copy"><span>CHAPTER 03 / SHELTER</span><h2>在雾里，<br />建筑只是一次停顿。</h2><p>路没有被包装成目的地。读完这一章，海岸仍然留在画面以外。</p><Button href="../gallery/" icon={<ArrowLeftOutlined />}>合上海岸笔记</Button></div>
       </section>
     </article>
   );
@@ -135,29 +138,25 @@ function RedForm({ page }) {
   });
 
   return (
-    <section ref={rootRef} id="experience" className="red-room-switcher" data-motion-signature="halftone-hard-cut-trace">
-      <nav className="red-room-index" aria-label="选择展室">
-        <span>RED FORM<br />ROOMS</span>
-        {redRooms.map((item, index) => <Button key={item.code} type="text" className={room === index ? "is-active" : ""} onClick={() => setRoom(index)}><b>{item.code}</b><small>{item.label}</small></Button>)}
-        <small>{page.fontStatement}</small>
-      </nav>
-
+    <section ref={rootRef} id="experience" className="red-proscenium" data-motion-signature="single-room-hard-cut-floor-markers">
       <div className="red-room-media">
         {active.scene ? <VisualStage page={page} /> : <img src={page.images[active.image].src} alt={page.images[active.image].alt} />}
-        <svg viewBox="0 0 900 700" preserveAspectRatio="none" aria-hidden="true"><path className="red-trace-path" d="M80 610 L80 90 L690 90 L820 220 L820 610 L250 610" /></svg>
+        <svg viewBox="0 0 1200 760" preserveAspectRatio="none" aria-hidden="true"><path className="red-trace-path" d="M48 682 L48 58 L940 58 L1130 196 L1130 682 L260 682" /></svg>
         <div className="red-halftone" aria-hidden="true" />
         <span className="red-room-number">{active.code}</span>
       </div>
-
+      <a className="red-exit-plaque" href="../gallery/"><ArrowRightOutlined /><span>MUSEUM<br />EXIT</span></a>
+      <div className="red-show-title"><span>RED FORM / TEMPORARY EXHIBITION</span><strong>ROOM {active.code}</strong></div>
       <aside className="red-room-copy">
         <Tag bordered={false}>TEMPORARY EXHIBITION / {active.label}</Tag>
-        <span>ROOM {active.code} / 04</span>
         <h1>{active.title}</h1>
         <p>{active.copy}</p>
-        <blockquote>“{page.quote}”</blockquote>
-        <Progress percent={(room + 1) * 25} showInfo={false} strokeColor="#e41d16" trailColor="#c9c5bd" />
-        <div><Button disabled={room === 0} onClick={() => setRoom(value => Math.max(0, value - 1))}>上一室</Button><Button type="primary" disabled={room === redRooms.length - 1} onClick={() => setRoom(value => Math.min(redRooms.length - 1, value + 1))}>下一室 <ArrowRightOutlined /></Button></div>
+        <blockquote>“{page.quote}”</blockquote><small>{page.fontStatement}</small>
       </aside>
+      <Progress className="red-room-progress" type="circle" size={64} percent={(room + 1) * 25} format={() => `${active.code}/04`} strokeColor="#e41d16" trailColor="rgba(255,255,255,.22)" />
+      <nav className="red-floor-markers" aria-label="选择展室">
+        {redRooms.map((item, index) => <Button key={item.code} type="text" className={room === index ? "is-active" : ""} onClick={() => setRoom(index)}><i /><b>{item.code}</b><small>{item.label}</small></Button>)}
+      </nav>
     </section>
   );
 }
@@ -193,21 +192,20 @@ function NeonRift({ page }) {
         <div className="neon-energy-ring" aria-hidden="true"><i /><i /><i /></div>
         <div className="neon-gate-core" aria-hidden="true" />
       </div>
-
-      <nav className="neon-phase-rail" aria-label="当前入口阶段">
-        {neonPhases.map((item, index) => <button key={item.key} type="button" className={phase === index ? "is-active" : ""} onClick={() => setPhase(index)}><span>0{index + 1}</span><b>{item.label}</b></button>)}
-      </nav>
-
       <aside className="neon-phase-copy">
         <Tag bordered={false}><FireOutlined /> LIVE DIGITAL EXPERIENCE</Tag>
         <span>PHASE 0{phase + 1} / 03</span>
         <h1>{active.title}</h1>
         <p>{active.copy}</p>
-        <Button className="neon-entry-action" type="primary" size="large" onClick={advance} icon={phase === 0 ? <Loading3QuartersOutlined /> : phase === 1 ? <GlobalOutlined /> : <ArrowRightOutlined />}>
-          <span>{active.action}</span>
-        </Button>
         <small>OPEN TYPE / {page.fontStatement}</small>
       </aside>
+
+      <nav className="neon-phase-notch" aria-label="当前入口阶段">
+        <a href="../gallery/" aria-label="离开裂隙"><ArrowLeftOutlined /><span>EXIT</span></a>
+        {neonPhases.map((item, index) => <button key={item.key} type="button" className={phase === index ? "is-active" : ""} onClick={() => setPhase(index)}><span>0{index + 1}</span><b>{item.label}</b></button>)}
+        <Button className="neon-entry-action" type="primary" shape="circle" onClick={advance} icon={phase === 0 ? <Loading3QuartersOutlined /> : phase === 1 ? <GlobalOutlined /> : <ArrowRightOutlined />} aria-label={active.action} />
+      </nav>
+      <span className="neon-action-label">{active.action}</span>
     </section>
   );
 }
@@ -265,21 +263,17 @@ function ShanshuiNow({ page }) {
 
   return (
     <section ref={rootRef} id="experience" className="ink-horizontal-reel" data-motion-signature="horizontal-ink-writing">
-      <header className="ink-reel-head">
-        <div><span>当代长卷 / 09</span><strong>SHANSHUI NOW</strong></div>
-        <p>滚轮、拖动或方向键，横向展开。</p>
-        <div><Button aria-label="上一段" icon={<ArrowLeftOutlined />} disabled={active === 0} onClick={() => moveTo(Math.max(0, active - 1))} /><span>0{active + 1} / 03</span><Button aria-label="下一段" icon={<ArrowRightOutlined />} disabled={active === 2} onClick={() => moveTo(Math.min(2, active + 1))} /></div>
-      </header>
-
       <div ref={trackRef} className="ink-reel-track" data-native-scroll tabIndex="0" onKeyDown={event => {
         if (event.key === "ArrowRight") moveTo(Math.min(2, active + 1));
         if (event.key === "ArrowLeft") moveTo(Math.max(0, active - 1));
       }}>
         <section className="ink-reel-panel ink-reel-cover">
-          <div data-ink-arrive><Tag bordered={false}>CONTEMPORARY CULTURE</Tag><h1>山水不是旧图案，<br />是今天的空间。</h1><p>{page.intro}</p><small>{page.fontStatement}</small></div>
+          <a className="ink-return-seal" href="../gallery/"><ArrowLeftOutlined /><span>展</span><small>RETURN</small></a>
+          <div data-ink-arrive><Tag bordered={false}>CONTEMPORARY CULTURE / 09</Tag><h1>山水不是旧图案，<br />是今天的空间。</h1><p>{page.intro}</p><small>{page.fontStatement}</small></div>
           <figure data-ink-arrive><img src={page.images[0].src} alt={page.images[0].alt} /><figcaption>HALL / 人与空间</figcaption></figure>
           <svg viewBox="0 0 600 600" aria-hidden="true"><path className="ink-brush-path" d="M20 480 C150 260 220 510 350 240 C430 80 520 180 590 40" /></svg>
           <div className="ink-pts-layer" aria-hidden="true"><VisualStage page={page} compact /></div>
+          <p className="ink-scroll-instruction">滚轮 · 拖动 · 方向键 / 横向展开</p>
         </section>
 
         <section className="ink-reel-panel ink-reel-trace">
@@ -295,6 +289,11 @@ function ShanshuiNow({ page }) {
           <svg viewBox="0 0 700 500" aria-hidden="true"><path className="ink-brush-path" d="M30 420 C120 330 180 380 260 240 C340 100 470 160 650 40" /></svg>
         </section>
       </div>
+      <nav className="ink-reel-seals" aria-label="长卷段落">
+        <Button aria-label="上一段" icon={<ArrowLeftOutlined />} disabled={active === 0} onClick={() => moveTo(Math.max(0, active - 1))} />
+        {[0, 1, 2].map(index => <button key={index} type="button" className={active === index ? "is-active" : ""} onClick={() => moveTo(index)}><span>{["山", "水", "今"][index]}</span><small>0{index + 1}</small></button>)}
+        <Button aria-label="下一段" icon={<ArrowRightOutlined />} disabled={active === 2} onClick={() => moveTo(Math.min(2, active + 1))} />
+      </nav>
       <div className="ink-reel-progress" aria-hidden="true"><i style={{ width: `${(active + 1) / 3 * 100}%` }} /></div>
     </section>
   );

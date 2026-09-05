@@ -18,6 +18,7 @@ import {
 import {
   AimOutlined,
   ApartmentOutlined,
+  ArrowLeftOutlined,
   ArrowRightOutlined,
   CheckCircleOutlined,
   ClockCircleOutlined,
@@ -31,7 +32,7 @@ import {
   ShopOutlined,
   ThunderboltOutlined
 } from "@ant-design/icons";
-import { animate, createTimeline, stagger } from "animejs";
+import { animate, createDraggable, createTimeline, stagger } from "animejs";
 import VisualStage from "./VisualStage";
 import { useReducedMotion } from "./useReducedMotion";
 
@@ -85,10 +86,10 @@ export function VelocityWorkspace({ page }) {
   useScopedMotion(rootRef, reduced, `${activeId}-${reviewing}`, root => {
     const intro = createTimeline({ defaults: { ease: "out(4)", duration: 680 } })
       .add(root.querySelector(".velocity-wordmark"), { clipPath: ["inset(0 100% 0 0)", "inset(0 0% 0 0)"] })
-      .add(root.querySelectorAll(".velocity-session"), { x: [-42, 0], opacity: [0, 1], delay: stagger(55) }, "-=360")
+      .add(root.querySelectorAll(".velocity-timeline-stop"), { y: [28, 0], opacity: [0, 1], delay: stagger(55) }, "-=360")
       .add(root.querySelector(".velocity-track-path"), { strokeDashoffset: [520, 0], duration: 1000 }, "-=420");
     const runner = animate(root.querySelector(".velocity-runner-dot"), {
-      x: [0, 250],
+      x: [0, 420],
       duration: 2100,
       ease: "inOut(2)",
       alternate: true,
@@ -100,7 +101,7 @@ export function VelocityWorkspace({ page }) {
       duration: 520,
       ease: "out(4)"
     });
-    const bench = reviewing ? animate(root.querySelector(".velocity-review-bench"), {
+    const bench = reviewing ? animate(root.querySelector(".velocity-review-dock"), {
       clipPath: ["inset(100% 0 0 0)", "inset(0% 0 0 0)"],
       y: [24, 0],
       duration: 620,
@@ -116,64 +117,53 @@ export function VelocityWorkspace({ page }) {
   };
 
   return (
-    <section ref={rootRef} id="experience" className="experience-shell velocity-lab" data-motion-signature="track-sweep-counter">
-      <aside className="velocity-session-rail">
-        <div className="velocity-rail-brand"><DatabaseOutlined /><span>5 条本地演示训练</span></div>
-        <Segmented aria-label="筛选训练复盘状态" size="small" value={filter} onChange={setFilter} options={[
-          { label: "全部", value: "all" }, { label: "待复盘", value: "pending" }, { label: "完成", value: "reviewed" }
-        ]} />
-        <nav aria-label="训练记录" data-native-scroll>
-          {visible.map((item, index) => (
-            <Button key={item.id} type="text" className={`velocity-session ${item.id === active.id ? "is-active" : ""}`} onClick={() => { setActiveId(item.id); setReviewing(false); }}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <div><strong>{item.type}</strong><small>{item.date} · {item.pace}</small></div>
-              <b>{item.load}</b>
-            </Button>
-          ))}
-        </nav>
-        <small className="velocity-font-note">OPEN TYPE / {page.fontStatement}</small>
-      </aside>
+    <section ref={rootRef} id="experience" className="experience-shell velocity-replay-arena" data-motion-signature="full-bleed-track-replay">
+      <img className="velocity-arena-image" src={page.images[0].src} alt={page.images[0].alt} />
+      <div className="velocity-arena-shade" aria-hidden="true" />
+      <a className="velocity-start-exit" href="../gallery/"><ArrowLeftOutlined /><span>ALL RUNS</span></a>
+      <Segmented className="velocity-filter" aria-label="筛选训练复盘状态" size="small" value={filter} onChange={setFilter} options={[
+        { label: "全部", value: "all" }, { label: "待复盘", value: "pending" }, { label: "完成", value: "reviewed" }
+      ]} />
 
-      <article className="velocity-replay-panel">
-        <header>
-          <div><span>COACH REPLAY / {active.id}</span><h1 className="velocity-wordmark">READ THE RUN.</h1></div>
-          <Tag color={statusColor(active.status)}>{active.status}</Tag>
-        </header>
-        <div className="velocity-run-visual">
-          <img src={page.images[0].src} alt={page.images[0].alt} />
-          <svg viewBox="0 0 520 170" aria-hidden="true">
-            <path className="velocity-track-guide" d="M15 132 C120 20 275 25 505 116" />
-            <path className="velocity-track-path" d="M15 132 C120 20 275 25 505 116" />
-          </svg>
-          <i className="velocity-runner-dot" aria-hidden="true" />
-          <div className="velocity-timecode"><small>ELAPSED</small><strong>{active.duration}</strong><span>{active.distance} KM</span></div>
-        </div>
-        <div className="velocity-trend-strip">
-          <span><LineChartOutlined /> LOAD REPLAY</span>
-          <ChartBlock page={page} data={trend} kind="line" label="近五次训练负荷" height={128} />
-        </div>
-      </article>
+      <header className="velocity-arena-title">
+        <span>COACH REPLAY / {active.id}</span>
+        <h1 className="velocity-wordmark">READ<br />THE RUN.</h1>
+        <small>{page.fontStatement}</small>
+      </header>
 
-      <aside className="velocity-coach-console">
-        <div className="velocity-active-load"><span>TRAINING LOAD</span><strong>{active.load}</strong><small>{active.pace} / KM</small></div>
-        <blockquote>“{active.note}”</blockquote>
-        <dl><div><dt>距离</dt><dd>{active.distance} km</dd></div><div><dt>用时</dt><dd>{active.duration}</dd></div><div><dt>状态</dt><dd>{active.status}</dd></div></dl>
-        <Button className="velocity-priority-action" type="primary" icon={<ThunderboltOutlined />} disabled={active.status === "已复盘"} onClick={() => setReviewing(true)}>
-          {active.status === "已复盘" ? "本次已完成复盘" : "处理这次训练"}
-        </Button>
-        {notice && <Alert type="success" showIcon closable onClose={() => setNotice("")} message={notice} />}
-        {reviewing && (
-          <div className="velocity-review-bench">
-            <p>复盘台 / 原位展开，不离开回放</p>
-            <Form layout="vertical" key={active.id} onFinish={completeReview} initialValues={{ note: active.note }}>
-              <Form.Item name="note" label="教练结论" rules={[{ required: true, message: "请写下本次复盘结论" }]}>
-                <Input.TextArea rows={4} maxLength={120} showCount />
-              </Form.Item>
-              <Button type="primary" htmlType="submit" block icon={<CheckCircleOutlined />}>保存并回到训练带</Button>
-            </Form>
-          </div>
-        )}
-      </aside>
+      <svg className="velocity-track-map" viewBox="0 0 820 300" aria-hidden="true">
+        <path className="velocity-track-guide" d="M40 238 C180 18 470 36 780 218" />
+        <path className="velocity-track-path" d="M40 238 C180 18 470 36 780 218" />
+      </svg>
+      <i className="velocity-runner-dot" aria-hidden="true" />
+
+      <div className="velocity-live-metric velocity-active-load"><small>TRAINING LOAD</small><strong>{active.load}</strong><span>{active.pace} / KM</span></div>
+      <div className="velocity-timecode"><small>ELAPSED</small><strong>{active.duration}</strong><span>{active.distance} KM</span></div>
+      <blockquote className="velocity-coach-call">“{active.note}”</blockquote>
+
+      <div className="velocity-chart-ribbon"><span><LineChartOutlined /> LOAD REPLAY</span><ChartBlock page={page} data={trend} kind="line" label="近五次训练负荷" height={96} /></div>
+
+      <nav className="velocity-timeline" aria-label="训练记录" data-native-scroll>
+        {visible.map((item, index) => (
+          <Button key={item.id} type="text" className={`velocity-timeline-stop ${item.id === active.id ? "is-active" : ""}`} onClick={() => { setActiveId(item.id); setReviewing(false); }}>
+            <span>{String(index + 1).padStart(2, "0")}</span><i /><div><strong>{item.type}</strong><small>{item.date} · {item.load}</small></div>
+          </Button>
+        ))}
+      </nav>
+
+      <Button className="velocity-review-trigger" type="primary" icon={<ThunderboltOutlined />} disabled={active.status === "已复盘"} onClick={() => setReviewing(true)}>
+        {active.status === "已复盘" ? "已复盘" : "复盘本圈"}
+      </Button>
+      {notice && <Alert className="velocity-notice" type="success" showIcon closable onClose={() => setNotice("")} message={notice} />}
+      {reviewing && (
+        <div className="velocity-review-dock">
+          <b>{active.id} / COACH NOTE</b>
+          <Form layout="inline" key={active.id} onFinish={completeReview} initialValues={{ note: active.note }}>
+            <Form.Item name="note" rules={[{ required: true, message: "请写下本次复盘结论" }]}><Input.TextArea aria-label="教练结论" autoSize={{ minRows: 2, maxRows: 3 }} maxLength={120} /></Form.Item>
+            <Form.Item><Space.Compact><Button onClick={() => setReviewing(false)}>收起</Button><Button type="primary" htmlType="submit" icon={<CheckCircleOutlined />}>保存复盘</Button></Space.Compact></Form.Item>
+          </Form>
+        </div>
+      )}
     </section>
   );
 }
@@ -202,8 +192,9 @@ export function OrbitalWorkspace({ page }) {
     const scan = animate(root.querySelector(".orbital-scan"), { rotate: [0, 360], duration: 4200, ease: "linear", loop: true });
     const path = animate(root.querySelector(".orbital-route"), { strokeDashoffset: [360, 0], duration: 1800, ease: "inOut(2)", alternate: true, loop: true });
     const alert = animate(root.querySelector(".orbital-active-ping"), { scale: [0.6, 1.5], opacity: [1, 0], duration: 1200, ease: "out(3)", loop: true });
-    const slot = armed ? animate(root.querySelector(".orbital-command-form"), { x: [46, 0], opacity: [0, 1], duration: 560, ease: "out(4)" }) : null;
-    return [scan, path, alert, slot];
+    const nodes = animate(root.querySelectorAll(".orbital-alert-node"), { scale: [.4, 1], opacity: [0, 1], delay: stagger(90), duration: 640, ease: "out(4)" });
+    const slot = armed ? animate(root.querySelector(".orbital-command-arc"), { y: [90, 0], opacity: [0, 1], duration: 560, ease: "out(4)" }) : null;
+    return [scan, path, alert, nodes, slot];
   });
 
   const acknowledge = values => {
@@ -213,65 +204,47 @@ export function OrbitalWorkspace({ page }) {
   };
 
   return (
-    <section ref={rootRef} id="experience" className="experience-shell orbital-cockpit" data-motion-signature="radar-motion-path">
-      <header className="orbital-cockpit-bar">
-        <div><RadarChartOutlined /><strong>ORBITAL OPS / RELAY-04</strong></div>
-        <Space wrap><Badge status="success" text="主链路在线" /><Tag>UTC 11:47:20</Tag><Tag color="processing">PASS 1842</Tag></Space>
-      </header>
+    <section ref={rootRef} id="experience" className="experience-shell orbital-radial-cockpit" data-motion-signature="radial-orbit-command-wheel">
+      <div className="orbital-space"><VisualStage page={page} /></div>
+      <svg className="orbital-flight-overlay" viewBox="0 0 1000 760" aria-hidden="true">
+        <ellipse className="orbital-orbit-ring ring-a" cx="500" cy="380" rx="390" ry="210" />
+        <ellipse className="orbital-orbit-ring ring-b" cx="500" cy="380" rx="290" ry="330" />
+        <path className="orbital-route" d="M112 394 C230 70 770 70 888 394 C770 690 230 690 112 394" />
+      </svg>
+      <div className="orbital-scan" aria-hidden="true"><i /></div>
+      <span className="orbital-active-ping" aria-hidden="true" />
 
-      <div className="orbital-deck" data-native-scroll>
-        <aside className="orbital-queue">
-          <p>ALERT QUEUE / 03</p>
-          <nav aria-label="轨道告警">
-            {alerts.map(item => (
-              <Button key={item.id} type="text" className={`orbital-alert ${item.id === active.id ? "is-active" : ""}`} onClick={() => { setActiveId(item.id); setArmed(false); }}>
-                <span className={`priority priority-${item.priority}`} />
-                <div><strong>{item.title}</strong><small>{item.id} · {item.time}</small></div>
-                <Tag color={statusColor(item.status)}>{item.status}</Tag>
-              </Button>
-            ))}
-          </nav>
-          <div className="orbital-telemetry-mini">
-            <span>LINK STABILITY / FIXTURE</span>
-            <ChartBlock page={page} data={telemetrySeed} kind="area" label="链路稳定度最近六个采样" height={136} />
-          </div>
-        </aside>
+      <a className="orbital-home-node" href="../gallery/" aria-label="返回全部作品"><ArrowLeftOutlined /><small>RETURN<br />VECTOR</small></a>
+      <div className="orbital-live-badge"><Badge status="success" text="RELAY-04 ONLINE" /><span>UTC 11:47:20</span></div>
+      <div className="orbital-coordinate">ALT 547.2 KM<br />NEXT WINDOW 00:18:42</div>
 
-        <article className="orbital-view">
-          <VisualStage page={page} />
-          <svg className="orbital-flight-overlay" viewBox="0 0 800 560" aria-hidden="true">
-            <ellipse className="orbital-orbit-ring" cx="400" cy="280" rx="300" ry="132" />
-            <path className="orbital-route" d="M96 296 C190 90 610 90 704 296 C610 480 190 480 96 296" />
-          </svg>
-          <div className="orbital-scan" aria-hidden="true"><i /></div>
-          <span className="orbital-active-ping" aria-hidden="true" />
-          <div className="orbital-view-label"><span>{active.system}</span><strong>{active.value}</strong><small>{active.title}</small></div>
-          <div className="orbital-coordinate">ALT 547.2 KM<br />NEXT WINDOW 00:18:42</div>
-        </article>
+      <nav className="orbital-node-ring" aria-label="轨道告警">
+        {alerts.map((item, index) => (
+          <Button key={item.id} type="text" className={`orbital-alert-node ${item.id === active.id ? "is-active" : ""}`} style={{ "--orbit-index": index }} onClick={() => { setActiveId(item.id); setArmed(false); }}>
+            <span className={`priority priority-${item.priority}`} /><b>{item.id}</b><small>{item.title}</small>
+          </Button>
+        ))}
+      </nav>
 
-        <aside className={`orbital-command-slot ${armed ? "is-armed" : ""}`}>
-          <div className="orbital-command-index">CMD<br /><strong>{active.id.slice(-2)}</strong></div>
-          <Tag color={statusColor(active.status)}>{active.status}</Tag>
-          <h1>{active.title}</h1>
-          <p>{active.detail}</p>
-          <dl><div><dt>系统</dt><dd>{active.system}</dd></div><div><dt>时间</dt><dd>{active.time}</dd></div><div><dt>读数</dt><dd>{active.value}</dd></div></dl>
-          {notice && <Alert type="success" showIcon closable onClose={() => setNotice("")} message={notice} />}
-          {!armed ? (
-            <Button className="orbital-arm-action" type="primary" icon={<AimOutlined />} disabled={active.status === "已确认"} onClick={() => setArmed(true)}>
-              {active.status === "已确认" ? "处置已确认" : "准备处置"}
-            </Button>
-          ) : (
-            <Form className="orbital-command-form" layout="vertical" onFinish={acknowledge} initialValues={{ action: "切换备用链路" }}>
-              <Form.Item name="action" label="处置方式" rules={[{ required: true }]}>
-                <Select options={["切换备用链路", "继续观察", "转交姿态组"].map(value => ({ label: value, value }))} />
-              </Form.Item>
-              <Form.Item name="note" label="值班记录"><Input.TextArea rows={3} maxLength={120} /></Form.Item>
-              <Space.Compact block><Button onClick={() => setArmed(false)}>取消</Button><Button type="primary" htmlType="submit">确认并关闭告警</Button></Space.Compact>
-            </Form>
-          )}
-          <small>OPEN TYPE / {page.fontStatement}</small>
-        </aside>
-      </div>
+      <article className="orbital-core-readout">
+        <span>{active.system} / {active.time}</span><strong>{active.value}</strong><h1>{active.title}</h1><p>{active.detail}</p>
+        <Tag color={statusColor(active.status)}>{active.status}</Tag>
+        <Button className="orbital-arm-action" type="primary" shape="round" icon={<AimOutlined />} disabled={active.status === "已确认"} onClick={() => setArmed(true)}>{active.status === "已确认" ? "处置已确认" : "展开处置扇区"}</Button>
+      </article>
+
+      <div className="orbital-telemetry-arc"><span>LINK STABILITY / FIXTURE</span><ChartBlock page={page} data={telemetrySeed} kind="area" label="链路稳定度最近六个采样" height={104} /></div>
+      {notice && <Alert className="orbital-notice" type="success" showIcon closable onClose={() => setNotice("")} message={notice} />}
+      {armed && (
+        <div className="orbital-command-arc">
+          <b>CMD {active.id.slice(-2)}</b>
+          <Form className="orbital-command-form" layout="inline" onFinish={acknowledge} initialValues={{ action: "切换备用链路" }}>
+            <Form.Item name="action" rules={[{ required: true }]}><Select aria-label="处置方式" options={["切换备用链路", "继续观察", "转交姿态组"].map(value => ({ label: value, value }))} /></Form.Item>
+            <Form.Item name="note"><Input aria-label="值班记录" placeholder="值班记录" maxLength={120} /></Form.Item>
+            <Form.Item><Space.Compact><Button onClick={() => setArmed(false)}>收起</Button><Button type="primary" htmlType="submit">确认处置</Button></Space.Compact></Form.Item>
+          </Form>
+        </div>
+      )}
+      <small className="orbital-font-note">OPEN TYPE / {page.fontStatement}</small>
     </section>
   );
 }
@@ -311,57 +284,56 @@ export function CornerWorkspace({ page }) {
   };
 
   return (
-    <section ref={rootRef} id="experience" className="experience-shell corner-counter" data-motion-signature="receipt-feed-restock">
-      <header className="corner-awning">
-        <div aria-hidden="true">{Array.from({ length: 12 }, (_, i) => <i key={i} />)}</div>
-        <span><ShopOutlined /> CORNER GOODS / OPENING 08:42</span>
-        <strong>{inventory.filter(item => item.stock <= item.threshold).length} 个货位要补齐</strong>
-      </header>
+    <section ref={rootRef} id="experience" className="experience-shell corner-receipt-machine" data-motion-signature="single-receipt-feed-stamp">
+      <div className="corner-shop-backdrop"><img src={page.images[0].src} alt="" /><div aria-hidden="true"><VisualStage page={page} compact /></div></div>
+      <div className="corner-register-slot" aria-hidden="true"><i /><i /><i /><span>RECEIPT OUT</span></div>
+      <article className="corner-receipt">
+        <header className="corner-receipt-head">
+          <a href="../gallery/"><ArrowLeftOutlined /> CLOSED LOOP</a>
+          <ShopOutlined />
+          <span>CORNER GOODS / 08:42</span>
+          <h1>今天的补货，<br />打印在一张纸上。</h1>
+          <b>{inventory.filter(item => item.stock <= item.threshold).length} 个货位低于预警</b>
+        </header>
 
-      <div className="corner-shop-floor">
-        <section className="corner-shelf">
-          <div className="corner-shelf-tools">
-            <Input aria-label="搜索商品" allowClear prefix={<SearchOutlined />} placeholder="找一件商品" value={query} onChange={event => setQuery(event.target.value)} />
-            <Select aria-label="按品类筛选" value={category} onChange={setCategory} options={categories.map(value => ({ label: value, value }))} />
-          </div>
-          <div className="corner-product-rack" data-native-scroll>
-            {visible.map((item, index) => (
-              <Button key={item.id} type="text" className={`corner-product ${item.id === active.id ? "is-active" : ""}`} onClick={() => { setActiveId(item.id); setNotice(""); }}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div><strong>{item.name}</strong><small>{item.category} · ¥{item.price}</small></div>
-                <b className={item.stock <= item.threshold ? "is-low" : ""}>{item.stock}</b>
-              </Button>
-            ))}
-          </div>
-          <figure className="corner-store-glimpse"><img src={page.images[0].src} alt={page.images[0].alt} /><figcaption>今天的柜台，从补齐缺口开始。</figcaption></figure>
-          <div className="corner-chart-ticket"><span>货架余量 / 当前筛选</span><ChartBlock page={page} data={stockChart} kind="horizontal" label="当前筛选商品库存" height={158} /></div>
+        <div className="corner-receipt-search">
+          <Input aria-label="搜索商品" allowClear prefix={<SearchOutlined />} placeholder="扫描或搜索商品" value={query} onChange={event => setQuery(event.target.value)} />
+          <Select aria-label="按品类筛选" value={category} onChange={setCategory} options={categories.map(value => ({ label: value, value }))} />
+        </div>
+
+        <div className="corner-product-tape" aria-label="商品库存">
+          {visible.map((item, index) => (
+            <Button key={item.id} type="text" className={`corner-receipt-row ${item.id === active.id ? "is-active" : ""}`} onClick={() => { setActiveId(item.id); setNotice(""); }}>
+              <span>{String(index + 1).padStart(2, "0")}</span><div><strong>{item.name}</strong><small>{item.id} / {item.category} / ¥{item.price}</small></div><b className={item.stock <= item.threshold ? "is-low" : ""}>{item.stock}</b>
+            </Button>
+          ))}
+        </div>
+
+        <figure className="corner-torn-window"><img src={page.images[1].src} alt={page.images[1].alt} /><figcaption>柜台只留下正在处理的缺口。</figcaption></figure>
+        <div className="corner-barcode-chart"><span>当前筛选 / 货架余量</span><ChartBlock page={page} data={stockChart} kind="horizontal" label="当前筛选商品库存" height={142} /></div>
+
+        <section className="corner-restock-print">
+          <div><span>RESTOCK / {active.id}</span><strong>{active.name}</strong><small>现有 {active.stock} / 预警 {active.threshold} / 今日售出 {active.sold}</small></div>
+          <Form layout="vertical" key={active.id} onFinish={replenish} initialValues={{ quantity: Math.max(12, active.threshold * 2 - active.stock), reason: "补至两周周转" }}>
+            <Form.Item name="quantity" label="补货数量" rules={[{ required: true }]}><InputNumber min={1} max={99} /></Form.Item>
+            <Form.Item name="reason" label="补货依据"><Select options={["补至两周周转", "周末活动备货", "替换破损库存"].map(value => ({ label: value, value }))} /></Form.Item>
+            <Button className="corner-stamp-action" type="primary" htmlType="submit" block icon={<PlusOutlined />}>盖章并继续出纸</Button>
+          </Form>
         </section>
-
-        <aside className="corner-receipt-wrap">
-          <div className="corner-receipt">
-            <header><span>RESTOCK / {active.id}</span><b>补货小票</b><small>本地演示，不向供应商发送</small></header>
-            <div className="corner-receipt-row"><span>商品</span><strong>{active.name}</strong></div>
-            <div className="corner-receipt-row"><span>现有 / 预警</span><strong>{active.stock} / {active.threshold}</strong></div>
-            <div className="corner-receipt-row"><span>今日售出</span><strong>{active.sold}</strong></div>
-            <Form layout="vertical" key={active.id} onFinish={replenish} initialValues={{ quantity: Math.max(12, active.threshold * 2 - active.stock), reason: "补至两周周转" }}>
-              <Form.Item name="quantity" label="补货数量" rules={[{ required: true }]}><InputNumber min={1} max={99} /></Form.Item>
-              <Form.Item name="reason" label="补货依据"><Select options={["补至两周周转", "周末活动备货", "替换破损库存"].map(value => ({ label: value, value }))} /></Form.Item>
-              <Button className="corner-stamp-action" type="primary" htmlType="submit" block icon={<PlusOutlined />}>盖章入库</Button>
-            </Form>
-            {notice && <><div className="corner-stamp">RESTOCKED</div><Alert type="success" showIcon closable onClose={() => setNotice("")} message={notice} /></>}
-            <footer>{page.fontStatement}</footer>
-          </div>
-        </aside>
-        <div className="corner-canvas-thread" aria-hidden="true"><VisualStage page={page} compact /></div>
-      </div>
+        {notice && <><div className="corner-stamp">RESTOCKED</div><Alert type="success" showIcon closable onClose={() => setNotice("")} message={notice} /></>}
+        <footer>OPEN TYPE / {page.fontStatement} · LOCAL DEMO / NO SUPPLIER MESSAGE</footer>
+      </article>
     </section>
   );
 }
 
 const initialAgenda = [
-  { id: "A1", time: "09:30", title: "整理周计划", kind: "专注" },
-  { id: "A2", time: "13:40", title: "在河边走 20 分钟", kind: "恢复" },
-  { id: "A3", time: "19:10", title: "给妈妈打电话", kind: "生活" }
+  { id: "A0", day: "02", time: "10:10", title: "收拾书桌", kind: "生活" },
+  { id: "A1", day: "04", time: "09:30", title: "整理周计划", kind: "专注" },
+  { id: "A2", day: "04", time: "13:40", title: "在河边走 20 分钟", kind: "恢复" },
+  { id: "A3", day: "04", time: "19:10", title: "给妈妈打电话", kind: "生活" },
+  { id: "A4", day: "05", time: "15:30", title: "读完这一章", kind: "专注" },
+  { id: "A5", day: "07", time: "08:20", title: "慢慢做早餐", kind: "生活" }
 ];
 
 const initialHabits = [
@@ -381,63 +353,63 @@ export function StillWorkspace({ page }) {
   const done = habits.filter(item => item.done).length;
   const percent = Math.round(done / habits.length * 100);
   const week = [54, 68, 62, 76, percent, 0, 0].map((value, index) => ({ label: ["一", "二", "三", "四", "今", "六", "日"][index], value }));
+  const days = ["02", "03", "04", "05", "06", "07", "08"];
 
   useScopedMotion(rootRef, reduced, `${day}-${agenda.length}-${percent}-${composing}`, root => {
-    const orbit = animate(root.querySelector(".still-orbit-line"), { rotate: [-18, 342], duration: 1800, ease: "out(3)" });
-    const blockTargets = root.querySelectorAll(".still-time-item");
-    const blocks = blockTargets.length ? animate(blockTargets, { y: [28, 0], scale: [0.88, 1], opacity: [0, 1], delay: stagger(90), duration: 620, ease: "out(4)" }) : null;
-    const ring = animate(root.querySelector(".still-habit-ring i"), { scale: [0.5, 1], rotate: [-90, 0], duration: 700, ease: "out(4)" });
-    const form = composing ? animate(root.querySelector(".still-inline-composer"), { width: ["34%", "100%"], opacity: [0, 1], duration: 520, ease: "out(4)" }) : null;
-    return [orbit, blocks, ring, form];
+    const columns = animate(root.querySelectorAll(".still-day-cell"), { y: [34, 0], opacity: [0, 1], delay: stagger(55), duration: 620, ease: "out(4)" });
+    const blocks = animate(root.querySelectorAll(".still-calendar-event"), { scale: [.76, 1], opacity: [0, 1], delay: stagger(70), duration: 520, ease: "out(4)" });
+    const activeCell = animate(root.querySelector(".still-day-cell.is-active"), { backgroundPosition: ["100% 100%", "0% 0%"], duration: 900, ease: "out(3)" });
+    const form = composing ? animate(root.querySelector(".still-cell-composer"), { clipPath: ["inset(0 100% 0 0)", "inset(0 0% 0 0)"], opacity: [0, 1], duration: 520, ease: "out(4)" }) : null;
+    return [columns, blocks, activeCell, form];
   });
 
   const addAgenda = values => {
-    setAgenda(items => [...items, { id: `A${items.length + 1}`, time: values.time, title: values.title, kind: values.kind }].sort((a, b) => a.time.localeCompare(b.time)));
-    setNotice(`${values.time} 的“${values.title}”已进入今天的时间河。`);
+    setAgenda(items => [...items, { id: `A${items.length + 1}`, day, time: values.time, title: values.title, kind: values.kind }].sort((a, b) => a.time.localeCompare(b.time)));
+    setNotice(`09/${day} ${values.time} 的“${values.title}”已写入日历。`);
     setComposing(false);
   };
 
   return (
-    <section ref={rootRef} id="experience" className="experience-shell still-planner" data-motion-signature="time-block-reflow">
-      <div className="still-day-column">
-        <span>SEP</span><strong>{day}</strong><small>2026 / THU</small>
-        <div className="still-orbit-line" aria-hidden="true"><i /></div>
-        <p>今天不必塞满，<br />但要看得清。</p>
+    <section ref={rootRef} id="experience" className="experience-shell still-week-calendar" data-motion-signature="calendar-cell-reflow-diagonal-fill">
+      <header className="still-calendar-month">
+        <div><span>SEPTEMBER / 2026</span><h1>A QUIETER WEEK.</h1><p>今天不必塞满，但每一格都要看得清。</p></div>
+        <Button type="primary" icon={<PlusOutlined />} onClick={() => setComposing(true)}>写入 09/{day}</Button>
+      </header>
+      <a className="still-date-corner" href="../gallery/"><span>返回展厅</span><b>09</b><i>/</i><strong>{day}</strong></a>
+      {notice && <Alert className="still-calendar-notice" type="success" showIcon closable onClose={() => setNotice("")} message={notice} />}
+
+      <div className="still-calendar-scroll" data-native-scroll>
+        <div className="still-week-grid">
+          {days.map((value, index) => {
+            const entries = agenda.filter(item => item.day === value);
+            return (
+              <section key={value} className={`still-day-cell ${day === value ? "is-active" : ""}`}>
+                <Button type="text" className="still-day-select" onClick={() => { setDay(value); setComposing(false); }}><small>{["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"][index]}</small><strong>{value}</strong></Button>
+                <div className="still-time-marks" aria-hidden="true"><i>08</i><i>12</i><i>16</i><i>20</i></div>
+                <div className="still-calendar-events">
+                  {entries.map(item => <article key={item.id} className={`still-calendar-event kind-${item.kind}`}><time>{item.time}</time><strong>{item.title}</strong><small>{item.kind}</small></article>)}
+                  {!entries.length && <p className="still-open-cell"><FieldTimeOutlined /> 留白</p>}
+                </div>
+                {composing && day === value && (
+                  <Form className="still-cell-composer" layout="vertical" onFinish={addAgenda} initialValues={{ time: "16:00", kind: "专注" }}>
+                    <b>NEW / 09.{day}</b>
+                    <Form.Item name="title" rules={[{ required: true, message: "写下要安排的事" }]}><Input aria-label="安排内容" placeholder="安排内容" maxLength={40} /></Form.Item>
+                    <Form.Item name="time" rules={[{ required: true, pattern: /^([01]\d|2[0-3]):[0-5]\d$/, message: "例如 16:00" }]}><Input aria-label="安排时间" placeholder="16:00" /></Form.Item>
+                    <Form.Item name="kind"><Segmented options={["专注", "恢复", "生活"]} /></Form.Item>
+                    <Space.Compact block><Button onClick={() => setComposing(false)}>取消</Button><Button type="primary" htmlType="submit">写入</Button></Space.Compact>
+                  </Form>
+                )}
+              </section>
+            );
+          })}
+        </div>
       </div>
 
-      <main className="still-time-river">
-        <header>
-          <div><Tag bordered={false}>LOCAL DAY PLAN</Tag><h1>A QUIETER PLAN.</h1></div>
-          <Button type="primary" icon={<PlusOutlined />} onClick={() => setComposing(true)}>在原位加入安排</Button>
-        </header>
-        <Tabs activeKey={day} onChange={setDay} items={["02", "03", "04", "05", "06"].map(value => ({ key: value, label: `09/${value}`, children: null }))} />
-        {notice && <Alert type="success" showIcon closable onClose={() => setNotice("")} message={notice} />}
-        <ol className="still-time-list">
-          {(day === "04" ? agenda : []).map(item => (
-            <li key={item.id} className="still-time-item"><time>{item.time}</time><i /><div><strong>{item.title}</strong><small>{item.kind}</small></div><Tag>{item.kind}</Tag></li>
-          ))}
-          {day !== "04" && <li className="still-empty-day"><FieldTimeOutlined /><span>这一天还没有安排，留白也算计划。</span></li>}
-        </ol>
-        {composing && (
-          <Form className="still-inline-composer" layout="inline" onFinish={addAgenda} initialValues={{ time: "16:00", kind: "专注" }}>
-            <Form.Item name="title" rules={[{ required: true, message: "写下要安排的事" }]}><Input aria-label="安排内容" placeholder="安排内容" maxLength={40} /></Form.Item>
-            <Form.Item name="time" rules={[{ required: true, pattern: /^([01]\d|2[0-3]):[0-5]\d$/, message: "例如 16:00" }]}><Input aria-label="安排时间" placeholder="16:00" /></Form.Item>
-            <Form.Item name="kind"><Segmented options={["专注", "恢复", "生活"]} /></Form.Item>
-            <Form.Item><Space.Compact><Button onClick={() => setComposing(false)}>收起</Button><Button type="primary" htmlType="submit">加入</Button></Space.Compact></Form.Item>
-          </Form>
-        )}
-        <div className="still-week-wave"><ChartBlock page={page} data={week} kind="bars" label="本周习惯完成率" height={118} /></div>
-      </main>
-
-      <aside className="still-rhythm-panel">
-        <figure><img src={page.images[0].src} alt={page.images[0].alt} /><div aria-hidden="true"><VisualStage page={page} compact /></div></figure>
-        <div className="still-habit-ring" style={{ "--habit-percent": `${percent * 3.6}deg` }}><i><strong>{percent}%</strong><span>今日节奏</span></i></div>
-        <div className="still-habits">
-          {habits.map(item => <Checkbox key={item.id} checked={item.done} onChange={() => setHabits(items => items.map(habit => habit.id === item.id ? { ...habit, done: !habit.done } : habit))}>{item.label}</Checkbox>)}
-        </div>
-        <Progress percent={percent} showInfo={false} strokeColor={page.theme.accent} />
+      <footer className="still-week-footer">
+        <div className="still-habits">{habits.map(item => <Checkbox key={item.id} checked={item.done} onChange={() => setHabits(items => items.map(habit => habit.id === item.id ? { ...habit, done: !habit.done } : habit))}>{item.label}</Checkbox>)}</div>
+        <div className="still-week-wave"><span>{percent}% / WEEK RHYTHM</span><ChartBlock page={page} data={week} kind="bars" label="本周习惯完成率" height={84} /></div>
         <small>OPEN TYPE / {page.fontStatement}</small>
-      </aside>
+      </footer>
     </section>
   );
 }
@@ -457,11 +429,13 @@ export function AtelierWorkspace({ page }) {
   const readiness = assets.map(item => ({ label: item.id.replace("LOOK-", "L"), value: item.score }));
 
   useScopedMotion(rootRef, reduced, activeId, root => {
-    const film = animate(root.querySelectorAll(".atelier-film-button"), { y: [-28, 0], opacity: [0, 1], delay: stagger(70), duration: 560, ease: "out(4)" });
+    const film = animate(root.querySelectorAll(".atelier-frame"), { y: [-48, 0], rotate: ["-=5", "+=5"], opacity: [0, 1], delay: stagger(90), duration: 680, ease: "out(4)" });
     const frame = createTimeline({ defaults: { duration: 700, ease: "out(4)" } })
-      .add(root.querySelector(".atelier-image-before"), { x: [-42, 0], scale: [1.05, 1] })
-      .add(root.querySelector(".atelier-image-after"), { x: [42, 0], opacity: [0.2, 1] }, "-=620");
-    return [film, frame];
+      .add(root.querySelector(".atelier-active-frame .atelier-image-before"), { scale: [1.08, 1] })
+      .add(root.querySelector(".atelier-active-frame .atelier-image-after"), { opacity: [0.2, 1] }, "-=620");
+    const table = root.querySelector(".atelier-frame-pile");
+    const draggables = [...root.querySelectorAll(".atelier-frame")].map(node => createDraggable(node, { container: table, containerPadding: 12, releaseEase: "out(4)" }));
+    return [film, frame, ...draggables];
   });
 
   const updateStatus = status => {
@@ -473,47 +447,36 @@ export function AtelierWorkspace({ page }) {
     setNotice(`${active.id} 已新增批注。`);
   };
 
-  const versionItems = [{
-    key: "versions",
-    label: `版本记录 / ${active.version}`,
-    children: <ol className="atelier-version-list"><li><b>{active.version}</b><span>今天 10:42 / 当前审阅</span></li><li><b>v06</b><span>昨天 18:16 / 已归档</span></li><li><b>v01</b><span>8月29日 / 初始提案</span></li></ol>
-  }];
-
   return (
-    <section ref={rootRef} id="experience" className="experience-shell atelier-review-room" data-motion-signature="drag-compare-film-change">
-      <header className="atelier-review-bar"><div><span>ATELIER NOIR / REVIEW 07</span><strong>把注意力留给这一版。</strong></div><Tag color={statusColor(active.status)}>{active.status}</Tag></header>
+    <section ref={rootRef} id="experience" className="experience-shell atelier-light-table" data-motion-signature="free-drag-film-pile">
+      <header className="atelier-table-title"><span>ATELIER NOIR / REVIEW 07</span><h1>TOUCH<br />THE FRAME.</h1><p>拖动胶片，把要看的这一版放到最前。</p></header>
+      <a className="atelier-film-canister" href="../gallery/"><ArrowLeftOutlined /><span>EXIT<br />DARKROOM</span></a>
+      <div className="atelier-readiness-ruler"><span>SERIES READINESS</span><ChartBlock page={page} data={readiness} kind="horizontal" label="三个素材系列就绪度" height={78} /></div>
 
-      <nav className="atelier-film-rail" aria-label="选择审阅素材" data-native-scroll>
-        {assets.map(item => (
-          <Button key={item.id} type="text" className={`atelier-film-button ${item.id === active.id ? "is-active" : ""}`} onClick={() => { setActiveId(item.id); setCompare(54); setNotice(""); }}>
-            <img src={item.image.src} alt="" /><span><b>{item.id}</b><small>{item.name}</small></span>
-          </Button>
+      <div className="atelier-frame-pile" aria-label="可拖动审片桌">
+        {assets.map((item, index) => (
+          <button key={item.id} type="button" className={`atelier-frame atelier-frame-${index + 1} ${item.id === active.id ? "atelier-active-frame" : ""}`} onClick={() => { setActiveId(item.id); setCompare(54); setNotice(""); }}>
+            <img className="atelier-image-before" src={item.id === active.id ? item.compare.src : item.image.src} alt={item.id === active.id ? `${item.name} 上一版` : item.image.alt} />
+            {item.id === active.id && <div className="atelier-image-after" style={{ clipPath: `inset(0 ${100 - compare}% 0 0)` }}><img src={item.image.src} alt={`${item.name} 当前版`} /></div>}
+            <span className="atelier-frame-mark"><b>{item.id}</b><small>{item.name} / {item.version}</small></span>
+            <Tag color={statusColor(item.status)}>{item.status}</Tag>
+          </button>
         ))}
-        <small>OPEN-SOURCE TYPE<br />{page.fontStatement}</small>
-      </nav>
+      </div>
 
-      <figure className="atelier-compare-stage">
-        <img className="atelier-image-before" src={active.compare.src} alt={`${active.name} 上一版`} />
-        <div className="atelier-image-after" style={{ clipPath: `inset(0 ${100 - compare}% 0 0)` }}><img src={active.image.src} alt={`${active.name} 当前版`} /></div>
-        <div className="atelier-compare-handle" style={{ left: `${compare}%` }}><span>{compare}</span></div>
-        <input aria-label="拖动比较上一版与当前版" type="range" min="8" max="92" value={compare} onChange={event => setCompare(Number(event.target.value))} />
-        <figcaption><span>BEFORE</span><strong>{active.name} / {active.version}</strong><span>CURRENT</span></figcaption>
-        <button className="atelier-note-pin pin-a" type="button" aria-label="肩线批注">01</button>
-        <button className="atelier-note-pin pin-b" type="button" aria-label="裁切批注">02</button>
-      </figure>
+      <label className="atelier-compare-slider"><span>BEFORE</span><input aria-label="拖动比较上一版与当前版" type="range" min="8" max="92" value={compare} onChange={event => setCompare(Number(event.target.value))} /><b>{compare}</b><span>CURRENT</span></label>
+      <div className="atelier-version-tabs" aria-label="版本记录"><span>{active.version} / NOW</span><span>v06 / ARCHIVE</span><span>v01 / ORIGIN</span></div>
 
-      <aside className="atelier-review-desk" data-native-scroll>
-        <div className="atelier-readiness"><span>SERIES READINESS</span><ChartBlock page={page} data={readiness} kind="horizontal" label="三个素材系列就绪度" height={126} /></div>
-        <dl><div><dt>负责人</dt><dd>{active.owner}</dd></div><div><dt>版本</dt><dd>{active.version}</dd></div><div><dt>发布尺寸</dt><dd>2400 × 3000</dd></div></dl>
-        <div className="atelier-comment-stack"><span><CommentOutlined /> TEAM NOTES</span>{active.comments.map((comment, index) => <p key={`${comment}-${index}`}><b>{String(index + 1).padStart(2, "0")}</b>{comment}</p>)}</div>
-        <Form layout="vertical" onFinish={addComment} key={`${active.id}-${active.comments.length}`}>
-          <Form.Item name="comment" label="新增批注" rules={[{ required: true, message: "请输入批注" }]}><Input.TextArea rows={2} maxLength={100} /></Form.Item>
-          <Button htmlType="submit" block icon={<CommentOutlined />}>保存批注</Button>
+      <aside className="atelier-annotation-tape">
+        <div className="atelier-asset-caption"><span>{active.owner} / 2400 × 3000</span><h2>{active.name}</h2>{active.comments.map((comment, index) => <p key={`${comment}-${index}`}><b>0{index + 1}</b>{comment}</p>)}</div>
+        <Form layout="inline" onFinish={addComment} key={`${active.id}-${active.comments.length}`}>
+          <Form.Item name="comment" rules={[{ required: true, message: "请输入批注" }]}><Input aria-label="新增批注" placeholder="把批注钉在胶片边缘" maxLength={100} /></Form.Item>
+          <Form.Item><Button htmlType="submit" icon={<CommentOutlined />}>钉上批注</Button></Form.Item>
         </Form>
-        <Collapse ghost items={versionItems} />
-        {notice && <Alert type="success" showIcon closable onClose={() => setNotice("")} message={notice} />}
-        <Space.Compact block><Button danger onClick={() => updateStatus("需修改")}>退回修改</Button><Button type="primary" icon={<CheckCircleOutlined />} onClick={() => updateStatus("已通过")}>批准发布</Button></Space.Compact>
+        <Space.Compact><Button danger onClick={() => updateStatus("需修改")}>退回</Button><Button type="primary" icon={<CheckCircleOutlined />} onClick={() => updateStatus("已通过")}>批准</Button></Space.Compact>
       </aside>
+      {notice && <Alert className="atelier-notice" type="success" showIcon closable onClose={() => setNotice("")} message={notice} />}
+      <small className="atelier-font-note">OPEN TYPE / {page.fontStatement}</small>
     </section>
   );
 }
@@ -544,8 +507,9 @@ export function GridWorkspace({ page }) {
     const line = animate(root.querySelector(".grid-coordinate-line"), { strokeDashoffset: [280, 0], duration: 880, ease: "out(3)" });
     const pinTarget = root.querySelector(`.grid-hotspot[data-id="${activeId}"]`);
     const pin = pinTarget ? animate(pinTarget, { scale: [0.65, 1.15, 1], duration: 640, ease: "out(4)" }) : null;
-    const cards = animate(root.querySelectorAll(".grid-track-card"), { x: [-36, 0], opacity: [0.25, 1], delay: stagger(45), duration: 480, ease: "out(3)" });
-    return [line, pin, cards];
+    const field = animate(root.querySelectorAll(".grid-hotspot"), { opacity: [0, 1], scale: [.2, 1], delay: stagger(45), duration: 480, ease: "out(3)" });
+    const callout = animate(root.querySelector(".grid-issue-popover"), { clipPath: ["inset(0 100% 100% 0)", "inset(0 0% 0% 0)"], duration: 520, ease: "out(4)" });
+    return [line, pin, field, callout];
   });
 
   const advanceIssue = values => {
@@ -556,37 +520,30 @@ export function GridWorkspace({ page }) {
   };
 
   return (
-    <section ref={rootRef} id="experience" className="experience-shell grid-coordinate-board" data-motion-signature="coordinate-line-lane-migration">
-      <header className="grid-coordinate-head">
-        <div className="grid-code">G/01</div>
-        <div><span>RIVER HALL / COORDINATION</span><h1>问题归位，项目向前。</h1></div>
-        <Segmented value={discipline} onChange={setDiscipline} options={["全部", "建筑", "结构", "机电"]} />
-        <div className="grid-count-chart"><ChartBlock page={page} data={counts} kind="bars" label="当前专业的问题状态数量" height={86} /></div>
-      </header>
+    <section ref={rootRef} id="experience" className="experience-shell grid-infinite-blueprint" data-motion-signature="infinite-canvas-anchored-callout">
+      <div className="grid-blueprint-scene"><VisualStage page={page} /></div>
+      <div className="grid-paper-grid" aria-hidden="true" />
+      <div className="grid-title-watermark"><span>RIVER HALL / COORDINATION</span><h1>问题归位，<br />项目向前。</h1></div>
+      <Segmented className="grid-discipline-dial" value={discipline} onChange={setDiscipline} options={["全部", "建筑", "结构", "机电"]} />
+      <div className="grid-count-ruler"><span>ISSUE SCALE</span><ChartBlock page={page} data={counts} kind="bars" label="当前专业的问题状态数量" height={72} /></div>
 
-      <div className="grid-blueprint">
-        <VisualStage page={page} />
-        <svg viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true"><path className="grid-coordinate-line" d={`M${active.x * 10} ${active.y * 6} L${Math.min(820, active.x * 10 + 150)} ${Math.min(500, active.y * 6 + 90)} L880 520`} /></svg>
-        {filtered.map(item => (
-          <Button key={item.id} data-id={item.id} aria-label={`查看 ${item.id} ${item.title}`} shape="circle" className={`grid-hotspot priority-${item.priority} ${item.id === active.id ? "is-active" : ""}`} style={{ left: `${item.x}%`, top: `${item.y}%` }} onClick={() => { setActiveId(item.id); setNotice(""); }}>{item.id.slice(-2)}</Button>
-        ))}
-        <div className="grid-axis-label axis-x">X / 01—12</div><div className="grid-axis-label axis-y">Y / A—H</div>
-        <aside className="grid-coordinate-card">
-          <Tag color={statusColor(active.status)}>{active.status}</Tag><span>{active.floor} / {active.discipline} / {active.id}</span>
-          <h2>{active.title}</h2><p>{active.note}</p><small>负责人 / {active.owner}</small>
-          <Form layout="vertical" key={`${active.id}-${active.status}`} onFinish={advanceIssue} initialValues={{ note: active.note }}>
-            <Form.Item name="note" label="协调记录" rules={[{ required: true }]}><Input.TextArea rows={2} maxLength={120} /></Form.Item>
-            <Button type="primary" htmlType="submit" block icon={<ApartmentOutlined />} disabled={active.status === "已确认"}>{active.status === "已确认" ? "问题已确认" : `推进到${lanes[lanes.indexOf(active.status) + 1]}`}</Button>
-          </Form>
-          {notice && <Alert type="success" showIcon closable onClose={() => setNotice("")} message={notice} />}
-        </aside>
-      </div>
+      <svg className="grid-coordinate-svg" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true"><path className="grid-coordinate-line" d={`M40 560 L${active.x * 10} ${active.y * 6} L${Math.min(940, active.x * 10 + 150)} ${Math.min(540, active.y * 6 + 90)}`} /></svg>
+      {filtered.map(item => (
+        <Button key={item.id} data-id={item.id} aria-label={`查看 ${item.id} ${item.title}`} shape="circle" className={`grid-hotspot priority-${item.priority} ${item.id === active.id ? "is-active" : ""}`} style={{ left: `${item.x}%`, top: `${item.y}%` }} onClick={() => { setActiveId(item.id); setNotice(""); }}>{item.id.slice(-2)}</Button>
+      ))}
+      <div className="grid-axis-label axis-x">X / 01—12 / 1:100</div><div className="grid-axis-label axis-y">Y / A—H</div>
 
-      <div className="grid-status-track" data-native-scroll>
-        {lanes.map((lane, index) => (
-          <section key={lane}><header><span>0{index + 1}</span><strong>{lane}</strong><b>{filtered.filter(item => item.status === lane).length}</b></header><div>{filtered.filter(item => item.status === lane).map(item => <Button key={item.id} type="text" className={`grid-track-card ${item.id === active.id ? "is-active" : ""}`} onClick={() => setActiveId(item.id)}><span>{item.id}</span><strong>{item.title}</strong><small>{item.owner}</small><ArrowRightOutlined /></Button>)}</div></section>
-        ))}
-      </div>
+      <aside className="grid-issue-popover" style={{ left: `${Math.min(active.x + 4, 67)}%`, top: `${Math.min(active.y + 6, 54)}%` }}>
+        <div><Tag color={statusColor(active.status)}>{active.status}</Tag><span>{active.floor} / {active.discipline} / {active.id}</span></div>
+        <h2>{active.title}</h2><p>{active.note}</p><small>负责人 / {active.owner}</small>
+        <Form layout="vertical" key={`${active.id}-${active.status}`} onFinish={advanceIssue} initialValues={{ note: active.note }}>
+          <Form.Item name="note" label="坐标旁的协调记录" rules={[{ required: true }]}><Input.TextArea rows={2} maxLength={120} /></Form.Item>
+          <Button type="primary" htmlType="submit" icon={<ApartmentOutlined />} disabled={active.status === "已确认"}>{active.status === "已确认" ? "问题已确认" : `推进到${lanes[lanes.indexOf(active.status) + 1]}`}</Button>
+        </Form>
+        {notice && <Alert type="success" showIcon closable onClose={() => setNotice("")} message={notice} />}
+      </aside>
+
+      <a className="grid-origin-home" href="../gallery/"><span>0,0</span><ArrowLeftOutlined /><small>RETURN TO INDEX</small></a>
       <small className="grid-font-note">OPEN TYPE / {page.fontStatement}</small>
     </section>
   );
