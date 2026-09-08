@@ -1,6 +1,6 @@
 # Third-party notices
 
-This file records material in the repository that is not covered solely by the root MIT License, together with the provenance boundary of the local showcase screenshots. The inventory was last checked on 2026-09-04.
+This file records material in the repository that is not covered solely by the root MIT License, together with the provenance boundary of the local showcase screenshots. The inventory was last checked on 2026-09-08.
 
 ## Bundled showcase runtime
 
@@ -10,13 +10,25 @@ The prebuilt files under `showcase/shared/runtime/` contain code from the produc
 | --- | --- | --- |
 | Interface runtime | React 19.2.8, React DOM 19.2.8, Scheduler 0.27.0 | MIT |
 | UI components and icons | Ant Design 6.6.2, Ant Design Icons 6.3.4 | MIT |
-| Motion and smooth scrolling | Anime.js 4.5.0, Lenis 1.3.26 | MIT |
+| Motion and smooth scrolling in the ten public works | Anime.js 4.5.0, Lenis 1.3.26 | MIT |
+| Motion in the gallery preview and standalone motion lab | GSAP 3.15.0, `@gsap/react` 2.1.2 | GSAP Standard “No Charge” License |
 | 3D/WebGL | Three.js 0.185.1, React Three Fiber 9.7.0, React Three Postprocessing 3.1.1 | MIT |
 | WebGL postprocessing | Postprocessing 6.39.4 | Zlib |
 | 2D Canvas | Pts 0.12.9 | Apache-2.0 |
 | Visualization | AntV G2 5.4.8 | MIT |
 
-The complete copyright notices and exact license texts taken from the installed production packages are distributed with the bundles in [`showcase/shared/runtime/THIRD_PARTY_LICENSES.txt`](./showcase/shared/runtime/THIRD_PARTY_LICENSES.txt). `pnpm run notices` regenerates that file from the dependency tree pinned in `pnpm-lock.yaml`. Keep it with the JavaScript bundles when copying or redistributing the prebuilt showcase runtime.
+The package versions, license metadata, and license files found in the installed production packages are distributed with the bundles in [`showcase/shared/runtime/THIRD_PARTY_LICENSES.txt`](./showcase/shared/runtime/THIRD_PARTY_LICENSES.txt). GSAP and `@gsap/react` point to the same online license but do not include a standalone license file in their published packages, so the generator includes the exact local copy at [`licenses/GSAP-Standard-No-Charge-License.txt`](./licenses/GSAP-Standard-No-Charge-License.txt). When another published package has no standalone license file, the generated inventory labels and includes a standard fallback for the package's declared license. `pnpm run notices` regenerates this evidence from the dependency tree pinned in `pnpm-lock.yaml`. Keep the file with the JavaScript bundles when copying or redistributing the prebuilt showcase runtime, but do not treat it as an independent legal audit. GSAP users must also check the current upstream terms for their actual product and distribution context.
+
+### Version-specific license notes
+
+The following upstream statements were checked on 2026-09-08 against the exact commits identified by the npm release metadata. The installed README and LICENSE files match those commits. These notes preserve the published metadata while explaining the authors' explicit license statements.
+
+| Package | Published metadata | Upstream statement and bundled notices |
+| --- | --- | --- |
+| `n8ao 2.0.1` | ISC | The author's [README](https://github.com/N8python/n8ao/blob/0fc15550c98119758e83ed4c2d0e87273bae9ed9/README.md#license) explicitly assigns CC0 to the project, and the same commit's [LICENSE](https://github.com/N8python/n8ao/blob/0fc15550c98119758e83ed4c2d0e87273bae9ed9/LICENSE) contains CC0 1.0 Universal. The generated inventory retains the ISC metadata and the complete CC0 text; it does not silently rewrite the published package. |
+| `@antv/vendor 1.0.11` | MIT AND ISC | The upstream [README](https://github.com/antvis/vendor/blob/e12ba5e60aa4b7473c362fba488188a91b9ad758/README.md#-license) explains that the wrapper uses MIT and vendored libraries carry their own licenses, including ISC. Its ESM `d3-scale-chromatic` entry re-exports the installed D3 package. The runtime inventory includes the wrapper's MIT notice and separate ISC notices for D3, including `d3-scale-chromatic 3.1.0`, `d3-color 3.1.0`, and `d3-interpolate 3.0.1`. |
+
+Keep these notices and the complete license inventory with redistributed bundles. Recheck the affected upstream statements and included code when updating dependency versions or changing the distribution; these version-specific findings are not blanket legal advice for another product.
 
 ## Bundled fonts
 
@@ -48,7 +60,7 @@ The generated local `@font-face` sheet has SHA-256 `42055c57ecd5bd9e742c42ce02c9
 
 ## Showcase imagery and screenshots
 
-The 30 WebP assets under `showcase/assets/<style>/` were generated specifically for this repository with OpenAI's image-generation tool. They are not third-party stock photographs. Prompt directions, processing steps, depicted-content boundaries, and the real image-luminance values used by AntV are recorded in [`showcase/assets/IMAGE_NOTICES.md`](./showcase/assets/IMAGE_NOTICES.md).
+The 30 WebP assets under `showcase/assets/<style>/` were generated specifically for this repository with OpenAI's image-generation tool. They are not third-party stock photographs. UI Done includes these files in the original interface artwork covered by the repository's root [MIT License](./LICENSE). Copies or substantial portions must retain the copyright and permission notice required by that license. Prompt directions, processing steps, depicted-content boundaries, and the real image-luminance values used by AntV are recorded in [`showcase/assets/IMAGE_NOTICES.md`](./showcase/assets/IMAGE_NOTICES.md).
 
 The eleven JPEG files under `assets/readme/` are browser screenshots of this repository's own gallery and ten visual concept pages. The screenshots combine the generated local imagery with project-authored layout, copy, CSS, programmatic Canvas drawing, and programmatic 3D geometry. They do not claim that the depicted people, products, places, or organizations are real, and they do not imply sponsorship or endorsement by OpenAI or any named open-source project.
 
@@ -56,6 +68,6 @@ The screenshots visually include output rendered by the open-source runtime pack
 
 ## Project license scope
 
-Unless otherwise noted, the repository's project-authored Skill files, scripts, documentation, showcase source code, screenshots, and original interface artwork are licensed under the [MIT License](./LICENSE).
+Unless otherwise noted, the repository's project-authored Skill files, scripts, documentation, showcase source code, screenshots, and original interface artwork, including the 30 generated WebP assets described above, are licensed under the [MIT License](./LICENSE).
 
-The bundled runtime libraries and font files are excluded from the project's root MIT License and remain under their respective MIT, Zlib, Apache-2.0, 0BSD, ISC, and OFL-1.1 terms. References to Google Fonts, IBM, Red Hat, and the listed open-source projects identify sources and rights holders only; they do not imply sponsorship or endorsement.
+The bundled runtime libraries and font files are excluded from the project's root MIT License. Runtime notices include MIT, ISC, MIT AND ISC, Zlib, Apache-2.0, BSD-3-Clause, 0BSD, the upstream CC0 statement described above, and the GSAP Standard “No Charge” License. The font files remain under OFL-1.1. References to Google Fonts, IBM, Red Hat, and the listed open-source projects identify sources and rights holders only; they do not imply sponsorship or endorsement.

@@ -7,6 +7,7 @@ const showcasePages = [
   "corner-goods",
   "gallery",
   "grid-01",
+  "motion-lab",
   "neon-rift",
   "north-tide",
   "orbital-grid",

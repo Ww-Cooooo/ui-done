@@ -1,6 +1,6 @@
 export const capabilities = [
   ["UI", "React + Ant Design"],
-  ["MOTION", "Anime.js"],
+  ["MOTION", "GSAP + Anime.js"],
   ["SCROLL", "Lenis"],
   ["3D", "Three.js + R3F / selective"],
   ["2D", "Pts"],
@@ -68,6 +68,11 @@ const themes = {
     mode: "light", bg: "#e9e9e5", surface: "#f8f8f4", surfaceAlt: "#d3d4d1",
     ink: "#101214", muted: "#60656a", accent: "#ee2b21", accent2: "#1249ba", onAccent: "#090a0b",
     line: "rgba(16,18,20,.28)", display: "Archivo", body: "Archivo", cjk: sansCjk, mono
+  },
+  motionLab: {
+    mode: "light", bg: "#eef1f7", surface: "#f9faff", surfaceAlt: "#dfe5f5",
+    ink: "#151923", muted: "#626b7e", accent: "#3156e8", accent2: "#ff6542", onAccent: "#ffffff",
+    line: "rgba(21,25,35,.18)", display: "Chakra Petch", body: sansCjk, cjk: sansCjk, mono
   }
 };
 
@@ -243,18 +248,37 @@ export const showcasePages = [
   }
 ];
 
+export const motionLabPage = {
+  id: "motion-lab", number: "LAB", shortTitle: "GSAP Motion Lab", styleName: "界面动效试验台",
+  layout: "lab", theme: themes.motionLab, shape: "motion-lab",
+  product: {
+    mode: "lab", type: "交互动效实验", role: "想直接查看 GSAP 效果的人", verb: "试验",
+    galleryAction: "试用三种界面动效",
+    ia: "任务重排 / 滚动组装 / 路径缓动", loop: "点击任务 → 滚动组装 → 切换缓动并重播",
+    data: "页面内真实交互状态与 GSAP easing 采样值",
+    coverage: { filter: 1, visualization: 1, detail: 1, form: 0, state: 1, spatial: 0 }
+  },
+  eyebrow: "UI DONE / GSAP MOTION LAB", audience: "前端设计与动效实现者",
+  title: "让界面把变化讲清楚。", latinTitle: "MOTION SHOULD EXPLAIN CHANGE.",
+  intro: "三个小实验分别展示布局变化、滚动编排和路径节奏。",
+  signature: "三种互不重复的动效结构",
+  fontStatement: "Chakra Petch + Noto Sans SC + Red Hat Mono"
+};
+
+export const galleryPages = [...showcasePages, motionLabPage];
+
 export const galleryPage = {
-  id: "gallery", number: "00", shortTitle: "UI Done Gallery", styleName: "十种产品与视觉方向",
+  id: "gallery", number: "00", shortTitle: "UI Done Gallery", styleName: "十一种产品、视觉与动效方向",
   layout: "gallery", theme: themes.gallery, chartKind: "matrix", shape: "gallery",
-  product: { mode: "index", type: "产品与视觉索引", role: "第一次了解 UI Done 的人", verb: "比较", ia: "任务入口 / 类型筛选 / 能力矩阵 / 作品", loop: "选择产品类型 → 比较能力 → 进入作品", data: "十个路由的实际实现元数据", coverage: { filter: 1, visualization: 1, detail: 1, form: 0, state: 1, spatial: 0 } },
+  product: { mode: "index", type: "产品与视觉索引", role: "第一次了解 UI Done 的人", verb: "比较", ia: "任务入口 / 类型筛选 / 能力矩阵 / 作品", loop: "选择产品类型 → 比较能力 → 进入作品", data: "十一个路由的实际实现元数据", coverage: { filter: 1, visualization: 1, detail: 1, form: 0, state: 1, spatial: 0 } },
   eyebrow: "UI DONE / PRODUCT RANGE", audience: "第一次了解 UI Done 的人",
   title: "页面既要好看，也要帮助用户把事情做完。",
   latinTitle: "ONE SKILL. REAL WORK. DISTINCT WORLDS.",
-  intro: "十个示例中，有六个是可以完成具体任务的工作页面，另外四个用于内容表达和沉浸体验。每个页面都根据自己的用途选择布局和视觉风格。",
+  intro: "十一个示例中，有六个是可以完成具体任务的工作页面，四个用于内容表达和沉浸体验，另有一个可以直接操作的动效试验台。每个页面都根据自己的用途选择布局和视觉风格。",
   signature: "产品任务与视觉双轴索引", fontStatement: "Big Shoulders + Outfit + Noto Sans SC + Red Hat Mono",
-  chartTitle: "这 10 个页面分别实现了哪些功能？",
-  chartSummary: "这个矩阵根据当前页面中已经实现的功能生成。亮格表示该页面具备这项功能，暗格表示没有。表达型页面不会为了凑数而加入虚构的数据或操作。",
-  chartData: showcasePages.flatMap(page => [
+  chartTitle: "这 11 个页面分别实现了哪些功能？",
+  chartSummary: "这个矩阵根据当前页面中已经实现的功能生成。亮格表示该页面具备这项功能，暗格表示没有。表达型页面和动效试验台都不会为了凑数而加入虚构的数据或操作。",
+  chartData: galleryPages.flatMap(page => [
     ["筛选", page.product.coverage.filter],
     ["可视化", page.product.coverage.visualization],
     ["详情", page.product.coverage.detail],
@@ -264,7 +288,7 @@ export const galleryPage = {
   ].map(([capability, value]) => ({ label: page.shortTitle, capability, value, group: page.product.type })))
 };
 
-export const allPages = [galleryPage, ...showcasePages];
+export const allPages = [galleryPage, ...galleryPages];
 
 export function getPageConfig(id) {
   return allPages.find(page => page.id === id) || galleryPage;

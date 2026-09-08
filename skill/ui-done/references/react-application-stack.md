@@ -18,7 +18,7 @@ This is a time-bounded discovery snapshot. Before installing or recommending a p
 - Use Ant Design components instead of rebuilding ordinary buttons, inputs, selects, dialogs, drawers, menus, tabs, tables, pagination, feedback, and form structure from scratch. Extend Ant Design tokens and compose its components before adding a second primitive or component system.
 - Use Ant Design design tokens/`ConfigProvider` for component theming, Ant Design Form for ordinary product forms, and Ant Design Grid/Flex/Layout plus project CSS for responsive structure.
 - Use `@ant-design/icons` as the default family for ordinary interface symbols when Ant Design owns the UI. Official brand marks, illustrations, photography, and domain-specific assets remain separate provenance decisions.
-- Default responsive acceptance covers one representative computer viewport, one tablet viewport, and one phone viewport. Add extra-wide, extra-narrow, landscape-specific, TV, kiosk, embedded, or other unusual targets only when the user or explicit delivery contract names them.
+- New pages and material responsive redesigns cover one representative computer viewport, one tablet viewport, and one phone viewport. Scoped repairs use the affected sizes/states defined in `visual-qa.md`. Add extra-wide, extra-narrow, landscape-specific, TV, kiosk, embedded, or other unusual targets only when the user or explicit delivery contract names them.
 
 ## Current React candidate matrix
 

@@ -17,6 +17,8 @@ export default defineConfig({
     minify: "oxc",
     chunkSizeWarningLimit: 1350,
     rollupOptions: {
+      // The versioned bootstrap must never be imported again by a lazy chunk.
+      preserveEntrySignatures: "strict",
       input: "showcase/runtime/src/main.jsx",
       output: {
         entryFileNames: "ui-done-app.js",
@@ -30,6 +32,7 @@ export default defineConfig({
           if (id.includes("@react-three/") || id.includes("/three/")) return "spatial";
           if (id.includes("/pts/")) return "pts";
           if (id.includes("/antd/") || id.includes("@ant-design/")) return "antd";
+          if (id.includes("/gsap/") || id.includes("@gsap/")) return "gsap";
           if (id.includes("/animejs/") || id.includes("/lenis/")) return "motion";
           if (id.includes("/react/") || id.includes("/react-dom/") || id.includes("/scheduler/")) return "react";
           return "vendor";

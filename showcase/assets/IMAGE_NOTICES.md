@@ -4,6 +4,10 @@ The 30 WebP files in the ten style folders were generated specifically for the U
 
 Each source image was generated as one wide, edge-to-edge triptych containing three vertical photographs. The source was split at the exact one-third boundaries and exported to WebP at quality 88. No external image was composited into the results, and the showcase makes no claim that the depicted people, products, venues, or organizations are real.
 
+## License
+
+UI Done treats these 30 WebP files as original interface artwork and makes them available under the repository's root [MIT License](../../LICENSE). You may copy, modify, publish, distribute, sublicense, or use them in another project, provided that copies or substantial portions retain the copyright and permission notice required by that license. This provenance record explains how the files were made; it does not guarantee that every possible use complies with the laws, industry rules, or client requirements that apply to you.
+
 ## Prompt set
 
 Every prompt used the same guardrails: a cohesive three-panel editorial triptych; one subject/scene, one material/detail, and one environment; photorealistic lighting and texture; visually continuous art direction; no text, letters, logos, signage, interface overlays, borders, frames, or watermarks.

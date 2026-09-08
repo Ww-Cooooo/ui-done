@@ -1,7 +1,12 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Card, Segmented, Tag } from "antd";
 import { ArrowRightOutlined, CheckOutlined, FontSizeOutlined } from "@ant-design/icons";
-import { capabilities, showcasePages } from "./data";
+import { gsap } from "gsap";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { useGSAP } from "@gsap/react";
+import { capabilities, galleryPages } from "./data";
+
+gsap.registerPlugin(useGSAP, MotionPathPlugin);
 
 function SectionIntro({ index, eyebrow, title, copy }) {
   return (
@@ -140,6 +145,115 @@ function ShanshuiPreview({ page }) {
   );
 }
 
+function MotionLabPreview() {
+  const rootRef = useRef(null);
+
+  useGSAP(() => {
+    const root = rootRef.current;
+    const path = root?.querySelector(".motion-preview-path");
+    const marker = root?.querySelector(".motion-preview-marker");
+    if (!root || !path || !marker) return undefined;
+
+    const media = gsap.matchMedia();
+    media.add("(prefers-reduced-motion: no-preference)", () => {
+      const length = path.getTotalLength();
+      gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
+      gsap.set(marker, { autoAlpha: 0 });
+
+      const timeline = gsap.timeline({ paused: true, defaults: { ease: "power3.inOut" } });
+      timeline
+        .from(".motion-preview-task", {
+          y: index => index % 2 ? -22 : 24,
+          rotation: index => index % 2 ? 5 : -5,
+          autoAlpha: 0,
+          stagger: 0.07,
+          duration: 0.42
+        }, "tasks")
+        .to(".motion-preview-task-a", { x: 118, y: 48, rotation: 3, duration: 0.74 }, "tasks+=0.36")
+        .to(".motion-preview-task-c", { x: -102, y: -38, rotation: -2, duration: 0.74 }, "tasks+=0.36")
+        .to(path, { strokeDashoffset: 0, duration: 1.06, ease: "power2.inOut" }, "path")
+        .set(marker, {
+          autoAlpha: 1,
+          motionPath: { path, align: path, alignOrigin: [0.5, 0.5], start: 0, end: 0 }
+        }, "path")
+        .to(marker, {
+          motionPath: { path, align: path, alignOrigin: [0.5, 0.5], start: 0, end: 1 },
+          duration: 1.06,
+          ease: "power2.inOut"
+        }, "path")
+        .from(".motion-preview-cell", {
+          x: index => [54, -36, 42, -48, 28, -34][index],
+          y: index => [-50, 46, -36, 42, 38, -44][index],
+          rotation: index => [-8, 7, 5, -6, 8, -4][index],
+          scale: 0.54,
+          autoAlpha: 0,
+          stagger: 0.055,
+          duration: 0.52
+        }, "path+=0.55")
+        .to(".motion-preview-terminal", {
+          attr: { r: 13 },
+          duration: 0.16,
+          repeat: 1,
+          yoyo: true,
+          ease: "power2.inOut"
+        }, "path+=0.92");
+
+      const play = () => timeline.play(0);
+      if (!("IntersectionObserver" in window)) {
+        play();
+        return undefined;
+      }
+
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          play();
+          observer.disconnect();
+        }
+      }, { threshold: 0.28 });
+      observer.observe(root);
+      return () => observer.disconnect();
+    });
+
+    media.add("(prefers-reduced-motion: reduce)", () => {
+      gsap.set(path, { strokeDasharray: "none", strokeDashoffset: 0 });
+      gsap.set(marker, {
+        autoAlpha: 1,
+        motionPath: { path, align: path, alignOrigin: [0.5, 0.5], start: 1, end: 1 }
+      });
+    });
+
+    return () => media.revert();
+  }, { scope: rootRef });
+
+  return (
+    <div ref={rootRef} className="preview-motion-lab" aria-hidden="true">
+      <span className="motion-preview-kicker">UI DONE / GSAP MOTION LAB</span>
+      <strong className="motion-preview-title"><span>MAKE CHANGE</span><em>LEGIBLE.</em></strong>
+
+      <div className="motion-preview-tasks">
+        <i className="motion-preview-task motion-preview-task-a"><b>01</b><span>CONTRAST</span></i>
+        <i className="motion-preview-task motion-preview-task-b"><b>02</b><span>TYPE</span></i>
+        <i className="motion-preview-task motion-preview-task-c"><b>03</b><span>MOBILE</span></i>
+        <i className="motion-preview-task motion-preview-task-d"><b>04</b><span>MOTION</span></i>
+      </div>
+
+      <svg className="motion-preview-route" viewBox="0 0 1000 390" preserveAspectRatio="none">
+        <path className="motion-preview-guide" d="M 62 296 C 208 64 430 330 604 142 S 846 54 938 112" />
+        <path className="motion-preview-path" d="M 62 296 C 208 64 430 330 604 142 S 846 54 938 112" />
+        <circle className="motion-preview-terminal" cx="938" cy="112" r="9" />
+        <circle className="motion-preview-marker" cx="0" cy="0" r="7" />
+      </svg>
+
+      <div className="motion-preview-assembly">
+        {Array.from({ length: 6 }, (_, index) => <i key={index} className="motion-preview-cell" />)}
+        <span>COMPLETE</span>
+      </div>
+
+      <div className="motion-preview-legend"><span>FLIP / REORDER</span><span>SCROLL / ASSEMBLE</span><span>PATH / EASE</span></div>
+    </div>
+  );
+}
+
 const previewOwners = {
   "velocity-works": VelocityPreview,
   "orbital-grid": OrbitalPreview,
@@ -150,7 +264,8 @@ const previewOwners = {
   "north-tide": NorthPreview,
   "red-form": RedPreview,
   "neon-rift": NeonPreview,
-  "shanshui-now": ShanshuiPreview
+  "shanshui-now": ShanshuiPreview,
+  "motion-lab": MotionLabPreview
 };
 
 function GalleryWork({ page }) {
@@ -171,13 +286,13 @@ function GalleryWork({ page }) {
   };
 
   return (
-    <Card className={`showcase-work showcase-work-${page.id}`} bordered={false} data-scroll-reveal style={style}>
+    <Card className={`showcase-work showcase-work-${page.id}`} bordered={false} data-gallery-work={page.id} data-scroll-reveal style={style}>
       <a href={`../${page.id}/`} aria-label={`打开 ${page.shortTitle}，查看${page.product.type}页面`}>
         <div className={`work-preview work-preview-${page.id}`}><Preview page={page} /></div>
         <div className="work-meta" data-gallery-meta>
           <div><h3>{page.shortTitle}</h3><span>{page.product.type}</span></div>
           <p>{page.product.role}可以{page.product.galleryAction}。</p>
-          <b>{page.product.mode === "work" ? "查看工作页面" : "查看完整页面"} <ArrowRightOutlined /></b>
+          <b>{page.product.mode === "work" ? "查看工作页面" : page.product.mode === "lab" ? "进入动效试验" : "查看完整页面"} <ArrowRightOutlined /></b>
         </div>
       </a>
     </Card>
@@ -187,10 +302,12 @@ function GalleryWork({ page }) {
 export function GalleryModules() {
   const [mode, setMode] = useState("all");
   const orderedPages = useMemo(() => [
-    ...showcasePages.filter(page => page.product.mode === "work"),
-    ...showcasePages.filter(page => page.product.mode === "expressive")
+    ...galleryPages.filter(page => page.product.mode === "work"),
+    ...galleryPages.filter(page => page.product.mode === "expressive"),
+    ...galleryPages.filter(page => page.product.mode === "lab")
   ], []);
   const visiblePages = orderedPages.filter(page => mode === "all" || page.product.mode === mode);
+  const count = value => galleryPages.filter(page => value === "all" || page.product.mode === value).length;
 
   return (
     <>
@@ -199,14 +316,19 @@ export function GalleryModules() {
           index="01"
           eyebrow="PRODUCT FIRST / VISUAL SECOND"
           title="先确定页面要解决的问题，再选择合适的视觉风格。"
-          copy="前六个示例展示训练分析、轨道监控、门店补货、日程安排、创意审批和项目协作。后四个示例展示自然专题、艺术展览、娱乐入口和文化长卷。十个页面的用途和布局都不相同。"
+          copy="前六个示例展示训练分析、轨道监控、门店补货、日程安排、创意审批和项目协作。接着四个示例展示自然专题、艺术展览、娱乐入口和文化长卷。最后一个动效试验台可以直接操作任务重排、滚动组装和路径缓动。十一个页面的用途和布局都不相同。"
         />
         <div className="gallery-filter" data-scroll-reveal>
           <Segmented
             aria-label="按产品类型筛选作品"
             value={mode}
             onChange={setMode}
-            options={[{ label: "全部 10", value: "all" }, { label: "工作型 6", value: "work" }, { label: "表达型 4", value: "expressive" }]}
+            options={[
+              { label: `全部 ${count("all")}`, value: "all" },
+              { label: `工作型 ${count("work")}`, value: "work" },
+              { label: `表达型 ${count("expressive")}`, value: "expressive" },
+              { label: `动效实验 ${count("lab")}`, value: "lab" }
+            ]}
           />
           <span>当前显示 {visiblePages.length} 个页面</span>
         </div>

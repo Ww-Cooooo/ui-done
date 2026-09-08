@@ -63,6 +63,11 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.`
 };
 
+const packageLicenseFiles = {
+  "@gsap/react": "licenses/GSAP-Standard-No-Charge-License.txt",
+  gsap: "licenses/GSAP-Standard-No-Charge-License.txt"
+};
+
 function normalizeLicenseText(value) {
   return value
     .replace(/\r\n?/g, "\n")
@@ -73,6 +78,11 @@ function normalizeLicenseText(value) {
 }
 
 function loadLicenseText(entry, packagePath) {
+  const packagedLicense = packageLicenseFiles[entry.name];
+  if (packagedLicense) {
+    return normalizeLicenseText(readFileSync(path.resolve(packagedLicense), "utf8"));
+  }
+
   const candidates = readdirSync(packagePath)
     .filter(name => /^(license|licence|copying|notice)(\.|$)/i.test(name))
     .sort((a, b) => a.localeCompare(b));

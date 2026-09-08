@@ -115,6 +115,7 @@ function DataTable({ page }) {
 export default function DataChart({ page, reduced }) {
   const hostRef = useRef(null);
   const [error, setError] = useState(null);
+  const routeCount = page.chartKind === "matrix" ? new Set(page.chartData.map(item => item.label)).size : null;
 
   useEffect(() => {
     const host = hostRef.current;
@@ -145,7 +146,7 @@ export default function DataChart({ page, reduced }) {
       </div>
       {error ? <Alert type="warning" showIcon message="图表暂时无法显示" description="页面仍会通过无障碍数据表提供全部内容。" /> : <div ref={hostRef} className="g2-host" aria-hidden="true" />}
       <DataTable page={page} />
-      <div className="chart-proof" aria-label="图表数据来源"><CheckCircleOutlined /><span>10 个公开示例</span><span>6 类可比较功能</span><span>数据来自实际页面</span><span>没有编造经营数据</span></div>
+      <div className="chart-proof" aria-label="图表数据来源"><CheckCircleOutlined />{routeCount ? <span>{routeCount} 个公开示例</span> : <span>本页本地数据</span>}<span>6 类可比较功能</span><span>数据来自实际页面</span><span>没有编造经营数据</span></div>
     </section>
   );
 }

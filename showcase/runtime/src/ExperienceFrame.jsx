@@ -9,13 +9,13 @@ import { animate, createTimeline, onScroll, stagger } from "animejs";
 
 const repositoryUrl = "https://github.com/Ww-Cooooo/ui-done";
 
-function ScrollSignal() {
+function ScrollSignal({ reduced }) {
   const lenis = useLenis(instance => {
     document.documentElement.style.setProperty("--scroll-progress", String(instance.progress || 0));
   });
 
   useEffect(() => {
-    if (!lenis) return undefined;
+    if (!lenis || reduced) return undefined;
     const previousRestoration = window.history.scrollRestoration;
     window.history.scrollRestoration = "manual";
     const followAnchor = event => {
@@ -44,7 +44,7 @@ function ScrollSignal() {
       window.removeEventListener("popstate", restoreLocation);
       document.documentElement.style.removeProperty("--scroll-progress");
     };
-  }, [lenis]);
+  }, [lenis, reduced]);
 
   return null;
 }
@@ -165,28 +165,26 @@ export default function ExperienceFrame({ page, children, reduced }) {
     borderRadius: radii[page.layout] ?? 10,
     fontFamily: `"${page.theme.body}", "${page.theme.cjk}", sans-serif`,
     controlHeight: 42,
-    motion: !reduced
+    // Toggling Ant Design's motion flag inserts providers on its first change.
+    // Keep their identity stable and remove animation time instead.
+    ...(reduced ? { motionDurationFast: "0s", motionDurationMid: "0s", motionDurationSlow: "0s" } : {})
   }), [page, reduced]);
-
-  const content = <ThemedContent page={page} reduced={reduced}>{children}</ThemedContent>;
 
   return (
     <ConfigProvider theme={{ token: tokens }}>
-      {reduced ? content : (
-        <ReactLenis
-          root
-          options={{
-            autoRaf: true,
-            lerp: 0.085,
-            smoothWheel: true,
-            syncTouch: false,
-            prevent: node => Boolean(node.closest?.("[data-lenis-prevent], [data-native-scroll], .ant-table-body, .ant-picker-panel"))
-          }}
-        >
-          <ScrollSignal />
-          {content}
-        </ReactLenis>
-      )}
+      <ReactLenis
+        root
+        options={{
+          autoRaf: !reduced,
+          lerp: 0.085,
+          smoothWheel: !reduced,
+          syncTouch: false,
+          prevent: node => Boolean(node.closest?.("[data-lenis-prevent], [data-native-scroll], .ant-table-body, .ant-picker-panel"))
+        }}
+      >
+        <ScrollSignal reduced={reduced} />
+        <ThemedContent page={page} reduced={reduced}>{children}</ThemedContent>
+      </ReactLenis>
     </ConfigProvider>
   );
 }

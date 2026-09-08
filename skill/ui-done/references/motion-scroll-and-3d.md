@@ -7,17 +7,25 @@ For substantial frontend work, motion, scroll enhancement, and 2D Canvas are thr
 | Layer | Default owner | Boundary |
 |---|---|---|
 | Hover, press, focus, simple reveal | CSS for isolated states, coordinated by the selected motion system when sequencing matters | Do not split ownership of the same property between CSS and the motion library |
-| Component state, presence, layout continuity | One maintained UI-motion library or framework-native motion layer | Keep scroll pinning and scrubbing in the scroll layer |
-| Scroll storytelling | Anime.js `onScroll` | Limit pinning and scrubbing to the narrative regions that need it; it owns choreography, not scroll mechanics |
+| Component state, presence, layout continuity | GSAP plus `@gsap/react` | Default primary owner for every new page and material redesign; scope it to the React host and clean it up on unmount/remount |
+| Scroll storytelling | GSAP ScrollTrigger | Limit pinning and scrubbing to the narrative regions that need it; it owns choreography, not scroll mechanics |
 | Smooth scrolling | Lenis through `lenis/react` | Default to it on computer, tablet, and phone when the tested path works; preserve reduced motion, nested controls, anchors, focus navigation, and precise regions |
 | Conditional signature 3D scene | Three.js through React Three Fiber, only after the suitability gate passes | Use R3F as the React scene boundary, keep it in one bounded product-aligned region, and provide a static/DOM fallback; otherwise do not mount or request WebGL |
 | Separate 2D Canvas role | Pts for creative/programmed drawing or Fabric.js for editable objects | This is independent from the R3F scene; use DOM controls and labels for essential interaction |
 
-Research current APIs, maintenance, license, and bundle behavior before choosing the owners. Lenis is the starting scroll selection; Three.js/R3F is the starting 3D selection only after the suitability gate passes. Recheck selected packages at adoption time. For substantial work, missing motion, scroll, or separate 2D Canvas coverage requires an observed hard constraint, not merely “native is simpler.” A failed 3D suitability gate is a valid conditional decision and does not require a hard exemption.
+Research current APIs, maintenance, license, and bundle behavior before choosing the owners. GSAP with `@gsap/react` is the starting and default primary motion selection; Lenis is the starting scroll-mechanics selection; Three.js/R3F is the starting 3D selection only after the suitability gate passes. Recheck selected packages at adoption time. For substantial work, missing motion, scroll, or separate 2D Canvas coverage requires an observed hard constraint, not merely “native is simpler.” A failed 3D suitability gate is a valid conditional decision and does not require a hard exemption.
 
-When Anime.js is a serious candidate, read `open-source-ui-sources.md` before selection. Use it as the primary motion or timeline owner for a defined region, not as an extra engine layered over Motion, GSAP, CSS, or another system controlling the same behavior.
+For every new page or material redesign, inspect the official GSAP React guidance and at least one relevant live Demo Hub or Showcase example. Give GSAP a concrete job attached to existing content or state and record its host, behavior, page-specific adaptation, selected plugins, reduced-motion/static completion, and current Standard License fit. A package import, homepage mention, or shared generic reveal is not adoption.
 
-Use Lenis as the only smooth-scroll mechanics owner. Its official React component/hook should wrap the intended root or bounded container; Anime.js may consume scroll progress for choreography without becoming a second mechanics engine. Keep Lenis active across the default device matrix when it passes, and prefer excluding one incompatible nested region or scaling behavior before disabling it globally.
+When Anime.js is inspected in the required five-source pass, use it as idea-only evidence or a conditional alternative. Adopt it as the primary motion or timeline owner only when GSAP has the recorded hard rejection from `SKILL.md`, or when Anime.js already owns the product and migration is outside the authorized scope. It may sit beside GSAP only for a clearly separate, non-overlapping role with a material advantage and an authorized dependency. Never layer it over GSAP, CSS, or another system controlling the same property, timeline, or scroll region.
+
+Use Lenis as the only smooth-scroll mechanics owner. Its official React component/hook should wrap the intended root or bounded container; GSAP ScrollTrigger may consume scroll progress for choreography without becoming a second mechanics engine. Bridge update and refresh behavior deliberately and never add ScrollSmoother beside Lenis. Keep Lenis active across the default device matrix when it passes, and prefer excluding one incompatible nested region or scaling behavior before disabling it globally.
+
+## GSAP default-adoption gate
+
+For a new page or material redesign, treat GSAP omission as an implementation defect until one exact hard rejection is proved: the task is only an isolated copy/color/asset/token correction with no motion change; the user explicitly forbids GSAP or animation; the Standard License does not fit or the product may be a competing no-code visual web-animation builder without written permission; an established motion owner cannot be migrated inside the authorized scope and no smaller non-overlapping GSAP role exists; or a reproducible license, SSR, CSP, offline, browser, accessibility, performance, or runtime failure remains after a smaller role, selective plugins, responsive/reduced-motion handling, and a static fallback were tried. Record the evidence as `GSAP not adopted: hard rejection: <reason>`. Convenience, familiarity, deadline pressure, CSS sufficiency, or dependency count do not pass.
+
+The GSAP runtime uses the Webflow/GreenSock Standard “No Charge” License, not MIT. The optional official `greensock/gsap-skills` repository is MIT-licensed guidance only and does not change the runtime terms or become a required dependency of UI Done.
 
 When true 3D/WebGL passes the gate, begin with `three` plus `@react-three/fiber`. Add `@react-three/drei` only for named helpers the scene needs. Use direct Three.js lifecycle code only when a low-level integration does not fit R3F; do not choose Pts, Fabric.js, CSS transforms, or a static fake merely to claim that real spatial rendering exists.
 
@@ -68,7 +76,7 @@ If the host or meaning cannot be stated specifically, the effect is arbitrary. �
 
 Prefer motion on a surface the product already expects—a promotional strip, schedule card, product object, map path, progress state, or real chart transition—over a separate animation surface. The reusable lesson is integration into existing content, not copying any particular marquee, orbit, or visual style.
 
-For substantial new pages and material redesigns, motion is a planned default, not optional polish. Give every page one primary motion signature tied to its content or task, then use quieter supporting feedback only where needed. In an intentionally varied set, do not let the same reveal preset, scroll entry, direction, or looping background become the primary motion of multiple works; shared code may manage scope and cleanup, but each page owns a visibly different trigger-to-completion choreography. Omission requires an observed hard delivery, performance, accessibility, or explicit user constraint and must be recorded. Reduced-motion is a required alternate completion state, not evidence that the normal page may ship motionless.
+For substantial new pages and material redesigns, GSAP motion is a planned default, not optional polish. Give every page one primary motion signature tied to its content or task, then use quieter supporting feedback only where needed. In an intentionally varied set, do not let the same reveal preset, scroll entry, direction, or looping background become the primary motion of multiple works; shared code may manage scope and cleanup, but each page owns a visibly different trigger-to-completion choreography. Omission requires the exact recorded hard-rejection path above. Reduced-motion is a required alternate completion state, not evidence that the normal page may ship motionless.
 
 Treat visible controls as product features. Do not surface pause, reset, rotate, speed, view, or scene controls simply because the library provides them. Use them only when direct manipulation serves a real task or when an accessibility requirement calls for a user-operated mechanism. For ambient or decorative motion, prefer brief or bounded behavior plus automatic reduced-motion, hidden-tab, offscreen, and low-power handling. If continuous motion needs a pause mechanism, integrate it into the product's interaction language instead of attaching a generic engine toolbar.
 
@@ -78,7 +86,7 @@ Treat visible controls as product features. Do not surface pause, reset, rotate,
 - Keep UI motion, scroll timelines, and any adopted 3D render loops in separate components/modules with explicit inputs.
 - Do not let CSS, a UI-motion library, and a timeline engine all animate the same transform.
 - Do not run multiple uncontrolled `requestAnimationFrame` loops for one visual region.
-- When Lenis, Anime.js, or R3F share time or scroll signals, coordinate them through one explicit scheduler/bridge where supported; do not let each layer poll and mutate the same target independently.
+- When Lenis, GSAP/ScrollTrigger, Canvas, or R3F share time or scroll signals, coordinate them through one explicit scheduler/bridge where supported; do not let each layer poll and mutate the same target independently.
 - Keep 3D and 2D Canvas decorative output separate from semantic navigation and content. Provide DOM controls and labels only for essential interactions, using the product's language rather than engine terminology.
 - Keep small decorative accents non-interactive and outside the accessibility tree; render them statically or stop them quickly instead of adding controls that make the accent larger than its purpose.
 - Reuse lifecycle, cleanup, failure, and rendering infrastructure freely, but keep public controls opt-in. A shared scene component must not stamp the same toolbar onto unrelated products.
@@ -89,6 +97,8 @@ Treat visible controls as product features. Do not surface pause, reset, rotate,
 
 Implement and test applicable items:
 
+- Register GSAP plugins once at the application boundary. In React, use `useGSAP()` with a scoped root; wrap click handlers, delayed callbacks, and other later-created animations with `contextSafe()`; revert timelines, ScrollTriggers, observers, and listeners on cleanup; and keep browser-only motion behind a client boundary in server-rendered frameworks.
+- Use `gsap.matchMedia()` or an equivalent live preference path for responsive and reduced-motion variants. Prefer timelines with positions or labels over chains of unrelated delays, `quickTo()` for frequent pointer updates, and transforms, opacity, or `autoAlpha` over continuously animating width, height, top, or left.
 - Start only after the host element exists and has measurable size.
 - Use `ResizeObserver` or an equivalent bounded resize path; cap device pixel ratio for GPU cost.
 - Pause or reduce work when `document.hidden`, the element is offscreen, or the user requests reduced motion.
@@ -101,7 +111,10 @@ Implement and test applicable items:
 
 ## Computer, tablet, and phone policy
 
+Use these checks for new or materially changed effects and their affected device paths. For a scoped repair, select the relevant cases through `visual-qa.md`; an unchanged layer does not require a fresh full lifecycle run.
+
 - Exercise Lenis on all three default device classes. On touch devices, keep upstream-safe touch behavior unless a stronger synchronization mode has passed the supported iOS/Android checks; a desktop success is not evidence for phone. Verify anchor links, keyboard focus, route restoration, nested Ant Design overlays/tables, text selection, overscroll, and reduced motion.
+- Exercise GSAP timelines and ScrollTriggers across desktop, tablet, phone, responsive changes, navigation, unmount/remount, and live reduced-motion changes. Confirm no duplicate timeline, trigger, listener, or animation frame survives, and confirm a Lenis page does not also load ScrollSmoother.
 - When 3D was adopted, exercise R3F/Three.js on phone and tablet. Reduce device-pixel ratio, model/texture size, lights, post-processing, draw calls, update frequency, and interaction density to meet the budget; lazy-load the scene and pause hidden/offscreen work. Do not confuse a suitability-gate rejection with a device-performance fallback.
 - Exercise the separate 2D Canvas role on phone and tablet. Reduce pixel ratio, particle/object count, redraw frequency, and interaction density before omitting it; verify resize, teardown, and a static/DOM fallback independently from the 3D scene.
 - Fall back only after a reproducible compatibility, accessibility, performance, delivery, or runtime failure. Record the failing device/path and retain a coherent static/DOM result rather than silently shipping an empty region.
@@ -129,15 +142,15 @@ For WebGL, cover both initialization failure and runtime `webglcontextlost`. A f
 
 ## Acceptance evidence
 
-- State the purpose of each automatic effect in one sentence.
-- Record its host, meaning, and control rationale; “the library supports it” is not a rationale.
+Reuse the effect's selection and host/meaning/control record rather than writing another copy. Apply the following checks within the scope selected in `visual-qa.md`; the main Skill handoff owns the final summary.
+
 - Test normal and reduced-motion modes.
 - Test mouse, keyboard, touch where relevant, and at least one low/mobile viewport.
 - Confirm no competing scroll regions, clipped pinned content, focus jumps, or input-blocking timelines.
 - Exercise initialization/resource/context failure for advanced visuals.
 - For adopted 3D, capture several animation phases, inspect the complete motion cycle, and verify the geometry-integrity rules rather than judging one flattering frame.
 - For surfaces that rejected 3D, confirm no WebGL canvas, initialization probe, or 3D chunk request occurs.
-- Navigate away/unmount and return; check for duplicate canvases, loops, listeners, or rising memory.
+- Navigate away/unmount and return; check for duplicate GSAP timelines, ScrollTriggers, canvases, loops, listeners, or rising memory.
 - Capture screenshots of the full, reduced, and fallback states.
 
 If an adopted enhanced layer fails, the coherent static fallback must still work. A required fallback is not a reason to omit a default layer. For conditional 3D, decide suitability first; once adopted, fallback quality is mandatory.

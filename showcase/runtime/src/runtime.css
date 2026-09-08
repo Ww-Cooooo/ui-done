@@ -351,6 +351,42 @@ main { display: block; }
 .preview-shanshui > p { grid-column: 1 / 2; align-self: center; margin: 0 22px; color: #74695c; font-size: 11px; line-height: 1.5; }
 .showcase-work-shanshui-now:hover .shanshui-preview-court img { transform: scale(1.04); }
 
+/* Motion Lab — one diagonal timeline carrying three real motion ideas. */
+.showcase-work-motion-lab { grid-column: 1 / -1; }
+.showcase-work-motion-lab .work-preview { height: 390px; }
+.preview-motion-lab { position: relative; height: 100%; overflow: hidden; color: #151923; background: #eef1f7; }
+.preview-motion-lab::before { position: absolute; inset: 0; content: ""; background-image: linear-gradient(rgba(21,25,35,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(21,25,35,.07) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(90deg, #000, rgba(0,0,0,.36) 72%, transparent); }
+.preview-motion-lab::after { position: absolute; inset: 0; content: ""; background: radial-gradient(circle at 78% 28%, rgba(49,86,232,.17), transparent 22%), linear-gradient(108deg, transparent 58%, rgba(169,156,255,.22)); pointer-events: none; }
+.motion-preview-kicker { position: absolute; z-index: 4; top: 22px; left: 26px; padding: 7px 9px; color: #eef1f7; background: #151923; font-family: var(--work-mono), monospace; font-size: 11px; letter-spacing: .08em; }
+.motion-preview-title { position: absolute; z-index: 1; bottom: 28px; left: 28px; display: grid; color: rgba(21,25,35,.14); font-family: var(--work-display), sans-serif; font-size: clamp(54px, 6.1vw, 88px); font-weight: 700; line-height: .74; letter-spacing: -.045em; }
+.motion-preview-title em { color: rgba(49,86,232,.2); font-style: normal; }
+.motion-preview-tasks { position: absolute; z-index: 4; inset: 0; }
+.motion-preview-task { position: absolute; display: grid; width: 112px; height: 88px; align-content: space-between; padding: 11px; border: 1px solid rgba(21,25,35,.22); color: #151923; background: #f9faff; box-shadow: 0 12px 25px rgba(21,25,35,.13); font-family: var(--work-mono), monospace; font-style: normal; }
+.motion-preview-task b { justify-self: end; font-family: var(--work-display), sans-serif; font-size: 27px; line-height: 1; opacity: .5; }
+.motion-preview-task span { font-size: 11px; letter-spacing: .05em; }
+.motion-preview-task-a { top: 28%; left: 7%; background: #ff7658; }
+.motion-preview-task-b { top: 13%; left: 24%; background: #f9faff; }
+.motion-preview-task-c { top: 59%; left: 31%; background: #bfd1ff; }
+.motion-preview-task-d { top: 42%; left: 48%; background: #a99cff; }
+.motion-preview-route { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.motion-preview-guide, .motion-preview-path { fill: none; }
+.motion-preview-guide { stroke: rgba(21,25,35,.22); stroke-width: 1.4; stroke-dasharray: 7 9; vector-effect: non-scaling-stroke; }
+.motion-preview-path { stroke: #3156e8; stroke-width: 4; }
+.motion-preview-terminal { fill: #eef1f7; stroke: #ff6542; stroke-width: 5; vector-effect: non-scaling-stroke; }
+.motion-preview-marker { fill: #151923; stroke: #eef1f7; stroke-width: 4; vector-effect: non-scaling-stroke; }
+.motion-preview-assembly { position: absolute; z-index: 4; top: 17%; right: 5%; display: grid; width: 160px; height: 118px; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 6px; padding: 8px; border: 1px solid rgba(21,25,35,.22); background: rgba(249,250,255,.82); box-shadow: 0 16px 34px rgba(21,25,35,.12); }
+.motion-preview-cell { display: block; background: #3156e8; }
+.motion-preview-cell:nth-child(2), .motion-preview-cell:nth-child(5) { background: #ff6542; }
+.motion-preview-cell:nth-child(3) { background: #a99cff; }
+.motion-preview-cell:nth-child(4) { background: #151923; }
+.motion-preview-assembly span { position: absolute; right: 8px; bottom: -24px; font-family: var(--work-mono), monospace; font-size: 11px; letter-spacing: .07em; }
+.motion-preview-legend { position: absolute; z-index: 4; right: 26px; bottom: 22px; display: flex; gap: 18px; font-family: var(--work-mono), monospace; font-size: 11px; letter-spacing: .05em; }
+.motion-preview-legend span { padding-top: 7px; border-top: 2px solid #151923; }
+.motion-preview-legend span:nth-child(2) { border-color: #ff6542; }
+.motion-preview-legend span:nth-child(3) { border-color: #3156e8; }
+.showcase-work-motion-lab:hover .motion-preview-guide { stroke: rgba(49,86,232,.48); }
+.showcase-work-motion-lab:hover .motion-preview-assembly { transform: translateY(-3px); transition: transform .35s ease; }
+
 .beginner-grid { display: grid; grid-template-columns: 1fr auto 1.2fr; gap: 30px; align-items: center; padding: clamp(28px, 5vw, 68px); border: 1px solid var(--page-line); background: var(--page-surface); }
 .beginner-grid blockquote { margin: 0; font-family: var(--font-cjk), sans-serif; font-size: clamp(28px, 3.4vw, 52px); font-weight: 700; line-height: 1.2; }
 .brief-arrow { color: var(--page-accent); font-size: 32px; }
@@ -435,13 +471,15 @@ main { display: block; }
   .task-board-row .ant-tag { display: none; }
   .works-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .showcase-work, .showcase-work-velocity-works, .showcase-work-orbital-grid, .showcase-work-corner-goods, .showcase-work-still-day, .showcase-work-atelier-noir, .showcase-work-north-tide, .showcase-work-red-form, .showcase-work-neon-rift { grid-column: span 1; }
-  .showcase-work-grid-01, .showcase-work-shanshui-now { grid-column: 1 / -1; }
+  .showcase-work-grid-01, .showcase-work-shanshui-now, .showcase-work-motion-lab { grid-column: 1 / -1; }
   .work-preview { height: 330px; }
   .showcase-work-corner-goods .work-preview, .showcase-work-still-day .work-preview, .showcase-work-atelier-noir .work-preview { height: 350px; }
   .showcase-work-grid-01 .work-preview { height: 330px; }
   .showcase-work-north-tide .work-preview, .showcase-work-red-form .work-preview { height: 380px; }
   .showcase-work-neon-rift .work-preview { height: 360px; }
   .showcase-work-shanshui-now .work-preview { height: 400px; }
+  .showcase-work-motion-lab .work-preview { height: 360px; }
+  .motion-preview-task-b { top: 18%; }
   .velocity-preview-console h4 { font-size: 32px; }
   .preview-red { grid-template-columns: 48% 52%; }
   .red-preview-type h4 { font-size: 40px; }
@@ -484,11 +522,23 @@ main { display: block; }
   .section-intro h2 { font-size: clamp(34px, 10vw, 52px); }
   .section-intro > p { font-size: 14px; }
   .works-grid { grid-template-columns: 1fr; gap: 14px; }
-  .showcase-work, .showcase-work-velocity-works, .showcase-work-orbital-grid, .showcase-work-corner-goods, .showcase-work-still-day, .showcase-work-atelier-noir, .showcase-work-grid-01, .showcase-work-north-tide, .showcase-work-red-form, .showcase-work-neon-rift, .showcase-work-shanshui-now { grid-column: 1; }
+  .showcase-work, .showcase-work-velocity-works, .showcase-work-orbital-grid, .showcase-work-corner-goods, .showcase-work-still-day, .showcase-work-atelier-noir, .showcase-work-grid-01, .showcase-work-north-tide, .showcase-work-red-form, .showcase-work-neon-rift, .showcase-work-shanshui-now, .showcase-work-motion-lab { grid-column: 1; }
   .work-preview { height: 330px; }
   .showcase-work-corner-goods .work-preview, .showcase-work-still-day .work-preview, .showcase-work-atelier-noir .work-preview { height: 350px; }
   .showcase-work-grid-01 .work-preview { height: 380px; }
   .showcase-work-north-tide .work-preview, .showcase-work-red-form .work-preview, .showcase-work-neon-rift .work-preview, .showcase-work-shanshui-now .work-preview { height: 370px; }
+  .showcase-work-motion-lab .work-preview { height: 390px; }
+  .motion-preview-title { bottom: 24px; left: 18px; font-size: clamp(48px, 12vw, 70px); }
+  .motion-preview-kicker { top: 16px; left: 16px; }
+  .motion-preview-task { width: 98px; height: 78px; padding: 9px; }
+  .motion-preview-task b { font-size: 23px; }
+  .motion-preview-task-a { top: 32%; left: 4%; }
+  .motion-preview-task-b { top: 18%; left: 30%; }
+  .motion-preview-task-c { top: 60%; left: 37%; }
+  .motion-preview-task-d { top: 44%; left: 61%; }
+  .motion-preview-assembly { top: 16%; right: 4%; width: 124px; height: 96px; }
+  .motion-preview-legend { right: 14px; bottom: 16px; flex-direction: column; gap: 5px; align-items: flex-end; font-size: 11px; letter-spacing: 0; }
+  .motion-preview-legend span { padding-top: 3px; }
   .work-meta { min-height: 88px; }
   .preview-velocity { grid-template-columns: 36% 64%; }
   .velocity-preview-console { padding: 22px; }
@@ -520,6 +570,7 @@ main { display: block; }
   .showcase-work-corner-goods .work-preview, .showcase-work-still-day .work-preview, .showcase-work-atelier-noir .work-preview { height: 330px; }
   .showcase-work-grid-01 .work-preview { height: 360px; }
   .showcase-work-north-tide .work-preview, .showcase-work-red-form .work-preview, .showcase-work-neon-rift .work-preview, .showcase-work-shanshui-now .work-preview { height: 340px; }
+  .showcase-work-motion-lab .work-preview { height: 360px; }
   .work-meta { grid-template-columns: 1fr auto; gap: 5px 12px; padding: 16px; }
   .work-meta h3 { font-size: 23px; }
   .work-meta b { font-size: 10px; }
@@ -575,6 +626,12 @@ main { display: block; }
   .shanshui-preview-hall { grid-row: 1 / 3; grid-column: 2; }
   .shanshui-preview-court { grid-row: 2; grid-column: 1; }
   .preview-shanshui > p { display: none; }
+  .motion-preview-title { bottom: 20px; font-size: 46px; }
+  .motion-preview-task { width: 88px; height: 72px; }
+  .motion-preview-task-b { left: 27%; }
+  .motion-preview-task-c { left: 39%; }
+  .motion-preview-task-d { left: 64%; }
+  .motion-preview-assembly { top: 17%; right: 3%; width: 104px; height: 84px; gap: 4px; padding: 6px; }
   .expansion-list .ant-tag { width: 100%; white-space: normal; }
 }
 
