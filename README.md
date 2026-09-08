@@ -8,7 +8,7 @@ UI Done 采用开放的 [Agent Skills](https://agentskills.io/) 文件格式，�
 
 这里所说的 **Agent**，是能够打开项目、修改文件和运行工具的 AI 助手。**Skill** 是一组让 Agent 在执行任务时遵守的规则文件。
 
-[在线查看 11 个示例页面](https://ww-cooooo.github.io/ui-done/showcase/gallery/) · [安装 UI Done](#一分钟安装) · [阅读完整安装说明](./INSTALL.md) · [查看许可证](./LICENSE)
+[在线查看示例展厅](https://ww-cooooo.github.io/ui-done/showcase/gallery/) · [安装 UI Done](#一分钟安装) · [阅读完整安装说明](./INSTALL.md) · [查看许可证](./LICENSE)
 
 </div>
 
@@ -174,16 +174,18 @@ UI Done 不是只在用户第一次说“帮我做页面”时出现一次。只
 - 如果 Agent 把前端工作交给另一个执行者，必须把完整的 `skill/ui-done` 文件夹和当前任务边界一并交给它。不能假定新的执行者会自动继承上一个 Agent 已经读取的规则。
 - 不同 Agent 拥有的工具和权限可能不同，所以同一份 Skill 不能保证它们产出完全相同的页面。只有在宿主确实读到了 Skill 文件，并且具备修改和测试项目的工具时，才能声称 UI Done 已经被实际执行。
 
-## 这 11 个页面展示了什么
+## 这 12 个页面展示了什么
 
-当前展厅包含 6 个工作型页面、4 个表达型页面和 1 个动效试验页。六个工作型页面分别处理训练复盘、航天告警、门店补货、日程习惯、创意审阅和建筑协作；四个表达型页面分别探索海岸编辑、当代艺术、赛博娱乐和当代新中式。动效试验页让使用者直接操作任务重排、滚动组装和路径缓动，观察 GSAP 怎样处理真实界面状态，而不是只看一段自动播放的装饰动画。
+本仓库的展厅包含 7 个工作型页面、4 个表达型页面和 1 个动效试验页。七个工作型页面分别处理训练复盘、航天告警、门店补货、日程习惯、创意审阅、建筑协作和剧场选座；四个表达型页面分别探索海岸编辑、当代艺术、赛博娱乐和当代新中式。动效试验页让使用者直接操作任务重排、滚动组装和路径缓动，观察 GSAP 怎样处理真实界面状态，而不是只看一段自动播放的装饰动画。
 
-这十个作品分别采用训练数据工作区、轨道驾驶舱、连续小票、七天日程、照片裁切审阅台、无限蓝图、全屏章节、单一展览舞台、传送门状态机和横向长卷。它们尝试用不同结构服务不同任务，而不只是更换颜色和图片。第十一个动效试验页从上到下排列任务重排、滚动组装和路径缓动三个实验，也可以通过页首入口直接跳到其中一项。展厅里的预览卡片把三个效果串在一条斜向路径上；这张卡片的构图与实验详情页不同。
+原有十个作品分别采用训练数据工作区、轨道驾驶舱、连续小票、七天日程、照片裁切审阅台、无限蓝图、全屏章节、单一展览舞台、传送门状态机和横向长卷。它们尝试用不同结构服务不同任务，而不只是更换颜色和图片。第十一个动效试验页从上到下排列任务重排、滚动组装和路径缓动三个实验，也可以通过页首入口直接跳到其中一项。展厅里的预览卡片把三个效果串在一条斜向路径上；这张卡片的构图与实验详情页不同。
+
+新增的“回声小剧场”以扇形座位图为中心。观众先选择人数和票区，再手动选座或推荐连座；所选座位显示在票根中，金额随选择更新，确认结果也留在原页。手机可以切换左、中、右三个座位区，不会把整个剧场缩成难以点击的小点。演出和库存均为虚构演示，确认不会锁座、扣款或创建真实订单。
 
 工作型页面使用的是随页面提供的演示记录，操作只改变当前页面运行时的 React 状态。当前示例源码没有连接业务接口，也不把这些记录写入 localStorage、sessionStorage 或 IndexedDB；刷新页面后，内容会恢复到初始状态。Corner Goods 页面里的操作不会真的向供应商发送消息，其他页面也不会把演示操作伪装成已经完成的外部业务。
 
 <details>
-<summary><img src="./assets/readme/expand.svg" alt="展开十一个示例页面" height="30"> <strong>查看 11 个页面的说明和在线链接</strong></summary>
+<summary><img src="./assets/readme/expand.svg" alt="展开十二个示例页面" height="30"> <strong>查看 12 个页面的说明和链接</strong></summary>
 
 <br>
 
@@ -246,7 +248,14 @@ UI Done 不是只在用户第一次说“帮我做页面”时出现一次。只
   <a href="https://ww-cooooo.github.io/ui-done/showcase/motion-lab/">打开页面</a>
 </p>
 
-### 十一个页面的结构和 3D 选择
+<p align="center">
+  <a href="https://ww-cooooo.github.io/ui-done/showcase/theatre-seats/"><img src="./showcase/assets/theatre-seats-preview.jpg" alt="回声小剧场实际页面中的扇形座位图" width="520"></a><br>
+  <strong>回声小剧场</strong><br>
+  工作型页面：观众可以筛选票区、推荐同排连座、核对票价并在原页确认演示选择。<br>
+  <a href="https://ww-cooooo.github.io/ui-done/showcase/theatre-seats/">打开页面</a>
+</p>
+
+### 十二个页面的结构和 3D 选择
 
 | 页面 | 页面怎样组织内容 | 手机端怎样变化 | 3D 决定 |
 | --- | --- | --- | --- |
@@ -261,6 +270,7 @@ UI Done 不是只在用户第一次说“帮我做页面”时出现一次。只
 | Neon Rift | 页面是一套全屏传送门状态机，内容会随着三个阶段改变位置。 | 保留单屏光场和底部控制台，不改成长页面。 | 使用，因为粒子隧道承担了入口空间的主要表达。 |
 | Shanshui Now | 段落、题签、摄影和印章沿一卷连续的横向手卷推进。 | 仍然横向换卷，正文放在独立宣纸区，摄影保留在右侧。 | 不使用，因为摄影和排版已经能够完整表达内容。 |
 | GSAP Motion Lab | 三个实验从上到下排列：点击改变任务顺序、滚动组装信息、切换缓动曲线。页首入口可以直接跳到指定实验。 | 任务卡片和组装区域按窄屏调整，仍按实验顺序阅读和操作。展厅预览卡片中的弧线不代表详情页布局。 | 不使用，因为这些实验要说明的是二维界面状态，加入 3D 会干扰判断。 |
+| 回声小剧场 | 扇形座位图提供点座与连座推荐，所选座位进入票根，原页核对金额并确认。 | 分区切换保留座位的可点击尺寸；核对入口直接带到所选票根。 | 不使用，因为平面座位关系已经足够清楚，也没有真实场馆的模型和视线资料。 |
 
 </details>
 
@@ -293,14 +303,14 @@ UI Done 不是只在用户第一次说“帮我做页面”时出现一次。只
 | 性能 | React lazy、Vite 分块、离屏或隐藏暂停、高级效果失败时的替代显示和 Size Limit 共同控制加载与运行成本。 |
 | 构建 | Vite 8.1.5 生成相对资源路径、第三方许可证汇总和入口内容哈希。 |
 
-这次重做的训练分析和图片审阅使用 GSAP，其余八个原作品保留已有的 Anime.js 效果。仓库还提供了 [`showcase/motion-lab/`](./showcase/motion-lab/) 小型试验页，用本地任务状态与缓动样本演示任务换位、滚动组装和路径速度。GSAP 拆成独立文件，只由使用它的页面按需请求，不会因此加载到其余八个作品中。
+这次重做的训练分析和图片审阅使用 GSAP，其余八个原作品保留已有的 Anime.js 效果。仓库还提供了 [`showcase/motion-lab/`](./showcase/motion-lab/) 小型试验页，用本地任务状态与缓动样本演示任务换位、滚动组装和路径速度。共享运行时中的 GSAP 拆成独立文件，只由使用它的页面按需请求，不会因此加载到其余八个作品中。新增的剧场选座页也使用 GSAP，但有独立的页面入口、样式和构建文件；旧页面的动效与 3D 运行时不会随它加载。
 
 常用文件位置：
 
 - [`skill/ui-done/SKILL.md`](./skill/ui-done/SKILL.md) 是 Skill 的主规则文件。
 - [`skill/ui-done/references/`](./skill/ui-done/references/) 保存选型、字体、动效和浏览器检查规则。
 - [`skill/ui-done/scripts/`](./skill/ui-done/scripts/) 保存静态预检脚本。
-- [`showcase/`](./showcase/) 保存总展厅、十个原作品、一个 GSAP 动效试验页和共享 React 运行时。
+- [`showcase/`](./showcase/) 保存总展厅、十个原作品、一个 GSAP 动效试验页、新增的剧场选座页和本地 React 运行时。选座页源码位于 [`showcase/runtime/theatre-seats/`](./showcase/runtime/theatre-seats/)，可以单独运行 `pnpm run build:theatre` 构建；完整的 `pnpm run build` 也包含它。
 
 直接查看[在线展厅](https://ww-cooooo.github.io/ui-done/showcase/gallery/)不需要本地环境。克隆仓库后，如果只想查看已经构建好的页面，也不需要 Node.js 或 pnpm，但必须通过本地 HTTP 服务打开，不能直接双击 HTML 文件。
 
@@ -360,7 +370,7 @@ pnpm run check
 <br>
 
 - React、Ant Design、Ant Design Icons、Anime.js、Lenis、GSAP、Three.js、React Three Fiber、React Three Postprocessing、Postprocessing、Pts 和 AntV G2 等运行时依赖使用各自的许可。锁定版本、发布包声明的许可证和完整许可文字保存在 [`showcase/shared/runtime/THIRD_PARTY_LICENSES.txt`](./showcase/shared/runtime/THIRD_PARTY_LICENSES.txt)。两个容易误读的条目已经按具体发布版本核对：`n8ao 2.0.1` 的包信息写 ISC，但作者的 README 和许可证明确采用 CC0；`@antv/vendor 1.0.11` 的 MIT AND ISC 表示它自己的代码和内含库分别适用对应许可，并不要求包根目录用一份文字替代所有内含库的许可证。上游来源及本仓库保留的声明见 [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md#version-specific-license-notes)。这些核对只针对当前版本，不代替其他产品的法律判断。
-- GSAP 3.15.0 与 `@gsap/react` 2.1.2 用于训练分析、图片审阅、总展厅中的动效试验预览和独立动效试验页。两个发布包都把许可指向 GSAP 的 Standard License，但没有在包内附带独立许可文件，因此仓库保存了 2026 年 9 月 8 日核对的 [`licenses/GSAP-Standard-No-Charge-License.txt`](./licenses/GSAP-Standard-No-Charge-License.txt)，并把这份文字加入运行时许可汇总。使用或重新分发 GSAP 时，仍需重新查看当时有效的 [Standard License](https://gsap.com/community/standard-license/)，保留要求的权利声明，并检查产品是否属于或可能属于与 Webflow 竞争的无代码可视化网页动画制作工具。如果这一限制可能适用，在获得书面许可或换用兼容方案之前不能使用或分发相关实现。
+- GSAP 3.15.0 与 `@gsap/react` 2.1.2 用于训练分析、图片审阅、剧场选座、总展厅中的动效试验预览和独立动效试验页。两个发布包都把许可指向 GSAP 的 Standard License，但没有在包内附带独立许可文件，因此仓库保存了 2026 年 9 月 8 日核对的 [`licenses/GSAP-Standard-No-Charge-License.txt`](./licenses/GSAP-Standard-No-Charge-License.txt)，并把这份文字加入运行时许可汇总。使用或重新分发 GSAP 时，仍需重新查看当时有效的 [Standard License](https://gsap.com/community/standard-license/)，保留要求的权利声明，并检查产品是否属于或可能属于与 Webflow 竞争的无代码可视化网页动画制作工具。如果这一限制可能适用，在获得书面许可或换用兼容方案之前不能使用或分发相关实现。
 - Outfit、Big Shoulders、Noto、Cormorant、Syne、Fraunces、Bodoni Moda、Chakra Petch、Archivo、ZCOOL 和 Red Hat Mono 等字体使用 SIL Open Font License 1.1。原作者版权声明、中文子集来源和许可证文件保存在仓库中。
 - 展厅的 30 张 WebP 主视觉由图像生成工具为本仓库创建，并非来自第三方图库。这些图片在本项目中属于原创界面美术，使用根目录的 MIT License。你可以把它们复制、修改或用于其他项目，但必须按照 MIT License 保留版权与许可声明。提示方向、处理方式和内容边界见 [`showcase/assets/IMAGE_NOTICES.md`](./showcase/assets/IMAGE_NOTICES.md)；这份来源记录不保证图片适合每一种地区、行业或客户用途，实际使用者仍需检查自己的使用场景。
 - 文件清单、哈希、来源、作者声明和适用范围见 [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md)。重新分发仓库或打包后的示例时，请一并保留适用的声明和许可证。升级依赖或改变分发用途时，应重新核对受影响的版本和条款。

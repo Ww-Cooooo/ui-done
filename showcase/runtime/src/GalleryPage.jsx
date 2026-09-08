@@ -15,7 +15,7 @@ const DataChart = lazy(() => import("./DataChart"));
 const repositoryUrl = "https://github.com/Ww-Cooooo/ui-done";
 
 function GalleryHero() {
-  const workPages = showcasePages.filter(page => page.product.mode === "work");
+  const workPages = galleryPages.filter(page => page.product.mode === "work");
   return (
     <section className="gallery-hero">
       <div className="gallery-hero-copy">
@@ -32,8 +32,8 @@ function GalleryHero() {
         </div>
       </div>
       <div className="gallery-dispatch" data-hero-reveal>
-        <div className="gallery-task-board" aria-label="六种工作型产品入口">
-          <div className="task-board-head"><span>WORK PAGES / 06</span><b>先选你要完成的工作，再看页面怎么设计。</b></div>
+        <div className="gallery-task-board" aria-label={`${workPages.length}种工作型产品入口`}>
+          <div className="task-board-head"><span>WORK PAGES / {String(workPages.length).padStart(2, "0")}</span><b>先选你要完成的工作，再看页面怎么设计。</b></div>
           <div className="task-board-list">
             {workPages.map(page => (
               <a key={page.id} className={`task-board-row task-${page.layout}`} href={`../${page.id}/`}>

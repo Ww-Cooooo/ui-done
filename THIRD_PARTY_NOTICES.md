@@ -30,6 +30,8 @@ The following upstream statements were checked on 2026-09-08 against the exact c
 
 Keep these notices and the complete license inventory with redistributed bundles. Recheck the affected upstream statements and included code when updating dependency versions or changing the distribution; these version-specific findings are not blanket legal advice for another product.
 
+The theatre seat-selection page has its own built entry at `showcase/theatre-seats/`, using the same installed React, Ant Design, GSAP, Lenis, Pts and G2 versions. Its build includes the complete existing runtime license inventory (a superset of the packages used by that page), font notices, OFL text and the project MIT license. The page adds no third-party dependency or source-copy component. Its source and research record live at `showcase/runtime/theatre-seats/`.
+
 ## Bundled fonts
 
 The showcase deliberately uses twelve open-source font families rather than browser or operating-system defaults. All remain licensed under the SIL Open Font License 1.1 (OFL-1.1), not the root MIT License. The complete license is distributed at [`showcase/shared/fonts/OFL-1.1.txt`](./showcase/shared/fonts/OFL-1.1.txt), and copyright statements stay beside the files in [`showcase/shared/fonts/FONT_NOTICES.md`](./showcase/shared/fonts/FONT_NOTICES.md).

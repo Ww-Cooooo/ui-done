@@ -1,5 +1,7 @@
 # Showcase image provenance
 
+`theatre-seats-preview.jpg` was captured from the local theatre seat-selection page on 2026-09-08 at a 1440×900 browser viewport. It shows the actual seat map after recommending D06 and D07; it is not AI-generated imagery or an alternative mockup. The fictional inventory is the same one used in the interactive page. The repository gallery and README reuse this capture.
+
 The 30 WebP files in the ten style folders were generated specifically for the UI Done showcase on 2026-09-02 with OpenAI's image-generation tool. They are not third-party stock photographs, and no existing brand, logo, public figure, artist, or copyrighted character was requested as a reference.
 
 Each source image was generated as one wide, edge-to-edge triptych containing three vertical photographs. The source was split at the exact one-third boundaries and exported to WebP at quality 88. No external image was composited into the results, and the showcase makes no claim that the depicted people, products, venues, or organizations are real.

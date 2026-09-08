@@ -115,8 +115,8 @@ def wait_preview_phase(page, lower, upper):
 
 def check_gallery(page, base, output):
     visit(page, base, "gallery")
-    expect(page.locator("[data-gallery-work]")).to_have_count(11)
-    for label, count in (("工作型 6", 6), ("表达型 4", 4), ("动效实验 1", 1)):
+    expect(page.locator("[data-gallery-work]")).to_have_count(12)
+    for label, count in (("工作型 7", 7), ("表达型 4", 4), ("动效实验 1", 1)):
         segmented(page, label)
         expect(page.locator("[data-gallery-work]")).to_have_count(count)
     card = page.locator('[data-gallery-work="motion-lab"]')

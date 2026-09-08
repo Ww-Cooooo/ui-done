@@ -1,3 +1,7 @@
+.work-preview-theatre-seats { height: auto; aspect-ratio: 1.6; background: #f3f0f7; }
+.work-preview-theatre-seats .theatre-preview-image { object-fit: contain; }
+.showcase-work-theatre-seats .work-meta b { color: #d4b5ef; font-size: 13px; }
+.showcase-work-theatre-seats a:focus-visible { outline-color: #d4b5ef; }
 .preview-training { height: 100%; display: flex; flex-direction: column; padding: 18px 26px; color: #edf3f6; background: #0b1117; font-family: "Noto Sans SC", sans-serif; }
 .preview-training > header { display: grid; grid-template-columns: 1fr auto; gap: 6px 15px; margin-bottom: 12px; }
 .preview-training > header > span { color: #d8ff3e; font-family: "Red Hat Mono", monospace; font-size: 10px; letter-spacing: .1em; }

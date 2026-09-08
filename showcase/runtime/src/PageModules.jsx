@@ -1,4 +1,5 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useLenis } from "lenis/react";
 import { Card, Segmented, Tag } from "antd";
 import { ArrowRightOutlined, CheckOutlined, FontSizeOutlined } from "@ant-design/icons";
 import { gsap } from "gsap";
@@ -257,6 +258,10 @@ function MotionLabPreview() {
   );
 }
 
+function TheatrePreview({ page }) {
+  return <img className="theatre-preview-image" src={page.images[0].src} alt={page.images[0].alt} loading="lazy" width="878" height="439" />;
+}
+
 const previewOwners = {
   "velocity-works": VelocityPreview,
   "orbital-grid": OrbitalPreview,
@@ -268,7 +273,8 @@ const previewOwners = {
   "red-form": RedPreview,
   "neon-rift": NeonPreview,
   "shanshui-now": ShanshuiPreview,
-  "motion-lab": MotionLabPreview
+  "motion-lab": MotionLabPreview,
+  "theatre-seats": TheatrePreview
 };
 
 function GalleryWork({ page }) {
@@ -289,7 +295,7 @@ function GalleryWork({ page }) {
   };
 
   return (
-    <Card className={`showcase-work showcase-work-${page.id}`} bordered={false} data-gallery-work={page.id} data-scroll-reveal style={style}>
+    <Card id={`work-${page.id}`} className={`showcase-work showcase-work-${page.id}`} bordered={false} data-gallery-work={page.id} data-scroll-reveal style={style}>
       <a href={`../${page.id}/`} aria-label={`打开 ${page.shortTitle}，查看${page.product.type}页面`}>
         <div className={`work-preview work-preview-${page.id}`}><Preview page={page} /></div>
         <div className="work-meta" data-gallery-meta>
@@ -304,6 +310,17 @@ function GalleryWork({ page }) {
 
 export function GalleryModules() {
   const [mode, setMode] = useState("all");
+  const lenis = useLenis();
+  useEffect(() => {
+    if (!lenis || !window.location.hash.startsWith("#work-")) return;
+    const id = window.location.hash.slice(1);
+    let active = true;
+    document.fonts.ready.then(() => {
+      const target = document.getElementById(id);
+      if (active && target) lenis.scrollTo(target, { immediate: true, offset: -84 });
+    });
+    return () => { active = false; };
+  }, [lenis]);
   const orderedPages = useMemo(() => [
     ...galleryPages.filter(page => page.product.mode === "work"),
     ...galleryPages.filter(page => page.product.mode === "expressive"),
@@ -319,7 +336,7 @@ export function GalleryModules() {
           index="01"
           eyebrow="PRODUCT FIRST / VISUAL SECOND"
           title="先确定页面要解决的问题，再选择合适的视觉风格。"
-          copy="前六个示例展示训练分析、轨道监控、门店补货、日程安排、创意审批和项目协作。接着四个示例展示自然专题、艺术展览、娱乐入口和文化长卷。最后一个动效试验台可以直接操作任务重排、滚动组装和路径缓动。十一个页面的用途和布局都不相同。"
+          copy="七个工作型示例可以体验训练分析、轨道监控、门店补货、日程安排、创意审批、项目协作和剧场选座。另外还有四个内容与视觉体验页面，以及一个可以操作任务重排、滚动组装和路径缓动的试验台。每个页面都围绕自己的用途组织内容。"
         />
         <div className="gallery-filter" data-scroll-reveal>
           <Segmented

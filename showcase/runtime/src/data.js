@@ -265,18 +265,38 @@ export const motionLabPage = {
   fontStatement: "Chakra Petch + Noto Sans SC + Red Hat Mono"
 };
 
-export const galleryPages = [...showcasePages, motionLabPage];
+export const theatrePage = {
+  id: "theatre-seats", number: "11", shortTitle: "回声小剧场", styleName: "浅紫剧场选座",
+  layout: "theatre", shape: "theatre",
+  theme: {
+    mode: "light", bg: "#f3f0f7", surface: "#ffffff", surfaceAlt: "#e9e1f0",
+    ink: "#30213f", muted: "#695e75", accent: "#60358c", accent2: "#317a70", onAccent: "#ffffff",
+    line: "#dcd3e5", display: "Outfit", displayCjk: sansCjk, body: "Outfit", cjk: sansCjk, mono
+  },
+  product: {
+    mode: "work", type: "剧场选座", role: "观众", verb: "选座", galleryAction: "选择连座并核对票价",
+    ia: "人数与票区 / 扇形座位图 / 所选票根 / 原页确认",
+    loop: "选择人数或票区 → 点座或推荐连座 → 核对座位和总价 → 确认演示选择",
+    data: "72 个明确标注的虚构座位；不锁座、不付款，不生成真实订单",
+    coverage: { filter: 1, visualization: 1, detail: 1, form: 0, state: 1, spatial: 0 }
+  },
+  title: "选一个喜欢的位置。", intro: "观众可以选择票区与人数，推荐同排连座，在原页核对座位和票价。",
+  fontStatement: "Outfit + Noto Sans SC + Red Hat Mono",
+  images: [{ src: "../assets/theatre-seats-preview.jpg", alt: "回声小剧场实际页面的扇形座位图，D排06和07座已选" }]
+};
+
+export const galleryPages = [...showcasePages, theatrePage, motionLabPage];
 
 export const galleryPage = {
-  id: "gallery", number: "00", shortTitle: "UI Done Gallery", styleName: "十一种产品、视觉与动效方向",
+  id: "gallery", number: "00", shortTitle: "UI Done Gallery", styleName: "十二种产品、视觉与动效方向",
   layout: "gallery", theme: themes.gallery, chartKind: "matrix", shape: "gallery",
-  product: { mode: "index", type: "产品与视觉索引", role: "第一次了解 UI Done 的人", verb: "比较", ia: "任务入口 / 类型筛选 / 能力矩阵 / 作品", loop: "选择产品类型 → 比较能力 → 进入作品", data: "十一个路由的实际实现元数据", coverage: { filter: 1, visualization: 1, detail: 1, form: 0, state: 1, spatial: 0 } },
+  product: { mode: "index", type: "产品与视觉索引", role: "第一次了解 UI Done 的人", verb: "比较", ia: "任务入口 / 类型筛选 / 能力矩阵 / 作品", loop: "选择产品类型 → 比较能力 → 进入作品", data: "十二个示例页面的实际实现元数据", coverage: { filter: 1, visualization: 1, detail: 1, form: 0, state: 1, spatial: 0 } },
   eyebrow: "UI DONE / PRODUCT RANGE", audience: "第一次了解 UI Done 的人",
   title: "页面既要好看，也要帮助用户把事情做完。",
   latinTitle: "ONE SKILL. REAL WORK. DISTINCT WORLDS.",
-  intro: "十一个示例中，有六个是可以完成具体任务的工作页面，四个用于内容表达和沉浸体验，另有一个可以直接操作的动效试验台。每个页面都根据自己的用途选择布局和视觉风格。",
+  intro: "十二个示例中，有七个是可以完成具体任务的工作页面，四个用于内容表达和沉浸体验，另有一个可以直接操作的动效试验台。每个页面都根据自己的用途选择布局和视觉风格。",
   signature: "产品任务与视觉双轴索引", fontStatement: "Big Shoulders + Outfit + Noto Sans SC + Red Hat Mono",
-  chartTitle: "这 11 个页面分别实现了哪些功能？",
+  chartTitle: `这 ${galleryPages.length} 个页面分别实现了哪些功能？`,
   chartSummary: "这个矩阵根据当前页面中已经实现的功能生成。亮格表示该页面具备这项功能，暗格表示没有。表达型页面和动效试验台都不会为了凑数而加入虚构的数据或操作。",
   chartData: galleryPages.flatMap(page => [
     ["筛选", page.product.coverage.filter],

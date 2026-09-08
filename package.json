@@ -5,8 +5,9 @@
   "type": "module",
   "packageManager": "pnpm@11.19.0",
   "scripts": {
-    "build": "pnpm run build:core && pnpm run notices && pnpm run stamp:runtime",
+    "build": "pnpm run build:core && pnpm run notices && pnpm run stamp:runtime && pnpm run build:theatre",
     "build:core": "vite build --config tooling/vite.core.config.mjs",
+    "build:theatre": "vite build --config tooling/vite.theatre.config.mjs",
     "notices": "node tooling/generate-runtime-notices.mjs",
     "stamp:runtime": "node tooling/stamp-runtime-version.mjs",
     "size": "size-limit",
@@ -36,18 +37,18 @@
   },
   "size-limit": [
     {
-      "name": "Showcase application entry",
+      "name": "Shared showcase application entry",
       "path": "showcase/shared/runtime/ui-done-app.js",
       "limit": "180 kB"
     },
     {
       "name": "Complete showcase JavaScript",
-      "path": "showcase/shared/runtime/**/*.js",
+      "path": ["showcase/shared/runtime/**/*.js", "showcase/theatre-seats/assets/*.js"],
       "limit": "3.4 MB"
     },
     {
       "name": "Showcase visual system CSS",
-      "path": "showcase/shared/runtime/**/*.css",
+      "path": ["showcase/shared/runtime/**/*.css", "showcase/theatre-seats/assets/*.css"],
       "limit": "180 kB"
     }
   ]
