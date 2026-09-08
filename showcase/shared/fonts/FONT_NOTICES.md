@@ -4,6 +4,8 @@ Every font shipped with the showcase is open-source and remains licensed under t
 
 No font is requested from a CDN at runtime. Latin font binaries are local copies from the official [Google Fonts repository](https://github.com/google/fonts). The Chinese families are the unmodified WOFF2 unicode-range files selected from official Google Fonts CSS for the fixed showcase character corpus; their exact CSS queries, upstream file URLs, local hashes, and corpus hash are recorded in [`cjk-showcase.manifest.json`](./cjk-showcase.manifest.json).
 
+The manifest's `coverageAdditions` records two Noto Sans SC v40 files added on 2026-09-08 for U+9608 and U+7941 in the revised showcase. The upstream bytes and OFL license are unchanged; arbitrary user-entered Chinese may still use the declared fallback stack.
+
 ## Copyright notices
 
 - `Outfit-Variable.ttf`: Copyright 2021 The Outfit Project Authors (https://github.com/Outfitio/Outfit-Fonts)

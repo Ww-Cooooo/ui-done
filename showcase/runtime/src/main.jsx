@@ -3,6 +3,7 @@ import App from "./App";
 import "./runtime.css";
 import "./project-experiences.css";
 import "./work-experiences.css";
+import "./still-calendar.css";
 import "./motion-lab.css";
 
 const rootNode = document.getElementById("root");

@@ -1,0 +1,117 @@
+.atelier-proofroom { max-width: 1500px; min-height: 100svh; margin: auto; padding: 34px 52px 0; font-family: "Noto Sans SC", sans-serif; }
+.atelier-masthead { text-align: center; }
+.atelier-masthead > span { font-family: "Red Hat Mono", monospace; font-size: 11px; letter-spacing: .2em; color: #617268; }
+.atelier-masthead h1 { margin: 10px 0 7px; font-size: clamp(24px, 2.3vw, 33px); font-weight: 400; line-height: 1.65; letter-spacing: .05em; }
+.atelier-masthead p { margin: 0; color: #5c6861; font-size: 13px; line-height: 1.8; }
+.atelier-contact-bar { display: flex; align-items: center; justify-content: center; gap: 28px; margin-top: 25px; padding: 18px 0; border-block: 1px solid #c7cec8; }
+.atelier-contact-items { display: flex; gap: 16px; }
+.atelier-contact.ant-btn { height: 66px; min-width: 198px; padding: 7px 15px 7px 7px; gap: 13px; background: transparent; border-color: transparent; text-align: left; }
+.atelier-contact.ant-btn.is-selected { background: #fff; border-color: #718e7f; }
+.atelier-contact img { width: 36px; height: 50px; object-fit: cover; }
+.atelier-contact > span { display: grid; gap: 5px; }
+.atelier-contact b { font-size: 14px; font-weight: 500; }
+.atelier-contact small { font-family: "Red Hat Mono", "Noto Sans SC", monospace; color: #5b6b62; font-size: 11px; }
+.atelier-count { padding-left: 28px; border-left: 1px solid #c7cec8; color: #55685c; font-family: "Red Hat Mono", monospace; font-size: 16px; }
+.atelier-count > b { font-weight: 400; font-size: 30px; color: #263e30; }
+.atelier-count > small { display: block; text-align: center; font-family: "Noto Sans SC", sans-serif; font-size: 11px; }
+.atelier-current-line { display: flex; align-items: center; justify-content: space-between; padding: 17px 0; }
+.atelier-current-line h2 { display: flex; gap: 16px; align-items: baseline; margin: 0; font-size: 17px; font-weight: 500; }
+.atelier-current-line h2 span { color: #63736a; font-family: "Red Hat Mono", monospace; font-size: 11px; }
+.atelier-current-line .ant-tag { margin-right: 0; }
+.proof-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.proof-sheet { display: flex; flex-direction: column; min-width: 0; margin: 0; padding: 18px 22px 13px; background: #fafbf8; box-shadow: 0 5px 18px #192d2010; }
+.proof-sheet figcaption { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding-bottom: 16px; font-size: 13px; }
+.proof-sheet figcaption > b { font-weight: 500; }
+.proof-sheet figcaption > span { font-size: 12px; color: #657168; }
+.proof-image-area { --proof-height: clamp(370px, 45vh, 460px); display: flex; height: var(--proof-height); justify-content: center; align-items: center; overflow: hidden; }
+.proof-original-plane, .proof-proposed-plane { width: min(100%, calc(var(--proof-height) * var(--proof-ratio))); height: auto; position: relative; overflow: hidden; }
+.proof-original-plane > img { display: block; height: auto; width: 100%; }
+.proof-crop-frame { position: absolute; border: 1px solid #fff; box-shadow: 0 0 0 500px #09140d66; pointer-events: none; }
+.proof-proposed-plane { background: #e3e7e0; }
+.proof-proposed-image { position: absolute; top: 0; left: 0; width: 100%; height: auto; max-width: none; transform-origin: 0 0; }
+.proof-sheet-footer { display: flex; justify-content: space-between; gap: 8px; margin-top: 14px; color: #647268; font-size: 11px; }
+.proof-sheet-footer > span:first-child { font-family: "Red Hat Mono", monospace; letter-spacing: .04em; }
+.atelier-crop-controls { display: grid; grid-template-columns: auto repeat(3, minmax(120px, 1fr)) auto; gap: 28px; align-items: center; padding: 23px 0 8px; }
+.atelier-crop-controls label { display: flex; align-items: center; justify-content: space-between; margin-bottom: 9px; font-size: 12px; color: #42584b; }
+.atelier-crop-controls label b { font-family: "Red Hat Mono", monospace; font-size: 12px; font-weight: 500; }
+.atelier-crop-controls > .ant-btn { font-size: 12px; align-self: end; margin-bottom: 7px; }
+.atelier-crop-controls .ant-slider { margin: 12px 8px; }
+.atelier-crop-note { margin: 0 0 23px; color: #617268; font-size: 12px; line-height: 1.8; }
+.atelier-decision { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding: 27px 0 30px; border-top: 1px solid #c7cec8; }
+.atelier-comments h3 { display: flex; gap: 10px; align-items: center; margin: 0 0 12px; font-size: 15px; font-weight: 500; }
+.atelier-comments h3 > span:last-child { padding: 2px 8px; margin-left: auto; color: #51675a; background: #dce4dc; font-family: "Red Hat Mono", monospace; font-size: 12px; }
+.atelier-comment-list { max-height: 210px; overflow: auto; }
+.atelier-comment-list p { padding: 10px 0; margin: 0; font-size: 13px; line-height: 1.9; overflow-wrap: anywhere; border-bottom: 1px solid #d7dcd5; }
+.atelier-comment-list p b { display: block; font-size: 11px; color: #66796b; font-weight: 500; }
+.atelier-comment-list .atelier-no-comments { border: 0; padding: 0; color: #5b6c61; }
+.atelier-comments .ant-form { margin-top: 16px; }
+.atelier-comments .ant-form-item { margin-bottom: 10px; }
+.atelier-comments .ant-form-item-label > label { font-size: 13px; }
+.atelier-comments textarea.ant-input { padding: 12px; line-height: 1.8; }
+.atelier-signoff { padding-left: 30px; border-left: 1px solid #c7cec8; }
+.atelier-signoff > span { color: #65786a; font-family: "Red Hat Mono", monospace; letter-spacing: .13em; font-size: 11px; }
+.atelier-signoff > h3 { margin: 10px 0; font-size: 23px; font-weight: 400; line-height: 1.6; }
+.atelier-signoff > p { max-width: 420px; margin: 0 0 18px; color: #5c6f61; font-size: 13px; line-height: 1.9; }
+.atelier-actions { display: flex; gap: 12px; margin-bottom: 10px; }
+.atelier-actions .ant-btn-primary { font-weight: 500; }
+.atelier-result { grid-column: 1 / -1; }
+.atelier-proof-footer { display: flex; gap: 28px; justify-content: space-between; align-items: center; padding: 20px 0; border-top: 1px solid #c7cec8; }
+.atelier-proof-footer > a { display: inline-flex; gap: 9px; align-items: center; min-height: 44px; color: #375442; white-space: nowrap; font-size: 13px; text-decoration: none; }
+.atelier-proof-footer > p { color: #5e6f62; font-size: 11px; line-height: 1.8; }
+.atelier-proof-footer > span { font-family: "Bodoni Moda", serif; font-size: 28px; white-space: nowrap; }
+@media (max-width: 1000px) {
+  .atelier-proofroom { padding: 30px 28px 0; }
+  .atelier-contact-bar { gap: 15px; }
+  .atelier-contact-items { gap: 6px; flex: 1; }
+  .atelier-contact.ant-btn { min-width: 0; padding-right: 8px; gap: 8px; flex: 1; }
+  .atelier-contact b { font-size: 12px; }
+  .atelier-contact small { font-size: 11px; }
+  .atelier-count { padding-left: 13px; }
+  .proof-pair { gap: 16px; }
+  .proof-sheet { padding: 16px 14px 13px; }
+  .proof-sheet figcaption { flex-direction: column; gap: 5px; }
+  .proof-image-area { --proof-height: 350px; }
+  .proof-sheet-footer { flex-direction: column; gap: 5px; }
+  .atelier-crop-controls { grid-template-columns: repeat(3, 1fr); gap: 16px 24px; }
+  .atelier-crop-controls > div:first-child { grid-column: span 1; }
+  .atelier-decision { gap: 24px; }
+  .atelier-signoff { padding-left: 24px; }
+  .atelier-actions { flex-direction: column; }
+}
+@media (max-width: 600px) {
+  .atelier-proofroom { padding: 26px 16px 0; }
+  .atelier-masthead > span { font-size: 11px; letter-spacing: .12em; }
+  .atelier-masthead h1 { font-size: 22px; letter-spacing: 0; }
+  .atelier-masthead p { font-size: 12px; }
+  .atelier-contact-bar { position: relative; padding: 16px 0 12px; margin-top: 18px; }
+  .atelier-contact-items { justify-content: space-between; gap: 4px; }
+  .atelier-contact.ant-btn { height: auto; padding: 7px 4px; flex: 1; flex-direction: column; gap: 6px; text-align: center; }
+  .atelier-contact img { width: 44px; height: 55px; }
+  .atelier-contact > span { gap: 4px; }
+  .atelier-contact b { font-size: 12px; }
+  .atelier-contact small { font-size: 11px; }
+  .atelier-count { display: none; }
+  .atelier-current-line { flex-wrap: wrap; gap: 13px; padding: 16px 0; }
+  .atelier-current-line h2 { font-size: 16px; }
+  .proof-pair { gap: 8px; }
+  .proof-sheet { padding: 10px 8px; box-shadow: none; }
+  .proof-sheet figcaption { padding-bottom: 10px; gap: 4px; }
+  .proof-sheet figcaption > b { font-size: 13px; }
+  .proof-sheet figcaption > span { font-size: 11px; }
+  .proof-image-area { --proof-height: 223px; }
+  .proof-sheet-footer { font-size: 11px; margin-top: 10px; }
+  .proof-sheet-footer > span:first-child { font-size: 11px; }
+  .atelier-crop-controls { grid-template-columns: 1fr 1fr; gap: 16px 22px; padding-top: 18px; }
+  .atelier-crop-controls > .ant-btn { grid-column: 1 / -1; width: max-content; }
+  .atelier-crop-note { font-size: 11px; }
+  .atelier-decision { display: flex; flex-direction: column; padding-top: 20px; }
+  .atelier-comments { order: 1; }
+  .atelier-signoff { padding: 0 0 10px; border-left: 0; border-bottom: 1px solid #c7cec8; }
+  .atelier-signoff > h3 { font-size: 22px; }
+  .atelier-actions { flex-direction: row; }
+  .atelier-actions > .ant-btn { flex: 1; font-size: 13px; }
+  .atelier-result { order: -1; }
+  .atelier-proof-footer { flex-wrap: wrap; gap: 5px 18px; padding-block: 12px; }
+  .atelier-proof-footer > p { order: 1; width: 100%; font-size: 11px; }
+  .atelier-proof-footer > span { margin-left: auto; font-size: 26px; }
+}

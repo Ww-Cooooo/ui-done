@@ -61,7 +61,7 @@ For ordinary interface icons, use the selected SVG/icon component family. Do not
 - Set stable fallback stacks and test layout before and after fonts resolve. Consider metric overrides when shifts are material.
 - Use semantic font tokens/components rather than component-by-component family declarations. Synchronize Ant Design typography tokens and any chart/Canvas/3D text with those roles.
 - Confirm actual loading with `document.fonts.check(...)`, computed `font-family`, network/resource logs, and screenshots containing real target-language text.
-- Check Regular, Medium, Bold, italic, tabular numerals, long paths/IDs, and missing glyphs rather than verifying one headline.
+- Check the needed weights, tabular numerals, long text/IDs, and missing glyphs. Font choice alone does not establish typography: inspect real line breaks, line-height, control labels, and chart axes at the affected sizes. Keep related Chinese words and punctuation readable; do not use oversized display type with compressed leading at the expense of task text, and do not hide bad wrapping through clipping.
 
 ## Package for portability and offline use
 

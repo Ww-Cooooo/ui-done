@@ -64,8 +64,7 @@ def capture(page, output, name, selector):
 def check_state(page, base, output):
     visit(page, base, "velocity-works")
     resources = page.evaluate("performance.getEntriesByType('resource').map(item => item.name)")
-    assert not any("/gsap-" in url for url in resources), "Old work route unexpectedly loaded GSAP"
-    page.get_by_role("button", name="复盘本圈").click()
+    assert any("/gsap-" in url for url in resources), "Redesigned training route did not load its GSAP owner"
     note = page.get_by_role("textbox", name="教练结论")
     text = "切换动态偏好后保留的本地复盘记录"
     note.fill(text)
@@ -75,10 +74,14 @@ def check_state(page, base, output):
         expect(note).to_have_value(text)
         assert original_input.evaluate("node => node.isConnected"), "Preference change remounted the input"
     page.get_by_role("button", name="保存复盘").click()
-    expect(page.locator(".velocity-coach-call")).to_contain_text(text)
-    expect(page.locator(".velocity-notice")).to_contain_text("已完成复盘")
-    capture(page, output, "work-state", ".velocity-replay-arena")
-    return {"input_retained": True, "review_saved": True, "gsap_requests": 0}
+    expect(note).to_have_value(text)
+    expect(page.locator(".training-current-heading")).to_contain_text("已复盘")
+    expect(page.locator(".training-result")).to_contain_text("RUN-241 已完成复盘")
+    capture(page, output, "work-state", ".training-review")
+    visit(page, base, "corner-goods")
+    resources = page.evaluate("performance.getEntriesByType('resource').map(item => item.name)")
+    assert not any("/gsap-" in url for url in resources), "Unchanged receipt route unexpectedly loaded GSAP"
+    return {"input_retained": True, "review_saved": True, "gsap_is_route_scoped": True}
 
 
 def preview_position(page):

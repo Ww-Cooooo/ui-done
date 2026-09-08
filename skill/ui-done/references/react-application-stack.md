@@ -32,11 +32,11 @@ This is a time-bounded discovery snapshot. Before installing or recommending a p
 
 ## Theme-mode contract
 
-1. Define semantic surface, text, border, accent, state, focus, chart, and elevation tokens rather than swapping raw colors component by component.
+1. Define semantic surface, text, border, accent, state, focus, chart, and elevation tokens. Use the component system's matching light/dark derivation as a base, not a background swap with default light-state colors. Explicitly check selected options, placeholders, disabled fields, focus, validation, and popups; use a locally scoped theme when a light work panel sits in a dark shell.
 2. Declare compatible browser chrome/form-control schemes with `color-scheme`; use `prefers-color-scheme` when the product follows the operating-system preference.
 3. If a manual mode is a real product requirement, define precedence among user choice, system preference, and product default; persist only the mode identifier, not personal data.
 4. Synchronize Canvas, charts, code highlighting, images, scrollbars, native controls, and the primary React component system with the same mode owner.
-5. Verify every supported mode in the viewport/state matrix. Do not claim a mode exists when only the page background changes.
+5. Verify the affected mode/state pairs on their actual surfaces, including portals. Inheriting a page token does not prove contrast. Correct the owning semantic pair before adding selector-specific patches; do not run every unrelated mode for an isolated change.
 
 ## Routing and state ownership rules
 

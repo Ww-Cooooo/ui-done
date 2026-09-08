@@ -1,4 +1,21 @@
 /* Generated from official Google Fonts CSS on 2026-09-02. See FONT_NOTICES.md. */
+/* Added 2026-09-08: missing showcase glyphs, unmodified upstream v40 binaries. */
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('./noto-sans-sc/noto-sans-sc-026.woff2') format('woff2');
+  unicode-range: U+9608;
+}
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('./noto-sans-sc/noto-sans-sc-027.woff2') format('woff2');
+  unicode-range: U+7941;
+}
 /* Noto Sans SC | official Google Fonts CSS | corpus sha256: f4fe555fda901f767ed054eea33fa26c02788ad94d807a2a6b412cc01c799acd */
 @font-face {
   font-family: 'Noto Sans SC';

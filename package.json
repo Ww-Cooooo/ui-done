@@ -47,7 +47,7 @@
     },
     {
       "name": "Showcase visual system CSS",
-      "path": "showcase/shared/runtime/ui-done-app.css",
+      "path": "showcase/shared/runtime/**/*.css",
       "limit": "180 kB"
     }
   ]

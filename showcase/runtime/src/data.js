@@ -50,9 +50,9 @@ const themes = {
     line: "rgba(76,70,81,.13)", display: "Outfit", body: "Outfit", cjk: sansCjk, mono
   },
   atelier: {
-    mode: "dark", bg: "#0d0b0a", surface: "#171310", surfaceAlt: "#28201a",
-    ink: "#f3e7d6", muted: "#a69788", accent: "#d6a96f", accent2: "#e9d9c4", onAccent: "#0d0b0a",
-    line: "rgba(243,231,214,.2)", display: "Bodoni Moda", body: "Cormorant Garamond", cjk: serifCjk, mono
+    mode: "light", bg: "#e9ede7", surface: "#fafbf8", surfaceAlt: "#d9e3d9",
+    ink: "#24392d", muted: "#586d5e", accent: "#315940", accent2: "#788c6c", onAccent: "#ffffff",
+    line: "#bcc9bf", display: "Bodoni Moda", body: sansCjk, cjk: sansCjk, mono
   },
   neon: {
     mode: "dark", bg: "#050313", surface: "#0d0924", surfaceAlt: "#17103d",
@@ -82,13 +82,13 @@ function images(id, items) {
 
 export const showcasePages = [
   {
-    id: "velocity-works", number: "01", shortTitle: "Velocity Works", styleName: "运动性能", journey: "教练复盘舱 / 触地轨迹",
+    id: "velocity-works", number: "01", shortTitle: "Velocity Works", styleName: "运动性能", journey: "训练负荷联动 / 记录与教练结论",
     layout: "velocity", theme: themes.velocity, shape: "velocity",
-    product: { mode: "work", type: "训练分析", role: "跑步教练", verb: "分析", galleryAction: "复盘训练表现", ia: "训练列 / 回放轨迹 / 负荷趋势 / 原位复盘", loop: "选择训练 → 比较负荷与触地 → 原位写复盘 → 标记完成", data: "页面内演示训练记录", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
+    product: { mode: "work", type: "训练分析", role: "跑步教练", verb: "分析", galleryAction: "复盘训练表现", ia: "负荷趋势 / 训练记录 / 当前训练 / 教练结论", loop: "选择训练 → 查看负荷和配速 → 写下结论 → 更新复盘状态", data: "页面内五条演示训练记录；配速由距离和完整用时计算", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
     eyebrow: "COACHING DESK / 01", audience: "教练与训练团队的分析工作台",
     title: "下一秒，从这次复盘开始。", latinTitle: "READ THE RUN. SHAPE THE NEXT ONE.",
     intro: "把训练负荷、节奏变化和待复盘记录放在同一工作面上，让教练从筛选直接走到判断与记录。",
-    signature: "三栏训练复盘轨迹", fontStatement: "Big Shoulders + Noto Sans SC + Red Hat Mono",
+    signature: "数据联动的训练复盘台", fontStatement: "Noto Sans SC + Red Hat Mono",
     quote: "动作发生以前，界面已经把方向说清楚。",
     details: [["PACE", "倾斜轴线让阅读像一次起跑"], ["GRIP", "局部材质承担产品可信度"], ["AIR", "留白和冷蓝压住速度噪音"]],
     images: images("velocity-works", [
@@ -181,13 +181,13 @@ export const showcasePages = [
     ])
   },
   {
-    id: "atelier-noir", number: "07", shortTitle: "Atelier Noir", styleName: "奢侈时装编辑", journey: "胶片列与拖拽对比 / 固定审阅台",
+    id: "atelier-noir", number: "07", shortTitle: "Atelier Noir", styleName: "摄影审阅", journey: "双幅校样 / 同图裁切与审批",
     layout: "luxury", theme: themes.atelier, shape: "ribbon",
-    product: { mode: "work", type: "创意审阅与审批", role: "创意负责人", verb: "审批", galleryAction: "比较创意版本并完成审批", ia: "胶片列 / 拖拽前后对比 / 批注 / 固定审批台", loop: "选择画面 → 拖拽比较版本 → 批注或批准 → 就绪度更新", data: "页面内演示素材、版本与批注", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
+    product: { mode: "work", type: "创意审阅与审批", role: "创意负责人", verb: "审批", galleryAction: "比较照片裁切并完成审批", ia: "素材选择 / 原图与裁切提案 / 裁切调整 / 审阅意见和决定", loop: "选择照片 → 调整同图裁切 → 添加意见或批准 → 更新该素材状态", data: "三张示例素材与当前页面内的裁切、意见、审批记录，不冒充版本历史", coverage: { filter: 1, visualization: 1, detail: 1, form: 1, state: 1, spatial: 0 } },
     eyebrow: "CREATIVE REVIEW / 07", audience: "时装系列的创意审阅工作区",
     title: "把注意力留给这一版。", latinTitle: "REVIEW THE CUT. DECIDE THE RELEASE.",
-    intro: "主素材、版本差异、团队批注和发布判断围绕同一画面展开；黑色舞台只负责让材质与决定更清楚。",
-    signature: "胶片拖拽审阅", fontStatement: "Bodoni Moda + Cormorant Garamond + Noto Serif SC",
+    intro: "并排检查同一张照片的原始画面和裁切提案，调整比例与位置，留下意见并确认是否通过。",
+    signature: "原图与裁切提案的双幅校样", fontStatement: "Bodoni Moda + Noto Sans SC + Red Hat Mono",
     quote: "奢侈感来自选择的准确，不来自元素的数量。",
     details: [["CUT", "锋利轮廓先说出品牌姿态"], ["SKIN", "珠宝特写把尺度拉到最私密的位置"], ["SPACE", "建筑留白把衣料的流动放大"]],
     images: images("atelier-noir", [

@@ -6,8 +6,10 @@ import { useReducedMotion } from "./useReducedMotion";
 function axisStyle(page) {
   return {
     labelFill: page.theme.muted,
-    labelFontFamily: page.theme.mono,
-    labelFontSize: 11,
+    labelFontFamily: `"${page.theme.mono}", "${page.theme.cjk}", monospace`,
+    labelFontSize: 12,
+    labelFillOpacity: 1,
+    labelOpacity: 1,
     lineStroke: page.theme.line,
     tickStroke: page.theme.line,
     gridStroke: page.theme.line,
@@ -15,7 +17,7 @@ function axisStyle(page) {
   };
 }
 
-function chartOptions({ data, kind, page }) {
+function chartOptions({ data, kind, page, yDomain, smooth }) {
   const horizontal = kind === "horizontal";
   const isLine = kind === "line";
   const isArea = kind === "area";
@@ -27,7 +29,7 @@ function chartOptions({ data, kind, page }) {
     encode: { x: "label", y: "value", color: isLine || isArea ? undefined : "label" },
     coordinate: horizontal ? { transform: [{ type: "transpose" }] } : undefined,
     scale: {
-      y: { nice: true },
+      y: yDomain ? { domain: yDomain, nice: false } : { nice: true },
       color: { range: [page.theme.accent, page.theme.accent2, page.theme.ink, page.theme.muted] }
     },
     axis: {
@@ -36,7 +38,7 @@ function chartOptions({ data, kind, page }) {
     },
     legend: { color: false },
     style: isLine
-      ? { stroke: page.theme.accent, lineWidth: 3, shape: "smooth" }
+      ? { stroke: page.theme.accent, lineWidth: 3, ...(smooth ? { shape: "smooth" } : {}) }
       : isArea
         ? { fill: `linear-gradient(90deg, ${page.theme.accent2} 0%, ${page.theme.accent} 100%)`, fillOpacity: 0.62, shape: "smooth" }
         : isPoint
@@ -49,7 +51,7 @@ function chartOptions({ data, kind, page }) {
   };
 }
 
-export default function WorkChart({ page, data, kind = "line", label, height = 220 }) {
+export default function WorkChart({ page, data, kind = "line", label, height = 220, yDomain, smooth = true }) {
   const hostRef = useRef(null);
   const reduced = useReducedMotion();
   const [error, setError] = useState(false);
@@ -63,7 +65,7 @@ export default function WorkChart({ page, data, kind = "line", label, height = 2
 
     try {
       chart = new Chart({ container: host, autoFit: true, height });
-      const options = chartOptions({ data, kind, page });
+      const options = chartOptions({ data, kind, page, yDomain, smooth });
       options.animate = reduced ? false : { enter: { type: kind === "line" || kind === "area" ? "growInX" : "growInY", duration: 420 } };
       chart.options(options);
       Promise.resolve(chart.render()).catch(() => {
@@ -77,10 +79,10 @@ export default function WorkChart({ page, data, kind = "line", label, height = 2
       cancelled = true;
       chart?.destroy();
     };
-  }, [data, height, kind, page, reduced]);
+  }, [data, height, kind, page, reduced, yDomain, smooth]);
 
   return (
-    <div className="work-chart" aria-label={label}>
+    <div className={`work-chart${error ? " work-chart-error" : ""}`} aria-label={label}>
       {error ? (
         <Alert type="warning" showIcon message="图形层暂不可用" description="下方数值摘要仍可完成判断。" />
       ) : (

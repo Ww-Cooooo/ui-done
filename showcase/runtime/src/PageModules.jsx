@@ -5,6 +5,8 @@ import { gsap } from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { useGSAP } from "@gsap/react";
 import { capabilities, galleryPages } from "./data";
+import { trainingSeed, averagePace } from "./training-data";
+import "./work-previews.css";
 
 gsap.registerPlugin(useGSAP, MotionPathPlugin);
 
@@ -22,17 +24,17 @@ function PreviewImage({ page, index = 0, className = "" }) {
   return <img className={className} src={page.images[index].src} alt="" loading="lazy" />;
 }
 
-function VelocityPreview({ page }) {
+function VelocityPreview() {
+  const records = trainingSeed;
   return (
-    <div className="preview-velocity">
-      <figure><PreviewImage page={page} /><figcaption>RUN-241 / HILL REPEATS</figcaption></figure>
-      <div className="velocity-preview-console">
-        <span>COACH REVIEW / 09.04</span>
-        <h4><span>末组负荷下降，</span><span>先检查左脚触地。</span></h4>
-        <div className="velocity-preview-stats"><b>48:20<small>TIME</small></b><b>87<small>LOAD</small></b><b>4′12″<small>PACE</small></b></div>
-        <div className="velocity-preview-trace" aria-hidden="true">{[42, 68, 55, 86, 62, 78].map((height, index) => <i key={index} style={{ "--trace": `${height}%` }} />)}</div>
-        <p><i /> 2 条记录等待复盘</p>
+    <div className="preview-training">
+      <header><span>VELOCITY / COACHING</span><b>训练分析</b><small>50.2 km · 5 次训练</small></header>
+      <div className="preview-training-analysis">
+        <div><span>最近五次训练负荷</span><svg viewBox="0 0 340 100" aria-hidden="true"><path d="M 8 83 H 332 M 8 43 H 332" stroke="#30414f" fill="none" /><polyline points={records.slice().reverse().map((record, index) => `${12 + index * 79},${100 - record.load}`).join(" ")} fill="none" stroke="#d8ff3e" strokeWidth="3" />{records.slice().reverse().map((record,index)=><circle key={record.id} cx={12 + index * 79} cy={100-record.load} r="3.5" fill="#d8ff3e" />)}</svg></div>
+        <aside><span>坡道间歇 / 09.04</span><b>87</b><small>训练负荷</small><em>8.4 km · {averagePace(records[0])} /km</em></aside>
       </div>
+      <div className="preview-training-records">{records.slice(0,2).map(record => <p key={record.id}><span>{record.date}</span><b>{record.type}</b><span>{record.distance} km</span><em>{record.status}</em></p>)}</div>
+      <footer><span>RUN-241 · 教练结论</span><i>保存复盘</i></footer>
     </div>
   );
 }
@@ -69,7 +71,7 @@ function CornerPreview({ page }) {
 function StillPreview({ page }) {
   return (
     <div className="preview-still">
-      <div className="still-preview-date"><span>SEP</span><strong>04</strong><small>THU</small></div>
+      <div className="still-preview-date"><span>SEP</span><strong>04</strong><small>FRI</small></div>
       <div className="still-preview-plan">
         <p>STILL DAY / TODAY</p>
         <h4><span>今天，</span><span>只排重要的。</span></h4>
@@ -83,10 +85,11 @@ function StillPreview({ page }) {
 
 function AtelierPreview({ page }) {
   return (
-    <div className="preview-atelier">
-      <div className="atelier-preview-film">{page.images.map((_, index) => <span key={index}><PreviewImage page={page} index={index} /><i>{`L${index + 1}`}</i></span>)}</div>
-      <figure><PreviewImage page={page} /><i className="atelier-pin pin-a">1</i><i className="atelier-pin pin-b">2</i><figcaption>LOOK—01 / V07</figcaption></figure>
-      <aside><span>REVIEW DESK</span><h4><span>这一版先</span><span>检查肩线。</span></h4><div><small>READINESS</small><b>82%</b></div><p><i style={{ width: "82%" }} /></p><em>2 TEAM NOTES</em></aside>
+    <div className="preview-proofroom">
+      <header><span>ATELIER / CREATIVE REVIEW</span><h4>原图与裁切提案</h4></header>
+      <div className="preview-proof-pair"><figure><small>原始照片</small><div><PreviewImage page={page} /></div></figure><figure><small>裁切提案 · 4:5</small><div><PreviewImage page={page} /></div></figure></div>
+      <div className="preview-proof-controls"><span>画面放大</span><i /><b>100%</b></div>
+      <footer><span>LOOK-01 · 待审</span><b>批准当前裁切</b></footer>
     </div>
   );
 }

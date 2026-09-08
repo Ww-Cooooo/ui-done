@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Button, Card, Progress, Tag } from "antd";
 import {
   ArrowDownOutlined,
@@ -13,13 +13,14 @@ import { animate, createTimeline, onScroll, stagger } from "animejs";
 import VisualStage from "./VisualStage";
 import { useReducedMotion } from "./useReducedMotion";
 import {
-  AtelierWorkspace,
   CornerWorkspace,
   GridWorkspace,
   OrbitalWorkspace,
-  StillWorkspace,
-  VelocityWorkspace
+  StillWorkspace
 } from "./WorkExperiences";
+
+const VelocityWorkspace = lazy(() => import("./VelocityWorkspace"));
+const AtelierWorkspace = lazy(() => import("./AtelierWorkspace"));
 
 function useScopedMotion(rootRef, reduced, key, build) {
   useLayoutEffect(() => {
@@ -315,5 +316,5 @@ const experiences = {
 export default function ProjectExperience({ page }) {
   const Experience = experiences[page.id];
   if (!Experience) return <Card>Unknown showcase route.</Card>;
-  return <Experience page={page} />;
+  return <Suspense fallback={<p className="boot-copy" role="status">正在加载工作页面…</p>}><Experience page={page} /></Suspense>;
 }

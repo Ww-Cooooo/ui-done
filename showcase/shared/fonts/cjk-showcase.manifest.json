@@ -2,7 +2,18 @@
   "generatedOn": "2026-09-02",
   "method": "Official Google Fonts CSS unicode-range blocks intersecting the fixed showcase corpus; upstream WOFF2 bytes are unmodified.",
   "cssFile": "cjk-showcase.generated.css",
-  "cssSha256": "42055c57ecd5bd9e742c42ce02c9d42c2a77576996c043578a80d98a5e2711d3",
+  "cssSha256": "9dad5f5135cd20cd14cb94b3b290b3e42c67f01cebbce19536e5b8fe767caac4",
+  "coverageAdditions": [
+    {
+      "date": "2026-09-08",
+      "family": "Noto Sans SC",
+      "purpose": "Training record term and existing operator name missing from the original fixed corpus; CSS ranges restricted to the required glyphs, upstream binaries unmodified.",
+      "files": [
+        { "name": "noto-sans-sc/noto-sans-sc-026.woff2", "unicodeRange": "U+9608", "source": "https://fonts.gstatic.com/s/notosanssc/v40/k3kXo84MPvpLmixcA63oeALhLOCT-xWNm8Hqd37g1OkDRZe7lR4sg1IzSy-MNbE9VH8V.27.woff2", "bytes": 47488, "sha256": "4895abcaddbd162e48a212dd75c270d3ba1706519f527dff5fd7ec47dfa64dfd" },
+        { "name": "noto-sans-sc/noto-sans-sc-027.woff2", "unicodeRange": "U+7941", "source": "https://fonts.gstatic.com/s/notosanssc/v40/k3kXo84MPvpLmixcA63oeALhLOCT-xWNm8Hqd37g1OkDRZe7lR4sg1IzSy-MNbE9VH8V.100.woff2", "bytes": 64548, "sha256": "ad5f29028d5699a59688d807fda531f23cb2c1ecd7815495853bbae8e75b8646" }
+      ]
+    }
+  ],
   "families": [
     {
       "family": "Noto Sans SC",

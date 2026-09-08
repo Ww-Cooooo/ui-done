@@ -4,35 +4,25 @@ import {
   Badge,
   Button,
   Checkbox,
-  Collapse,
   Form,
   Input,
   InputNumber,
-  Progress,
   Segmented,
   Select,
   Space,
-  Tabs,
   Tag
 } from "antd";
 import {
   AimOutlined,
   ApartmentOutlined,
   ArrowLeftOutlined,
-  ArrowRightOutlined,
-  CheckCircleOutlined,
-  ClockCircleOutlined,
-  CommentOutlined,
-  DatabaseOutlined,
   FieldTimeOutlined,
   LineChartOutlined,
   PlusOutlined,
-  RadarChartOutlined,
   SearchOutlined,
-  ShopOutlined,
-  ThunderboltOutlined
+  ShopOutlined
 } from "@ant-design/icons";
-import { animate, createDraggable, createTimeline, stagger } from "animejs";
+import { animate, createTimeline, stagger } from "animejs";
 import VisualStage from "./VisualStage";
 import { useReducedMotion } from "./useReducedMotion";
 
@@ -63,110 +53,6 @@ function useScopedMotion(rootRef, reduced, key, build) {
   }, [key, reduced, rootRef]);
 }
 
-const velocitySeed = [
-  { id: "RUN-241", date: "09/04", type: "坡道间歇", distance: 8.4, duration: "48:20", pace: "4′12″", load: 87, status: "待复盘", note: "末组步频下降，关注左侧触地。" },
-  { id: "RUN-238", date: "09/02", type: "恢复跑", distance: 6.2, duration: "36:08", pace: "5′49″", load: 42, status: "已复盘", note: "恢复区间稳定。" },
-  { id: "RUN-232", date: "08/30", type: "乳酸阈值", distance: 10.1, duration: "51:40", pace: "4′35″", load: 76, status: "待复盘", note: "后半程心率漂移 4%。" },
-  { id: "RUN-229", date: "08/28", type: "长距离", distance: 18.0, duration: "1:34:18", pace: "5′14″", load: 91, status: "已复盘", note: "补给节奏符合计划。" },
-  { id: "RUN-224", date: "08/26", type: "轻松跑", distance: 7.5, duration: "42:01", pace: "5′36″", load: 48, status: "已复盘", note: "落地噪声降低。" }
-];
-
-export function VelocityWorkspace({ page }) {
-  const rootRef = useRef(null);
-  const reduced = useReducedMotion();
-  const [sessions, setSessions] = useState(velocitySeed);
-  const [activeId, setActiveId] = useState("RUN-241");
-  const [filter, setFilter] = useState("all");
-  const [reviewing, setReviewing] = useState(false);
-  const [notice, setNotice] = useState("");
-  const active = sessions.find(item => item.id === activeId) || sessions[0];
-  const visible = sessions.filter(item => filter === "all" || (filter === "pending" ? item.status === "待复盘" : item.status === "已复盘"));
-  const trend = sessions.slice().reverse().map(item => ({ label: item.date, value: item.load }));
-
-  useScopedMotion(rootRef, reduced, `${activeId}-${reviewing}`, root => {
-    const intro = createTimeline({ defaults: { ease: "out(4)", duration: 680 } })
-      .add(root.querySelector(".velocity-wordmark"), { clipPath: ["inset(0 100% 0 0)", "inset(0 0% 0 0)"] })
-      .add(root.querySelectorAll(".velocity-timeline-stop"), { y: [28, 0], opacity: [0, 1], delay: stagger(55) }, "-=360")
-      .add(root.querySelector(".velocity-track-path"), { strokeDashoffset: [520, 0], duration: 1000 }, "-=420");
-    const runner = animate(root.querySelector(".velocity-runner-dot"), {
-      x: [0, 420],
-      duration: 2100,
-      ease: "inOut(2)",
-      alternate: true,
-      loop: true
-    });
-    const activeMotion = animate(root.querySelector(".velocity-active-load"), {
-      scale: [0.78, 1],
-      opacity: [0.2, 1],
-      duration: 520,
-      ease: "out(4)"
-    });
-    const bench = reviewing ? animate(root.querySelector(".velocity-review-dock"), {
-      clipPath: ["inset(100% 0 0 0)", "inset(0% 0 0 0)"],
-      y: [24, 0],
-      duration: 620,
-      ease: "out(4)"
-    }) : null;
-    return [intro, runner, activeMotion, bench];
-  });
-
-  const completeReview = values => {
-    setSessions(items => items.map(item => item.id === active.id ? { ...item, status: "已复盘", note: values.note } : item));
-    setNotice(`${active.id} 已完成复盘，训练带和趋势数据已同步。`);
-    setReviewing(false);
-  };
-
-  return (
-    <section ref={rootRef} id="experience" className="experience-shell velocity-replay-arena" data-motion-signature="full-bleed-track-replay">
-      <img className="velocity-arena-image" src={page.images[0].src} alt={page.images[0].alt} />
-      <div className="velocity-arena-shade" aria-hidden="true" />
-      <a className="velocity-start-exit" href="../gallery/"><ArrowLeftOutlined /><span>ALL RUNS</span></a>
-      <Segmented className="velocity-filter" aria-label="筛选训练复盘状态" size="small" value={filter} onChange={setFilter} options={[
-        { label: "全部", value: "all" }, { label: "待复盘", value: "pending" }, { label: "完成", value: "reviewed" }
-      ]} />
-
-      <header className="velocity-arena-title">
-        <span>COACH REPLAY / {active.id}</span>
-        <h1 className="velocity-wordmark">READ<br />THE RUN.</h1>
-        <small>{page.fontStatement}</small>
-      </header>
-
-      <svg className="velocity-track-map" viewBox="0 0 820 300" aria-hidden="true">
-        <path className="velocity-track-guide" d="M40 238 C180 18 470 36 780 218" />
-        <path className="velocity-track-path" d="M40 238 C180 18 470 36 780 218" />
-      </svg>
-      <i className="velocity-runner-dot" aria-hidden="true" />
-
-      <div className="velocity-live-metric velocity-active-load"><small>TRAINING LOAD</small><strong>{active.load}</strong><span>{active.pace} / KM</span></div>
-      <div className="velocity-timecode"><small>ELAPSED</small><strong>{active.duration}</strong><span>{active.distance} KM</span></div>
-      <blockquote className="velocity-coach-call">“{active.note}”</blockquote>
-
-      <div className="velocity-chart-ribbon"><span><LineChartOutlined /> LOAD REPLAY</span><ChartBlock page={page} data={trend} kind="line" label="近五次训练负荷" height={96} /></div>
-
-      <nav className="velocity-timeline" aria-label="训练记录" data-native-scroll>
-        {visible.map((item, index) => (
-          <Button key={item.id} type="text" className={`velocity-timeline-stop ${item.id === active.id ? "is-active" : ""}`} onClick={() => { setActiveId(item.id); setReviewing(false); }}>
-            <span>{String(index + 1).padStart(2, "0")}</span><i /><div><strong>{item.type}</strong><small>{item.date} · {item.load}</small></div>
-          </Button>
-        ))}
-      </nav>
-
-      <Button className="velocity-review-trigger" type="primary" icon={<ThunderboltOutlined />} disabled={active.status === "已复盘"} onClick={() => setReviewing(true)}>
-        {active.status === "已复盘" ? "已复盘" : "复盘本圈"}
-      </Button>
-      {notice && <Alert className="velocity-notice" type="success" showIcon closable onClose={() => setNotice("")} message={notice} />}
-      {reviewing && (
-        <div className="velocity-review-dock">
-          <b>{active.id} / COACH NOTE</b>
-          <Form layout="inline" key={active.id} onFinish={completeReview} initialValues={{ note: active.note }}>
-            <Form.Item name="note" rules={[{ required: true, message: "请写下本次复盘结论" }]}><Input.TextArea aria-label="教练结论" autoSize={{ minRows: 2, maxRows: 3 }} maxLength={120} /></Form.Item>
-            <Form.Item><Space.Compact><Button onClick={() => setReviewing(false)}>收起</Button><Button type="primary" htmlType="submit" icon={<CheckCircleOutlined />}>保存复盘</Button></Space.Compact></Form.Item>
-          </Form>
-        </div>
-      )}
-    </section>
-  );
-}
 
 const orbitalSeed = [
   { id: "AL-17", title: "Ka 波段链路抖动", priority: "高", status: "待处置", time: "11:47:08", system: "Relay-04", detail: "连续 3 个采样窗低于链路稳定阈值。", value: "92.4%" },
@@ -351,135 +237,68 @@ export function StillWorkspace({ page }) {
   const [composing, setComposing] = useState(false);
   const [notice, setNotice] = useState("");
   const done = habits.filter(item => item.done).length;
-  const percent = Math.round(done / habits.length * 100);
-  const week = [54, 68, 62, 76, percent, 0, 0].map((value, index) => ({ label: ["一", "二", "三", "四", "今", "六", "日"][index], value }));
+  const habitData = useMemo(() => [
+    { label: "已完成", value: done }, { label: "未完成", value: habits.length - done }
+  ], [done, habits.length]);
   const days = ["02", "03", "04", "05", "06", "07", "08"];
+  const weekday = value => ["周日", "周一", "周二", "周三", "周四", "周五", "周六"][new Date(Date.UTC(2026, 8, Number(value))).getUTCDay()];
 
-  useScopedMotion(rootRef, reduced, `${day}-${agenda.length}-${percent}-${composing}`, root => {
-    const columns = animate(root.querySelectorAll(".still-day-cell"), { y: [34, 0], opacity: [0, 1], delay: stagger(55), duration: 620, ease: "out(4)" });
-    const blocks = animate(root.querySelectorAll(".still-calendar-event"), { scale: [.76, 1], opacity: [0, 1], delay: stagger(70), duration: 520, ease: "out(4)" });
-    const activeCell = animate(root.querySelector(".still-day-cell.is-active"), { backgroundPosition: ["100% 100%", "0% 0%"], duration: 900, ease: "out(3)" });
-    const form = composing ? animate(root.querySelector(".still-cell-composer"), { clipPath: ["inset(0 100% 0 0)", "inset(0 0% 0 0)"], opacity: [0, 1], duration: 520, ease: "out(4)" }) : null;
-    return [columns, blocks, activeCell, form];
-  });
+  useScopedMotion(rootRef, reduced, day, root => animate(root.querySelector(".still-day-cell.is-active"), {
+    backgroundColor: ["#e0d6e8", "#f8f5fa"], duration: 650, ease: "out(3)"
+  }));
 
   const addAgenda = values => {
-    setAgenda(items => [...items, { id: `A${items.length + 1}`, day, time: values.time, title: values.title, kind: values.kind }].sort((a, b) => a.time.localeCompare(b.time)));
-    setNotice(`09/${day} ${values.time} 的“${values.title}”已写入日历。`);
+    const title = values.title.trim();
+    setAgenda(items => [...items, { ...values, title, day, id: crypto.randomUUID() }]);
+    setNotice(`已安排在 9 月 ${Number(day)} 日（${weekday(day)}）${values.time}：${title}。`);
     setComposing(false);
   };
 
   return (
-    <section ref={rootRef} id="experience" className="experience-shell still-week-calendar" data-motion-signature="calendar-cell-reflow-diagonal-fill">
+    <section ref={rootRef} id="experience" className="experience-shell still-week-calendar" data-motion-signature="selected-day-color-settle">
       <header className="still-calendar-month">
-        <div><span>SEPTEMBER / 2026</span><h1>A QUIETER WEEK.</h1><p>今天不必塞满，但每一格都要看得清。</p></div>
-        <Button type="primary" icon={<PlusOutlined />} onClick={() => setComposing(true)}>写入 09/{day}</Button>
+        <div><span>STILL DAY / SEPTEMBER 2026</span><h1>给重要的事，留一点时间。</h1><p>9 月 2 日—8 日 · 每天的安排按开始时间排序</p></div>
+        <Button type="primary" icon={<PlusOutlined aria-hidden />} onClick={() => setComposing(true)}>安排 9 月 {Number(day)} 日</Button>
       </header>
       <a className="still-date-corner" href="../gallery/"><span>返回展厅</span><b>09</b><i>/</i><strong>{day}</strong></a>
       {notice && <Alert className="still-calendar-notice" type="success" showIcon closable onClose={() => setNotice("")} message={notice} />}
-
+      <nav className="still-day-picker" aria-label="选择日期">
+        {days.map(value => <Button key={value} type={day === value ? "primary" : "text"} aria-pressed={day === value} onClick={() => { setDay(value); setComposing(false); }}><small>{weekday(value)}</small><strong>{value}</strong></Button>)}
+      </nav>
+      {composing && (
+        <Form className="still-cell-composer" layout="vertical" onFinish={addAgenda} initialValues={{ time: "16:00", kind: "专注" }}>
+          <b>9 月 {Number(day)} 日 · {weekday(day)}</b>
+          <Form.Item name="title" label="安排内容" rules={[{ required: true, whitespace: true, message: "写下要安排的事" }]}><Input autoFocus placeholder="例如：整理下周的工作计划" maxLength={40} /></Form.Item>
+          <Form.Item name="time" label="开始时间" rules={[{ required: true, pattern: /^([01]\d|2[0-3]):[0-5]\d$/, message: "请填写 00:00—23:59 之间的时间" }]}><Input placeholder="16:00" /></Form.Item>
+          <Form.Item name="kind" label="安排类型"><Segmented options={["专注", "恢复", "生活"]} /></Form.Item>
+          <Space><Button onClick={() => setComposing(false)}>取消</Button><Button type="primary" htmlType="submit">写入日历</Button></Space>
+        </Form>
+      )}
       <div className="still-calendar-scroll" data-native-scroll>
         <div className="still-week-grid">
-          {days.map((value, index) => {
-            const entries = agenda.filter(item => item.day === value);
+          {days.map(value => {
+            const entries = agenda.filter(item => item.day === value).sort((a, b) => a.time.localeCompare(b.time));
             return (
-              <section key={value} className={`still-day-cell ${day === value ? "is-active" : ""}`}>
-                <Button type="text" className="still-day-select" onClick={() => { setDay(value); setComposing(false); }}><small>{["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"][index]}</small><strong>{value}</strong></Button>
-                <div className="still-time-marks" aria-hidden="true"><i>08</i><i>12</i><i>16</i><i>20</i></div>
+              <section key={value} className={`still-day-cell ${day === value ? "is-active" : ""}`} aria-label={`9 月 ${Number(value)} 日 ${weekday(value)}`}>
+                <Button type="text" className="still-day-select" aria-pressed={day === value} onClick={() => { setDay(value); setComposing(false); }}><small>{weekday(value)}</small><strong>{value}</strong></Button>
                 <div className="still-calendar-events">
-                  {entries.map(item => <article key={item.id} className={`still-calendar-event kind-${item.kind}`}><time>{item.time}</time><strong>{item.title}</strong><small>{item.kind}</small></article>)}
-                  {!entries.length && <p className="still-open-cell"><FieldTimeOutlined /> 留白</p>}
+                  {entries.map(item => <article key={item.id} className={`still-calendar-event kind-${item.kind}`}><time dateTime={`2026-09-${value}T${item.time}`}>{item.time}</time><strong>{item.title}</strong><small>{item.kind}</small></article>)}
+                  {!entries.length && <p className="still-open-cell"><FieldTimeOutlined /> 这一天还没有安排</p>}
                 </div>
-                {composing && day === value && (
-                  <Form className="still-cell-composer" layout="vertical" onFinish={addAgenda} initialValues={{ time: "16:00", kind: "专注" }}>
-                    <b>NEW / 09.{day}</b>
-                    <Form.Item name="title" rules={[{ required: true, message: "写下要安排的事" }]}><Input aria-label="安排内容" placeholder="安排内容" maxLength={40} /></Form.Item>
-                    <Form.Item name="time" rules={[{ required: true, pattern: /^([01]\d|2[0-3]):[0-5]\d$/, message: "例如 16:00" }]}><Input aria-label="安排时间" placeholder="16:00" /></Form.Item>
-                    <Form.Item name="kind"><Segmented options={["专注", "恢复", "生活"]} /></Form.Item>
-                    <Space.Compact block><Button onClick={() => setComposing(false)}>取消</Button><Button type="primary" htmlType="submit">写入</Button></Space.Compact>
-                  </Form>
-                )}
               </section>
             );
           })}
         </div>
       </div>
-
       <footer className="still-week-footer">
-        <div className="still-habits">{habits.map(item => <Checkbox key={item.id} checked={item.done} onChange={() => setHabits(items => items.map(habit => habit.id === item.id ? { ...habit, done: !habit.done } : habit))}>{item.label}</Checkbox>)}</div>
-        <div className="still-week-wave"><span>{percent}% / WEEK RHYTHM</span><ChartBlock page={page} data={week} kind="bars" label="本周习惯完成率" height={84} /></div>
-        <small>OPEN TYPE / {page.fontStatement}</small>
+        <div className="still-habits"><b>今日习惯 · {done} / {habits.length}</b>{habits.map(item => <Checkbox key={item.id} checked={item.done} onChange={() => setHabits(items => items.map(habit => habit.id === item.id ? { ...habit, done: !habit.done } : habit))}>{item.label}</Checkbox>)}</div>
+        <div className="still-week-wave"><ChartBlock page={page} data={habitData} kind="horizontal" label="今日习惯完成情况" height={118} /></div>
+        <small>本地演示 · 日程和习惯仅保留在当前页面，刷新后恢复示例。</small>
       </footer>
     </section>
   );
 }
 
-export function AtelierWorkspace({ page }) {
-  const rootRef = useRef(null);
-  const reduced = useReducedMotion();
-  const [assets, setAssets] = useState(() => [
-    { id: "LOOK-01", name: "结构西装主视觉", image: page.images[0], compare: page.images[2], status: "待审", version: "v07", score: 82, owner: "Mina", comments: ["肩线已按上轮意见收紧。", "需要确认最终裁切比例。"] },
-    { id: "LOOK-02", name: "银饰材质特写", image: page.images[1], compare: page.images[0], status: "需修改", version: "v04", score: 64, owner: "Eli", comments: ["高光略抢，建议降低 8%。"] },
-    { id: "LOOK-03", name: "旋梯动态画面", image: page.images[2], compare: page.images[1], status: "已通过", version: "v06", score: 96, owner: "Aya", comments: ["发布裁切已确认。"] }
-  ]);
-  const [activeId, setActiveId] = useState("LOOK-01");
-  const [compare, setCompare] = useState(54);
-  const [notice, setNotice] = useState("");
-  const active = assets.find(item => item.id === activeId) || assets[0];
-  const readiness = assets.map(item => ({ label: item.id.replace("LOOK-", "L"), value: item.score }));
-
-  useScopedMotion(rootRef, reduced, activeId, root => {
-    const film = animate(root.querySelectorAll(".atelier-frame"), { y: [-48, 0], rotate: ["-=5", "+=5"], opacity: [0, 1], delay: stagger(90), duration: 680, ease: "out(4)" });
-    const frame = createTimeline({ defaults: { duration: 700, ease: "out(4)" } })
-      .add(root.querySelector(".atelier-active-frame .atelier-image-before"), { scale: [1.08, 1] })
-      .add(root.querySelector(".atelier-active-frame .atelier-image-after"), { opacity: [0.2, 1] }, "-=620");
-    const table = root.querySelector(".atelier-frame-pile");
-    const draggables = [...root.querySelectorAll(".atelier-frame")].map(node => createDraggable(node, { container: table, containerPadding: 12, releaseEase: "out(4)" }));
-    return [film, frame, ...draggables];
-  });
-
-  const updateStatus = status => {
-    setAssets(items => items.map(item => item.id === active.id ? { ...item, status, score: status === "已通过" ? 100 : Math.min(item.score, 68) } : item));
-    setNotice(`${active.id} 已标记为“${status}”，就绪度已同步。`);
-  };
-  const addComment = values => {
-    setAssets(items => items.map(item => item.id === active.id ? { ...item, comments: [...item.comments, values.comment] } : item));
-    setNotice(`${active.id} 已新增批注。`);
-  };
-
-  return (
-    <section ref={rootRef} id="experience" className="experience-shell atelier-light-table" data-motion-signature="free-drag-film-pile">
-      <header className="atelier-table-title"><span>ATELIER NOIR / REVIEW 07</span><h1>TOUCH<br />THE FRAME.</h1><p>拖动胶片，把要看的这一版放到最前。</p></header>
-      <a className="atelier-film-canister" href="../gallery/"><ArrowLeftOutlined /><span>EXIT<br />DARKROOM</span></a>
-      <div className="atelier-readiness-ruler"><span>SERIES READINESS</span><ChartBlock page={page} data={readiness} kind="horizontal" label="三个素材系列就绪度" height={78} /></div>
-
-      <div className="atelier-frame-pile" aria-label="可拖动审片桌">
-        {assets.map((item, index) => (
-          <button key={item.id} type="button" className={`atelier-frame atelier-frame-${index + 1} ${item.id === active.id ? "atelier-active-frame" : ""}`} onClick={() => { setActiveId(item.id); setCompare(54); setNotice(""); }}>
-            <img className="atelier-image-before" src={item.id === active.id ? item.compare.src : item.image.src} alt={item.id === active.id ? `${item.name} 上一版` : item.image.alt} />
-            {item.id === active.id && <div className="atelier-image-after" style={{ clipPath: `inset(0 ${100 - compare}% 0 0)` }}><img src={item.image.src} alt={`${item.name} 当前版`} /></div>}
-            <span className="atelier-frame-mark"><b>{item.id}</b><small>{item.name} / {item.version}</small></span>
-            <Tag color={statusColor(item.status)}>{item.status}</Tag>
-          </button>
-        ))}
-      </div>
-
-      <label className="atelier-compare-slider"><span>BEFORE</span><input aria-label="拖动比较上一版与当前版" type="range" min="8" max="92" value={compare} onChange={event => setCompare(Number(event.target.value))} /><b>{compare}</b><span>CURRENT</span></label>
-      <div className="atelier-version-tabs" aria-label="版本记录"><span>{active.version} / NOW</span><span>v06 / ARCHIVE</span><span>v01 / ORIGIN</span></div>
-
-      <aside className="atelier-annotation-tape">
-        <div className="atelier-asset-caption"><span>{active.owner} / 2400 × 3000</span><h2>{active.name}</h2>{active.comments.map((comment, index) => <p key={`${comment}-${index}`}><b>0{index + 1}</b>{comment}</p>)}</div>
-        <Form layout="inline" onFinish={addComment} key={`${active.id}-${active.comments.length}`}>
-          <Form.Item name="comment" rules={[{ required: true, message: "请输入批注" }]}><Input aria-label="新增批注" placeholder="把批注钉在胶片边缘" maxLength={100} /></Form.Item>
-          <Form.Item><Button htmlType="submit" icon={<CommentOutlined />}>钉上批注</Button></Form.Item>
-        </Form>
-        <Space.Compact><Button danger onClick={() => updateStatus("需修改")}>退回</Button><Button type="primary" icon={<CheckCircleOutlined />} onClick={() => updateStatus("已通过")}>批准</Button></Space.Compact>
-      </aside>
-      {notice && <Alert className="atelier-notice" type="success" showIcon closable onClose={() => setNotice("")} message={notice} />}
-      <small className="atelier-font-note">OPEN TYPE / {page.fontStatement}</small>
-    </section>
-  );
-}
 
 const gridSeed = [
   { id: "AR-118", title: "东侧雨棚净高冲突", discipline: "建筑", floor: "L01", owner: "周屿", status: "待处理", priority: "高", x: 24, y: 30, note: "与机电桥架需联合复核。" },

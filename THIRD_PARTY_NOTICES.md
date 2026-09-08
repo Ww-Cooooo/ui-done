@@ -10,8 +10,8 @@ The prebuilt files under `showcase/shared/runtime/` contain code from the produc
 | --- | --- | --- |
 | Interface runtime | React 19.2.8, React DOM 19.2.8, Scheduler 0.27.0 | MIT |
 | UI components and icons | Ant Design 6.6.2, Ant Design Icons 6.3.4 | MIT |
-| Motion and smooth scrolling in the ten public works | Anime.js 4.5.0, Lenis 1.3.26 | MIT |
-| Motion in the gallery preview and standalone motion lab | GSAP 3.15.0, `@gsap/react` 2.1.2 | GSAP Standard “No Charge” License |
+| Motion in eight retained works; shared smooth scrolling | Anime.js 4.5.0, Lenis 1.3.26 | MIT |
+| Motion in training analysis, photo review, gallery preview and standalone motion lab | GSAP 3.15.0, `@gsap/react` 2.1.2 | GSAP Standard “No Charge” License |
 | 3D/WebGL | Three.js 0.185.1, React Three Fiber 9.7.0, React Three Postprocessing 3.1.1 | MIT |
 | WebGL postprocessing | Postprocessing 6.39.4 | Zlib |
 | 2D Canvas | Pts 0.12.9 | Apache-2.0 |
@@ -48,15 +48,15 @@ Outfit, Red Hat Mono, and Big Shoulders remain byte-identical to the previously 
 | Chakra Petch | [`ChakraPetch-SemiBold.ttf`](https://github.com/google/fonts/blob/main/ofl/chakrapetch/ChakraPetch-SemiBold.ttf) | `ChakraPetch-SemiBold.ttf` | `45264de3204ddbd5fb3e14a2402acd5c630d16650ae5fc221d2c52da46a6734b` |
 | Archivo | [`Archivo[wdth,wght].ttf`](https://github.com/google/fonts/blob/main/ofl/archivo/Archivo%5Bwdth%2Cwght%5D.ttf) | `Archivo-Variable.ttf` | `0e094a7d3c7c4c25cf1310c4b30014f1dae9332220b1c2c88f4fa996f0b05053` |
 
-Noto Sans SC, Noto Serif SC, and ZCOOL QingKe HuangYou are packaged as the official Google Fonts WOFF2 unicode-range files needed by the fixed showcase corpus. Unused upstream ranges are omitted; the selected WOFF2 bytes are unchanged. The selection corpus SHA-256 is `f4fe555fda901f767ed054eea33fa26c02788ad94d807a2a6b412cc01c799acd`.
+Noto Sans SC, Noto Serif SC, and ZCOOL QingKe HuangYou are packaged as the official Google Fonts WOFF2 unicode-range files needed by the fixed showcase corpus. Unused upstream ranges are omitted; the selected WOFF2 bytes are unchanged. The original selection corpus SHA-256 is `f4fe555fda901f767ed054eea33fa26c02788ad94d807a2a6b412cc01c799acd`. On 2026-09-08, two unmodified Noto Sans SC v40 ranges were added for U+9608 and U+7941 in the updated showcase text. Their exact URLs, local filenames and hashes are recorded in the manifest's `coverageAdditions`; this does not claim complete coverage for arbitrary user-entered Chinese.
 
 | Font | Selected files | Local bytes | Packaging record |
 | --- | ---: | ---: | --- |
-| Noto Sans SC | 25 | 1,394,388 | [`cjk-showcase.manifest.json`](./showcase/shared/fonts/cjk-showcase.manifest.json) |
+| Noto Sans SC | 27 | 1,506,424 | [`cjk-showcase.manifest.json`](./showcase/shared/fonts/cjk-showcase.manifest.json) |
 | Noto Serif SC | 25 | 1,825,024 | [`cjk-showcase.manifest.json`](./showcase/shared/fonts/cjk-showcase.manifest.json) |
 | ZCOOL QingKe HuangYou | 25 | 1,175,328 | [`cjk-showcase.manifest.json`](./showcase/shared/fonts/cjk-showcase.manifest.json) |
 
-The generated local `@font-face` sheet has SHA-256 `42055c57ecd5bd9e742c42ce02c9d42c2a77576996c043578a80d98a5e2711d3`. It contains only local paths, so the showcase makes no font request to Google at runtime.
+The generated local `@font-face` sheet has SHA-256 `9dad5f5135cd20cd14cb94b3b290b3e42c67f01cebbce19536e5b8fe767caac4`. It contains only local paths, so the showcase makes no font request to Google at runtime.
 
 ## Showcase imagery and screenshots
 

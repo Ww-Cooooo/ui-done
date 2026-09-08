@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
-import { Button, ConfigProvider } from "antd";
+import { Button, ConfigProvider, theme as antdTheme } from "antd";
 import {
   ArrowLeftOutlined,
   GithubOutlined
@@ -123,6 +123,7 @@ function Header({ page }) {
 function ThemedContent({ page, children, reduced }) {
   const rootRef = useRef(null);
   const style = useMemo(() => ({
+    colorScheme: page.theme.mode,
     "--page-bg": page.theme.bg,
     "--page-surface": page.theme.surface,
     "--page-surface-alt": page.theme.surfaceAlt,
@@ -158,6 +159,9 @@ export default function ExperienceFrame({ page, children, reduced }) {
     colorInfo: page.theme.accent2,
     colorText: page.theme.ink,
     colorTextSecondary: page.theme.muted,
+    colorTextPlaceholder: page.theme.muted,
+    colorTextDisabled: page.theme.muted,
+    colorBgLayout: page.theme.bg,
     colorBgContainer: page.theme.surface,
     colorBgElevated: page.theme.surface,
     colorBorder: page.theme.line,
@@ -171,7 +175,14 @@ export default function ExperienceFrame({ page, children, reduced }) {
   }), [page, reduced]);
 
   return (
-    <ConfigProvider theme={{ token: tokens }}>
+    <ConfigProvider theme={{
+      algorithm: page.theme.mode === "dark" ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm,
+      token: tokens,
+      components: {
+        Select: { optionSelectedBg: page.theme.surfaceAlt, optionSelectedColor: page.theme.ink },
+        Segmented: { itemSelectedBg: page.theme.accent, itemSelectedColor: page.theme.onAccent }
+      }
+    }}>
       <ReactLenis
         root
         options={{

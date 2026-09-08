@@ -169,25 +169,7 @@ main { display: block; }
 .showcase-work:hover .work-meta svg { transform: translateX(4px); }
 
 /* Velocity Works — a horizontal timing console. */
-.preview-velocity { display: grid; grid-template-columns: 42% 58%; height: 100%; color: #f3f7f8; background: #081019; }
-.preview-velocity figure { position: relative; margin: 0; overflow: hidden; border-right: 2px solid #d8ff3e; }
-.preview-velocity figure::after { position: absolute; inset: 0; content: ""; background: linear-gradient(0deg, rgba(4,9,13,.72), transparent 62%); }
-.preview-velocity figure img { filter: saturate(.72) contrast(1.08); }
-.preview-velocity figcaption { position: absolute; z-index: 2; right: 16px; bottom: 14px; left: 16px; font-family: var(--work-mono), monospace; font-size: 11px; letter-spacing: .08em; }
-.velocity-preview-console { display: grid; align-content: space-between; padding: clamp(22px, 3vw, 38px); background-image: linear-gradient(135deg, rgba(216,255,62,.06), transparent 38%), repeating-linear-gradient(0deg, transparent 0 39px, rgba(216,255,62,.07) 40px); }
-.velocity-preview-console > span { color: #93a7b7; font-family: var(--work-mono), monospace; font-size: 11px; letter-spacing: .1em; }
-.velocity-preview-console h4 { margin: 14px 0 20px; font-family: var(--work-cjk), sans-serif; font-size: clamp(29px, 3.4vw, 52px); line-height: 1.04; }
-.velocity-preview-console h4 span, .still-preview-plan h4 span, .preview-atelier aside h4 span, .north-preview-copy h4 span, .red-preview-type h4 span, .shanshui-preview-title h4 span { display: block; white-space: nowrap; }
-.velocity-preview-stats { display: flex; justify-content: space-between; gap: 12px; border-block: 1px solid rgba(216,255,62,.24); padding: 15px 0; }
-.velocity-preview-stats b { display: grid; gap: 3px; color: #d8ff3e; font-family: var(--work-display), sans-serif; font-size: clamp(24px, 3vw, 43px); line-height: .9; }
-.velocity-preview-stats small { color: #93a7b7; font-family: var(--work-mono), monospace; font-size: 9px; letter-spacing: .1em; }
-.velocity-preview-trace { display: flex; height: 62px; align-items: flex-end; gap: 8px; padding-top: 14px; }
-.velocity-preview-trace i { flex: 1; height: var(--trace); background: linear-gradient(#d8ff3e, rgba(112,167,217,.28)); transform: skewX(-10deg); }
-.velocity-preview-console > p { display: flex; align-items: center; gap: 9px; margin: 12px 0 0; color: #bdc9d2; font-size: 12px; }
-.velocity-preview-console > p i { width: 8px; height: 8px; border-radius: 50%; background: #d8ff3e; box-shadow: 0 0 14px #d8ff3e; }
-.showcase-work-velocity-works:hover .preview-velocity figure img { transform: scale(1.04) translateX(1%); }
-
-/* Orbital Grid — three cockpit zones around a real spatial context. */
+.still-preview-plan h4 span, .north-preview-copy h4 span, .red-preview-type h4 span, .shanshui-preview-title h4 span { display: block; white-space: nowrap; }
 .preview-orbital { position: relative; height: 100%; overflow: hidden; color: #e8f4ff; background: #02070d; }
 .preview-orbital > img { position: absolute; inset: 0; filter: brightness(.38) saturate(.72) contrast(1.12); }
 .preview-orbital::after { position: absolute; inset: 0; content: ""; background: linear-gradient(90deg, rgba(2,7,13,.9), transparent 46%, rgba(2,7,13,.72)), linear-gradient(0deg, #02070d 0, transparent 46%); }
@@ -246,28 +228,6 @@ main { display: block; }
 .showcase-work-still-day:hover .preview-still figure img { transform: scale(1.04); }
 
 /* Atelier Noir — filmstrip, stage, inspector. */
-.preview-atelier { display: grid; grid-template-columns: 62px minmax(0, 1fr) 128px; height: 100%; gap: 1px; color: #f3e7d6; background: #0d0b0a; }
-.atelier-preview-film { display: grid; grid-template-rows: repeat(3, 1fr); gap: 1px; padding: 12px 8px; background: #171310; }
-.atelier-preview-film span { position: relative; overflow: hidden; }
-.atelier-preview-film img { filter: grayscale(.3) brightness(.62); }
-.atelier-preview-film i { position: absolute; right: 4px; bottom: 4px; padding: 2px 4px; color: #0d0b0a; background: #d6a96f; font-family: var(--work-mono), monospace; font-size: 7px; font-style: normal; }
-.preview-atelier > figure { position: relative; margin: 0; overflow: hidden; }
-.preview-atelier > figure img { filter: saturate(.72) contrast(1.04); }
-.preview-atelier > figure::after { position: absolute; inset: 0; content: ""; box-shadow: inset 0 0 70px rgba(0,0,0,.5); }
-.preview-atelier figcaption { position: absolute; z-index: 2; bottom: 12px; left: 14px; padding: 5px 7px; color: #0d0b0a; background: #f3e7d6; font-family: var(--work-mono), monospace; font-size: 8px; }
-.atelier-pin { position: absolute; z-index: 3; display: grid; width: 24px; height: 24px; place-items: center; border-radius: 50%; color: #0d0b0a; background: #f3e7d6; font-family: var(--work-mono), monospace; font-size: 9px; font-style: normal; box-shadow: 0 0 0 5px rgba(214,169,111,.22); }
-.atelier-pin.pin-a { top: 28%; left: 34%; }
-.atelier-pin.pin-b { right: 20%; bottom: 24%; }
-.preview-atelier aside { display: flex; flex-direction: column; padding: 20px 14px; border-left: 1px solid rgba(243,231,214,.18); background: #171310; }
-.preview-atelier aside > span, .preview-atelier aside small, .preview-atelier aside em { color: #a69788; font-family: var(--work-mono), monospace; font-size: 8px; font-style: normal; letter-spacing: .08em; }
-.preview-atelier aside h4 { margin: 22px 0; font-family: var(--work-cjk), serif; font-size: 24px; font-weight: 500; line-height: 1.05; }
-.preview-atelier aside div { display: grid; gap: 4px; margin-top: auto; }
-.preview-atelier aside b { color: #d6a96f; font-family: var(--work-display), serif; font-size: 32px; }
-.preview-atelier aside p { height: 3px; margin: 10px 0 18px; background: rgba(243,231,214,.15); }
-.preview-atelier aside p i { display: block; height: 100%; background: #d6a96f; }
-.showcase-work-atelier-noir:hover .atelier-preview-film { transform: translateY(-3px); transition: transform .45s ease; }
-
-/* Grid 01 — a full-width coordination drawing. */
 .preview-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(230px, .45fr); grid-template-rows: 70px 1fr 52px; height: 100%; color: #101214; background-color: #e9e9e5; background-image: linear-gradient(rgba(16,18,20,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(16,18,20,.1) 1px, transparent 1px); background-size: 7.5% 52px; }
 .preview-grid header { grid-column: 1 / -1; display: grid; grid-template-columns: 100px 1fr auto; align-items: center; border-bottom: 3px solid #101214; background: rgba(248,248,244,.92); }
 .preview-grid header b { display: grid; height: 100%; place-items: center; color: #090a0b; background: #ee2b21; font-family: var(--work-display), sans-serif; font-size: 30px; }
@@ -480,7 +440,6 @@ main { display: block; }
   .showcase-work-shanshui-now .work-preview { height: 400px; }
   .showcase-work-motion-lab .work-preview { height: 360px; }
   .motion-preview-task-b { top: 18%; }
-  .velocity-preview-console h4 { font-size: 32px; }
   .preview-red { grid-template-columns: 48% 52%; }
   .red-preview-type h4 { font-size: 40px; }
   .section-intro { grid-template-columns: 60px 1fr; }
@@ -540,11 +499,7 @@ main { display: block; }
   .motion-preview-legend { right: 14px; bottom: 16px; flex-direction: column; gap: 5px; align-items: flex-end; font-size: 11px; letter-spacing: 0; }
   .motion-preview-legend span { padding-top: 3px; }
   .work-meta { min-height: 88px; }
-  .preview-velocity { grid-template-columns: 36% 64%; }
-  .velocity-preview-console { padding: 22px; }
-  .velocity-preview-console h4 { font-size: clamp(30px, 7vw, 44px); }
   .preview-still { grid-template-columns: 68px minmax(0, 1fr) 30%; }
-  .preview-atelier { grid-template-columns: 58px minmax(0, 1fr) 120px; }
   .preview-grid { grid-template-columns: minmax(0, 1.3fr) minmax(210px, .7fr); }
   .beginner-grid { grid-template-columns: 1fr; }
   .brief-arrow { display: none; }
@@ -574,13 +529,6 @@ main { display: block; }
   .work-meta { grid-template-columns: 1fr auto; gap: 5px 12px; padding: 16px; }
   .work-meta h3 { font-size: 23px; }
   .work-meta b { font-size: 10px; }
-  .preview-velocity { grid-template-columns: 34% 66%; }
-  .preview-velocity figcaption { right: 8px; bottom: 10px; left: 8px; font-size: 8px; }
-  .velocity-preview-console { padding: 17px 14px; }
-  .velocity-preview-console h4 { margin: 10px 0 14px; font-size: 27px; }
-  .velocity-preview-stats { gap: 7px; padding: 12px 0; }
-  .velocity-preview-stats b { font-size: 22px; }
-  .velocity-preview-stats small { font-size: 7px; }
   .orbital-preview-radar { top: 82px; right: 2%; width: 66%; }
   .orbital-preview-alert { bottom: 20px; width: 64%; }
   .orbital-preview-readout { right: 11px; bottom: 16px; }
@@ -592,9 +540,6 @@ main { display: block; }
   .still-preview-plan { position: relative; z-index: 2; }
   .still-preview-plan h4 { font-size: 28px; }
   .preview-still figure { position: absolute; right: -6%; bottom: 4%; width: 46%; height: 35%; opacity: .22; }
-  .preview-atelier { position: relative; grid-template-columns: 48px minmax(0, 1fr); }
-  .preview-atelier aside { position: absolute; z-index: 4; right: 10px; bottom: 10px; width: 122px; min-height: 160px; border: 1px solid rgba(243,231,214,.2); }
-  .preview-atelier aside h4 { font-size: 21px; }
   .preview-grid { position: relative; grid-template-columns: 1fr; grid-template-rows: 58px minmax(0, 1fr) 116px; }
   .preview-grid header { grid-template-columns: 72px 1fr; }
   .preview-grid header b { font-size: 23px; }
