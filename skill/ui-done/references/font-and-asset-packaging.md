@@ -49,7 +49,7 @@ For ordinary interface icons, use the selected SVG/icon component family. Do not
 
 - Read the exact font license. Require an open-source font license such as SIL OFL or another license that clearly permits the intended use and redistribution; record modification/conversion conditions separately.
 - Verify Chinese/multilingual glyph coverage, punctuation, symbols, currency, numerals, and project-specific names/terms.
-- Package only weights/styles actually used. Choose a variable font when its support, size, and interpolation needs are beneficial.
+- Package only weights/styles actually used. Choose a variable font when its support, size, and interpolation needs are beneficial. Subset chunks intended to compose the same face must have matching family/style/weight descriptors, with `unicode-range` dividing their glyph coverage. Those descriptors must match the files' actual static weights or variable axes; do not declare a static font as a variable range.
 - Prefer WOFF2 for modern Web delivery. Preserve upstream source/version, conversion method, and original license.
 - Do not subset CJK or user-generated content to a guessed “common character” list. Subset only from a controlled corpus with an explicit missing-glyph strategy.
 - Never select Microsoft YaHei, PingFang, Segoe UI, San Francisco, a developer-installed font, or another machine-local face as the designed primary font.
@@ -60,7 +60,7 @@ For ordinary interface icons, use the selected SVG/icon component family. Do not
 - Preload only fonts required above the fold; excessive preload competes with critical content.
 - Set stable fallback stacks and test layout before and after fonts resolve. Consider metric overrides when shifts are material.
 - Use semantic font tokens/components rather than component-by-component family declarations. Synchronize Ant Design typography tokens and any chart/Canvas/3D text with those roles.
-- Confirm actual loading with `document.fonts.check(...)`, computed `font-family`, network/resource logs, and screenshots containing real target-language text.
+- Verify which fonts actually render representative page text and required weights, using the browser's rendered-font inspection or equivalent glyph-level evidence. A computed `font-family`, a loaded font resource, or `document.fonts.check(...) === true` alone cannot identify the face used for those glyphs. Correlate the actual face with local resource requests and screenshots. If actual face inspection is unavailable, report that limit instead of treating the other signals as proof.
 - Check the needed weights, tabular numerals, long text/IDs, and missing glyphs. Font choice alone does not establish typography: inspect real line breaks, line-height, control labels, and chart axes at the affected sizes. Keep related Chinese words and punctuation readable; do not use oversized display type with compressed leading at the expense of task text, and do not hide bad wrapping through clipping.
 
 ## Package for portability and offline use

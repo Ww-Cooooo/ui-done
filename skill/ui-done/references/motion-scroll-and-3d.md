@@ -99,10 +99,11 @@ Implement and test applicable items:
 
 - Register GSAP plugins once at the application boundary. In React, use `useGSAP()` with a scoped root; wrap click handlers, delayed callbacks, and other later-created animations with `contextSafe()`; revert timelines, ScrollTriggers, observers, and listeners on cleanup; and keep browser-only motion behind a client boundary in server-rendered frameworks.
 - Use `gsap.matchMedia()` or an equivalent live preference path for responsive and reduced-motion variants. Prefer timelines with positions or labels over chains of unrelated delays, `quickTo()` for frequent pointer updates, and transforms, opacity, or `autoAlpha` over continuously animating width, height, top, or left.
-- Start only after the host element exists and has measurable size.
-- Use `ResizeObserver` or an equivalent bounded resize path; cap device pixel ratio for GPU cost.
+- For charts, Canvas, and other size-dependent visuals, initialize only when the host has non-zero usable dimensions. A hidden tab or collapsed panel is not ready just because its DOM exists; wait for a usable host size rather than accepting a library's fallback dimensions.
+- Keep one host-size owner. Reuse the library's container-aware resize path when it handles visibility and layout changes; otherwise use `ResizeObserver` or an equivalent bounded path. Window resize alone does not cover reveal or parent-layout changes. Cap device pixel ratio for GPU cost.
+- Keep viewport/scroll coordinates separate from the renderer's local drawing space. Fit a bounded accent to its actual host after scrolling or layout changes; do not hide displaced drawing with clipping or a compensating offset.
 - Pause or reduce work when `document.hidden`, the element is offscreen, or the user requests reduced motion.
-- Cancel animation frames/timelines and remove pointer, resize, visibility, and context listeners on teardown.
+- Cancel animation frames/timelines and remove owned pointer, resize, visibility, and context listeners on teardown. When replacing a library's built-in sizing or lifecycle behavior, check that version's initialization/disposal assumptions and prevent delayed callbacks from touching unmounted hosts.
 - Dispose geometries, materials, textures, render targets, controls, workers, and renderer contexts as applicable.
 - Handle loading, decoding, shader/model/texture failure, unsupported APIs, initialization exceptions, and WebGL context loss.
 - Avoid per-frame React/state updates. Keep continuous values in the animation/render layer.
