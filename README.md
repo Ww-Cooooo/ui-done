@@ -17,6 +17,22 @@
 - **默认积极采用。** 新页面和大改版，每类默认能力都安排实际用途；省略要有硬性理由，3D 单独判断。
 - **首版就认真完成设计。** 先看完整效果，再按你的喜好细调，不等你逐项提醒、补齐。
 
+<a id="install"></a>
+
+## 现在就装
+
+把下面三行发给**能读取项目、修改文件并运行命令的 AI 编程助手**，让它按说明安装：
+
+```text
+请帮我安装 UI Done：https://github.com/Ww-Cooooo/ui-done
+按 INSTALL.md 先说明下载内容、安装位置和覆盖影响，确认后再安装。
+装好后检查完整规则能否读取，并告诉我怎样调用、更新和移除。
+```
+
+[命令行安装与注意事项](#install-details) · [装好后怎样使用](#first-use)
+
+## 看看实际效果
+
 <table>
   <tr>
     <td width="33%" align="center" valign="top">
@@ -36,23 +52,13 @@
 
 <p align="center">以上是实际页面截图。点击图片体验交互和动效；展板共收录 <strong>12 个示例</strong>。</p>
 
-<a id="install"></a>
+<a id="install-details"></a>
 
-## 现在就装
+## 命令行安装与注意事项
 
 UI Done 是一组供 Agent 读取的工作规则，不是独立的网站生成软件。请在**能读取项目、修改文件并运行命令的 AI 编程助手**中使用；普通聊天窗口不能直接替你改好本地项目。新页面采用 **React**，主组件系统优先 **Ant Design**。
 
-### 方法一：把这段话发给 AI
-
-不想处理命令行，可以复制下面三行给你正在使用的 Agent：
-
-```text
-请帮我安装 UI Done：https://github.com/Ww-Cooooo/ui-done
-按 INSTALL.md 先说明下载内容、安装位置和覆盖影响，确认后再安装。
-装好后检查完整规则能否读取，并告诉我怎样调用、更新和移除。
-```
-
-### 方法二：运行一条命令
+### 运行一条命令
 
 电脑已经安装 **Node.js** 时，在终端运行：
 
@@ -83,6 +89,8 @@ DISABLE_TELEMETRY=1 npx skills add Ww-Cooooo/ui-done -g
 </details>
 
 **装好后，先让 Agent 告诉你安装目录，并确认它能读取 `SKILL.md` 和同目录的 `references`。** 只复制一份 `SKILL.md` 不够，需要完整的 `skill/ui-done` 文件夹。是否需要重启、怎样显式调用或自动识别，由所用 Agent 的平台决定，不能只看到文件就认定已经生效。[完整安装说明 →](./INSTALL.md)
+
+<a id="first-use"></a>
 
 ## 第一次使用，可以这样说
 
