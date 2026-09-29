@@ -41,7 +41,7 @@ Name the existing host, the interface job, and the smallest useful footprint bef
 - A cluster of stock primitives with one global auto-rotation, generic three-point lighting, and palette swaps is not a finished signature scene unless the subject specifically calls for that object and motion. Establish a scene-specific subject, composition/camera, material/environment response, light hierarchy, and meaningful motion; post-processing may finish that hierarchy but cannot create it.
 - Across a set of intentionally different pages, adopted 3D may become a hero environment, an embedded product object, a scroll transition, a spatial diagram, or a quiet accent when that exact role passes the gate. Some pages should have no WebGL at all. Do not append the same framed Canvas after the same content block on every route.
 
-If removing a new visual region changes no product meaning and only hides evidence of the library, the region is filler. Remove it, then relocate a default effect at a smaller scale or attach it to a real interaction. For 3D, removal means the suitability gate failed; do not force a replacement WebGL accent.
+If removing a new visual region changes no product meaning and only hides evidence of the library, the region is filler. Remove it, then redesign the default effect's role using the meaningful-integration method in `page-composition.md`. Relocating or reducing it helps only if a specific contribution survives; a tiny arbitrary accent is still arbitrary. For 3D, a missing product role fails the suitability gate; do not force a replacement WebGL accent.
 
 ## 3D suitability gate
 
@@ -66,19 +66,31 @@ An adopted scene must pass all of these checks in several camera views and acros
 
 ## Prove host, meaning, and control
 
-Answer these questions for every visible effect before implementation:
-
-1. **Host:** What existing product object, content, data, state, interaction, or visual motif owns the effect?
-2. **Meaning:** What does the user understand, accomplish, notice, or feel because it moves or gains depth?
-3. **Control:** Why would the user need to pause, reset, rotate, scrub, change speed, or switch views?
-
-If the host or meaning cannot be stated specifically, the effect is arbitrary. “More dynamic,” “more premium,” and “adds visual interest” are not sufficient unless they connect to the brief's content or established visual language. Rework a default effect, shrink it into a genuine accent, or give the tool a different role. For 3D, fail the suitability gate and omit it. A decorative scene name such as “field,” “orbit,” or “spatial view” does not create meaning; if removing the label makes the effect inexplicable, the label was compensating for weak integration.
+Reuse the Host–Meaning–Control answers and observable result from [meaningful integration](page-composition.md#integrate-capabilities-without-token-adoption); do not create another record. For motion, connect the trigger to the affected object, the relationship made visible, and the stable completion. “More dynamic,” “more premium,” and “adds visual interest” are insufficient without a specific connection to the content or established visual language. A decorative scene name such as “field,” “orbit,” or “spatial view” cannot create that connection. Rework an invalid default role; for 3D, a vague host or missing unique spatial value fails the suitability gate.
 
 Prefer motion on a surface the product already expects—a promotional strip, schedule card, product object, map path, progress state, or real chart transition—over a separate animation surface. The reusable lesson is integration into existing content, not copying any particular marquee, orbit, or visual style.
 
 For substantial new pages and material redesigns, GSAP motion is a planned default, not optional polish. Give every page one primary motion signature tied to its content or task, then use quieter supporting feedback only where needed. In an intentionally varied set, do not let the same reveal preset, scroll entry, direction, or looping background become the primary motion of multiple works; shared code may manage scope and cleanup, but each page owns a visibly different trigger-to-completion choreography. Omission requires the exact recorded hard-rejection path above. Reduced-motion is a required alternate completion state, not evidence that the normal page may ship motionless.
 
+A work surface's signature can be a precise, recognizable coordination of existing states, not necessarily a large entrance or ambient spectacle. Brief highlights may be useful parts, but a few tweens do not establish a complete dynamic experience. Use the sequence method below for a material redesign or a rejected motion direction; keep small motion repairs scoped. Reading tween parameters is not observing the rendered motion.
+
 Treat visible controls as product features. Do not surface pause, reset, rotate, speed, view, or scene controls simply because the library provides them. Use them only when direct manipulation serves a real task or when an accessibility requirement calls for a user-operated mechanism. For ambient or decorative motion, prefer brief or bounded behavior plus automatic reduced-motion, hidden-tab, offscreen, and low-power handling. If continuous motion needs a pause mechanism, integrate it into the product's interaction language instead of attaching a generic engine toolbar.
+
+## Design a sequence, not a tween quota
+
+Start from the confirmed visual direction and a real user action, not from an animation preset. If “not premium” or “not smooth” still has incompatible meanings, use [feedback clarification](feedback-clarification.md). Do not equate polish with stronger easing, longer travel, more effects, or an automatic dark/glass/neon style.
+
+In the existing motion commitment, explain the before, transition, and after of one representative sequence. Identify what remains anchored, what changes prominence or position, how related elements respond together, and how the user continues or reverses the action. Choose timing, easing, emphasis, and depth to express that relationship. No additional animation inventory or fixed duration is required.
+
+For example, in an evidence-review tool, selecting an item can establish the matching range and evidence immediately; opening an annotation can then make the change of working space understandable while keeping the subject readable; saving can connect the result to that same object and return to inspection. This does not prescribe a sidebar, require every element to move, or justify delaying a seek/save response. A form fading in by itself while the subject abruptly shrinks, the active label disagrees, and the user must hunt for continuation is a failed sequence even if that fade is technically smooth. On an expressive page, the same reasoning may produce a bolder subject-led entrance or scroll transformation instead of a work-tool pattern.
+
+Treat three different effects separately:
+
+- **Scroll mechanics:** wheel/touch movement within a particular container. Lenis on one list proves only that path, not a smoothly coordinated whole page.
+- **Automatic following:** bringing an active line or object into view. Immediate positioning can be correct for precision or reduced motion; otherwise judge jumps, continuity, cancellation, and interference with manual browsing. Never smooth the authoritative media clock or drag coordinate just to make movement look fluid.
+- **UI transitions:** opening, closing, changing modes, reallocating space, and showing outcomes. Design these explicitly with the chosen motion owner; a scroll library does not supply them automatically.
+
+Try the sequence at normal interaction speed, including an early reversal or a second selection while movement is in progress. Judge whether the eye can follow the subject, the new state feels intentional, and the controls remain responsive; also inspect the settled composition. A static screenshot, a package import, a high frame rate, or a handful of fades cannot alone demonstrate that result. Keep good quiet feedback, but do not use “this is a work tool” to excuse an unconsidered visual identity. Fix the relationship rather than making disconnected effects larger. Use the existing reduced-motion and ownership rules for the alternate path.
 
 ## Assign ownership
 

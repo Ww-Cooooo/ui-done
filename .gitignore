@@ -5,3 +5,9 @@ __pycache__/
 *.pyc
 .ui-done-*/
 qa-output/
+
+# Local development notes and retained trial evidence; not public deliverables.
+/.codex-evidence/
+/task_plan.md
+/findings.md
+/progress.md

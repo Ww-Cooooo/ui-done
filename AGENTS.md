@@ -15,6 +15,14 @@ These instructions govern development, modification, repair, and review of this 
 - Ordinary maintenance does not require a benchmark matrix, multi-Agent exercise, or full browser suite. Use broader methods only when requested or when simpler evidence cannot resolve a material risk.
 - Keep one clear owner for each rule and decision. Reference it instead of maintaining duplicate instructions or acceptance records.
 
+## Make public guidance independent of this development chat
+
+- Write for an Agent that receives only the published Skill folder and its user's task. Do not rely on this conversation, private reports, local screenshots, remembered decisions, or an unavailable companion Skill to explain a rule.
+- Keep essential requirements and explicit reading conditions in `skill/ui-done/SKILL.md`. Put detailed methods, decision boundaries, and worked examples in a focused reference when that detail is needed only for a particular kind of work. Link it at the decision point; do not merely add an optional file that the executor has no reason to open.
+- When repairing a demonstrated failure, explain the relevant situation, why the old approach fails, what to do instead, and what observable result distinguishes the repair. Use a concrete counterexample where a short principle is easy to misread. Preserve the limits of the evidence: one incident is not proof that every layout, library, or Agent fails.
+- Generalize private incidents into self-contained examples without private paths, services, media, or user data. For external design references, retain the primary source, the mechanism learned, its application, and its limits; do not substitute a slogan or a link for the actual guidance, or copy whole third-party articles.
+- Consolidate conflicting wording in the existing owners. More detail belongs where it resolves a real ambiguity, not in repeated checklists. Validate the changed decision scenarios and reference routes; do not infer cross-Agent reliability merely from valid Markdown.
+
 ## Verify in proportion to the change
 
 - Markdown, reference, or prompt edits: check affected facts, links, wording, and decision scenarios. Run the Skill structure validator when Skill structure changes; do not run browser tests for instruction-only edits.

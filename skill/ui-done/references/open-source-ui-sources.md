@@ -20,6 +20,24 @@ Keep the record compact: exact item/URL, what was observed, intended host and me
 
 The pass must widen decisions, not dictate a collage. A rejected candidate still counts when the official Demo/Code was genuinely inspected. An unused import, copied example section, fake dataset, remote sample asset, or second motion/component owner does not count. Never upload private code, screenshots, data, credentials, or user assets to any source site.
 
+## Turn reference research into a working page
+
+The five-source pass provides composition directions and implementation techniques; it does not by itself establish a usable product workflow. A button, an animated list, and a tab demo can all be studied correctly while the resulting page still makes the user lose their place. For new pages/material redesigns, apply `page-composition.md` before locking the structure. Its primary-source examples explain whole-page mechanisms without requiring the reader to know the development chat.
+
+When the remaining question is about how a task works across regions, inspect a relevant complete product flow, official walkthrough, or original design-team explanation. Prefer something with comparable task/content constraints, not merely a similar palette. Existing relevant project evidence can supply this context. This is gap-directed research, not a sixth fixed website quota; do not open every case linked in the composition guide or repeat research for a scoped repair with valid evidence. If only documentation or a recording is available, say so and do not claim live interaction testing.
+
+Make the translation explicit in the existing research/design note:
+
+- **Observed mechanism:** what actually stays visible, changes together, or retains state in the source. Distinguish source observation from your proposed adaptation.
+- **Product decision:** which content relationship, allocation, action sequence, or transition that observation changes here. A copied color or “make it modern” does not answer a workflow question.
+- **Result to inspect:** the ordinary action that will reveal whether the adaptation helps, including what must remain available during and after it. Put the actual checks in the existing scoped verification, not a second evidence package.
+
+For a media-review task, an animated-list demo might suggest keeping the active transcript line visible. That is useful but incomplete. A coordinated design must also map that line to the same media time, frame, selected interval, and note target; preserve position after saving; and avoid an auto-scroll that fights manual browsing. Official review-product documentation can inform that coordination, while React Bits/GSAP or another permitted source informs the bounded visual behavior. Do not claim that the component demo itself proves the complete workflow.
+
+For a data explanation, a source may keep one chart in place while the narrative changes its highlighted comparison. The adaptation is not “add scroll animations to every card”: it is to preserve the same axes/object while revealing the next relevant relationship. Use that approach only when the actual explanation benefits, keep backward reading understandable, and retain a reduced-motion/static reading path. A short fact sheet may instead remain a continuous static layout with motion serving another real role.
+
+Viewing is still distinct from adopting code. A whole-product case does not authorize copying its assets, migrating to its framework, inventing its features, or replacing the required five-source and GSAP inspections.
+
 ## Shared intake contract
 
 Before adoption:
