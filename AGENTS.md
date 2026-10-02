@@ -1,33 +1,23 @@
 # UI Done maintenance instructions
 
-These instructions govern development, modification, repair, and review of this repository and the bundled UI Done Skill.
+These instructions govern this repository and Skill maintenance. They are not an extra frontend execution workflow.
 
-## Core principle
+## Scope and implementation
 
-- Work with **全面思考和架构；精炼实现；精准验证；果断执行**: understand the affected behavior and real risks, then make the smallest complete change that delivers the requested result.
-- The vendor-neutral runtime contract has one authoritative home: `skill/ui-done/SKILL.md`. This file governs repository maintenance instead of duplicating that contract. Lightweight maintenance never weakens the user's confirmed design, motion, typography, authentic-data, or distinctness requirements. Host adapters mirror the contract; they do not own it.
+- Work with **全面思考和架构；精炼实现；精准验证；果断执行**. Remove unnecessary engineering and process, not the agreed design, motion, typography, truthful data, or distinctness requirements.
+- `skill/ui-done/SKILL.md` owns the vendor-neutral runtime contract; host adapters mirror it. Keep each rule in its existing owner instead of duplicating it here or in new checklists.
+- Inspect the affected files, callers/entry and working-tree changes before editing; preserve unrelated user work. Expand inspection only for a concrete dependency, failure or unresolved question. Reuse useful existing parts; add architecture, dependencies or tooling only for a demonstrated task need.
+- Do not create planning files, reports, benchmark environments, multi-Agent exercises or evidence packages by default. Use them when the task actually needs them. For continuity, retain a short current-state note and retrieve relevant history rather than repeatedly rereading everything.
 
-## Keep maintenance lean
+## Write a self-contained public Skill
 
-- Inspect the working-tree state and the actual impact of the change. Preserve unrelated user work and repair the relevant cause before considering a wider refactor.
-- Reuse or consolidate existing instructions, references, scripts, and checks before adding another layer. Do not add abstractions, dependencies, configuration, or documents without a concrete benefit to this project.
-- Tool-call counts do not require three planning files, an evidence package, or an evaluation environment. When cross-session work needs continuity, prefer a short current-state section in an existing note; retrieve historical details only for relevant questions. Preserve retained history rather than repeatedly rereading or rewriting it.
-- Ordinary maintenance does not require a benchmark matrix, multi-Agent exercise, or full browser suite. Use broader methods only when requested or when simpler evidence cannot resolve a material risk.
-- Keep one clear owner for each rule and decision. Reference it instead of maintaining duplicate instructions or acceptance records.
+- Write for an executor with only the published folder and its user's task, not this chat, private reports or an unavailable companion Skill. Keep essential requirements and explicit reading conditions in `SKILL.md`; put conditional methods and examples in the relevant reference and link it where needed.
+- Preserve actionable requirements, conditions, exceptions and observable outcomes. Do not replace specific positions, proportions, motion targets or rejected layouts with slogans such as "preserve intent" or "make it distinctive." Keep decisive user words and selected reference artifacts in the task handoff; retain a concrete counterexample when needed to prevent misreading.
+- Make public examples independent of private paths, services, media and personal data. For external references, retain the primary source, concrete observation, application and limits without copying whole articles. Repair conflicting wording at its owner rather than appending another rule layer.
 
-## Make public guidance independent of this development chat
+## Verify and finish
 
-- Write for an Agent that receives only the published Skill folder and its user's task. Do not rely on this conversation, private reports, local screenshots, remembered decisions, or an unavailable companion Skill to explain a rule.
-- Keep essential requirements and explicit reading conditions in `skill/ui-done/SKILL.md`. Put detailed methods, decision boundaries, and worked examples in a focused reference when that detail is needed only for a particular kind of work. Link it at the decision point; do not merely add an optional file that the executor has no reason to open.
-- When repairing a demonstrated failure, explain the relevant situation, why the old approach fails, what to do instead, and what observable result distinguishes the repair. Use a concrete counterexample where a short principle is easy to misread. Preserve the limits of the evidence: one incident is not proof that every layout, library, or Agent fails.
-- Generalize private incidents into self-contained examples without private paths, services, media, or user data. For external design references, retain the primary source, the mechanism learned, its application, and its limits; do not substitute a slogan or a link for the actual guidance, or copy whole third-party articles.
-- Consolidate conflicting wording in the existing owners. More detail belongs where it resolves a real ambiguity, not in repeated checklists. Validate the changed decision scenarios and reference routes; do not infer cross-Agent reliability merely from valid Markdown.
-
-## Verify in proportion to the change
-
-- Markdown, reference, or prompt edits: check affected facts, links, wording, and decision scenarios. Run the Skill structure validator when Skill structure changes; do not run browser tests for instruction-only edits.
-- Frontend repairs: follow the scope-selection table in `skill/ui-done/references/visual-qa.md`. Test the changed user behavior and relevant known failure cases, adding representative consumers when a shared layer changes.
-- Script or tooling edits: run the focused check for the changed behavior. Build the affected delivery artifact when needed, then test that artifact rather than claiming source-only success.
-- Triggering or core workflow changes: preserve explicit, implicit, mid-task-discovery, authorized delegation, and vendor-neutral fallback behavior. Check representative decision scenarios before considering a larger evaluation.
-- Packaging, installation, or distribution changes: add the corresponding entry/install/resource check and any wider check justified by the actual delivery risk.
-- Stop when relevant evidence is sufficient. Expand or rerun only after a new change, failure, or unresolved concrete doubt; state what was checked and what was not.
+- Instruction/README edits: check affected facts, local links and changed decision scenarios; validate Skill structure only when it changes. Do not build or browser-test an application for instruction-only edits.
+- Frontend changes: use the scope-selection table in `skill/ui-done/references/visual-qa.md`. Script/tooling changes: check the affected behavior. Packaging/install changes: exercise the affected artifact, entry and resources, not merely the source.
+- Trigger/core-workflow changes: check the affected explicit, implicit, mid-task, delegated and vendor-neutral routes. These checks do not require a full benchmark by default.
+- Reuse passing evidence while relevant code/artifacts/conditions remain unchanged. Rerun or expand only for a new change, failure or unresolved concrete doubt. Distinguish instructions changed, behavior checked, user acceptance and entry actually updated; neither valid Markdown nor a passing build proves design quality or universal Agent compliance.

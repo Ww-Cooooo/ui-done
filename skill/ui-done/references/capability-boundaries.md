@@ -20,8 +20,8 @@ The official [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills)
 
 - Classify greenfield versus redesign, product surface, audience, brand freedom, language, density, motion, and exact distribution mode in one brief.
 - Inspect the affected behavior and preserve recoverability before mutation, using the scoped audit in `../SKILL.md`; a full baseline or separate checkpoint document is not required for every edit.
-- Inventory existing capability first, then fill every default enhancement category with one compatible owner instead of stopping as soon as the current stack can produce a basic result. Evaluate true 3D/WebGL separately through its strict suitability gate.
-- Start substantial work by finding a product-aligned role for every default category and explicitly testing whether 3D is genuinely suitable; do not use minimal dependency count or “native is enough” as the opening filter.
+- Form the whole-interface direction from the actual brief first, then inventory and fill every default enhancement category with one compatible owner instead of stopping at a basic result. Evaluate true 3D/WebGL separately through its strict suitability gate.
+- After the whole design direction, find a product-aligned role for every default category and explicitly testing whether 3D is genuinely suitable; do not use minimal dependency count or “native is enough” as the opening filter.
 - Capability coverage must not expand the information architecture merely to demonstrate a tool. Apply the meaningful-integration method in `page-composition.md`: a supporting accent needs a specific perceptible contribution, and invisible infrastructure needs a real benefit. A tiny footprint is not proof of fit. Redesign an invalid role without inventing data or silently waiving the required category. For 3D, a missing natural host fails the gate and means clean omission rather than a forced accent.
 - Treat enhancement as assimilation rather than placement: prefer changing how an expected existing product surface behaves over adding a separate surface that advertises a library.
 - Reuse lifecycle and fallback infrastructure without forcing repeated public UI. Labels and pause, reset, rotate, speed, or view controls remain opt-in product decisions, not defaults supplied by a shared wrapper.
@@ -35,13 +35,24 @@ The official [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills)
 
 These are the actual gaps. Do not turn this Skill into a replacement visual-design encyclopedia or a frozen package list.
 
+## Lessons from other public frontend Skills
+
+Primary entries reviewed on 2026-10-02–03. These are method comparisons, not rankings, installations, copied rule collections, or evidence that their executions outperform one another. The useful adaptations are included in UI Done's local owners so an executor needs neither these repositories nor the development conversation.
+
+| Primary source and reviewed revision | Method retained here | Boundary |
+|---|---|---|
+| [Anthropic frontend-design](https://github.com/anthropics/skills/blob/8a1541c4a3ffa5a20a5a91de0dcf3f0bab1d1ef4/skills/frontend-design/SKILL.md) | Derive visual identity from subject and audience; make typography, composition and a focal decision concrete, then critique the whole result. See `page-composition.md` | Creative direction is not a substitute for UI Done's required components, GSAP, data truth or design confirmation. Its accompanying license at this revision is Apache-2.0; no Skill text is copied here |
+| [Vercel React Best Practices](https://github.com/vercel-labs/agent-skills/blob/063bee94c3f4df8453406c830b0a7df0f2860278/skills/react-best-practices/SKILL.md) | Route by the actual problem, explain why a rule helps, and prioritize high-impact bottlenecks before micro-optimization. See `technology-scouting.md` | Framework-specific server/cache rules are conditional; performance rules do not establish visual quality. Only the entry was reviewed, not every rule or its behavior; copying-license scope was not verified |
+| [Vercel Web Design Guidelines](https://github.com/vercel-labs/agent-skills/blob/063bee94c3f4df8453406c830b0a7df0f2860278/skills/web-design-guidelines/SKILL.md) | Tie an actionable finding to an affected file/location rather than a general verdict. See `visual-qa.md` | An audit is not a creative process or a browser observation. UI Done keeps essential methods locally instead of requiring a remote rules file on every run |
+| [UI UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/09170eec67eefd46a7ae85de61b40c194020f997/.claude/skills/ui-ux-pro-max/SKILL.md) | Distinguish whole-system direction from a local question; search by semantic intent and use bounded follow-ups for missing evidence. See `technology-scouting.md` | Database matches and aesthetic dials are suggestions, not accepted designs. The reviewed repository license is MIT; no database, scripts or Skill prose are copied, and no external CLI is required |
+
 ## Fallback when a companion Skill is missing
 
 | Missing capability | Compact fallback |
 |---|---|
-| Creative direction | Name the subject, audience, single page/screen job, three visual adjectives, one deliberate signature, and a small token system; critique it once for generic choices before building. |
+| Creative direction | Develop a concrete composition from the subject, audience, actual content and main action: type/scale/placement, density, surfaces/contrast, and a representative transition. Render the opening and action state; critique whether the whole direction meets the brief. Adjectives and a signature effect alone are insufficient. |
 | Feedback clarification | Follow the complete bundled `feedback-clarification.md` method. Use ordinary conversation if the host has no question UI; retain answers once and resume UI Done's design workflow. |
-| UI/UX database | Apply semantic HTML, visible focus, 4.5:1 normal-text contrast, 44px touch targets, clear loading/empty/error states, mobile-first layout, and chart text/table alternatives. |
+| UI/UX database | Apply semantic HTML, visible focus, 4.5:1 normal-text contrast, 44px touch targets, clear loading/empty/error states, layout for the declared devices (desktop by default), and chart text/table alternatives. |
 | Theme tooling | Derive semantic colors and typography from existing brand assets; present at most two directions only when the choice is genuinely unresolved. |
 | Artifact builder | Use React and the full compatible enhancement stack; for non-React inputs define a clean migration boundary, while direct-open artifacts must bundle every selected layer locally. |
 | Browser testing Skill | Use available browser automation directly: start or open the app, wait for rendered state, capture screenshots and console/network errors, interact by accessible role, and close the browser. |

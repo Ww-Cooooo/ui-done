@@ -9,17 +9,24 @@ For substantial frontend work, motion, scroll enhancement, and 2D Canvas are thr
 | Hover, press, focus, simple reveal | CSS for isolated states, coordinated by the selected motion system when sequencing matters | Do not split ownership of the same property between CSS and the motion library |
 | Component state, presence, layout continuity | GSAP plus `@gsap/react` | Default primary owner for every new page and material redesign; scope it to the React host and clean it up on unmount/remount |
 | Scroll storytelling | GSAP ScrollTrigger | Limit pinning and scrubbing to the narrative regions that need it; it owns choreography, not scroll mechanics |
-| Smooth scrolling | Lenis through `lenis/react` | Default to it on computer, tablet, and phone when the tested path works; preserve reduced motion, nested controls, anchors, focus navigation, and precise regions |
+| Smooth scrolling | Lenis through `lenis/react` | Default to it on the declared targets (desktop unless otherwise required) when the tested path works; preserve reduced motion, nested controls, anchors, focus navigation, and precise regions |
 | Conditional signature 3D scene | Three.js through React Three Fiber, only after the suitability gate passes | Use R3F as the React scene boundary, keep it in one bounded product-aligned region, and provide a static/DOM fallback; otherwise do not mount or request WebGL |
 | Separate 2D Canvas role | Pts for creative/programmed drawing or Fabric.js for editable objects | This is independent from the R3F scene; use DOM controls and labels for essential interaction |
 
-Research current APIs, maintenance, license, and bundle behavior before choosing the owners. GSAP with `@gsap/react` is the starting and default primary motion selection; Lenis is the starting scroll-mechanics selection; Three.js/R3F is the starting 3D selection only after the suitability gate passes. Recheck selected packages at adoption time. For substantial work, missing motion, scroll, or separate 2D Canvas coverage requires an observed hard constraint, not merely “native is simpler.” A failed 3D suitability gate is a valid conditional decision and does not require a hard exemption.
+Research current APIs, maintenance, license, and bundle behavior before choosing the owners. GSAP with `@gsap/react` is the starting and default primary motion selection; Lenis is the starting scroll-mechanics selection; Three.js/R3F is the starting 3D selection only after the suitability gate passes. Recheck selected packages at adoption time. Missing default coverage requires a permitted observed hard constraint, not merely “native is simpler”; scrolling additionally has the no-path condition below. A failed 3D suitability gate is a valid conditional decision and does not require a hard exemption.
 
 For every new page or material redesign, inspect the official GSAP React guidance and at least one relevant live Demo Hub or Showcase example. Give GSAP a concrete job attached to existing content or state and record its host, behavior, page-specific adaptation, selected plugins, reduced-motion/static completion, and current Standard License fit. A package import, homepage mention, or shared generic reveal is not adoption.
 
-When Anime.js is inspected in the required five-source pass, use it as idea-only evidence or a conditional alternative. Adopt it as the primary motion or timeline owner only when GSAP has the recorded hard rejection from `SKILL.md`, or when Anime.js already owns the product and migration is outside the authorized scope. It may sit beside GSAP only for a clearly separate, non-overlapping role with a material advantage and an authorized dependency. Never layer it over GSAP, CSS, or another system controlling the same property, timeline, or scroll region.
+When Anime.js is inspected in the required five-source pass, use it as idea-only evidence or a conditional alternative. Adopt it as the primary motion or timeline owner only through the exact GSAP hard-rejection gate below. Existing Anime.js ownership alone is insufficient: migration must be outside scope and no smaller non-overlapping GSAP job can avoid duplication. It may sit beside GSAP only for a clearly separate, non-overlapping role with a material advantage and an authorized dependency. Never layer it over GSAP, CSS, or another system controlling the same property, timeline, or scroll region.
 
-Use Lenis as the only smooth-scroll mechanics owner. Its official React component/hook should wrap the intended root or bounded container; GSAP ScrollTrigger may consume scroll progress for choreography without becoming a second mechanics engine. Bridge update and refresh behavior deliberately and never add ScrollSmoother beside Lenis. Keep Lenis active across the default device matrix when it passes, and prefer excluding one incompatible nested region or scaling behavior before disabling it globally.
+Use Lenis as the only smooth-scroll mechanics owner. Its official React component/hook should wrap the intended root or bounded container; GSAP ScrollTrigger may consume scroll progress for choreography without becoming a second mechanics engine. Bridge update and refresh behavior deliberately and never add ScrollSmoother beside Lenis. Keep Lenis active across the declared device targets when it passes, and prefer excluding one incompatible nested region or scaling behavior before disabling it globally.
+
+## Lenis path gate
+
+Inspect document scrolling and real nested paths, including long content, opened overlays, keyboard/focus navigation, desktop resizing and zoom on the declared targets. A screen fitting at one wide viewport does not prove absence of scrolling. Do not hide overflow, truncate real content, or manufacture a long page to influence this decision.
+
+- **A real path exists:** default to Lenis through `lenis/react`. Scope it to that path, preserve precision-critical regions, and exclude an incompatible nested control before abandoning it globally. Native-only behavior needs the observed hard-failure evidence in `selection-scorecard.md`.
+- **No real path exists in the agreed surface/states:** record `Lenis not adopted: no real scroll path`, naming the inspected surfaces and conditions. Do not install or mount an idle smoother. This is a narrow applicability result, not a technical failure or an exemption for the other required layers. Revisit when content, layout or a new state introduces scrolling.
 
 ## GSAP default-adoption gate
 
@@ -92,6 +99,54 @@ Treat three different effects separately:
 
 Try the sequence at normal interaction speed, including an early reversal or a second selection while movement is in progress. Judge whether the eye can follow the subject, the new state feels intentional, and the controls remain responsive; also inspect the settled composition. A static screenshot, a package import, a high frame rate, or a handful of fades cannot alone demonstrate that result. Keep good quiet feedback, but do not use “this is a work tool” to excuse an unconsidered visual identity. Fix the relationship rather than making disconnected effects larger. Use the existing reduced-motion and ownership rules for the alternate path.
 
+## Buttons and control feedback
+
+Use this method when designing or changing buttons, tabs, toggles, menus, and their outcomes. Work from the actual action and the page's visual language; do not give every control the same bounce, shine, magnetic pull, or looping border. A high-frequency transport or editing control needs immediate, stable feedback; a rare expressive call to action can afford more character. Calm does not mean an unstyled default, and expressive does not mean hard to hit.
+
+### Compose one response from input to outcome
+
+For the affected control, inspect the states it really exposes. Do not add network requests, progress, or a success state to an action that has none.
+
+| State | Design and implementation decision | Failure to avoid |
+|---|---|---|
+| Rest | Establish hierarchy through readable label/icon, proportion, surface, edge and contrast; reserve enough room for real state labels | Every button becomes a primary CTA, or a spinner makes neighboring controls jump |
+| Hover | Use a bounded change in surface, edge, light or a decorative inner layer on hover-capable inputs | Changing font weight/geometry, moving the hit target away, or hiding meaning until hover |
+| Press and release | Give immediate tactile response; let release settle deliberately. Use small face/shadow travel or restrained scale when it suits the design | Waiting for a release animation before acting, shrinking text illegibly, or triggering the business action from both pointer-up and click |
+| Keyboard focus | Keep a clear, unclipped focus indicator and the primitive's keyboard activation. Provide equivalent state information without pointer motion | Replacing `:focus-visible` with hover, or removing the outline because a mouse click showed it |
+| Pending | Reflect a real operation, preserve layout and accessible meaning, and use the existing pending/disabled policy to prevent duplicate submissions | A timer masquerades as progress; animation determines whether data was saved |
+| Success, failure, cancellation | Connect a truthful result to the triggering control/object. Keep error text, input and retry available; restore an understandable rest state | A decorative checkmark claims success on rejection, or failure immediately disappears into a generic toast |
+| Re-entry and interruption | Retarget from the current visual state; exit/blur/pointer-cancel releases visual press. Handle repeated hover, a new selection, early close and unmount | Queued tweens finish obsolete states, a late response changes a different record, or pressed styling stays stuck |
+
+Keep the main action on the primary system's semantic button/link and existing handler. Use its loading, disabled, focus and form semantics; customize tokens and supported semantic slots before replacing its markup. For Ant Design, inspect the current [Button API](https://ant.design/components/button): visual `type` and native `htmlType` have different jobs. Disable its wave only for a control whose feedback is intentionally owned elsewhere; do not erase useful system feedback globally.
+
+Keep the interactive box stable. A layered face, shadow or decorative wrapper may move without moving the target; decorative layers must not intercept events, enter the accessibility tree, cover adjacent actions, or clip the focus ring. A depth illusion made with DOM/CSS is not true 3D/WebGL and does not justify a WebGL runtime. Test the actual long/localized labels rather than hard-coding a width around “Send”.
+
+### Implement with the established owner
+
+- React/application state owns intent and truthful outcomes. GSAP owns the coordinated visual response, not the save/request result. A completion callback may settle decoration; it must not manufacture success. Preserve existing cancellation and persistence semantics, and ignore obsolete asynchronous completions when the target or request changes.
+- Keep isolated CSS hover/focus colors when they do not compete. For coordinated press, label/icon change, pending and completion, use one scoped GSAP timeline or explicitly retargeted tweens. A CSS `transform` transition and GSAP must not both control that same transform; separate layers or choose one owner.
+- Reverse a reversible timeline or retarget from current values rather than restarting from a hard-coded rest pose. For competing tweens, choose cancellation or a deliberate GSAP overwrite mode for the owned targets/properties; do not globally kill unrelated animation. Use `quickTo()` only for a justified high-frequency pointer response, and remove its listener/tween on cleanup.
+- Keep native activation immediate. Short feedback can still be perceptible through contrast and coordinated targets; frequent interactions should not wait through a ceremonial entrance. Timing, travel and easing must be judged at actual size and normal speed, not chosen from a universal millisecond or spring preset.
+- Expansion should originate from the real trigger/attachment where that improves continuity. A moving selection indicator and its text contrast should agree throughout the transition. Do not smooth authoritative time, coordinates or numeric readouts just to imitate a decorative demo.
+- With reduced motion, remove spatial pull, bounce, repeated shimmer and large travel while retaining focus, pressed/selected state, pending status and truthful completion. A live preference change or unmount must not clear the user's work or leave the label hidden. Apply the existing React lifecycle rules below.
+
+**Counterexample.** A “Save” button lifts on hover, attracts the cursor, bounces on press, runs a CSS wave and then shows a timed checkmark even if the request failed. It has more effects but less usable feedback. A better response keeps the target fixed, acknowledges press promptly, shows actual pending state and confirms only the real result in context. This does not prescribe a flat style: an expressive face/edge/shadow treatment can retain all those behaviors.
+
+### Primary-source lessons and limits
+
+Reviewed 2026-10-02–03; these are original method summaries, not redistributed component code or claims of full live testing. Read the relevant row for the problem at hand, not all links for each small repair.
+
+| Primary source | Concrete observation from the article/docs/source | Transfer and boundary |
+|---|---|---|
+| [Emil Kowalski: Good vs Great](https://emilkowal.ski/ui/good-vs-great-animations) and [Great Animations](https://emilkowal.ski/ui/great-animations) | Popovers follow their trigger origin; tab text and highlight remain coordinated; frequent interactions and interruptible transitions need different treatment from a showcase entrance | Match easing and intensity to the action; allow reversal. The articles' examples and suggested durations are not universal constants or evidence that every spring suits accurate data |
+| [Josh W. Comeau: Building a Magical 3D Button](https://www.joshwcomeau.com/animation/3d-button/) | A stationary edge with a moving face and shadow creates depth; the final example presses much faster than it releases and retains visible keyboard focus | Study the relative layer movement for a suitable prominent action, not every dense toolbar control. Author an original treatment; this review did not establish a code-redistribution grant or complete cancellation/reduced-motion coverage |
+| [Rauno: Web Interface Guidelines](https://interfaces.rauno.me/) | Stable hover typography, subtle press response and local feedback such as copy-to-checkmark keep the response close to the action | Preserve semantic controls and meaningful pending/disabled states. Optimistic results need the product's real rollback policy; a checklist alone is not visual-design evidence |
+| [GSAP magnetic-button / overwrite example](https://demos.gsap.com/demo/magnetic-button-overwrite-modes/) and [conflict guidance](https://gsap.com/resources/conflict) | The official entry identifies a magnetic-button example about competing animations | Use it to investigate hover-in/out ownership, not to mandate magnetic buttons. The embedded source was not retrieved in this review; inspect it before attributing exact parameters or observed behavior |
+| [Aceternity Stateful Button](https://ui.aceternity.com/components/stateful-button) | The public demo caller returns a Promise resolved after four seconds; it explicitly labels this a dummy API call | Study local pending/result feedback, but connect production feedback to the real operation. Caller source is not complete component/error-path review; preview/code access grants no blanket redistribution permission |
+| [Anime.js spring API](https://animejs.com/documentation/easings/spring/) | Perceived completion and physical settling differ; bounce/duration and physical parameters describe different tuning routes | Tune what the user perceives, but do not equate spring completion with operation success or cancellation. Keep this idea-only when GSAP owns the response |
+
+For a source element, use the existing Preview/Code, dependency and license procedure in `open-source-ui-sources.md`. A demo that omits failure, keyboard or reduced-motion handling is useful technique evidence, not a production-ready replacement for the primary UI system. `visual-qa.md` owns the affected-state checks.
+
 ## Assign ownership
 
 - Give one system ownership of each animated property and scroll container.
@@ -122,14 +177,14 @@ Implement and test applicable items:
 - Animate `transform` and `opacity` for ordinary UI; avoid layout-triggering properties in continuous motion.
 - Budget main-thread, GPU, memory, texture dimensions, draw calls, and bundle size for mobile/low-power hardware.
 
-## Computer, tablet, and phone policy
+## Declared-device policy
 
-Use these checks for new or materially changed effects and their affected device paths. For a scoped repair, select the relevant cases through `visual-qa.md`; an unchanged layer does not require a fresh full lifecycle run.
+Use these checks for new or materially changed effects on the declared targets: desktop by default; tablet/phone only if requested or required by an existing explicit product contract. Do not add device work to a desktop-only design. For a scoped repair, select the relevant cases through `visual-qa.md`; an unchanged layer does not require a fresh full lifecycle run.
 
-- Exercise Lenis on all three default device classes. On touch devices, keep upstream-safe touch behavior unless a stronger synchronization mode has passed the supported iOS/Android checks; a desktop success is not evidence for phone. Verify anchor links, keyboard focus, route restoration, nested Ant Design overlays/tables, text selection, overscroll, and reduced motion.
-- Exercise GSAP timelines and ScrollTriggers across desktop, tablet, phone, responsive changes, navigation, unmount/remount, and live reduced-motion changes. Confirm no duplicate timeline, trigger, listener, or animation frame survives, and confirm a Lenis page does not also load ScrollSmoother.
-- When 3D was adopted, exercise R3F/Three.js on phone and tablet. Reduce device-pixel ratio, model/texture size, lights, post-processing, draw calls, update frequency, and interaction density to meet the budget; lazy-load the scene and pause hidden/offscreen work. Do not confuse a suitability-gate rejection with a device-performance fallback.
-- Exercise the separate 2D Canvas role on phone and tablet. Reduce pixel ratio, particle/object count, redraw frequency, and interaction density before omitting it; verify resize, teardown, and a static/DOM fallback independently from the 3D scene.
+- Exercise Lenis on the declared device classes. When touch devices are in scope, keep upstream-safe touch behavior unless a stronger synchronization mode has passed the supported iOS/Android checks; a desktop success is not evidence for phone. Verify anchor links, keyboard focus, route restoration, nested Ant Design overlays/tables, text selection, overscroll, and reduced motion.
+- Exercise GSAP timelines and ScrollTriggers across the declared targets, desktop resizing, relevant breakpoints, navigation, unmount/remount, and live reduced-motion changes. Confirm no duplicate timeline, trigger, listener, or animation frame survives, and confirm a Lenis page does not also load ScrollSmoother.
+- When 3D was adopted, exercise R3F/Three.js on supported targets, including phone/tablet only when declared. Reduce device-pixel ratio, model/texture size, lights, post-processing, draw calls, update frequency, and interaction density to meet the budget; lazy-load the scene and pause hidden/offscreen work. Do not confuse a suitability-gate rejection with a device-performance fallback.
+- Exercise the separate 2D Canvas role on the declared targets. Reduce pixel ratio, particle/object count, redraw frequency, and interaction density before omitting it; verify resize, teardown, and a static/DOM fallback independently from the 3D scene.
 - Fall back only after a reproducible compatibility, accessibility, performance, delivery, or runtime failure. Record the failing device/path and retain a coherent static/DOM result rather than silently shipping an empty region.
 
 ## Reduced motion and input safety
@@ -158,7 +213,7 @@ For WebGL, cover both initialization failure and runtime `webglcontextlost`. A f
 Reuse the effect's selection and host/meaning/control record rather than writing another copy. Apply the following checks within the scope selected in `visual-qa.md`; the main Skill handoff owns the final summary.
 
 - Test normal and reduced-motion modes.
-- Test mouse, keyboard, touch where relevant, and at least one low/mobile viewport.
+- Test mouse/keyboard, resizing and relevant touch paths on the declared targets; do not add a mobile viewport to a desktop-only task.
 - Confirm no competing scroll regions, clipped pinned content, focus jumps, or input-blocking timelines.
 - Exercise initialization/resource/context failure for advanced visuals.
 - For adopted 3D, capture several animation phases, inspect the complete motion cycle, and verify the geometry-integrity rules rather than judging one flattering frame.
