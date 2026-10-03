@@ -2,7 +2,7 @@
 interface:
   display_name: "UI Done"
   short_description: "持续负责 React 前端调研、设计、代码改动与真实浏览器验收"
-  default_prompt: "Use $ui-done and its applicable local references throughout the requested frontend work. For a new page or substantial redesign, present distinct styled drafts and confirm the design before application implementation; keep local repairs scoped. Research and meaningfully integrate the required stack, then verify and hand off honestly."
+  default_prompt: "Use $ui-done and its applicable local references throughout the requested frontend work. Present and confirm distinct styled directions before implementing a new page, substantial redesign, or experience-level motion upgrade; for motion-only work, compare the affected sequence rather than redesign unrelated screens. Keep specified local repairs scoped without reducing a broader experience request to micro-feedback. Research and meaningfully integrate the required stack, then verify the actual design outcome and hand off honestly."
 
 policy:
   allow_implicit_invocation: true

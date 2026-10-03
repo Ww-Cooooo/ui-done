@@ -8,7 +8,7 @@ Visual acceptance verifies real user behavior and visible results. Select the ch
 |---|---|
 | Instructions, README, or non-rendered text | Check affected facts, links, and decision scenarios. No unrelated browser run. |
 | Visible copy, colors, or local layout | Inspect the affected rendered state and size, including task areas that share its space; cover other consumers when shared tokens or components changed. |
-| Motion, scrolling, or state | Exercise the actual action, meaningful visible motion phases, relevant preference/lifecycle changes, and the corresponding known regression. Preserve user state during live preference changes. |
+| Motion, scrolling, or state | Exercise the actual action, meaningful visible motion phases, relevant preference/lifecycle changes, and the corresponding known regression. Preserve user state during live preference changes. For experience-level upgrades, also apply the motion outcome check below; execution alone does not complete the design goal. |
 | A new page or material redesign | Check representative desktop sizes, opening and ordinary action states, the main sequence, relevant fallbacks, and affected distinctness. Add tablet/phone only if declared targets. |
 | Dependencies, bundles, or delivery entry | Build the affected artifact once; exercise the real entry and check resources that must and must not load. Add offline or installation checks when that delivery contract applies. |
 
@@ -75,6 +75,17 @@ Within the selected scope, cover the affected entry and representative consumers
 - Normal motion, reduced motion, and advanced-visual fallback.
 
 Do not manufacture irrelevant states, but do not skip exposed states affected by the change.
+
+## Motion outcome, not only motion execution
+
+For experience-level motion upgrades and feedback such as “there is no animation,” inspect the actual entry and the affected normal action. Do not argue from dependencies against the user's reported experience, and do not assume an absent dependency without inspection.
+
+1. **Identify the delivered path.** Trace source, served bundle and entry; check whether the intended handler/timeline actually runs there. Inspect the live reduced-motion preference, visibility, loading and any fallback that could suppress it. Record the mode under which observations were made. Never turn off the user's accessibility preference to manufacture a successful normal-motion result; use an isolated test context if needed.
+2. **Inspect the ordinary sequence, not only probes.** Watch the affected sequence at normal viewport scale and playback speed, including its continuation or early reversal. Use the real interaction and representative content. A video-review sequence is not fully represented by an audio-only placeholder, nor a dense working state by an empty form. Existing suitable before/after evidence can support comparison; do not build a separate showcase or alter real records just to test it.
+3. **Make a design judgment.** Identify the principal relationship the viewer can follow and the concrete visible improvement against the brief. If only a tab underline, color flash or slight text nudge changed while the requested main transition remains absent, local behavior may pass but the experience-level result does not. Duration, distance, rAF samples and frame continuity diagnose mechanics; none sets a universal perceptibility or aesthetic threshold. A contact sheet or generated recording that was not actually watched cannot establish dynamic feel.
+4. **Act on the result.** Revise an inadequate sequence before extending the implementation. If tools cannot show the motion, identify that exact unverified goal and provide a candidate for the user to inspect; do not call the motion upgrade complete. If technical behavior is correct but the intended character is still ambiguous, use the clarification route for that difference rather than rerun save tests. A scoped defect fix may finish when its actual defect is resolved; it does not need a new aesthetic approval process.
+
+Keep technical adoption/execution, your observed design judgment and user acceptance distinct. Give the user the exact ordinary action that exposes the improvement, with a short normal-speed comparison or an accessible entry when available—not an instruction to discover tiny changes themselves. “Tests passed; subjective experience awaits acceptance” is honest only if it also states whether the requested design outcome was observed, remains unverified, or was not achieved. Do not let that disclaimer turn an unmet primary goal into a completed task. This check reuses the existing sequence and evidence; it requires no new motion dashboard, benchmark score or separate report.
 
 ## Check changed control feedback
 
