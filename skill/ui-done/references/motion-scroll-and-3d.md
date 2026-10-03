@@ -121,6 +121,19 @@ Treat three different effects separately:
 
 Try the sequence at normal interaction speed, including an early reversal or a second selection while movement is in progress. Judge whether the eye can follow the subject, the new state feels intentional, and the controls remain responsive; also inspect the settled composition. A static screenshot, a package import, a high frame rate, or a handful of fades cannot alone demonstrate that result. Keep good quiet feedback, but do not use “this is a work tool” to excuse an unconsidered visual identity. Fix the relationship rather than making disconnected effects larger. Use the existing reduced-motion and ownership rules for the alternate path.
 
+### Keep state boundaries continuous
+
+Inspect the handoff into and out of the timeline, not only its middle. A fast animation can still feel jerky if the click handler first changes the font size, resets a transform, seeks the media, or snaps an unfinished entrance to its endpoint. Diagnose that discontinuity separately from dropped frames. Immediate settlement may be appropriate for reduced motion or a required fallback; settle the intended current state without obsolete business callbacks, rather than using it as a shortcut for ordinary interruption.
+
+| Boundary | Implementation method | False fix |
+|---|---|---|
+| First visible change | Compare the settled pose immediately before input with the first visible pose afterward. Capture required geometry before a class/state change. Animate from the current pose; if a tilt is part of the choreography, travel into that tilt instead of setting it instantly | A smooth tween begins only after a visible size/position/rotation jump |
+| Early input or reversal | Retarget from the currently rendered state or reverse a compatible timeline, including while entrance motion is unfinished. Cancel obsolete callbacks without forcing the old animation to its endpoint or reverting the visible surface to its initial pose | Calling `progress(1)`, `finish()` or a visual reset just to make the next animation easier; completion may also run stale side effects |
+| Media and other expensive state | Keep UI opening/closing separate from playback, decoding and data work. If the product intentionally returns to a reference frame, seek only when the current media/time actually differs, using tolerance appropriate to its accuracy contract; handle media readiness and changed targets | Re-seeking the same frame on every expansion, hiding a real time difference with a coarse tolerance, or restarting unrelated work from a visual-state effect |
+| Settling | End masks, clipping layers, transforms and hit testing in the intended usable state, including after an interrupted path. Check combined pixel/percentage offsets and remove only obsolete properties; retain required final transforms and lifecycle cleanup | A successful click test or completed timeline leaves a visible curtain over content, or cleanup snaps the settled result back |
+
+For a fixed-content, same-aspect-ratio move/resize, prefer transform-based geometry or an appropriate Flip transition over repeated width/height changes. A display phrase that only changes visual prominence may keep its layout metrics and scale continuously; text that must genuinely reflow needs a layout-aware treatment instead. Preserve readable settled text, caret/focus behavior, clipping and pointer-to-content coordinate mapping. A real row expansion must allocate space and move its neighbors; bounded layout animation can be correct there. Do not flatten every transition into transforms or shrink the design to get fewer layout events. Measure only the affected cost with the [validity checks](visual-qa.md#valid-motion-performance-evidence).
+
 ## Buttons and control feedback
 
 Use this method for the local feedback layer when designing or changing buttons, tabs, toggles, menus, and their outcomes. For a broader interaction request, first choose the [experience-level sequence](#experience-level-motion-upgrades); this state table does not define the whole assignment. Work from the actual action and the page's visual language; do not give every control the same bounce, shine, magnetic pull, or looping border. A high-frequency transport or editing control needs immediate, stable feedback; a rare expressive call to action can afford more character. Calm does not mean an unstyled default, and expressive does not mean hard to hit.
@@ -196,7 +209,7 @@ Implement and test applicable items:
 - Dispose geometries, materials, textures, render targets, controls, workers, and renderer contexts as applicable.
 - Handle loading, decoding, shader/model/texture failure, unsupported APIs, initialization exceptions, and WebGL context loss.
 - Avoid per-frame React/state updates. Keep continuous values in the animation/render layer.
-- Animate `transform` and `opacity` for ordinary UI; avoid layout-triggering properties in continuous motion.
+- Animate `transform` and `opacity` for ordinary UI when they preserve the intended geometry and content behavior. For necessary reflow, choose bounded layout animation or an appropriate Flip transition and measure its cost; apply the [state-boundary method](#keep-state-boundaries-continuous) rather than treating zero layout events as the design goal.
 - Budget main-thread, GPU, memory, texture dimensions, draw calls, and bundle size for mobile/low-power hardware.
 
 ## Declared-device policy
