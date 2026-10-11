@@ -68,6 +68,10 @@ The eleven JPEG files under `assets/readme/` are browser screenshots of this rep
 
 The screenshots visually include output rendered by the open-source runtime packages and fonts listed above. Those components remain governed by their own licenses even when their rendered output appears inside a screenshot.
 
+## Skill teaching illustrations
+
+The two original PNGs under `skill/ui-done/assets/` use synthetic workshop-booking content to illustrate opening and populated editing states. They are not private-project screenshots, model-comparison results, or user-accepted designs. Their React / Ant Design rendering and Outfit / Fraunces font provenance are recorded in the accompanying [study notice](./skill/ui-done/assets/NOTICE.md). No third-party component source, font software, or external imagery was added to the Skill by this study. The existing runtime and font inventories above are unchanged.
+
 ## Project license scope
 
 Unless otherwise noted, the repository's project-authored Skill files, scripts, documentation, showcase source code, screenshots, and original interface artwork, including the 30 generated WebP assets described above, are licensed under the [MIT License](./LICENSE).
