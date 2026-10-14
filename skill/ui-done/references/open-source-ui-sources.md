@@ -88,7 +88,7 @@ If current license or provenance cannot be established, do not copy or install t
 
 ## GSAP: separate default-motion demo pass
 
-For every new page or material redesign, also inspect the official [React guide](https://gsap.com/resources/React/) and at least one relevant live example from the [GSAP Demo Hub](https://demos.gsap.com/) or [Showcase](https://gsap.com/showcase/). Record the exact example, observed behavior, existing host, product meaning, page-specific adaptation, selected plugins, reduced-motion/static completion, and whether code or only the idea was used. GSAP with `@gsap/react` is the default primary runtime owner; a homepage mention, package import, or universal reveal does not satisfy this pass.
+For a new page, material redesign, or experience-level motion upgrade, also inspect the official [React guide](https://gsap.com/resources/React/) and at least one relevant live example from the [GSAP Demo Hub](https://demos.gsap.com/) or [Showcase](https://gsap.com/showcase/). Record the exact example, observed behavior, existing host, product meaning, page-specific adaptation, selected plugins, reduced-motion/static completion, and whether code or only the idea was used. GSAP with `@gsap/react` is the default primary runtime owner; a homepage mention, package import, or universal reveal does not satisfy this pass.
 
 Use scoped `useGSAP()` lifecycle, `contextSafe()` for later handlers, and explicit cleanup. Let ScrollTrigger own scroll choreography while Lenis remains the only smooth-scroll mechanics owner; do not add ScrollSmoother beside Lenis. Each intentionally different page needs its own targets, trigger, timing relationship, direction, and completion state.
 
