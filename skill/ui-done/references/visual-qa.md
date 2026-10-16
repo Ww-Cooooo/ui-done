@@ -36,6 +36,8 @@ For the affected viewport and state, identify the changed area and the core task
 |---|---|---|
 | Increase waveform/timeline height | The actual video frame, readable transcript, playback controls, and note action still support reviewing the same segment | Waveform exceeds a height threshold while the portrait video becomes too small to read |
 | Open or widen an inspector | The selected object, comparison evidence, and primary action remain usable; closure restores a coherent view | Inspector text fits but covers the object the user must inspect |
+| Compact a repeated-record view | The routine number of meaningful summaries is readable in the actual working window, also during the relevant inspection state | Cards became shorter than the previous draft, but required readings are still below the fold |
+| Stabilize ordering or grouping | The affected status transition preserves the agreed grouping, ordering and tracking behavior, or the concrete conflict is resolved explicitly | Items stop jumping only because default grouping was silently removed |
 | Switch video to audio-only mode | Space serves listening, waveform/transcript reading, and notes rather than a large unused player placeholder | The video element disappears but its large decorative replacement still crowds the task |
 | Add scroll/reveal or selection motion | The user can track the affected relationship and retain position/input through completion and reduced motion | Animation code runs, but content overlaps, remains hidden, or the whole page restarts after an ordinary action |
 
@@ -53,9 +55,19 @@ Retain the scope and chronology of human feedback. A liked transition is not app
 
 For a material redesign or Skill trial, judge the original goal against the actual opening and ordinary action state: composition, type, proportions, content density, material/color finish, and main interaction as one experience. Removal of a rejected pattern is a floor, not the positive design objective. A beautiful asset, faithful local trait, synchronized data, or a passing save does not rescue an ordinary or inappropriate whole concept. If it remains weak, say which overall decision fails and revise that decision before expanding the candidate; do not keep the concept because its checklist passed.
 
+Do not promote a distinctness pass into a design-quality pass. Compare the selected reference and populated candidate to identify which concrete visual relationship improved or remains weak; use [visual character](page-composition.md#develop-visual-character-not-just-a-clean-wireframe), not the number of layouts or visited demos. For a bounded monitor/comparison, inspect the before and candidate with the **same content, window, selection and ordinary action**: count useful readable summaries, locate clipped identities/readings, then open relevant detail and return. This is evidence of capacity and continuity, not a beauty score. Judge the retained character separately and watch the sequence at normal speed for motion. A larger candidate window, shorter labels, fewer items or collapsed problem state cannot establish improvement under the old conditions; report any genuine changed requirement instead.
+
 An independent reviewer receives the actual brief, selected references/caveats and rejected artifacts, not only a parent's adaptation table or a request for three small issues. It may reject the entire direction even when local corrections work. Keep review proportional: this does not mandate another Agent, aesthetic score, full-product regression, or a new approval round. A static/local review reports that scope; it cannot certify dynamic feel or absence of overall design problems. The orchestrator checks the relevant rendered result personally. Agreement is additional judgment, not independent proof of user acceptance.
 
 For a visual-first proposal, inspect the [integrated key-page sample](layered-design-selection.md#build-one-integrated-key-page-sample) with representative content and the requested primary transition, using only authorized, clearly labeled simulation where needed. An isolated real-component sample is allowed before full design confirmation; do not build the full application or business plumbing merely to get the first design choice. Review design before investing in unrequested production plumbing. If the user already rejected the overall result, do not relabel a local pass as resolution; keep the new sample a candidate pending the relevant response.
+
+## Integrate a confirmed sample with current product behavior
+
+Use this when an approved visual/interaction sample is being connected to an existing application. The sample owns the selected appearance and choreography; it is not automatically the latest authority for data, grouping, persistence or error behavior. Read the affected current owners and retained contracts before transplanting code. Carry the defining relationship into those owners—for example, the selected identity travels, peers make room and the plot gains space—not just its colors and easing. Reuse the existing capability record and task note; no second handoff packet is required.
+
+Reconcile differences explicitly. For example, an illustrative sample might leave all missing measurements disconnected, while the current product distinguishes a gap using a labeled dashed connection between two trustworthy endpoints. Preserve that established meaning without inventing intermediate readings, extrapolating the tail or changing the measurement window merely to resemble the sample. Similarly, “no recent reading” cannot become “stopped” unless that is the actual state contract. These are conditional examples, not universal rules for charts or activity states. A genuine unresolved product decision needs clarification; an already established contract does not need approval again.
+
+Replace fixture inputs and simulated outcomes only when implementing the authorized product integration. Keep permitted fixtures clearly identified in the isolated preview and out of the normal data path. Compare the integrated opening and ordinary action with the chosen sample using representative current content; then exercise the changed behavior and its directly affected contracts. Do not rebuild unrelated business layers or rerun the whole product merely because a preview was integrated.
 
 ## Establish the test target
 
@@ -63,11 +75,11 @@ For a visual-first proposal, inspect the [integrated key-page sample](layered-de
 - Build first when production transforms assets, routes, CSS, or chunking differently.
 - Use `$webapp-testing` when available. Follow its server-helper and reconnaissance instructions; otherwise use available browser automation with equivalent evidence.
 - Preserve the user's state/diffs. Capture a pre-change baseline when needed to reproduce a defect or compare a redesign, not as a prerequisite for every correction.
-- If an isolated candidate, temporary port, alternate folder, or preview build was tested, identify it separately from the user's normal entry. Trace the normal entry to its served artifact/process when the task includes delivery or the user reports seeing no change. A newer source file or a passing temporary preview does not prove that a long-running service switched versions. Do not restart, replace, publish, or bypass a host restriction without the necessary authorization; report the unswitched entry and continue independent work.
+- If an isolated candidate, temporary port, alternate folder, or preview build was tested, identify it separately from the user's normal entry. Trace the normal entry to its served artifact/process when the task includes delivery or the user reports seeing no change. A newer source file or a passing temporary preview does not prove that a long-running service switched versions. Even the same bundle in a browser does not verify a desktop wrapper's input, focus or host-specific behavior. After an authorized switch, check that entry and the relevant integration differences; reuse unchanged browser evidence. If capture or input is unavailable, state what was actually observed and which actions remain unchecked, rather than claim a native pass or restart the whole validation effort. Do not restart, replace, publish, or bypass a host restriction without the necessary authorization; report an unswitched entry and continue independent work.
 
 ## Minimum viewport matrix
 
-For new pages and material layout redesigns, desktop is the default. Check a representative full desktop composition and a smaller supported desktop when its allocation changes materially. Add tablet/phone only when the user or an existing explicit product contract requires them. Suggested sizes below are examples, not three mandatory classes. Scoped repairs select affected sizes/states using the table above:
+For new pages and material layout redesigns, desktop is the default. Start with the actual intended window/content viewport, not the monitor resolution: a desktop utility used beside another application may normally be much smaller than the browser examples below. Check another supported desktop size when its allocation changes materially. Add tablet/phone only when the user or an existing explicit product contract requires them. Suggested sizes below are examples, not three mandatory classes. Scoped repairs select affected sizes/states using the table above:
 
 | Class | Suggested viewport | Purpose |
 |---|---:|---|
@@ -89,6 +101,16 @@ Within the selected scope, cover the affected entry and representative consumers
 - Normal motion, reduced motion, and advanced-visual fallback.
 
 Do not manufacture irrelevant states, but do not skip exposed states affected by the change.
+
+### Related data views must tell one coherent story
+
+For an affected comparison/focus interface, inspect the assembled view—not only the list and chart separately. Use the same representative set through selection, a relevant refresh and return:
+
+- Match each visible subject across its summary, label/legend and plotted marks. Check both stable identity and readable distinction; several records keeping the same indistinguishable color is stable but unusable. Inspect the actual palette on its actual background rather than infer success from an ID hash. Use the [comparison example](motion-scroll-and-3d.md#design-a-sequence-not-a-tween-quota) for the implementation choices.
+- Let long labels, missing readings and the product's longest ordinary status appear in the real allocation. Confirm required peers and actions remain reachable and that a background update does not unexpectedly reset selection, reorder the list or replay the entrance. Do not suppress legitimate updates or change grouping to pass this check.
+- Inspect overlapping state messages. An outer workspace and its embedded chart must not both display “no reliable reading” over the same region. Choose one visible owner for that business-empty message, while keeping renderer failures distinguishable and discoverable. Hiding a shared class that also contains errors is not a complete fix; check the applicable empty/error distinction after changing its owner. Preserve valid comparison information, axes or gap markers where useful, without inventing data to fill the region.
+
+These are checks of exposed relationships, not a requirement to manufacture every possible state combination. Stop after the affected distinctions and known failures are resolved.
 
 ## Motion outcome, not only motion execution
 

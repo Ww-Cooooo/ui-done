@@ -16,7 +16,7 @@ Start with the purpose and real content, increase fidelity as evidence improves,
 | Implement and expand | Can the agreed experience carry the authorized product scope? | Real React/UI owners and related screens, sharing proven primitives without imposing one visible template |
 | Inspect the actual entry | Did implementation preserve the chosen experience and capability roles? | Observed states/actions and focused corrections; separate user acceptance from technical checks |
 
-Layers let the user compare an unsettled aspect without losing the whole. Show credible alternatives, normally two or three where a real choice remains. Recommend one with a concrete reason; the user can combine qualities, reject all, or delegate. Do not manufacture alternatives for settled decisions or require a separate approval for every capability. A user's explicit request to choose skeletons first still governs that presentation, without freezing unseen details or postponing feasibility.
+Layers let the user compare an unsettled aspect without losing the whole. Show credible alternatives, normally two or three where a real choice remains. Recommend one with a concrete reason; the user can combine qualities, reject all, or delegate. Use the choice checkpoints below rather than compressing this whole progression into one implementation turn. Do not manufacture alternatives for settled decisions or require approval for every capability. A user's explicit request to choose skeletons first still governs that presentation, without freezing unseen details or postponing feasibility.
 
 Choose the next artifact by the question it must answer:
 
@@ -27,13 +27,27 @@ Choose the next artifact by the question it must answer:
 
 Low-cost refers to limiting unrelated scope, not lowering the quality of the property being judged. Structure and visual explorations can proceed together; a motion-led concept may start with movement, while a dense working tool usually starts with task/content relationships. Neither route changes the required stack or exemptions.
 
+## Choice checkpoints
+
+The default collaboration has a **working-direction choice**, refinement of the **important unresolved layers in one sample**, and an **integrated-design confirmation** before expansion. These are dependencies, not three compulsory meetings: reuse an applicable choice, combine compatible questions, or follow explicit autonomous/batch instructions. A user who asks to choose the skeleton first gets that choice before its dependent details are finalized. Do not infer autonomous delivery from a generic “start” or “redo.”
+
+For each current choice, show the actual options, your recommendation and why it fits, and one concrete question. End the turn for the answer. A commentary plan or an internal decision table is not that exchange; neither is an asynchronous question followed by implementation that assumes an unanswered choice. While waiting, research or fix independent defects only.
+
+**At the direction choice**, show inspected reference evidence and small, comparable studies of the proposed page: actual composition, representative type/content, a characteristic working cluster, and the ordinary action's spatial relationship. A motion-led direction also needs a bounded playable study. Identify what you would keep, adapt, and exclude from the references. The studies answer “which experience should we develop?”; they need not implement every control, data mode, resize case or adoption row. Do not spend the turn polishing two complete applications, then ask which direction the user wanted. A bare style name, unpopulated wireframe, default control demo, or list of source URLs is insufficient.
+
+**After a direction is chosen**, integrate its representative page and show the unresolved choices where they matter. For UI, compare coherent treatments using the primary system, not competing frameworks. For data, compare useful encodings of the same real question. For motion, play distinct choreographies on the same action. The Agent shortlists and recommends; the user is not asked “G2 or G6?” or required to browse catalogs. Related choices can share one sample and one question. Do not reopen settled preferences.
+
+**At integrated confirmation**, let the user judge the opening, ordinary action and main transition together. Identify any still-unseen capability or simulated behavior; “we will add GSAP later” cannot settle a motion-led direction. Then implement the agreed scope. Presentation code is allowed at all these checkpoints; the limit is the unresolved decision it depends on, not a ban on React or a file-count budget.
+
+For example, “appearance and layout both need changing” after rejected drafts establishes scope only. Next show concrete visual references or ask the distinction that determines the next study; do not infer that a light list and a dark card grid are wanted. Conversely, “I cannot describe it; make three different previews for me to compare” explicitly authorizes that batch. Produce it without another permission question, then wait for feedback before elaborating a winner. Neither phrase accepts the old look or the new result.
+
 ## Establish the task and real content
 
 Use the available brief, instructions, affected entry and representative content before asking for new answers. Name the desired outcome, primary information, main action/reading progression, target devices and preservation boundary. Keep this in the existing task context; no full product dossier, persona workshop or site-wide inventory is mandatory.
 
 Sketch the connection between places and actions when it is unclear: for example, find a record → inspect its evidence → make the authorized decision → return to the same context. The sketch need not settle whether detail appears inline, on a separate page or in another justified carrier. That choice depends on simultaneous information needs and the whole design, not a habitual Drawer.
 
-Real text length, row counts, units, media proportions and supported states influence composition. Bring representative material into exploration early; do not approve a generous empty layout and discover later that real labels, charts or media cannot fit. If the task is a visual Skill trial, known product behavior is a boundary, not an invitation to rebuild business functions before judging the UI.
+Real text length, row counts, units, media proportions and supported states influence composition. Bring representative material into exploration early; do not approve a generous empty layout and discover later that real labels, charts or media cannot fit. For a bounded working window or simultaneous comparison, use [reference-to-capacity adaptation](page-composition.md#fit-a-reference-to-the-tasks-real-capacity) while making the sample: the routine item count and actual window are design inputs, not just late resize tests. If the task is a visual Skill trial, known product behavior is a boundary, not an invitation to rebuild business functions before judging the UI.
 
 ## Explore structure and visual direction together
 
@@ -57,7 +71,7 @@ If the user likes qualities from several options, compose and show one consisten
 
 ## Build one integrated key-page sample
 
-Select a representative page and action that expose the main design uncertainty. For a work tool, it might be the actual comparison/inspection state; for an expressive page, the subject-led opening and its main navigation or reading transition. Do not automatically choose a decorative cover or implement login/settings first merely because they occur earlier in the route list.
+Use the chosen working direction, or the current explicit batch/autonomous mandate. Select a representative page and action that expose the main design uncertainty. For a work tool, it might be the actual comparison/inspection state; for an expressive page, the subject-led opening and its main navigation or reading transition. Do not automatically choose a decorative cover or implement login/settings first merely because they occur earlier in the route list.
 
 Combine the representative content, deliberate typography, primary-system controls, surfaces, meaningful data view and principal interaction in that sample. Show both the opening and an ordinary action state. When motion is part of the intended experience, include a playable sequence early. If a real chart determines how users read or act, it belongs in the sample before the structure is treated as settled. Apply the existing no-object/no-motion gates rather than manufacture content or effects.
 
@@ -65,7 +79,7 @@ An isolated sample may use real React, Ant Design, chart and GSAP components, sa
 
 Iterate on the same whole: inspect the content at its real scale, play the action, compare with the chosen references and ask what changed. A table that crowds the main object or a transition that exposes a stock form view may require revising space, type and behavior together. This is a reason to revisit that relationship, not to rerun every decision or shrink the capability until it becomes invisible.
 
-Before expanding implementation, the sample should answer the current design question and expose the important ordinary state; the required owners must have credible roles/feasibility, and the user should confirm the integrated scope unless an applicable prior design or explicit delegated discretion already settles it. Do not claim design success from library coverage. Conversely, do not require every future state, route or backend feature to be completed to judge this sample. A promising direction is not final product acceptance.
+Before expanding implementation, the sample must answer the current design question and expose the important ordinary state. The contributions being judged—such as the primary control treatment, data view and main transition—must actually appear or play there. A plausible owner/job is enough for an early feasibility proposal, not evidence that the integrated sample delivered that contribution. Keep future or unobservable work explicitly pending; the user confirms only the experience shown unless an applicable prior design or explicit delegation settles more. Do not claim design success from library coverage or a generic “taste awaits approval” disclaimer. Conversely, do not finish every future state, route or backend feature to judge this sample. A promising direction is not final product acceptance.
 
 ## Refine tables and visualization in the sample
 
@@ -122,7 +136,7 @@ Use the narrow correction supported by those facts. Do not automatically blame t
 
 - **A specific repair:** use existing decisions and inspect the affected state/sequence. Do not generate whole-page options or browse the entire catalog for a color correction or easing defect.
 - **An already confirmed design:** show or identify the applicable artifact; develop only the unsettled layers. Do not make the user choose the same skeleton again.
-- **The user asks the Agent to decide or deliver without intermediate review:** develop and select coherent alternatives internally, implement the authorized scope, and show the integrated result. Preserve meaningful source adoption and observed-use requirements; label taste assumptions and do not claim user acceptance.
+- **The user asks the Agent to decide or deliver without intermediate review:** develop and select coherent alternatives internally, implement the authorized scope, and show the integrated result. Preserve meaningful source adoption and observed-use requirements; label taste assumptions and do not claim user acceptance. A request to start the normal workflow is not this waiver. A past request for several drafts authorizes that batch, not silent taste decisions after later overall rejection.
 - **The user requests one layer only:** compare that aspect in the existing page context. Preserve unaffected choices and owners; revisit only the relationships it actually changes. An experience-level motion upgrade is not merely a button repair.
 - **A layer remains rejected:** use `feedback-clarification.md`/available Clear Feedback with the actual comparison. Continue responsive rounds when the user asks for depth. Do not ask the same questions or restart settled choices; use observable comparisons when words cannot settle the remaining distinction.
 - **Waiting for a choice:** ask the current concrete question and end the turn. Continue independent preparation only where the missing answer cannot change it. Do not choose silently, build dependent full features, or wait in a polling loop.
