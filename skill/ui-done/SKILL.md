@@ -5,6 +5,17 @@ description: "Design, build, redesign, review, research, debug, or package front
 
 # UI Done
 
+## 门（机械执行，缺了就是没执行本技能）
+
+**First line** (on its own):
+
+`ui-done ｜ phase: direction|selection|build|verify ｜ user has chosen: <option or "none">`
+
+If that field says `none`, you may not enter `build` or `verify`: go back to the direction comparison first.
+
+Close with `ui-done ｜ verified on: <the actual entry/screen inspected>`.
+
+
 Turn the user's purpose into a deliberately designed, compelling React interface—not a generic shell with effects attached. Users need not name libraries, typography, motion, or layout techniques one by one. Actively develop composition, visual identity and the main interaction together, using the required capabilities as part of that design rather than attaching them afterward.
 
 Two obligations travel together: **deliver the intended whole experience** and **meaningfully use the required stack**. Library adoption, reference resemblance, a passing build, or removal of one disliked pattern cannot establish design success. Do not lower the design ambition to make a checklist easier, or waive the stack to make implementation easier.
