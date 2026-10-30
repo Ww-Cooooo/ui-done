@@ -20,6 +20,8 @@ Every phase ships something; none of them means "wait":
 
 If that field says `none`, you may not enter `build` or `verify`; this turn's deliverable is the direction comparison itself.
 
+A missing first line, a phase with nothing shipped, or a `verified on` line naming no real entry → the skill was not executed; redo the turn.
+
 Close with `ui-done ｜ verified on: <the actual entry/screen inspected>`.
 
 
