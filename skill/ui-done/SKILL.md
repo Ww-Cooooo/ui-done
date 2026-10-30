@@ -11,7 +11,14 @@ description: "Design, build, redesign, review, research, debug, or package front
 
 `ui-done ｜ phase: direction|selection|build|verify ｜ user has chosen: <option or "none">`
 
-If that field says `none`, you may not enter `build` or `verify`: go back to the direction comparison first.
+Every phase ships something; none of them means "wait":
+
+- `direction` → ship 2–3 directions side by side plus one recommendation, with real content.
+- `selection` → ship one integrated sample with the open alternatives visible inside it.
+- `build` → ship the agreed scope.
+- `verify` → ship the inspected entry plus what remains unverified.
+
+If that field says `none`, you may not enter `build` or `verify`; this turn's deliverable is the direction comparison itself.
 
 Close with `ui-done ｜ verified on: <the actual entry/screen inspected>`.
 
