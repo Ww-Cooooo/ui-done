@@ -63,6 +63,10 @@ Discovery-only galleries such as `background-effects` can reveal an idea, but th
 | Background effects | background-effects catalog | **Discovery only**. Resolve and verify the actual upstream before adoption. |
 | Non-React UI reference | Element Plus | **Unsupported** for this React-only Skill. Never adopt or port its internals. |
 
+## Motion vocabulary reference
+
+[Motion Prompt](https://showheyohtaki.github.io/motion-prompt/) ([repository](https://github.com/showheyohtaki/motion-prompt)) is a visual vocabulary and detailed demo-specification source, not a UI component system or runtime owner. The 2026-10-31 snapshot has 192 entries across motion, controls, landing-page interaction, camera and photography; only the relevant families belong in a given UI. Original data/code is MIT with preserved notices; third-party/X embeds are excluded. See [the local method and bounded lookup](motion-vocabulary.md) to retrieve selected entries, inspect the exact demo and adapt its mechanism. It does not add a sixth mandatory website, change the five-source pass, replace GSAP/Lenis/Ant Design, or authorize installing its upstream Skill.
+
 ## Curated catalog gaps
 
 The supplied sources currently provide no direct adoptable owner for the following concerns. Do not pretend another listed source covers them. Record `curated-catalog gap`, then keep a suitable existing React owner, research one external React package, or use the native/framework path when it is the honest smallest solution.

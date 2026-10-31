@@ -36,7 +36,7 @@ For the affected viewport and state, identify the changed area and the core task
 |---|---|---|
 | Increase waveform/timeline height | The actual video frame, readable transcript, playback controls, and note action still support reviewing the same segment | Waveform exceeds a height threshold while the portrait video becomes too small to read |
 | Open or widen an inspector | The selected object, comparison evidence, and primary action remain usable; closure restores a coherent view | Inspector text fits but covers the object the user must inspect |
-| Compact a repeated-record view | The routine number of meaningful summaries is readable in the actual working window, also during the relevant inspection state | Cards became shorter than the previous draft, but required readings are still below the fold |
+| Compact a repeated-record view | The routine number of meaningful summaries is readable in the actual working window, also during the relevant inspection state | DOM counts pass while required readings are offscreen; tiny type or review-page scaffolding makes the real comparison unusable |
 | Stabilize ordering or grouping | The affected status transition preserves the agreed grouping, ordering and tracking behavior, or the concrete conflict is resolved explicitly | Items stop jumping only because default grouping was silently removed |
 | Switch video to audio-only mode | Space serves listening, waveform/transcript reading, and notes rather than a large unused player placeholder | The video element disappears but its large decorative replacement still crowds the task |
 | Add scroll/reveal or selection motion | The user can track the affected relationship and retain position/input through completion and reduced motion | Animation code runs, but content overlaps, remains hidden, or the whole page restarts after an ordinary action |
@@ -123,6 +123,17 @@ For experience-level motion upgrades and feedback such as “there is no animati
 
 Keep technical adoption/execution, your observed design judgment and user acceptance distinct. Give the user the exact ordinary action that exposes the improvement, with a short normal-speed comparison or an accessible entry when available—not an instruction to discover tiny changes themselves. “Tests passed; subjective experience awaits acceptance” is honest only if it also states whether the requested design outcome was observed, remains unverified, or was not achieved. Do not let that disclaimer turn an unmet primary goal into a completed task. This check reuses the existing sequence and evidence; it requires no new motion dashboard, benchmark score or separate report.
 
+## Check a catalog adaptation
+
+When a selected effect comes from a named catalog such as Motion Prompt, extend the affected sequence check rather than starting a separate test suite:
+
+- Match the rendered mechanism to the chosen entry and approved adaptation: mask versus fade, real space allocation versus an overlay, or continuous shared identity versus disconnected images. Record the reference ID and deliberate departure in the existing reference/capability record.
+- Exercise the real trigger and owner. Loading/progress/success, validation, selection, navigation and countdown must derive from actual product state; a source loop's timer cannot stand in for those results. Clearly labeled prototype fixtures remain distinct from production evidence.
+- Watch ordinary speed and scale, then the relevant reversal/interruption and reduced-motion completion. Verify essential content, focus/hit targets, dismissal and neighboring layout remain usable. Use only boundaries implicated by the chosen effect.
+- Separate source-spec reading, ordered frame inspection, live-demo viewing and actual-product verification. An offline lookup passing proves retrieval; it does not establish motion feel or successful adaptation. Apply the existing demo-access exception if the live source cannot be watched.
+
+See [motion vocabulary](motion-vocabulary.md) for specific translation traps; stop after the affected risks are resolved.
+
 ## Check changed control feedback
 
 For a button/control motion change, exercise the [states it actually exposes](motion-scroll-and-3d.md#buttons-and-control-feedback) in its real toolbar, form or page context. This is a scoped interaction check, not a new whole-page benchmark:
@@ -167,12 +178,20 @@ Keep useful timings and conditions in the existing task evidence. No new perform
 - Also verify the five-source creative-pass record names the exact MotionSites direction/Prompt state, React Bits Preview/Code item, Uiverse Code item, Anime.js behavior/API, and Aceternity Preview/Code item, with an honest adopt/adapt/idea-only/reject result. Anime.js may be idea-only or rejected when GSAP owns motion; fail duplicate motion ownership, homepage-only records, missing Code views, implied use without adoption, or ignored license/dependency conflicts.
 - Reject leftover sample copy, fabricated demo data, generic demo controls, gallery framing, or attribution/license omissions. When example code or assets were copied, verify the recorded upstream, modifications, license obligations, and notice location.
 - On phone layouts, check whether decorative controls enter the reading order, cover meaningful imagery, or become more prominent than the content they supposedly support.
-- Enumerate visible text and inspect computed `font-size`, `line-height`, `font-family`, overflow, and truncation. Treat 11px as a floor reserved for short low-priority metadata; keep labels/card copy around 13px+, controls around 14px+, and continuous body copy around 15–16px+ unless the product has a justified accessible scale.
+- For new or changed typography/density, use the [rendered text check](#rendered-text-check); source declarations and a screenshot file alone do not establish readability.
 - Verify actual open-source font use with the [font-loading checks](font-and-asset-packaging.md#load-without-layout-surprises), using representative text, scripts, and weights from the affected page states. Treat normal-operation fallback to a browser/operating-system default, an unlicensed face, or tofu/missing glyphs as an acceptance failure.
 - Check headings and real long content at each viewport. Prefer wrapping/reflow over silent clipping.
 - Detect horizontal overflow by comparing document/element scroll widths with viewport/client widths.
 - Confirm sticky/fixed headers, rails, bottom navigation, cookie bars, and CTA bars do not cover the first or final content.
 - Ensure touch targets are approximately 44×44 CSS px or larger and visible focus is not clipped.
+
+### Rendered text check
+
+At the actual target size and normal zoom, read one representative primary title/identity, value with its unit, secondary metadata and ordinary control. Include a long real label and the selected/open state when those affect allocation. Inspect their computed `font-size`, `line-height`, `font-family`, clipping and wrapping, and look at the rendered text. Treat 11px as a floor reserved for short low-priority metadata; keep labels/card copy around 13px+, controls around 14px+, and continuous body copy around 15–16px+ unless the product has a justified accessible scale. A legible but inappropriate visual hierarchy still needs design judgment.
+
+For example, a comparison page with eight DOM rows can pass click/count tests while showing only one readable row after history opens. A 10px title and 8px model label are not excused by the viewport being small or the artifact being a draft. Reduce redundant chrome, change the summary/detail allocation or expose the actual capacity tradeoff; do not shrink the task into compliance. Inspect the title/metadata's computed sizes again after that affected change, rather than rerunning unrelated flows.
+
+For literal CSS/Tailwind sizes, the existing `python -X utf8 <skill-folder>/scripts/frontend_preflight.py <affected-style-file> --format json` can quickly locate small-text declarations. Use it as targeted triage when helpful, not another mandatory whole-project scan. Resolve each relevant warning against its actual role/computed rendering; `rem`, transforms and inherited styles still need the browser check. Passing this scan cannot certify layout, motion or aesthetic quality. Keep only decision-changing results in the normal handoff; no new report or approval meeting is required.
 
 ## Runtime checks
 

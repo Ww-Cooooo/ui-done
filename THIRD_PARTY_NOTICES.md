@@ -1,5 +1,9 @@
 # Third-party notices
 
+## Motion catalog and Motion Atlas (2026-11-01)
+
+`skill/ui-done/assets/motion-prompt/` contains the Motion Prompt catalog under its upstream MIT license, copyright 2026 Shohei Ohtaki. The accompanying NOTICE and THIRD-PARTY-NOTICES retain source and scope. The independent Motion Atlas source is under `examples/motion-atlas/`; its deployed files under `showcase/motion-atlas/` include the original demo renderers, normalized catalog data, local fonts and their own complete runtime notices. See [Motion Atlas notices](examples/motion-atlas/THIRD-PARTY-NOTICES.md). These third-party terms remain separate from the repository's MIT license for original code.
+
 This file records material in the repository that is not covered solely by the root MIT License, together with the provenance boundary of the local showcase screenshots. The inventory was last checked on 2026-09-08.
 
 ## Bundled showcase runtime

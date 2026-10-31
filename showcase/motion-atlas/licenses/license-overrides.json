@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "checked": "2026-11-01",
+  "packages": {
+    "gsap@3.15.0": {
+      "files": [
+        {
+          "path": "GSAP-Standard-No-Charge-License.txt",
+          "url": "https://gsap.com/community/standard-license/"
+        }
+      ],
+      "clarification": "Official GSAP Standard No Charge terms, checked against the current official text. Existing GSAP source copyright/license headers remain unchanged."
+    },
+    "@gsap/react@2.1.2": {
+      "files": [
+        {
+          "path": "GSAP-Standard-No-Charge-License.txt",
+          "url": "https://gsap.com/community/standard-license/"
+        }
+      ],
+      "clarification": "The exact package metadata declares the GSAP Standard license; this React integration is not MIT."
+    },
+    "@ant-design/icons-svg@4.6.0": {
+      "files": [
+        {
+          "path": "ant-design-icons-svg-4.6.0-MIT.txt",
+          "url": "https://raw.githubusercontent.com/ant-design/ant-design-icons/7f2516ac91226d2b41f93b35cb5197c8d94f7189/LICENSE"
+        }
+      ],
+      "clarification": "The root upstream license at the npm gitHead is included verbatim, including Copyright (c) 2018-present Ant UED."
+    },
+    "@antv/event-emitter@0.1.3": {
+      "files": [
+        {
+          "path": "standard-MIT-permission.txt",
+          "url": "https://spdx.org/licenses/MIT.html"
+        }
+      ],
+      "clarification": "Exact published package and pinned source declare MIT but contain no full license text/copyright notice. No copyright owner is inferred. This section provides separately identified standard MIT terms, not a recovered upstream notice.",
+      "upstream": [
+        "https://raw.githubusercontent.com/antvis/event-emitter/f46ff7712f332ef1c8b7601eb88b5784ad4edaa1/package.json",
+        "https://raw.githubusercontent.com/antvis/event-emitter/f46ff7712f332ef1c8b7601eb88b5784ad4edaa1/README.md"
+      ]
+    },
+    "@antv/util@2.0.17": {
+      "files": [
+        {
+          "path": "standard-ISC-permission.txt",
+          "url": "https://spdx.org/licenses/ISC.html"
+        }
+      ],
+      "clarification": "Exact npm 2.0.17 metadata declares ISC and no copyright/full text was supplied. All 114 package src files match commit 630aca6132f678f2f77db5125950054369c76742, whose package metadata also declares ISC (its source version field is stale). A later 2022 source changed to MIT; it is not used to relicense this version. Standard ISC terms are supplied separately, without inventing a copyright holder.",
+      "upstream": [
+        "https://registry.npmjs.org/@antv%2Futil/2.0.17",
+        "https://raw.githubusercontent.com/antvis/util/630aca6132f678f2f77db5125950054369c76742/packages/util/package.json"
+      ]
+    },
+    "@antv/g-lite@2.7.2": {
+      "files": [
+        {
+          "path": "standard-MIT-permission.txt",
+          "url": "https://spdx.org/licenses/MIT.html"
+        }
+      ],
+      "clarification": "The exact release-tag source and npm package declare MIT but contain no g-lite copyright/full text. The sibling g package has a notice, but that notice is not asserted as g-lite ownership. Standard MIT terms are supplied separately without an invented copyright holder.",
+      "upstream": [
+        "https://raw.githubusercontent.com/antvis/g/89b360c95bbc367f96b876ef9c27424e4c565084/packages/g-lite/package.json",
+        "https://raw.githubusercontent.com/antvis/g/89b360c95bbc367f96b876ef9c27424e4c565084/packages/g-lite/README.md"
+      ]
+    },
+    "toggle-selection@1.0.6": {
+      "files": [
+        {
+          "path": "standard-MIT-permission.txt",
+          "url": "https://spdx.org/licenses/MIT.html"
+        }
+      ],
+      "clarification": "Exact published package and pinned source declare MIT without full license/copyright text. Actual author/contributor metadata is retained, without asserting copyright ownership. The pinned README credits @shvaikalesh. Standard MIT terms are supplied separately.",
+      "upstream": [
+        "https://raw.githubusercontent.com/sudodoki/toggle-selection/466460c75ca40630d8de940490718247fce79a3e/package.json",
+        "https://raw.githubusercontent.com/sudodoki/toggle-selection/466460c75ca40630d8de940490718247fce79a3e/README.md"
+      ]
+    }
+  }
+}

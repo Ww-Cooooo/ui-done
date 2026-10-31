@@ -1,5 +1,7 @@
 ---
 name: ui-done
+metadata:
+  version: "2026.11.01"
 description: "Design, build, redesign, review, research, debug, or package frontend/UI work. Applies to websites, React apps, dashboards, working tools, portfolios, and offline boards, including frontend scope discovered mid-task or introduced by an authorized delegation. Compose the whole experience through visible choices and integrated samples using the required React design stack; keep governing the work through handoff."
 ---
 
@@ -77,7 +79,7 @@ For every new page or substantial redesign, start every row **as the whole-inter
 | Typography, icons, assets | Deliberately select/re-approve suitable, currently widely adopted open-source fonts for all intentional body/display/data/code/symbol roles. Inspect official specimens with representative text; verify coverage and license, and self-host when delivery contains assets. System/generic faces are failure fallbacks only. One icon family, Ant Design Icons first when Ant Design owns UI; approved/licensed imagery. |
 | Motion | GSAP plus `@gsap/react` as primary owner, with a page-specific, perceptible main sequence—not token fades or a universal entrance. Inspect official React guidance and a relevant official demo. Omission requires the exact [GSAP hard-rejection gate](references/motion-scroll-and-3d.md#gsap-default-adoption-gate). |
 | Smooth scrolling | Lenis through `lenis/react` for compatible existing scroll paths. GSAP ScrollTrigger may own choreography, not a second smoothing engine; no ScrollSmoother beside Lenis. Check document and nested paths; when none exists, use the [no-scroll-path decision](references/motion-scroll-and-3d.md#lenis-path-gate), not a manufactured long page or unused runtime. |
-| Separate 2D Canvas | A real owner and job, Pts for programmed/creative drawing or Fabric.js for editable objects when appropriate. A WebGL scene does not satisfy this row. |
+| Separate 2D Canvas | A real owner and job, Pts for programmed/creative drawing or Fabric.js for editable objects when appropriate. Neither a WebGL scene nor a chart library's internal Canvas renderer also satisfies this separate role. |
 | Data visualization | One AntV-first owner; ECharts when the recorded fit is stronger. Investigate authentic quantities, time, relationships, hierarchy, geography, or flows. Only proven absence of a real visualizable object with fabrication prohibited permits the narrow no-object exemption. |
 | Performance | Framework-native optimization and focused tooling for actual loading, rendering, scale, or delivery needs; state the measurable benefit rather than add overlapping optimizers. |
 | True 3D/WebGL evaluation | Evaluate the [four suitability gates](references/motion-scroll-and-3d.md#3d-suitability-gate) every substantial time. Adopt Three.js/R3F only when all pass; otherwise record the specific failure and do not request, initialize, or mount WebGL. A finished scene must have coherent modeling and no accidental intersections/clipping through the animation. |
@@ -126,6 +128,8 @@ Before consequential dependency or owner changes, explain the assigned role and 
 
 Use React/primary-system controls without letting their default container styles dictate the page. Keep ownership, meaningful integration, semantic access, and readable states intact. Read [React application guidance](references/react-application-stack.md) for product plumbing, [fonts/assets](references/font-and-asset-packaging.md) for typography/delivery, and [motion/scroll/Canvas/3D](references/motion-scroll-and-3d.md) before prototyping or implementing those layers. These methods apply to preview code too; they are not all an opening reading list.
 
+When naming, comparing or adapting a motion effect, use the [motion vocabulary](references/motion-vocabulary.md) and its bounded offline lookup. Preserve the selected mechanism and translate demo clocks into real UI state; the complete catalog is a reference, not an extra mandatory source pass or runtime owner.
+
 For button/control motion, read the [control-feedback method](references/motion-scroll-and-3d.md#buttons-and-control-feedback): compose hover, press, focus, pending and real outcomes as one response; preserve a stable hit target and handle interruption. A specified local button repair uses this scoped route, not new whole-page candidates or a full five-source pass. For an experience-level motion upgrade, control feedback supports the main sequence; it does not replace it.
 
 Confirm the representative key-page experience—opening, ordinary action state, and playable principal transition—before expanding full application or business-feature work. A skeleton choice does not approve unseen details. For an experience-level motion upgrade, compare the affected sequence in its existing visual context, not unrelated screens; an applicable confirmed sequence or local defect repair needs no new alternatives. Use the [scope shortcuts](references/layered-design-selection.md#scope-shortcuts-and-continuation) for existing designs and explicit autonomous delivery. A no-motion hard rejection uses stable states and coherent continuation instead.
@@ -173,6 +177,7 @@ Read only what the current decision needs, then keep that evidence valid until i
 | React controls or applicable theme/route/request/state/form ownership | [React application stack](references/react-application-stack.md) |
 | Font choice, imagery/provenance, portable/offline assets, packaging | [Fonts and assets](references/font-and-asset-packaging.md) |
 | Prototyping, implementing or reviewing motion, scroll, Canvas, or conditional WebGL | [Motion, scroll, and 3D](references/motion-scroll-and-3d.md) |
+| Naming, comparing or adapting a specific motion effect; Motion Prompt reference | [Motion vocabulary and adaptation](references/motion-vocabulary.md), then only the selected catalog entries |
 | Testing, design review, acceptance, actual-entry delivery | [Visual QA](references/visual-qa.md) |
 | Choosing an available companion or needing a fallback | [Capability boundaries](references/capability-boundaries.md) |
 

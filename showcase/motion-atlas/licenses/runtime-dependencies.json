@@ -1,0 +1,2926 @@
+{
+  "schemaVersion": 1,
+  "package": "ui-done-motion-atlas",
+  "scope": "installed runtime dependency closure, excluding Vite build tool",
+  "packages": [
+    {
+      "id": "@ant-design/colors@7.2.1",
+      "name": "@ant-design/colors",
+      "version": "7.2.1",
+      "declaredLicense": "MIT",
+      "repository": "git+https://github.com/ant-design/ant-design-colors.git",
+      "author": "afc163 <afc163@gmail.com>",
+      "provenance": [
+        {
+          "source": "npm:@ant-design/colors@7.2.1/LICENSE",
+          "sha256": "a00104af602c87cb0bce9742008e39800c8d1b64940b0e9dc124b60a3f7ab475"
+        }
+      ]
+    },
+    {
+      "id": "@ant-design/cssinjs-utils@1.1.3",
+      "name": "@ant-design/cssinjs-utils",
+      "version": "1.1.3",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/ant-design/cssinjs-util.git",
+      "author": "",
+      "provenance": [
+        {
+          "source": "npm:@ant-design/cssinjs-utils@1.1.3/LICENSE",
+          "sha256": "e3046d2356ce21fc0b3d1ecb6f93ce51b9e6e9835d73a12ef47405208361df66"
+        }
+      ]
+    },
+    {
+      "id": "@ant-design/cssinjs@1.24.0",
+      "name": "@ant-design/cssinjs",
+      "version": "1.24.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:ant-design/cssinjs.git",
+      "provenance": [
+        {
+          "source": "npm:@ant-design/cssinjs@1.24.0/LICENSE.md",
+          "sha256": "e3be4577f9f035670585db1fd5b0d881707556307ce11d8cc3df2ea19ca5a4ef"
+        }
+      ]
+    },
+    {
+      "id": "@ant-design/fast-color@2.0.6",
+      "name": "@ant-design/fast-color",
+      "version": "2.0.6",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/ant-design/fast-color.git",
+      "author": {
+        "name": "Guo Yunhe",
+        "email": "i@guoyunhe.me",
+        "url": "https://guoyunhe.me/"
+      },
+      "provenance": [
+        {
+          "source": "npm:@ant-design/fast-color@2.0.6/LICENSE",
+          "sha256": "e3046d2356ce21fc0b3d1ecb6f93ce51b9e6e9835d73a12ef47405208361df66"
+        }
+      ]
+    },
+    {
+      "id": "@ant-design/icons-svg@4.6.0",
+      "name": "@ant-design/icons-svg",
+      "version": "4.6.0",
+      "declaredLicense": "MIT",
+      "repository": "git+https://github.com/ant-design/ant-design-icons.git",
+      "contributors": [
+        "HeskeyBaozi <hezhiyu233@foxmail.com>"
+      ],
+      "clarification": "The root upstream license at the npm gitHead is included verbatim, including Copyright (c) 2018-present Ant UED.",
+      "provenance": [
+        {
+          "source": "https://raw.githubusercontent.com/ant-design/ant-design-icons/7f2516ac91226d2b41f93b35cb5197c8d94f7189/LICENSE",
+          "sha256": "a00104af602c87cb0bce9742008e39800c8d1b64940b0e9dc124b60a3f7ab475"
+        }
+      ]
+    },
+    {
+      "id": "@ant-design/icons@5.6.1",
+      "name": "@ant-design/icons",
+      "version": "5.6.1",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/ant-design/ant-design-icons/tree/master/packages/icons-react",
+      "contributors": [
+        "HeskeyBaozi<hezhiyu233@foxmail.com>",
+        "vagusX<vagusxl@gmail.com>"
+      ],
+      "provenance": [
+        {
+          "source": "npm:@ant-design/icons@5.6.1/LICENSE",
+          "sha256": "a00104af602c87cb0bce9742008e39800c8d1b64940b0e9dc124b60a3f7ab475"
+        }
+      ]
+    },
+    {
+      "id": "@ant-design/react-slick@1.1.2",
+      "name": "@ant-design/react-slick",
+      "version": "1.1.2",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/ant-design/react-slick",
+      "author": "Kiran Abburi",
+      "provenance": [
+        {
+          "source": "npm:@ant-design/react-slick@1.1.2/LICENSE",
+          "sha256": "8e7a0e17a14c91d325c22a8ade50da3aaa5a97e321beebbdce77d63fc719a1c2"
+        }
+      ]
+    },
+    {
+      "id": "@antv/component@2.1.12",
+      "name": "@antv/component",
+      "version": "2.1.12",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/antvis/component",
+      "author": {
+        "name": "AntV",
+        "url": "https://antv.vision/"
+      },
+      "provenance": [
+        {
+          "source": "npm:@antv/component@2.1.12/LICENSE",
+          "sha256": "98edde832138822906fb3f365b59a9a54b3abf6e85e52de0f5f1fd804ff83ab7"
+        }
+      ]
+    },
+    {
+      "id": "@antv/coord@0.4.7",
+      "name": "@antv/coord",
+      "version": "0.4.7",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/antvis/coord",
+      "author": {
+        "name": "AntV",
+        "url": "https://antv.vision/"
+      },
+      "provenance": [
+        {
+          "source": "npm:@antv/coord@0.4.7/LICENSE",
+          "sha256": "98edde832138822906fb3f365b59a9a54b3abf6e85e52de0f5f1fd804ff83ab7"
+        }
+      ]
+    },
+    {
+      "id": "@antv/event-emitter@0.1.3",
+      "name": "@antv/event-emitter",
+      "version": "0.1.3",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:antvis/event-emitter.git",
+      "clarification": "Exact published package and pinned source declare MIT but contain no full license text/copyright notice. No copyright owner is inferred. This section provides separately identified standard MIT terms, not a recovered upstream notice.",
+      "upstreamLicenseSources": [
+        "https://raw.githubusercontent.com/antvis/event-emitter/f46ff7712f332ef1c8b7601eb88b5784ad4edaa1/package.json",
+        "https://raw.githubusercontent.com/antvis/event-emitter/f46ff7712f332ef1c8b7601eb88b5784ad4edaa1/README.md"
+      ],
+      "provenance": [
+        {
+          "source": "https://spdx.org/licenses/MIT.html",
+          "sha256": "64249f57527b812922817280738ce1e8e877bd20cc932f169847f2fee2d0b31e"
+        }
+      ]
+    },
+    {
+      "id": "@antv/expr@1.0.2",
+      "name": "@antv/expr",
+      "version": "1.0.2",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/antvis/expr",
+      "provenance": [
+        {
+          "source": "npm:@antv/expr@1.0.2/LICENSE",
+          "sha256": "569ccd3187702094992adbf3b0461976ee8c92e8ed50404d08aef58b3da4c900"
+        }
+      ]
+    },
+    {
+      "id": "@antv/g-canvas@2.2.2",
+      "name": "@antv/g-canvas",
+      "version": "2.2.2",
+      "declaredLicense": "MIT",
+      "repository": "git+https://github.com/antvis/g.git",
+      "author": "https://github.com/orgs/antvis/people",
+      "provenance": [
+        {
+          "source": "npm:@antv/g-canvas@2.2.2/LICENSE",
+          "sha256": "7cd9f15ca43ba039aa3503d92cd1a453e4e78ff90abd15c0d471f34b08921d6f"
+        }
+      ]
+    },
+    {
+      "id": "@antv/g-lite@2.7.2",
+      "name": "@antv/g-lite",
+      "version": "2.7.2",
+      "declaredLicense": "MIT",
+      "repository": "git+https://github.com/antvis/g.git",
+      "author": "https://github.com/orgs/antvis/people",
+      "clarification": "The exact release-tag source and npm package declare MIT but contain no g-lite copyright/full text. The sibling g package has a notice, but that notice is not asserted as g-lite ownership. Standard MIT terms are supplied separately without an invented copyright holder.",
+      "upstreamLicenseSources": [
+        "https://raw.githubusercontent.com/antvis/g/89b360c95bbc367f96b876ef9c27424e4c565084/packages/g-lite/package.json",
+        "https://raw.githubusercontent.com/antvis/g/89b360c95bbc367f96b876ef9c27424e4c565084/packages/g-lite/README.md"
+      ],
+      "provenance": [
+        {
+          "source": "https://spdx.org/licenses/MIT.html",
+          "sha256": "64249f57527b812922817280738ce1e8e877bd20cc932f169847f2fee2d0b31e"
+        }
+      ]
+    },
+    {
+      "id": "@antv/g-math@3.1.0",
+      "name": "@antv/g-math",
+      "version": "3.1.0",
+      "declaredLicense": "MIT",
+      "repository": "git+https://github.com/antvis/g.git",
+      "author": "https://github.com/orgs/antvis/people",
+      "provenance": [
+        {
+          "source": "npm:@antv/g-math@3.1.0/LICENSE",
+          "sha256": "7cd9f15ca43ba039aa3503d92cd1a453e4e78ff90abd15c0d471f34b08921d6f"
+        }
+      ]
+    },
+    {
+      "id": "@antv/g-plugin-dragndrop@2.1.3",
+      "name": "@antv/g-plugin-dragndrop",
+      "version": "2.1.3",
+      "declaredLicense": "MIT",
+      "repository": "git+https://github.com/antvis/g.git",
+      "author": "https://github.com/orgs/antvis/people",
+      "provenance": [
+        {
+          "source": "npm:@antv/g-plugin-dragndrop@2.1.3/LICENSE",
+          "sha256": "7cd9f15ca43ba039aa3503d92cd1a453e4e78ff90abd15c0d471f34b08921d6f"
+        }
+      ]
+    },
+    {
+      "id": "@antv/g@6.3.3",
+      "name": "@antv/g",
+      "version": "6.3.3",
+      "declaredLicense": "MIT",
+      "repository": "git+https://github.com/antvis/g.git",
+      "author": "https://github.com/orgs/antvis/people",
+      "provenance": [
+        {
+          "source": "npm:@antv/g@6.3.3/LICENSE",
+          "sha256": "7cd9f15ca43ba039aa3503d92cd1a453e4e78ff90abd15c0d471f34b08921d6f"
+        }
+      ]
+    },
+    {
+      "id": "@antv/g2@5.4.8",
+      "name": "@antv/g2",
+      "version": "5.4.8",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/antvis/g2",
+      "author": {
+        "name": "AntV",
+        "url": "https://antv.antgroup.com/"
+      },
+      "provenance": [
+        {
+          "source": "npm:@antv/g2@5.4.8/LICENSE",
+          "sha256": "98edde832138822906fb3f365b59a9a54b3abf6e85e52de0f5f1fd804ff83ab7"
+        }
+      ]
+    },
+    {
+      "id": "@antv/scale@0.4.16",
+      "name": "@antv/scale",
+      "version": "0.4.16",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/antvis/scale",
+      "author": {
+        "name": "AntV",
+        "url": "https://antv.vision/"
+      },
+      "provenance": [
+        {
+          "source": "npm:@antv/scale@0.4.16/LICENSE",
+          "sha256": "98edde832138822906fb3f365b59a9a54b3abf6e85e52de0f5f1fd804ff83ab7"
+        }
+      ]
+    },
+    {
+      "id": "@antv/scale@0.5.2",
+      "name": "@antv/scale",
+      "version": "0.5.2",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/antvis/scale",
+      "author": {
+        "name": "AntV",
+        "url": "https://antv.vision/"
+      },
+      "provenance": [
+        {
+          "source": "npm:@antv/scale@0.5.2/LICENSE",
+          "sha256": "98edde832138822906fb3f365b59a9a54b3abf6e85e52de0f5f1fd804ff83ab7"
+        }
+      ]
+    },
+    {
+      "id": "@antv/util@2.0.17",
+      "name": "@antv/util",
+      "version": "2.0.17",
+      "declaredLicense": "ISC",
+      "repository": "git+https://github.com/antvis/util.git",
+      "author": "https://github.com/orgs/antvis/people",
+      "clarification": "Exact npm 2.0.17 metadata declares ISC and no copyright/full text was supplied. All 114 package src files match commit 630aca6132f678f2f77db5125950054369c76742, whose package metadata also declares ISC (its source version field is stale). A later 2022 source changed to MIT; it is not used to relicense this version. Standard ISC terms are supplied separately, without inventing a copyright holder.",
+      "upstreamLicenseSources": [
+        "https://registry.npmjs.org/@antv%2Futil/2.0.17",
+        "https://raw.githubusercontent.com/antvis/util/630aca6132f678f2f77db5125950054369c76742/packages/util/package.json"
+      ],
+      "provenance": [
+        {
+          "source": "https://spdx.org/licenses/ISC.html",
+          "sha256": "3d4b0f075adc569b084fa1b23d01eea207c720dd3ea03bfdd17727138b872c2f"
+        }
+      ]
+    },
+    {
+      "id": "@antv/util@3.3.11",
+      "name": "@antv/util",
+      "version": "3.3.11",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/antvis/util.git",
+      "provenance": [
+        {
+          "source": "npm:@antv/util@3.3.11/LICENSE",
+          "sha256": "98edde832138822906fb3f365b59a9a54b3abf6e85e52de0f5f1fd804ff83ab7"
+        }
+      ]
+    },
+    {
+      "id": "@antv/vendor@1.0.11",
+      "name": "@antv/vendor",
+      "version": "1.0.11",
+      "declaredLicense": "MIT AND ISC",
+      "repository": "https://github.com/antvis/vendor",
+      "provenance": [
+        {
+          "source": "npm:@antv/vendor@1.0.11/LICENSE",
+          "sha256": "600088fb37b459ecf38eb8fa4984a69efc31b324f6fc0c92891bacf5b707ea33"
+        }
+      ]
+    },
+    {
+      "id": "@babel/runtime@7.29.10",
+      "name": "@babel/runtime",
+      "version": "7.29.10",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/babel/babel.git",
+      "author": "The Babel Team (https://babel.dev/team)",
+      "provenance": [
+        {
+          "source": "npm:@babel/runtime@7.29.10/LICENSE",
+          "sha256": "8f08c824b2bb54eda2b6ee6053d2eeed46877b3b7b2ef3f60fc2b9fa580f54b2"
+        }
+      ]
+    },
+    {
+      "id": "@emotion/hash@0.8.0",
+      "name": "@emotion/hash",
+      "version": "0.8.0",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/emotion-js/emotion/tree/master/packages/hash",
+      "provenance": [
+        {
+          "source": "npm:@emotion/hash@0.8.0/LICENSE",
+          "sha256": "719058ae8dbdba06fafd4b21795bf624026bd34f61baf2b122fb35630d990280"
+        }
+      ]
+    },
+    {
+      "id": "@emotion/unitless@0.7.5",
+      "name": "@emotion/unitless",
+      "version": "0.7.5",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/emotion-js/emotion/tree/master/packages/unitless",
+      "provenance": [
+        {
+          "source": "npm:@emotion/unitless@0.7.5/LICENSE",
+          "sha256": "719058ae8dbdba06fafd4b21795bf624026bd34f61baf2b122fb35630d990280"
+        }
+      ]
+    },
+    {
+      "id": "@fontsource-variable/noto-sans-sc@5.3.1",
+      "name": "@fontsource-variable/noto-sans-sc",
+      "version": "5.3.1",
+      "declaredLicense": "OFL-1.1",
+      "repository": "git+https://github.com/fontsource/font-files.git",
+      "author": "Google Inc.",
+      "provenance": [
+        {
+          "source": "npm:@fontsource-variable/noto-sans-sc@5.3.1/LICENSE",
+          "sha256": "34a3c71092da00762d3ab1e065f58cf00e7f09f869c75f55e90e3e55eac33302"
+        }
+      ]
+    },
+    {
+      "id": "@gsap/react@2.1.2",
+      "name": "@gsap/react",
+      "version": "2.1.2",
+      "declaredLicense": "SEE LICENSE AT https://gsap.com/standard-license",
+      "repository": "git+https://github.com/greensock/react.git",
+      "author": "Jack Doyle (jack@greensock.com)",
+      "clarification": "The exact package metadata declares the GSAP Standard license; this React integration is not MIT.",
+      "provenance": [
+        {
+          "source": "https://gsap.com/community/standard-license/",
+          "sha256": "661fd6904f635bac4d4c6ed320d2d8f52146e7ca73393307890dd1222d691d41"
+        }
+      ]
+    },
+    {
+      "id": "@rc-component/async-validator@5.1.2",
+      "name": "@rc-component/async-validator",
+      "version": "5.1.2",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/async-validator.git",
+      "provenance": [
+        {
+          "source": "npm:@rc-component/async-validator@5.1.2/LICENSE.md",
+          "sha256": "509eabacb9ef4e7b928250ab700616becb11036759dd1e937c122fde602c4b1d"
+        }
+      ]
+    },
+    {
+      "id": "@rc-component/color-picker@2.0.1",
+      "name": "@rc-component/color-picker",
+      "version": "2.0.1",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/color-picker.git",
+      "provenance": [
+        {
+          "source": "npm:@rc-component/color-picker@2.0.1/LICENSE.md",
+          "sha256": "aa9ce8bad1af7244867385a0b9c3a3f13b3f9c1dba6bc29f275a66075203dc6f"
+        }
+      ]
+    },
+    {
+      "id": "@rc-component/context@1.4.0",
+      "name": "@rc-component/context",
+      "version": "1.4.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/context.git",
+      "author": "",
+      "provenance": [
+        {
+          "source": "npm:@rc-component/context@1.4.0/LICENSE.md",
+          "sha256": "509eabacb9ef4e7b928250ab700616becb11036759dd1e937c122fde602c4b1d"
+        }
+      ]
+    },
+    {
+      "id": "@rc-component/mini-decimal@1.1.4",
+      "name": "@rc-component/mini-decimal",
+      "version": "1.1.4",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/react-component/mini-decimal.git",
+      "author": "smith3816@gmail.com",
+      "provenance": [
+        {
+          "source": "npm:@rc-component/mini-decimal@1.1.4/LICENSE",
+          "sha256": "8781f0ca192057330d7fbab763f8bcd3c8e671032f98e9cf1f8c82d6748e5654"
+        }
+      ]
+    },
+    {
+      "id": "@rc-component/mutate-observer@1.1.0",
+      "name": "@rc-component/mutate-observer",
+      "version": "1.1.0",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/react-component/mutate-observer.git",
+      "author": "574980606@qq.com",
+      "provenance": [
+        {
+          "source": "npm:@rc-component/mutate-observer@1.1.0/LICENSE",
+          "sha256": "8781f0ca192057330d7fbab763f8bcd3c8e671032f98e9cf1f8c82d6748e5654"
+        }
+      ]
+    },
+    {
+      "id": "@rc-component/portal@1.1.2",
+      "name": "@rc-component/portal",
+      "version": "1.1.2",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/react-component/portal.git",
+      "author": "smith3816@gmail.com",
+      "provenance": [
+        {
+          "source": "npm:@rc-component/portal@1.1.2/LICENSE",
+          "sha256": "8781f0ca192057330d7fbab763f8bcd3c8e671032f98e9cf1f8c82d6748e5654"
+        }
+      ]
+    },
+    {
+      "id": "@rc-component/qrcode@1.1.3",
+      "name": "@rc-component/qrcode",
+      "version": "1.1.3",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/react-component/qrcode.git",
+      "author": "",
+      "provenance": [
+        {
+          "source": "npm:@rc-component/qrcode@1.1.3/LICENSE",
+          "sha256": "e3046d2356ce21fc0b3d1ecb6f93ce51b9e6e9835d73a12ef47405208361df66"
+        }
+      ]
+    },
+    {
+      "id": "@rc-component/tour@1.15.1",
+      "name": "@rc-component/tour",
+      "version": "1.15.1",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/react-component/tour.git",
+      "author": "wangning4567@163.com",
+      "provenance": [
+        {
+          "source": "npm:@rc-component/tour@1.15.1/LICENSE",
+          "sha256": "8781f0ca192057330d7fbab763f8bcd3c8e671032f98e9cf1f8c82d6748e5654"
+        }
+      ]
+    },
+    {
+      "id": "@rc-component/trigger@2.3.1",
+      "name": "@rc-component/trigger",
+      "version": "2.3.1",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/react-component/trigger.git",
+      "author": "",
+      "provenance": [
+        {
+          "source": "npm:@rc-component/trigger@2.3.1/LICENSE",
+          "sha256": "e3046d2356ce21fc0b3d1ecb6f93ce51b9e6e9835d73a12ef47405208361df66"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-array@3.2.2",
+      "name": "@types/d3-array",
+      "version": "3.2.2",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "denisname",
+          "githubUsername": "denisname",
+          "url": "https://github.com/denisname"
+        },
+        {
+          "name": "Hugues Stefanski",
+          "githubUsername": "ledragon",
+          "url": "https://github.com/ledragon"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        },
+        {
+          "name": "Fil",
+          "githubUsername": "Fil",
+          "url": "https://github.com/Fil"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-array@3.2.2/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-color@3.1.3",
+      "name": "@types/d3-color",
+      "version": "3.1.3",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "denisname",
+          "githubUsername": "denisname",
+          "url": "https://github.com/denisname"
+        },
+        {
+          "name": "Hugues Stefanski",
+          "githubUsername": "ledragon",
+          "url": "https://github.com/ledragon"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        },
+        {
+          "name": "Fil",
+          "githubUsername": "Fil",
+          "url": "https://github.com/Fil"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-color@3.1.3/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-dispatch@3.0.7",
+      "name": "@types/d3-dispatch",
+      "version": "3.0.7",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "denisname",
+          "githubUsername": "denisname",
+          "url": "https://github.com/denisname"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        },
+        {
+          "name": "Kyle Hensel",
+          "githubUsername": "k-yle",
+          "url": "https://github.com/k-yle"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-dispatch@3.0.7/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-dsv@3.0.7",
+      "name": "@types/d3-dsv",
+      "version": "3.0.7",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "denisname",
+          "githubUsername": "denisname",
+          "url": "https://github.com/denisname"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-dsv@3.0.7/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-ease@3.0.2",
+      "name": "@types/d3-ease",
+      "version": "3.0.2",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-ease@3.0.2/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-fetch@3.0.7",
+      "name": "@types/d3-fetch",
+      "version": "3.0.7",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Hugues Stefanski",
+          "githubUsername": "ledragon",
+          "url": "https://github.com/ledragon"
+        },
+        {
+          "name": "denisname",
+          "githubUsername": "denisname",
+          "url": "https://github.com/denisname"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-fetch@3.0.7/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-force@3.0.10",
+      "name": "@types/d3-force",
+      "version": "3.0.10",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "denisname",
+          "githubUsername": "denisname",
+          "url": "https://github.com/denisname"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-force@3.0.10/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-format@3.0.4",
+      "name": "@types/d3-format",
+      "version": "3.0.4",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "denisname",
+          "githubUsername": "denisname",
+          "url": "https://github.com/denisname"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-format@3.0.4/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-geo@3.1.1",
+      "name": "@types/d3-geo",
+      "version": "3.1.1",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Hugues Stefanski",
+          "githubUsername": "ledragon",
+          "url": "https://github.com/ledragon"
+        },
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-geo@3.1.1/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-hierarchy@3.1.7",
+      "name": "@types/d3-hierarchy",
+      "version": "3.1.7",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "denisname",
+          "githubUsername": "denisname",
+          "url": "https://github.com/denisname"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        },
+        {
+          "name": "Fil",
+          "githubUsername": "Fil",
+          "url": "https://github.com/Fil"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-hierarchy@3.1.7/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-interpolate@3.0.4",
+      "name": "@types/d3-interpolate",
+      "version": "3.0.4",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "denisname",
+          "githubUsername": "denisname",
+          "url": "https://github.com/denisname"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-interpolate@3.0.4/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-path@3.1.1",
+      "name": "@types/d3-path",
+      "version": "3.1.1",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-path@3.1.1/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-quadtree@3.0.6",
+      "name": "@types/d3-quadtree",
+      "version": "3.0.6",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "denisname",
+          "githubUsername": "denisname",
+          "url": "https://github.com/denisname"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-quadtree@3.0.6/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-random@3.0.4",
+      "name": "@types/d3-random",
+      "version": "3.0.4",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-random@3.0.4/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-scale-chromatic@3.1.0",
+      "name": "@types/d3-scale-chromatic",
+      "version": "3.1.0",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Hugues Stefanski",
+          "githubUsername": "Ledragon",
+          "url": "https://github.com/Ledragon"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "Henrique Machado",
+          "githubUsername": "henriquefm",
+          "url": "https://github.com/henriquefm"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-scale-chromatic@3.1.0/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-scale@4.0.9",
+      "name": "@types/d3-scale",
+      "version": "4.0.9",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "denisname",
+          "githubUsername": "denisname",
+          "url": "https://github.com/denisname"
+        },
+        {
+          "name": "rulonder",
+          "githubUsername": "rulonder",
+          "url": "https://github.com/rulonder"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-scale@4.0.9/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-shape@3.2.0",
+      "name": "@types/d3-shape",
+      "version": "3.2.0",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "denisname",
+          "githubUsername": "denisname",
+          "url": "https://github.com/denisname"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        },
+        {
+          "name": "Fil",
+          "githubUsername": "Fil",
+          "url": "https://github.com/Fil"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-shape@3.2.0/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-time@3.0.4",
+      "name": "@types/d3-time",
+      "version": "3.0.4",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "denisname",
+          "githubUsername": "denisname",
+          "url": "https://github.com/denisname"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-time@3.0.4/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/d3-timer@3.0.2",
+      "name": "@types/d3-timer",
+      "version": "3.0.2",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Tom Wanzek",
+          "githubUsername": "tomwanzek",
+          "url": "https://github.com/tomwanzek"
+        },
+        {
+          "name": "Alex Ford",
+          "githubUsername": "gustavderdrache",
+          "url": "https://github.com/gustavderdrache"
+        },
+        {
+          "name": "Boris Yankov",
+          "githubUsername": "borisyankov",
+          "url": "https://github.com/borisyankov"
+        },
+        {
+          "name": "denisname",
+          "githubUsername": "denisname",
+          "url": "https://github.com/denisname"
+        },
+        {
+          "name": "Nathan Bierema",
+          "githubUsername": "Methuselah96",
+          "url": "https://github.com/Methuselah96"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/d3-timer@3.0.2/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "@types/geojson@7946.0.16",
+      "name": "@types/geojson",
+      "version": "7946.0.16",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+      "contributors": [
+        {
+          "name": "Jacob Bruun",
+          "githubUsername": "cobster",
+          "url": "https://github.com/cobster"
+        },
+        {
+          "name": "Arne Schubert",
+          "githubUsername": "atd-schubert",
+          "url": "https://github.com/atd-schubert"
+        },
+        {
+          "name": "Jeff Jacobson",
+          "githubUsername": "JeffJacobson",
+          "url": "https://github.com/JeffJacobson"
+        },
+        {
+          "name": "Ilia Choly",
+          "githubUsername": "icholy",
+          "url": "https://github.com/icholy"
+        },
+        {
+          "name": "Dan Vanderkam",
+          "githubUsername": "danvk",
+          "url": "https://github.com/danvk"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:@types/geojson@7946.0.16/LICENSE",
+          "sha256": "ff82c90f84945c60601e96b43246009b9bc589f3ebe1cd8a0fd39a3520d8c310"
+        }
+      ]
+    },
+    {
+      "id": "antd@5.29.3",
+      "name": "antd",
+      "version": "5.29.3",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/ant-design/ant-design",
+      "provenance": [
+        {
+          "source": "npm:antd@5.29.3/LICENSE",
+          "sha256": "f696794c35873d9bbbe361b8b3c6bb0b9621a88022897f84eff41cbf2f803f6c"
+        }
+      ]
+    },
+    {
+      "id": "base64-arraybuffer@1.0.2",
+      "name": "base64-arraybuffer",
+      "version": "1.0.2",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/niklasvh/base64-arraybuffer",
+      "author": {
+        "name": "Niklas von Hertzen",
+        "email": "niklasvh@gmail.com",
+        "url": "https://hertzen.com"
+      },
+      "provenance": [
+        {
+          "source": "npm:base64-arraybuffer@1.0.2/LICENSE",
+          "sha256": "86200ce4e92d9a22c41c8647a55f7a5fddff304ff89b4d36ecc699ed8c123d2c"
+        }
+      ]
+    },
+    {
+      "id": "classnames@2.5.1",
+      "name": "classnames",
+      "version": "2.5.1",
+      "declaredLicense": "MIT",
+      "repository": "git+https://github.com/JedWatson/classnames.git",
+      "author": "Jed Watson",
+      "provenance": [
+        {
+          "source": "npm:classnames@2.5.1/LICENSE",
+          "sha256": "bedcfd7e502f54290e1a061b49d5e90347362a4d68c3d196ff3001b6ecbe7176"
+        }
+      ]
+    },
+    {
+      "id": "color-name@1.1.4",
+      "name": "color-name",
+      "version": "1.1.4",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:colorjs/color-name.git",
+      "author": "DY <dfcreative@gmail.com>",
+      "provenance": [
+        {
+          "source": "npm:color-name@1.1.4/LICENSE",
+          "sha256": "7357445bac398c76c0aef75a587009fe406d40de6a79789eb5b7ecbbad317ef2"
+        }
+      ]
+    },
+    {
+      "id": "color-string@1.9.1",
+      "name": "color-string",
+      "version": "1.9.1",
+      "declaredLicense": "MIT",
+      "repository": "Qix-/color-string",
+      "author": "Heather Arthur <fayearthur@gmail.com>",
+      "contributors": [
+        "Maxime Thirouin",
+        "Dyma Ywanov <dfcreative@gmail.com>",
+        "Josh Junon"
+      ],
+      "provenance": [
+        {
+          "source": "npm:color-string@1.9.1/LICENSE",
+          "sha256": "7fb9acbf1a9cecf4ede0b16292653bf488997c43f5d25a9d7b3dd7eacff09821"
+        }
+      ]
+    },
+    {
+      "id": "commander@7.2.0",
+      "name": "commander",
+      "version": "7.2.0",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/tj/commander.js.git",
+      "author": "TJ Holowaychuk <tj@vision-media.ca>",
+      "provenance": [
+        {
+          "source": "npm:commander@7.2.0/LICENSE",
+          "sha256": "4cc9c2af4eb0056cd4d2297b7404819e3816b4c44b7f8012c42d5fd671d783d3"
+        }
+      ]
+    },
+    {
+      "id": "compute-scroll-into-view@3.1.1",
+      "name": "compute-scroll-into-view",
+      "version": "3.1.1",
+      "declaredLicense": "MIT",
+      "repository": "git+https://github.com/scroll-into-view/compute-scroll-into-view.git",
+      "author": "Cody Olsen",
+      "provenance": [
+        {
+          "source": "npm:compute-scroll-into-view@3.1.1/LICENSE",
+          "sha256": "b58c311d6fa4d2729b4220f6e1cb13d8df7d7406b360ac47eccf5e5cd356a23f"
+        }
+      ]
+    },
+    {
+      "id": "copy-to-clipboard@3.3.3",
+      "name": "copy-to-clipboard",
+      "version": "3.3.3",
+      "declaredLicense": "MIT",
+      "repository": "git+https://github.com/sudodoki/copy-to-clipboard",
+      "author": "sudodoki <smd.deluzion@gmail.com>",
+      "contributors": [
+        {
+          "name": "Aleksej Shvajka",
+          "url": "https://github.com/shvaikalesh"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:copy-to-clipboard@3.3.3/LICENSE",
+          "sha256": "5149051aed807f78acfbf9a43ac66368374a8fa1f9dfc092b73de5a67d42673a"
+        }
+      ]
+    },
+    {
+      "id": "css-line-break@2.1.0",
+      "name": "css-line-break",
+      "version": "2.1.0",
+      "declaredLicense": "MIT",
+      "repository": "git+ssh://git@github.com/niklasvh/css-line-break.git",
+      "author": {
+        "name": "Niklas von Hertzen",
+        "email": "niklasvh@gmail.com",
+        "url": "https://hertzen.com"
+      },
+      "provenance": [
+        {
+          "source": "npm:css-line-break@2.1.0/LICENSE",
+          "sha256": "ce1ee0539f7fe1f7b75b76d121e674cb897c709c3e24ddba7f9a10fe2d0d88a5"
+        }
+      ]
+    },
+    {
+      "id": "csstype@3.2.3",
+      "name": "csstype",
+      "version": "3.2.3",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/frenic/csstype",
+      "author": "Fredrik Nicol <fredrik.nicol@gmail.com>",
+      "provenance": [
+        {
+          "source": "npm:csstype@3.2.3/LICENSE",
+          "sha256": "6a972b33787e14304b4cfca68387f8644d11788a5d551731196b8e64dd9f0431"
+        }
+      ]
+    },
+    {
+      "id": "d3-array@3.2.4",
+      "name": "d3-array",
+      "version": "3.2.4",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-array.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-array@3.2.4/LICENSE",
+          "sha256": "f57e3a2cabf2b43ab2fc942a8e9f4b38366ab0d1f859c6439b1fb69e80d9af73"
+        }
+      ]
+    },
+    {
+      "id": "d3-binarytree@1.0.2",
+      "name": "d3-binarytree",
+      "version": "1.0.2",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/vasturiano/d3-binarytree.git",
+      "author": {
+        "name": "Vasco Asturiano",
+        "url": "https://github.com/vasturiano"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-binarytree@1.0.2/LICENSE",
+          "sha256": "c81e08f2a4364d08611c888e00017d1000168d4a6991b2df34ccec52e71c84a5"
+        }
+      ]
+    },
+    {
+      "id": "d3-color@3.1.0",
+      "name": "d3-color",
+      "version": "3.1.0",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-color.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-color@3.1.0/LICENSE",
+          "sha256": "4f4f9997e3d96636b08171484bf3e2b5a8a46745e2b0dd4d4f86b0e5cfa632e8"
+        }
+      ]
+    },
+    {
+      "id": "d3-dispatch@3.0.1",
+      "name": "d3-dispatch",
+      "version": "3.0.1",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-dispatch.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-dispatch@3.0.1/LICENSE",
+          "sha256": "6019bf3451952141c4561a8a814c965b71166df316a8c7f3f435f090b3c329c1"
+        }
+      ]
+    },
+    {
+      "id": "d3-dsv@3.0.1",
+      "name": "d3-dsv",
+      "version": "3.0.1",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-dsv.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-dsv@3.0.1/LICENSE",
+          "sha256": "4c1cd1d0c4f880ec6cc58495f54e57877fccefcf0a4050fe09c9d81b757bf494"
+        }
+      ]
+    },
+    {
+      "id": "d3-ease@3.0.1",
+      "name": "d3-ease",
+      "version": "3.0.1",
+      "declaredLicense": "BSD-3-Clause",
+      "repository": "https://github.com/d3/d3-ease.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-ease@3.0.1/LICENSE",
+          "sha256": "69af84a0cb486bc97d578ea76f0aea3ad628ad97147551d2a898902941bd6db6"
+        }
+      ]
+    },
+    {
+      "id": "d3-fetch@3.0.1",
+      "name": "d3-fetch",
+      "version": "3.0.1",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-fetch.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-fetch@3.0.1/LICENSE",
+          "sha256": "9d00baf34d17d2e5ca9301230b256f1ced369cdb41712daa6f18716d93c6e88c"
+        }
+      ]
+    },
+    {
+      "id": "d3-force-3d@3.0.6",
+      "name": "d3-force-3d",
+      "version": "3.0.6",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/vasturiano/d3-force-3d.git",
+      "author": {
+        "name": "Vasco Asturiano",
+        "url": "https://github.com/vasturiano"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-force-3d@3.0.6/LICENSE",
+          "sha256": "c81e08f2a4364d08611c888e00017d1000168d4a6991b2df34ccec52e71c84a5"
+        }
+      ]
+    },
+    {
+      "id": "d3-force@3.0.0",
+      "name": "d3-force",
+      "version": "3.0.0",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-force.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "https://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-force@3.0.0/LICENSE",
+          "sha256": "6019bf3451952141c4561a8a814c965b71166df316a8c7f3f435f090b3c329c1"
+        }
+      ]
+    },
+    {
+      "id": "d3-format@3.1.2",
+      "name": "d3-format",
+      "version": "3.1.2",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-format.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-format@3.1.2/LICENSE",
+          "sha256": "9fe3e95ca3e8ef778fc93263946e9c4e8a10ff3afe9c3333f54402bb99079bc1"
+        }
+      ]
+    },
+    {
+      "id": "d3-geo-projection@4.0.0",
+      "name": "d3-geo-projection",
+      "version": "4.0.0",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-geo-projection.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "https://bost.ocks.org/mike"
+      },
+      "contributors": [
+        {
+          "name": "Jason Davies",
+          "url": "http://www.jasondavies.com"
+        },
+        {
+          "name": "Philippe Rivière",
+          "url": "https://visionscarto.net"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:d3-geo-projection@4.0.0/LICENSE",
+          "sha256": "8a4496e71cb0ce730930eb4c118c3861d41c3ee184afdba54f494cd59cf15249"
+        }
+      ]
+    },
+    {
+      "id": "d3-geo@3.1.1",
+      "name": "d3-geo",
+      "version": "3.1.1",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-geo.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "https://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-geo@3.1.1/LICENSE",
+          "sha256": "e87ae4ac338d47ce509af51623763b9a197e6ca26f958be54f67c1a64cd0062c"
+        }
+      ]
+    },
+    {
+      "id": "d3-hierarchy@3.1.2",
+      "name": "d3-hierarchy",
+      "version": "3.1.2",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-hierarchy.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-hierarchy@3.1.2/LICENSE",
+          "sha256": "6019bf3451952141c4561a8a814c965b71166df316a8c7f3f435f090b3c329c1"
+        }
+      ]
+    },
+    {
+      "id": "d3-interpolate@3.0.1",
+      "name": "d3-interpolate",
+      "version": "3.0.1",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-interpolate.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-interpolate@3.0.1/LICENSE",
+          "sha256": "6019bf3451952141c4561a8a814c965b71166df316a8c7f3f435f090b3c329c1"
+        }
+      ]
+    },
+    {
+      "id": "d3-octree@1.1.0",
+      "name": "d3-octree",
+      "version": "1.1.0",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/vasturiano/d3-octree.git",
+      "author": {
+        "name": "Vasco Asturiano",
+        "url": "https://github.com/vasturiano"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-octree@1.1.0/LICENSE",
+          "sha256": "c81e08f2a4364d08611c888e00017d1000168d4a6991b2df34ccec52e71c84a5"
+        }
+      ]
+    },
+    {
+      "id": "d3-path@3.1.0",
+      "name": "d3-path",
+      "version": "3.1.0",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-path.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-path@3.1.0/LICENSE",
+          "sha256": "58f959e2911ca1fdd6812a2cebe42193c6137922ecbcce86d8233873706181ab"
+        }
+      ]
+    },
+    {
+      "id": "d3-quadtree@3.0.1",
+      "name": "d3-quadtree",
+      "version": "3.0.1",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-quadtree.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-quadtree@3.0.1/LICENSE",
+          "sha256": "6019bf3451952141c4561a8a814c965b71166df316a8c7f3f435f090b3c329c1"
+        }
+      ]
+    },
+    {
+      "id": "d3-random@3.0.1",
+      "name": "d3-random",
+      "version": "3.0.1",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-random.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-random@3.0.1/LICENSE",
+          "sha256": "6019bf3451952141c4561a8a814c965b71166df316a8c7f3f435f090b3c329c1"
+        }
+      ]
+    },
+    {
+      "id": "d3-regression@1.3.10",
+      "name": "d3-regression",
+      "version": "1.3.10",
+      "declaredLicense": "BSD-3-Clause",
+      "repository": "git+https://github.com/HarryStevens/d3-regression.git",
+      "author": {
+        "name": "Harry Stevens",
+        "url": "http://harryjstevens.com/"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-regression@1.3.10/LICENSE",
+          "sha256": "0480e9e98034a82d058789d7e4a6a59b837f4581d06973af12294f7cb3147f6f"
+        }
+      ]
+    },
+    {
+      "id": "d3-scale-chromatic@3.1.0",
+      "name": "d3-scale-chromatic",
+      "version": "3.1.0",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-scale-chromatic.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "https://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-scale-chromatic@3.1.0/LICENSE",
+          "sha256": "1549638d9e45cf99379d6e71aa706583e5952cd875a26a02f58c9b26499c94e9"
+        }
+      ]
+    },
+    {
+      "id": "d3-scale@4.0.2",
+      "name": "d3-scale",
+      "version": "4.0.2",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-scale.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "https://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-scale@4.0.2/LICENSE",
+          "sha256": "6019bf3451952141c4561a8a814c965b71166df316a8c7f3f435f090b3c329c1"
+        }
+      ]
+    },
+    {
+      "id": "d3-shape@3.2.0",
+      "name": "d3-shape",
+      "version": "3.2.0",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-shape.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-shape@3.2.0/LICENSE",
+          "sha256": "4f4f9997e3d96636b08171484bf3e2b5a8a46745e2b0dd4d4f86b0e5cfa632e8"
+        }
+      ]
+    },
+    {
+      "id": "d3-time-format@4.1.0",
+      "name": "d3-time-format",
+      "version": "4.1.0",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-time-format.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-time-format@4.1.0/LICENSE",
+          "sha256": "6019bf3451952141c4561a8a814c965b71166df316a8c7f3f435f090b3c329c1"
+        }
+      ]
+    },
+    {
+      "id": "d3-time@3.1.0",
+      "name": "d3-time",
+      "version": "3.1.0",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-time.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-time@3.1.0/LICENSE",
+          "sha256": "4f4f9997e3d96636b08171484bf3e2b5a8a46745e2b0dd4d4f86b0e5cfa632e8"
+        }
+      ]
+    },
+    {
+      "id": "d3-timer@3.0.1",
+      "name": "d3-timer",
+      "version": "3.0.1",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/d3/d3-timer.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:d3-timer@3.0.1/LICENSE",
+          "sha256": "6019bf3451952141c4561a8a814c965b71166df316a8c7f3f435f090b3c329c1"
+        }
+      ]
+    },
+    {
+      "id": "dayjs@1.11.23",
+      "name": "dayjs",
+      "version": "1.11.23",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/iamkun/dayjs.git",
+      "author": "iamkun",
+      "provenance": [
+        {
+          "source": "npm:dayjs@1.11.23/LICENSE",
+          "sha256": "16e34a46fa584c2cc09682bd36edae63e88c4696371b5d95476f676a65763535"
+        }
+      ]
+    },
+    {
+      "id": "eventemitter3@5.0.4",
+      "name": "eventemitter3",
+      "version": "5.0.4",
+      "declaredLicense": "MIT",
+      "repository": "git://github.com/primus/eventemitter3.git",
+      "author": "Arnout Kazemier",
+      "provenance": [
+        {
+          "source": "npm:eventemitter3@5.0.4/LICENSE",
+          "sha256": "ce0337175145faf4475b35bc8679a1a4b7de01f05cabe2ac6a4780239a7d5ae1"
+        }
+      ]
+    },
+    {
+      "id": "fast-deep-equal@3.1.3",
+      "name": "fast-deep-equal",
+      "version": "3.1.3",
+      "declaredLicense": "MIT",
+      "repository": "git+https://github.com/epoberezkin/fast-deep-equal.git",
+      "author": "Evgeny Poberezkin",
+      "provenance": [
+        {
+          "source": "npm:fast-deep-equal@3.1.3/LICENSE",
+          "sha256": "aa407ee69b3f646286f5162d0679256a0fe5b7fcc51f104ffb647efe167715ea"
+        }
+      ]
+    },
+    {
+      "id": "fecha@4.2.3",
+      "name": "fecha",
+      "version": "4.2.3",
+      "declaredLicense": "MIT",
+      "repository": "https://taylorhakes@github.com/taylorhakes/fecha.git",
+      "author": "Taylor Hakes",
+      "provenance": [
+        {
+          "source": "npm:fecha@4.2.3/LICENSE",
+          "sha256": "5db9794ad7e8ad2e1d10570700ca6493bcf00ac0a2fa0105cdbcdd8114901b88"
+        }
+      ]
+    },
+    {
+      "id": "flru@1.0.2",
+      "name": "flru",
+      "version": "1.0.2",
+      "declaredLicense": "MIT",
+      "repository": "lukeed/flru",
+      "author": {
+        "name": "Luke Edwards",
+        "email": "luke.edwards05@gmail.com",
+        "url": "lukeed.com"
+      },
+      "provenance": [
+        {
+          "source": "npm:flru@1.0.2/license",
+          "sha256": "3d5b63706380c8c746b862cba2ff5eb9fefd7fc81fbfac2964006c3f319573d2"
+        }
+      ]
+    },
+    {
+      "id": "gl-matrix@3.4.4",
+      "name": "gl-matrix",
+      "version": "3.4.4",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/toji/gl-matrix.git",
+      "contributors": [
+        {
+          "name": "Brandon Jones",
+          "email": "tojiro@gmail.com"
+        },
+        {
+          "name": "Colin MacKenzie IV",
+          "email": "sinisterchipmunk@gmail.com"
+        }
+      ],
+      "provenance": [
+        {
+          "source": "npm:gl-matrix@3.4.4/LICENSE.md",
+          "sha256": "af62d31a0cdc1bf95d5e19428c3e0de368b727d9d5b6b6cdb466f8a52e68ad06"
+        }
+      ]
+    },
+    {
+      "id": "gsap@3.15.0",
+      "name": "gsap",
+      "version": "3.15.0",
+      "declaredLicense": "Standard 'no charge' license: https://gsap.com/standard-license.",
+      "repository": "git+https://github.com/greensock/GSAP.git",
+      "clarification": "Official GSAP Standard No Charge terms, checked against the current official text. Existing GSAP source copyright/license headers remain unchanged.",
+      "provenance": [
+        {
+          "source": "https://gsap.com/community/standard-license/",
+          "sha256": "661fd6904f635bac4d4c6ed320d2d8f52146e7ca73393307890dd1222d691d41"
+        }
+      ]
+    },
+    {
+      "id": "html2canvas@1.4.1",
+      "name": "html2canvas",
+      "version": "1.4.1",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:niklasvh/html2canvas.git",
+      "author": {
+        "name": "Niklas von Hertzen",
+        "email": "niklasvh@gmail.com",
+        "url": "https://hertzen.com"
+      },
+      "provenance": [
+        {
+          "source": "npm:html2canvas@1.4.1/LICENSE",
+          "sha256": "86200ce4e92d9a22c41c8647a55f7a5fddff304ff89b4d36ecc699ed8c123d2c"
+        }
+      ]
+    },
+    {
+      "id": "iconv-lite@0.6.3",
+      "name": "iconv-lite",
+      "version": "0.6.3",
+      "declaredLicense": "MIT",
+      "repository": "git://github.com/ashtuchkin/iconv-lite.git",
+      "author": "Alexander Shtuchkin <ashtuchkin@gmail.com>",
+      "provenance": [
+        {
+          "source": "npm:iconv-lite@0.6.3/LICENSE",
+          "sha256": "48186f5950f28caaafaa7f4c18b0b31350bea5c93f3a2d74b883b35a0d528863"
+        }
+      ]
+    },
+    {
+      "id": "internmap@2.0.3",
+      "name": "internmap",
+      "version": "2.0.3",
+      "declaredLicense": "ISC",
+      "repository": "https://github.com/mbostock/internmap.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "https://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:internmap@2.0.3/LICENSE",
+          "sha256": "f4bb8f655fdb4d119878a0eea6dfcb871da509d83baa7426794f7c70b9bb9d46"
+        }
+      ]
+    },
+    {
+      "id": "is-arrayish@0.3.4",
+      "name": "is-arrayish",
+      "version": "0.3.4",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/qix-/node-is-arrayish.git",
+      "author": "Qix (http://github.com/qix-)",
+      "provenance": [
+        {
+          "source": "npm:is-arrayish@0.3.4/LICENSE",
+          "sha256": "849dffdc5103ad6274d337e9608d70198a6e76b6f8fa0aecdf303fa07f03cae4"
+        }
+      ]
+    },
+    {
+      "id": "js-tokens@4.0.0",
+      "name": "js-tokens",
+      "version": "4.0.0",
+      "declaredLicense": "MIT",
+      "repository": "lydell/js-tokens",
+      "author": "Simon Lydell",
+      "provenance": [
+        {
+          "source": "npm:js-tokens@4.0.0/LICENSE",
+          "sha256": "7e02e9c37c8849280e70bf5fd67d65e93d902c700104a997b11fb7175fdbf37e"
+        }
+      ]
+    },
+    {
+      "id": "json2mq@0.2.0",
+      "name": "json2mq",
+      "version": "0.2.0",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/akiran/json2mq",
+      "author": "Kiran Abburi",
+      "provenance": [
+        {
+          "source": "npm:json2mq@0.2.0/LICENSE",
+          "sha256": "8e7a0e17a14c91d325c22a8ade50da3aaa5a97e321beebbdce77d63fc719a1c2"
+        }
+      ]
+    },
+    {
+      "id": "lenis@1.3.27",
+      "name": "lenis",
+      "version": "1.3.27",
+      "declaredLicense": "MIT",
+      "repository": "git+https://github.com/darkroomengineering/lenis.git",
+      "author": "darkroom.engineering",
+      "provenance": [
+        {
+          "source": "npm:lenis@1.3.27/LICENSE",
+          "sha256": "7d1896b31f2eed9f286b05faca067c4e35b2f109ae7c4ed5105220e2d2820228"
+        }
+      ]
+    },
+    {
+      "id": "loose-envify@1.4.0",
+      "name": "loose-envify",
+      "version": "1.4.0",
+      "declaredLicense": "MIT",
+      "repository": "git://github.com/zertosh/loose-envify.git",
+      "author": "Andres Suarez <zertosh@gmail.com>",
+      "provenance": [
+        {
+          "source": "npm:loose-envify@1.4.0/LICENSE",
+          "sha256": "4b68ef983e0fd2b2a4bc33d38d11cdabb723fa7c7dafe895d53a3e5d0d7cb4a9"
+        }
+      ]
+    },
+    {
+      "id": "pdfast@0.2.0",
+      "name": "pdfast",
+      "version": "0.2.0",
+      "declaredLicense": "MIT",
+      "repository": "gyosh/pdfast",
+      "author": "William Gozali <will.gozali@gmail.com>",
+      "provenance": [
+        {
+          "source": "npm:pdfast@0.2.0/LICENSE",
+          "sha256": "52259a89ec7c7ea5af6558ddd85ceeaca82656398b7c2a53274af0db41851c5d"
+        }
+      ]
+    },
+    {
+      "id": "pts@1.0.3",
+      "name": "pts",
+      "version": "1.0.3",
+      "declaredLicense": "Apache-2.0",
+      "repository": "git+https://github.com/williamngan/pts.git",
+      "author": "William Ngan",
+      "provenance": [
+        {
+          "source": "npm:pts@1.0.3/LICENSE",
+          "sha256": "6dc0e068dcf3a5bc8e054205b85b7720e1d49265bbc64bf515d2cf79197df69a"
+        }
+      ]
+    },
+    {
+      "id": "rc-cascader@3.34.0",
+      "name": "rc-cascader",
+      "version": "3.34.0",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/react-component/cascader.git",
+      "author": "afc163@gmail.com",
+      "provenance": [
+        {
+          "source": "npm:rc-cascader@3.34.0/LICENSE.md",
+          "sha256": "420804296afd6233a4593910942e843b35df2133cd30cbd08173ce922d4dbad0"
+        }
+      ]
+    },
+    {
+      "id": "rc-checkbox@3.5.0",
+      "name": "rc-checkbox",
+      "version": "3.5.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/checkbox.git",
+      "provenance": [
+        {
+          "source": "npm:rc-checkbox@3.5.0/LICENSE.md",
+          "sha256": "3fefe89002bfade435e706a0c93f22c8ca326fbcdb479a849b36dc00b895853e"
+        }
+      ]
+    },
+    {
+      "id": "rc-collapse@3.9.0",
+      "name": "rc-collapse",
+      "version": "3.9.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/collapse.git",
+      "provenance": [
+        {
+          "source": "npm:rc-collapse@3.9.0/LICENSE.md",
+          "sha256": "509eabacb9ef4e7b928250ab700616becb11036759dd1e937c122fde602c4b1d"
+        }
+      ]
+    },
+    {
+      "id": "rc-dialog@9.6.0",
+      "name": "rc-dialog",
+      "version": "9.6.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/dialog.git",
+      "author": "yiminghe@gmail.com",
+      "provenance": [
+        {
+          "source": "npm:rc-dialog@9.6.0/LICENSE.md",
+          "sha256": "509eabacb9ef4e7b928250ab700616becb11036759dd1e937c122fde602c4b1d"
+        }
+      ]
+    },
+    {
+      "id": "rc-drawer@7.3.0",
+      "name": "rc-drawer",
+      "version": "7.3.0",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/react-component/drawer.git",
+      "author": "155259966@qq.com",
+      "provenance": [
+        {
+          "source": "npm:rc-drawer@7.3.0/LICENSE",
+          "sha256": "a57f8fe084177ae391bbe1dab0944b298e87674f3b064fceb6d6c933ae8c5923"
+        }
+      ]
+    },
+    {
+      "id": "rc-dropdown@4.2.1",
+      "name": "rc-dropdown",
+      "version": "4.2.1",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/dropdown.git",
+      "provenance": [
+        {
+          "source": "npm:rc-dropdown@4.2.1/LICENSE",
+          "sha256": "e3046d2356ce21fc0b3d1ecb6f93ce51b9e6e9835d73a12ef47405208361df66"
+        }
+      ]
+    },
+    {
+      "id": "rc-field-form@2.7.1",
+      "name": "rc-field-form",
+      "version": "2.7.1",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/react-component/field-form.git",
+      "author": "smith3816@gmail.com",
+      "provenance": [
+        {
+          "source": "npm:rc-field-form@2.7.1/LICENSE",
+          "sha256": "8781f0ca192057330d7fbab763f8bcd3c8e671032f98e9cf1f8c82d6748e5654"
+        }
+      ]
+    },
+    {
+      "id": "rc-image@7.12.0",
+      "name": "rc-image",
+      "version": "7.12.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/image.git",
+      "provenance": [
+        {
+          "source": "npm:rc-image@7.12.0/LICENSE.md",
+          "sha256": "06af38d559a6264a5e99521e1b754ac1e9ffcf24e88dbd09528b1bec862c627a"
+        }
+      ]
+    },
+    {
+      "id": "rc-input-number@9.5.0",
+      "name": "rc-input-number",
+      "version": "9.5.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/input-number.git",
+      "author": "tsjxyz@gmail.com",
+      "provenance": [
+        {
+          "source": "npm:rc-input-number@9.5.0/LICENSE.md",
+          "sha256": "509eabacb9ef4e7b928250ab700616becb11036759dd1e937c122fde602c4b1d"
+        }
+      ]
+    },
+    {
+      "id": "rc-input@1.8.0",
+      "name": "rc-input",
+      "version": "1.8.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/input.git",
+      "provenance": [
+        {
+          "source": "npm:rc-input@1.8.0/LICENSE.md",
+          "sha256": "e3be4577f9f035670585db1fd5b0d881707556307ce11d8cc3df2ea19ca5a4ef"
+        }
+      ]
+    },
+    {
+      "id": "rc-mentions@2.20.0",
+      "name": "rc-mentions",
+      "version": "2.20.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/mentions.git",
+      "provenance": [
+        {
+          "source": "npm:rc-mentions@2.20.0/LICENSE.md",
+          "sha256": "aa9ce8bad1af7244867385a0b9c3a3f13b3f9c1dba6bc29f275a66075203dc6f"
+        }
+      ]
+    },
+    {
+      "id": "rc-menu@9.16.1",
+      "name": "rc-menu",
+      "version": "9.16.1",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/menu.git",
+      "provenance": [
+        {
+          "source": "npm:rc-menu@9.16.1/LICENSE.md",
+          "sha256": "509eabacb9ef4e7b928250ab700616becb11036759dd1e937c122fde602c4b1d"
+        }
+      ]
+    },
+    {
+      "id": "rc-motion@2.9.5",
+      "name": "rc-motion",
+      "version": "2.9.5",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/motion.git",
+      "provenance": [
+        {
+          "source": "npm:rc-motion@2.9.5/LICENSE.md",
+          "sha256": "e3be4577f9f035670585db1fd5b0d881707556307ce11d8cc3df2ea19ca5a4ef"
+        }
+      ]
+    },
+    {
+      "id": "rc-notification@5.6.4",
+      "name": "rc-notification",
+      "version": "5.6.4",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/notification.git",
+      "provenance": [
+        {
+          "source": "npm:rc-notification@5.6.4/LICENSE.md",
+          "sha256": "509eabacb9ef4e7b928250ab700616becb11036759dd1e937c122fde602c4b1d"
+        }
+      ]
+    },
+    {
+      "id": "rc-overflow@1.5.0",
+      "name": "rc-overflow",
+      "version": "1.5.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/overflow.git",
+      "provenance": [
+        {
+          "source": "npm:rc-overflow@1.5.0/LICENSE.md",
+          "sha256": "e3be4577f9f035670585db1fd5b0d881707556307ce11d8cc3df2ea19ca5a4ef"
+        }
+      ]
+    },
+    {
+      "id": "rc-pagination@5.1.0",
+      "name": "rc-pagination",
+      "version": "5.1.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/pagination.git",
+      "provenance": [
+        {
+          "source": "npm:rc-pagination@5.1.0/LICENSE.md",
+          "sha256": "509eabacb9ef4e7b928250ab700616becb11036759dd1e937c122fde602c4b1d"
+        }
+      ]
+    },
+    {
+      "id": "rc-picker@4.11.3",
+      "name": "rc-picker",
+      "version": "4.11.3",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/picker.git",
+      "provenance": [
+        {
+          "source": "npm:rc-picker@4.11.3/LICENSE.md",
+          "sha256": "e3be4577f9f035670585db1fd5b0d881707556307ce11d8cc3df2ea19ca5a4ef"
+        }
+      ]
+    },
+    {
+      "id": "rc-progress@4.0.0",
+      "name": "rc-progress",
+      "version": "4.0.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/progress.git",
+      "provenance": [
+        {
+          "source": "npm:rc-progress@4.0.0/LICENSE.md",
+          "sha256": "509eabacb9ef4e7b928250ab700616becb11036759dd1e937c122fde602c4b1d"
+        }
+      ]
+    },
+    {
+      "id": "rc-rate@2.13.1",
+      "name": "rc-rate",
+      "version": "2.13.1",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/react-component/rate.git",
+      "provenance": [
+        {
+          "source": "npm:rc-rate@2.13.1/LICENSE.md",
+          "sha256": "509eabacb9ef4e7b928250ab700616becb11036759dd1e937c122fde602c4b1d"
+        }
+      ]
+    },
+    {
+      "id": "rc-resize-observer@1.4.3",
+      "name": "rc-resize-observer",
+      "version": "1.4.3",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/resize-observer.git",
+      "provenance": [
+        {
+          "source": "npm:rc-resize-observer@1.4.3/LICENSE.md",
+          "sha256": "e3be4577f9f035670585db1fd5b0d881707556307ce11d8cc3df2ea19ca5a4ef"
+        }
+      ]
+    },
+    {
+      "id": "rc-segmented@2.7.1",
+      "name": "rc-segmented",
+      "version": "2.7.1",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/segmented.git",
+      "provenance": [
+        {
+          "source": "npm:rc-segmented@2.7.1/LICENSE.md",
+          "sha256": "e3be4577f9f035670585db1fd5b0d881707556307ce11d8cc3df2ea19ca5a4ef"
+        }
+      ]
+    },
+    {
+      "id": "rc-select@14.16.8",
+      "name": "rc-select",
+      "version": "14.16.8",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/select.git",
+      "provenance": [
+        {
+          "source": "npm:rc-select@14.16.8/LICENSE.md",
+          "sha256": "420804296afd6233a4593910942e843b35df2133cd30cbd08173ce922d4dbad0"
+        }
+      ]
+    },
+    {
+      "id": "rc-slider@11.1.9",
+      "name": "rc-slider",
+      "version": "11.1.9",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/slider.git",
+      "provenance": [
+        {
+          "source": "npm:rc-slider@11.1.9/LICENSE",
+          "sha256": "e3046d2356ce21fc0b3d1ecb6f93ce51b9e6e9835d73a12ef47405208361df66"
+        }
+      ]
+    },
+    {
+      "id": "rc-steps@6.0.1",
+      "name": "rc-steps",
+      "version": "6.0.1",
+      "declaredLicense": "MIT",
+      "repository": " git+ssh://git@github.com/react-component/steps.git",
+      "provenance": [
+        {
+          "source": "npm:rc-steps@6.0.1/LICENSE.md",
+          "sha256": "509eabacb9ef4e7b928250ab700616becb11036759dd1e937c122fde602c4b1d"
+        }
+      ]
+    },
+    {
+      "id": "rc-switch@4.1.0",
+      "name": "rc-switch",
+      "version": "4.1.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/switch.git",
+      "provenance": [
+        {
+          "source": "npm:rc-switch@4.1.0/LICENSE.md",
+          "sha256": "509eabacb9ef4e7b928250ab700616becb11036759dd1e937c122fde602c4b1d"
+        }
+      ]
+    },
+    {
+      "id": "rc-table@7.54.0",
+      "name": "rc-table",
+      "version": "7.54.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/table.git",
+      "provenance": [
+        {
+          "source": "npm:rc-table@7.54.0/LICENSE.md",
+          "sha256": "06af38d559a6264a5e99521e1b754ac1e9ffcf24e88dbd09528b1bec862c627a"
+        }
+      ]
+    },
+    {
+      "id": "rc-tabs@15.7.0",
+      "name": "rc-tabs",
+      "version": "15.7.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/tabs.git",
+      "author": "yiminghe@gmail.com",
+      "provenance": [
+        {
+          "source": "npm:rc-tabs@15.7.0/LICENSE.md",
+          "sha256": "509eabacb9ef4e7b928250ab700616becb11036759dd1e937c122fde602c4b1d"
+        }
+      ]
+    },
+    {
+      "id": "rc-textarea@1.10.2",
+      "name": "rc-textarea",
+      "version": "1.10.2",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/textarea.git",
+      "provenance": [
+        {
+          "source": "npm:rc-textarea@1.10.2/LICENSE.md",
+          "sha256": "e3be4577f9f035670585db1fd5b0d881707556307ce11d8cc3df2ea19ca5a4ef"
+        }
+      ]
+    },
+    {
+      "id": "rc-tooltip@6.4.0",
+      "name": "rc-tooltip",
+      "version": "6.4.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/tooltip.git",
+      "provenance": [
+        {
+          "source": "npm:rc-tooltip@6.4.0/LICENSE",
+          "sha256": "65a1f2211535eedb601dfed6775df511015a8410d521293a1f00420300b3f85c"
+        }
+      ]
+    },
+    {
+      "id": "rc-tree-select@5.27.0",
+      "name": "rc-tree-select",
+      "version": "5.27.0",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/react-component/tree-select.git",
+      "author": "smith3816@gmail.com",
+      "provenance": [
+        {
+          "source": "npm:rc-tree-select@5.27.0/LICENSE.md",
+          "sha256": "a57f8fe084177ae391bbe1dab0944b298e87674f3b064fceb6d6c933ae8c5923"
+        }
+      ]
+    },
+    {
+      "id": "rc-tree@5.13.1",
+      "name": "rc-tree",
+      "version": "5.13.1",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/tree.git",
+      "author": "smith3816@gmail.com",
+      "provenance": [
+        {
+          "source": "npm:rc-tree@5.13.1/LICENSE.md",
+          "sha256": "a57f8fe084177ae391bbe1dab0944b298e87674f3b064fceb6d6c933ae8c5923"
+        }
+      ]
+    },
+    {
+      "id": "rc-upload@4.11.0",
+      "name": "rc-upload",
+      "version": "4.11.0",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/upload.git",
+      "provenance": [
+        {
+          "source": "npm:rc-upload@4.11.0/LICENSE",
+          "sha256": "9be6030b71b718dcc00a07505a51c01b2d283ba10bfb6830a3ebd0badd730df6"
+        }
+      ]
+    },
+    {
+      "id": "rc-util@5.44.4",
+      "name": "rc-util",
+      "version": "5.44.4",
+      "declaredLicense": "MIT",
+      "repository": "git@github.com:react-component/util.git",
+      "provenance": [
+        {
+          "source": "npm:rc-util@5.44.4/LICENSE",
+          "sha256": "340a51bccd2efc6ba37f8367d7e3ca4fff977601b9a41b5096c860b76eb4a9a3"
+        }
+      ]
+    },
+    {
+      "id": "rc-virtual-list@3.19.2",
+      "name": "rc-virtual-list",
+      "version": "3.19.2",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/react-component/virtual-list.git",
+      "author": "smith3816@gmail.com",
+      "provenance": [
+        {
+          "source": "npm:rc-virtual-list@3.19.2/LICENSE",
+          "sha256": "65a1f2211535eedb601dfed6775df511015a8410d521293a1f00420300b3f85c"
+        }
+      ]
+    },
+    {
+      "id": "react-dom@18.3.1",
+      "name": "react-dom",
+      "version": "18.3.1",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/facebook/react.git",
+      "provenance": [
+        {
+          "source": "npm:react-dom@18.3.1/LICENSE",
+          "sha256": "a80c79b8f80e824c8ea0612b7abadb9c92c48673cf0adc20b2a7f43e2b19faa0"
+        }
+      ]
+    },
+    {
+      "id": "react-is@18.3.1",
+      "name": "react-is",
+      "version": "18.3.1",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/facebook/react.git",
+      "provenance": [
+        {
+          "source": "npm:react-is@18.3.1/LICENSE",
+          "sha256": "a80c79b8f80e824c8ea0612b7abadb9c92c48673cf0adc20b2a7f43e2b19faa0"
+        }
+      ]
+    },
+    {
+      "id": "react@18.3.1",
+      "name": "react",
+      "version": "18.3.1",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/facebook/react.git",
+      "provenance": [
+        {
+          "source": "npm:react@18.3.1/LICENSE",
+          "sha256": "a80c79b8f80e824c8ea0612b7abadb9c92c48673cf0adc20b2a7f43e2b19faa0"
+        }
+      ]
+    },
+    {
+      "id": "resize-observer-polyfill@1.5.1",
+      "name": "resize-observer-polyfill",
+      "version": "1.5.1",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/que-etc/resize-observer-polyfill.git",
+      "author": "Denis Rul <que.etc@gmail.com>",
+      "provenance": [
+        {
+          "source": "npm:resize-observer-polyfill@1.5.1/LICENSE",
+          "sha256": "ed9d31ab88a49256218816deae8b7cf423bd1caa8d0822bfc01257d62f6e6d56"
+        }
+      ]
+    },
+    {
+      "id": "rw@1.3.3",
+      "name": "rw",
+      "version": "1.3.3",
+      "declaredLicense": "BSD-3-Clause",
+      "repository": "http://github.com/mbostock/rw.git",
+      "author": {
+        "name": "Mike Bostock",
+        "url": "http://bost.ocks.org/mike"
+      },
+      "provenance": [
+        {
+          "source": "npm:rw@1.3.3/LICENSE",
+          "sha256": "1325cb60c071ba88c009d7b199e66bef7df85eb62e67c855949ac353e3da434c"
+        }
+      ]
+    },
+    {
+      "id": "safer-buffer@2.1.2",
+      "name": "safer-buffer",
+      "version": "2.1.2",
+      "declaredLicense": "MIT",
+      "repository": "git+https://github.com/ChALkeR/safer-buffer.git",
+      "author": {
+        "name": "Nikita Skovoroda",
+        "email": "chalkerx@gmail.com",
+        "url": "https://github.com/ChALkeR"
+      },
+      "provenance": [
+        {
+          "source": "npm:safer-buffer@2.1.2/LICENSE",
+          "sha256": "aa72fb6117e423794ec098a00d0413fa4ceb2369b68869e07d32ca32235a5f1e"
+        }
+      ]
+    },
+    {
+      "id": "scheduler@0.23.2",
+      "name": "scheduler",
+      "version": "0.23.2",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/facebook/react.git",
+      "provenance": [
+        {
+          "source": "npm:scheduler@0.23.2/LICENSE",
+          "sha256": "a80c79b8f80e824c8ea0612b7abadb9c92c48673cf0adc20b2a7f43e2b19faa0"
+        }
+      ]
+    },
+    {
+      "id": "scroll-into-view-if-needed@3.1.0",
+      "name": "scroll-into-view-if-needed",
+      "version": "3.1.0",
+      "declaredLicense": "MIT",
+      "repository": "git+https://github.com/scroll-into-view/scroll-into-view-if-needed.git",
+      "author": "Cody Olsen",
+      "provenance": [
+        {
+          "source": "npm:scroll-into-view-if-needed@3.1.0/LICENSE",
+          "sha256": "96f25b41a87abdf7159a47864199c02f2356972dd6aeb6b13f23ebaf7ab6dc5e"
+        }
+      ]
+    },
+    {
+      "id": "simple-swizzle@0.2.4",
+      "name": "simple-swizzle",
+      "version": "0.2.4",
+      "declaredLicense": "MIT",
+      "repository": "qix-/node-simple-swizzle",
+      "author": "Qix (http://github.com/qix-)",
+      "provenance": [
+        {
+          "source": "npm:simple-swizzle@0.2.4/LICENSE",
+          "sha256": "28e0462832d8b5cb5ed2a44c518fd23a2d9ab9c63f9dd100dcf9c1bfb561e92e"
+        }
+      ]
+    },
+    {
+      "id": "string-convert@0.2.1",
+      "name": "string-convert",
+      "version": "0.2.1",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/akiran/string-convert",
+      "author": "",
+      "provenance": [
+        {
+          "source": "npm:string-convert@0.2.1/LICENSE",
+          "sha256": "8e7a0e17a14c91d325c22a8ade50da3aaa5a97e321beebbdce77d63fc719a1c2"
+        }
+      ]
+    },
+    {
+      "id": "stylis@4.4.0",
+      "name": "stylis",
+      "version": "4.4.0",
+      "declaredLicense": "MIT",
+      "repository": "https://github.com/thysultan/stylis.js",
+      "author": "Sultan Tarimo <sultantarimo@me.com>",
+      "provenance": [
+        {
+          "source": "npm:stylis@4.4.0/LICENSE",
+          "sha256": "6821b85df4724cddb1de03c371af9a7cc055839d0331dcd7c2f1b1d025098c49"
+        }
+      ]
+    },
+    {
+      "id": "svg-path-parser@1.1.0",
+      "name": "svg-path-parser",
+      "version": "1.1.0",
+      "declaredLicense": "MIT",
+      "repository": "git://github.com/hughsk/svg-path-parser.git",
+      "provenance": [
+        {
+          "source": "npm:svg-path-parser@1.1.0/LICENSE",
+          "sha256": "a9385520d8a19b149728f5fe1b959505629bbb4e58fd6814ace97483763a6dcd"
+        }
+      ]
+    },
+    {
+      "id": "text-segmentation@1.0.3",
+      "name": "text-segmentation",
+      "version": "1.0.3",
+      "declaredLicense": "MIT",
+      "repository": "git+ssh://git@github.com/niklasvh/text-segmentation.git",
+      "author": {
+        "name": "Niklas von Hertzen",
+        "email": "niklasvh@gmail.com",
+        "url": "https://hertzen.com"
+      },
+      "provenance": [
+        {
+          "source": "npm:text-segmentation@1.0.3/LICENSE",
+          "sha256": "8b00952cd8d0f5cbbefb13576778e1185dc963943151353d90c4e14a5a4caf40"
+        }
+      ]
+    },
+    {
+      "id": "throttle-debounce@5.0.2",
+      "name": "throttle-debounce",
+      "version": "5.0.2",
+      "declaredLicense": "MIT",
+      "repository": "git+https://github.com/niksy/throttle-debounce.git",
+      "author": "Ivan Nikolić <niksy5@gmail.com> (http://ivannikolic.com)",
+      "contributors": [
+        "Ben Alman (http://benalman.com)"
+      ],
+      "provenance": [
+        {
+          "source": "npm:throttle-debounce@5.0.2/LICENSE.md",
+          "sha256": "7c6cea49d80c4c206b752c68fee35a27707303103ed867b359b0c33692be0489"
+        }
+      ]
+    },
+    {
+      "id": "toggle-selection@1.0.6",
+      "name": "toggle-selection",
+      "version": "1.0.6",
+      "declaredLicense": "MIT",
+      "repository": "git+https://github.com/sudodoki/toggle-selection",
+      "author": "sudodoki <smd.deluzion@gmail.com> (sudodoki.name)",
+      "contributors": [
+        {
+          "name": "Aleksej Shvajka",
+          "url": "https://github.com/shvaikalesh"
+        }
+      ],
+      "clarification": "Exact published package and pinned source declare MIT without full license/copyright text. Actual author/contributor metadata is retained, without asserting copyright ownership. The pinned README credits @shvaikalesh. Standard MIT terms are supplied separately.",
+      "upstreamLicenseSources": [
+        "https://raw.githubusercontent.com/sudodoki/toggle-selection/466460c75ca40630d8de940490718247fce79a3e/package.json",
+        "https://raw.githubusercontent.com/sudodoki/toggle-selection/466460c75ca40630d8de940490718247fce79a3e/README.md"
+      ],
+      "provenance": [
+        {
+          "source": "https://spdx.org/licenses/MIT.html",
+          "sha256": "64249f57527b812922817280738ce1e8e877bd20cc932f169847f2fee2d0b31e"
+        }
+      ]
+    },
+    {
+      "id": "tslib@2.8.1",
+      "name": "tslib",
+      "version": "2.8.1",
+      "declaredLicense": "0BSD",
+      "repository": "https://github.com/Microsoft/tslib.git",
+      "author": "Microsoft Corp.",
+      "provenance": [
+        {
+          "source": "npm:tslib@2.8.1/CopyrightNotice.txt",
+          "sha256": "7932ec89afeb0991d60e50b13194a73eeefba8976f37a03d3e6b64670f833855"
+        },
+        {
+          "source": "npm:tslib@2.8.1/LICENSE.txt",
+          "sha256": "0e8d2550baea17eb3072c4f919b36fbf9852bb49dba948549872e713863c0834"
+        }
+      ]
+    },
+    {
+      "id": "utrie@1.0.2",
+      "name": "utrie",
+      "version": "1.0.2",
+      "declaredLicense": "MIT",
+      "repository": "git+ssh://git@github.com/niklasvh/utrie.git",
+      "author": {
+        "name": "Niklas von Hertzen",
+        "email": "niklasvh@gmail.com",
+        "url": "https://hertzen.com"
+      },
+      "provenance": [
+        {
+          "source": "npm:utrie@1.0.2/LICENSE",
+          "sha256": "8b00952cd8d0f5cbbefb13576778e1185dc963943151353d90c4e14a5a4caf40"
+        }
+      ]
+    }
+  ]
+}
