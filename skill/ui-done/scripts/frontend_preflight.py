@@ -137,6 +137,25 @@ SECRET_PATTERNS = {
     "GITHUB_TOKEN": re.compile(r"\bgh[pousr]_[A-Za-z0-9]{20,}\b"),
     "AWS_ACCESS_KEY": re.compile(r"\bAKIA[0-9A-Z]{16}\b"),
 }
+CSS_BLOCK_RE = re.compile(r"([^{}@/\n][^{}]*?)\{([^{}]*)\}", re.DOTALL)
+FIXED_PX_WIDTH_RE = re.compile(r"(?<![a-z-])(min-width|width)\s*:\s*(\d+(?:\.\d+)?)px\b", re.IGNORECASE)
+BARE_ICON_BTN_RE = re.compile(
+    r"<(button|Button)\b([^>]*)>(\s*(?:<svg\b[\s\S]*?</svg>|<[A-Z]\w*Icon\b[^>]*/>\s*|<[A-Z]\w*Outlined\b[^>]*/>\s*|<(?:span|i)\b[^>]*class=[\"'][^\"']*icon[^\"']*[\"'][^>]*>\s*</(?:span|i)>)\s*)</\1>",
+    re.IGNORECASE,
+)
+SELF_CLOSING_ICON_BTN_RE = re.compile(
+    r"<Button\b([^>]*\bicon\s*=\s*\{[^}]*\}[^>]*)/>",
+)
+AI_SLUDGE_PATTERNS = (
+    ("AI_SLUDGE_COPY", re.compile(r">\s*No recent activity\s*<", re.IGNORECASE), "Dead empty placeholder 'No recent activity'; provide guided preview or collapse empty column."),
+    ("AI_SLUDGE_COPY", re.compile(r">\s*Submit\s*<"), "Generic bare 'Submit' button label; name the concrete user action outcome."),
+    ("AI_SLUDGE_COPY", re.compile(r"\b(?:digital alchemy|unlock the power of)\b", re.IGNORECASE), "Vague AI marketing buzzword; state concrete product category and outcome."),
+    ("AI_SLUDGE_COPY", re.compile(r"\b(?:Mode|Role)\s+[AB]\b"), "Opaque internal engineering identifier; replace with human-readable meaning."),
+)
+NUMERIC_SELECTOR_RE = re.compile(r"\b(?:timer|clock|counter|metric|price|duration|timecode|stat)\b", re.IGNORECASE)
+BUTTON_SELECTOR_RE = re.compile(r"(?:^|[\s,>])(?:button|\.btn\b|\.cta\b)", re.IGNORECASE)
+ICON_BTN_SKIP_RE = re.compile(r"icon|square|circle|close|dot", re.IGNORECASE)
+PADDING_PAIR_RE = re.compile(r"\bpadding\s*:\s*(\d+(?:\.\d+)?)px\s+(\d+(?:\.\d+)?)px(?:\s*;|\s*$)", re.IGNORECASE | re.MULTILINE)
 
 
 def line_number(text: str, offset: int) -> int:
@@ -254,7 +273,93 @@ def finding_for_reference(
     return findings
 
 
-def scan_text_file(source: Path, text: str, root: Path, offline: bool, min_font_px: float) -> list[Finding]:
+def scan_ux_heuristics(
+    source: Path,
+    text: str,
+    display_file: str,
+    panel_max_width: float | None,
+) -> list[Finding]:
+    """Run lightweight, low-noise UX/accessibility/layout static checks."""
+    findings: list[Finding] = []
+    suffix = source.suffix.lower()
+
+    if suffix in {".css", ".html", ".htm"}:
+        css_text = mask_script_bodies(text) if suffix in {".html", ".htm"} else text
+        for match in CSS_BLOCK_RE.finditer(css_text):
+            selector = match.group(1).strip()
+            body = match.group(2)
+            base_line = line_number(css_text, match.start())
+
+            if BUTTON_SELECTOR_RE.search(selector) and not ICON_BTN_SKIP_RE.search(selector):
+                pad = PADDING_PAIR_RE.search(body)
+                if pad and float(pad.group(1)) > 0 and float(pad.group(1)) >= float(pad.group(2)):
+                    findings.append(
+                        Finding(
+                            "warning",
+                            "BUTTON_PADDING_RATIO",
+                            display_file,
+                            base_line,
+                            f"Single-line button '{selector}' uses padding {pad.group(1)}px {pad.group(2)}px; verify padding-inline > padding-block.",
+                        )
+                    )
+
+            if NUMERIC_SELECTOR_RE.search(selector) and "font-size" in body.lower():
+                lower_body = body.lower()
+                if "tabular-nums" not in lower_body and "monospace" not in lower_body and "mono" not in lower_body:
+                    findings.append(
+                        Finding(
+                            "note",
+                            "NON_TABULAR_NUMERIC",
+                            display_file,
+                            base_line,
+                            f"Dynamic/numeric selector '{selector}' omits tabular-nums or monospace numerals; verify numbers do not jitter on update.",
+                        )
+                    )
+
+            if panel_max_width is not None:
+                for w_match in FIXED_PX_WIDTH_RE.finditer(body):
+                    px = float(w_match.group(2))
+                    if px >= panel_max_width:
+                        findings.append(
+                            Finding(
+                                "warning",
+                                "FIXED_WIDTH_OVERFLOW_RISK",
+                                display_file,
+                                line_number(css_text, match.start(2) + w_match.start()),
+                                f"Fixed {w_match.group(1)}: {px:g}px meets/exceeds --panel-max-width={panel_max_width:g}px; confirm responsive wrap/reflow.",
+                            )
+                        )
+
+    if suffix in {".html", ".htm", ".jsx", ".tsx"}:
+        for regex in (BARE_ICON_BTN_RE, SELF_CLOSING_ICON_BTN_RE):
+            for match in regex.finditer(text):
+                attrs = match.group(2) if regex is BARE_ICON_BTN_RE else match.group(1)
+                if not re.search(r"\b(?:aria-label|aria-labelledby|title)\s*=", attrs, re.IGNORECASE):
+                    findings.append(
+                        Finding(
+                            "warning",
+                            "BARE_ICON_BUTTON",
+                            display_file,
+                            line_number(text, match.start()),
+                            "Icon-only button lacks aria-label/title; screen readers cannot announce its action.",
+                        )
+                    )
+
+        for code, pattern, msg in AI_SLUDGE_PATTERNS:
+            for match in pattern.finditer(text):
+                findings.append(Finding("warning", code, display_file, line_number(text, match.start()), msg))
+
+    return findings
+
+
+def scan_text_file(
+    source: Path,
+    text: str,
+    root: Path,
+    offline: bool,
+    min_font_px: float,
+    panel_max_width: float | None = None,
+) -> list[Finding]:
     display_file = str(source.relative_to(root)) if source.is_relative_to(root) else str(source)
     findings: list[Finding] = []
     suffix = source.suffix.lower()
@@ -331,6 +436,7 @@ def scan_text_file(source: Path, text: str, root: Path, offline: bool, min_font_
                     f"Possible {name.lower().replace('_', ' ')} embedded in client-readable text; the value is intentionally not printed.",
                 )
             )
+    findings.extend(scan_ux_heuristics(source, text, display_file, panel_max_width))
     return findings
 
 
@@ -370,7 +476,13 @@ def package_findings(package_files: list[Path], root: Path) -> list[Finding]:
     return findings
 
 
-def audit(target: Path, offline: bool, min_font_px: float, max_file_mb: float) -> tuple[list[Finding], int]:
+def audit(
+    target: Path,
+    offline: bool,
+    min_font_px: float,
+    max_file_mb: float,
+    panel_max_width: float | None = None,
+) -> tuple[list[Finding], int]:
     target = target.resolve()
     root = target if target.is_dir() else target.parent
     findings: list[Finding] = []
@@ -404,7 +516,7 @@ def audit(target: Path, offline: bool, min_font_px: float, max_file_mb: float) -
             findings.append(Finding("warning", "FILE_READ", display_file, 1, f"Cannot read file: {exc}"))
             continue
         scanned += 1
-        findings.extend(scan_text_file(source, text, root, offline, min_font_px))
+        findings.extend(scan_text_file(source, text, root, offline, min_font_px, panel_max_width))
 
     findings.extend(package_findings(package_files, root))
     unique = {(
@@ -424,9 +536,19 @@ def run_self_test() -> None:
         fixture_secret = "sk-" + "1234567890abcdefghijklmnop"
         (root / "index.html").write_text(
             f"""<!doctype html>
-<style>.tiny {{ font-size: 10px; background: url('./missing-bg.png'); }}</style>
+<style>
+.tiny {{ font-size: 10px; background: url('./missing-bg.png'); }}
+button.bad {{ padding: 12px 10px; min-width: 560px; }}
+.timer {{ font-size: 16px; }}
+button.good {{ padding: 8px 18px; }}
+.timer-good {{ font-size: 16px; font-variant-numeric: tabular-nums; }}
+</style>
 <script src="https://cdn.example.invalid/app.js"></script>
 <img src="./missing.png" alt="fixture">
+<button><svg viewBox="0 0 16 16"></svg></button>
+<button aria-label="Close"><svg viewBox="0 0 16 16"></svg></button>
+<button>Submit</button>
+<div>No recent activity</div>
 <script>window.fixture = "{fixture_secret}";</script>
 """,
             encoding="utf-8",
@@ -435,30 +557,51 @@ def run_self_test() -> None:
             "function url(value) { return value; } url('not-a-css-asset.png');",
             encoding="utf-8",
         )
-        findings, scanned = audit(root, offline=True, min_font_px=11, max_file_mb=1)
+        (root / "panel.tsx").write_text(
+            'export const Panel = () => (<><Button icon={<PlusOutlined />} /><Button icon={<CheckOutlined />} aria-label="SaveItem" /></>);',
+            encoding="utf-8",
+        )
+        findings, scanned = audit(root, offline=True, min_font_px=11, max_file_mb=1, panel_max_width=420)
         codes = {item.code for item in findings}
-        expected = {"REMOTE_RUNTIME_RESOURCE", "MISSING_LOCAL_ASSET", "SMALL_TEXT", "POSSIBLE_SECRET"}
+        expected = {
+            "REMOTE_RUNTIME_RESOURCE",
+            "MISSING_LOCAL_ASSET",
+            "SMALL_TEXT",
+            "POSSIBLE_SECRET",
+            "BARE_ICON_BUTTON",
+            "BUTTON_PADDING_RATIO",
+            "NON_TABULAR_NUMERIC",
+            "FIXED_WIDTH_OVERFLOW_RISK",
+            "AI_SLUDGE_COPY",
+        }
         missing = expected - codes
+        tsx_bare_ok = any(item.file == "panel.tsx" and item.code == "BARE_ICON_BUTTON" for item in findings)
         javascript_css_false_positive = any(
             item.file == "app.js" and item.code == "MISSING_LOCAL_ASSET" for item in findings
         )
-        if scanned != 2 or missing or javascript_css_false_positive:
+        clean_false_positive = any(
+            ("good" in item.message) or ("Close" in item.message) or ("SaveItem" in item.message) for item in findings
+        )
+        if scanned != 3 or missing or not tsx_bare_ok or javascript_css_false_positive or clean_false_positive:
             raise AssertionError(
                 "Self-test failed; "
                 f"scanned={scanned}, missing={sorted(missing)}, "
-                f"javascript_css_false_positive={javascript_css_false_positive}"
+                f"tsx_bare_ok={tsx_bare_ok}, "
+                f"javascript_css_false_positive={javascript_css_false_positive}, "
+                f"clean_false_positive={clean_false_positive}"
             )
-    print("Self-test passed: remote resources, missing assets, small text, and secrets were detected.")
+    print("Self-test passed: resource, asset, typography, button ratio, bare icon, copy, overflow, and secret checks passed.")
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Scan frontend source or built output for offline resources, missing assets, tiny literal text, lockfiles, and likely embedded secrets.",
+        description="Scan frontend source or built output for offline resources, missing assets, tiny literal text, layout/a11y/copy heuristics, lockfiles, and likely embedded secrets.",
         epilog="This static scan supplements real-browser screenshots, computed styles, network logs, and interaction tests.",
     )
     parser.add_argument("target", nargs="?", help="Frontend project, built-output directory, or individual text file.")
     parser.add_argument("--offline", action="store_true", help="Treat remote and root-relative runtime resources as errors.")
     parser.add_argument("--min-font-px", type=float, default=11.0, help="Warn on literal px font sizes below this value (default: 11).")
+    parser.add_argument("--panel-max-width", type=float, default=None, help="Optional max panel width (px, e.g. 420 for Tier A) to warn on fixed min-width/width overflow risks.")
     parser.add_argument("--max-file-mb", type=float, default=12.0, help="Skip individual text files larger than this many MiB (default: 12).")
     parser.add_argument("--format", choices=("text", "json"), default="text", help="Output format (default: text).")
     parser.add_argument(
@@ -471,8 +614,8 @@ def parse_args() -> argparse.Namespace:
     args = parser.parse_args()
     if not args.self_test and not args.target:
         parser.error("target is required unless --self-test is used")
-    if args.min_font_px <= 0 or args.max_file_mb <= 0:
-        parser.error("--min-font-px and --max-file-mb must be positive")
+    if args.min_font_px <= 0 or args.max_file_mb <= 0 or (args.panel_max_width is not None and args.panel_max_width <= 0):
+        parser.error("--min-font-px, --max-file-mb, and --panel-max-width must be positive")
     return args
 
 
@@ -487,7 +630,7 @@ def main() -> int:
         print(f"Target does not exist: {target}", file=sys.stderr)
         return 2
 
-    findings, scanned = audit(target, args.offline, args.min_font_px, args.max_file_mb)
+    findings, scanned = audit(target, args.offline, args.min_font_px, args.max_file_mb, args.panel_max_width)
     counts = {severity: sum(item.severity == severity for item in findings) for severity in ("error", "warning", "note")}
 
     if args.format == "json":

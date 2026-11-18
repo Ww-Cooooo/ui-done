@@ -83,7 +83,8 @@ For new pages and material layout redesigns, desktop is the default. Start with 
 
 | Class | Suggested viewport | Purpose |
 |---|---:|---|
-| Computer (default) | 1440×900; 1366×768 where relevant | Full composition, readable working state, fold, and fixed UI |
+| Computer (default for B/C) | 1440×900; 1366×768 where relevant | Full composition, readable working state, fold, and fixed UI |
+| Embedded panel / sidebar (mandatory for Tier A) | 360×640 (or 420×720) AND 640×720+ | Dual-mode narrow-stack vs wide-split container reflow, anchor visibility, zero horizontal overflow |
 | Tablet (only when required) | 768×1024 | Supported breakpoint and touch layout |
 | Phone (only when required) | 390×844 | Supported mobile task and navigation |
 
@@ -185,13 +186,37 @@ Keep useful timings and conditions in the existing task evidence. No new perform
 - Confirm sticky/fixed headers, rails, bottom navigation, cookie bars, and CTA bars do not cover the first or final content.
 - Ensure touch targets are approximately 44×44 CSS px or larger and visible focus is not clipped.
 
-### Rendered text check
+### Rendered text, optical metrics, and Declared-vs-Rendered probe
 
-At the actual target size and normal zoom, read one representative primary title/identity, value with its unit, secondary metadata and ordinary control. Include a long real label and the selected/open state when those affect allocation. Inspect their computed `font-size`, `line-height`, `font-family`, clipping and wrapping, and look at the rendered text. Treat 11px as a floor reserved for short low-priority metadata; keep labels/card copy around 13px+, controls around 14px+, and continuous body copy around 15–16px+ unless the product has a justified accessible scale. A legible but inappropriate visual hierarchy still needs design judgment.
+At the actual target size and normal zoom, read one representative primary title/identity, value with its unit, secondary metadata and ordinary control. Include a long real label and the selected/open state when those affect allocation. Inspect their computed `font-size`, `line-height`, `font-family`, clipping and wrapping, and look at the rendered text. Treat 11px as a floor reserved for short low-priority metadata; keep labels/card copy around 13px+, controls around 14px+, and continuous body copy around 15–16px+ unless the product has a justified accessible scale. Verify proportional scaling (`>=1.25x` across typography tiers), `outer >= 3x inner` spacing hierarchy, `padding-inline > padding-block` on single-line buttons, `tabular-nums` on live changing numbers, non-inverted top-lit surfaces in dark mode, visible text or `aria-label` on every icon button, and zero fake data/deceptive `Skip` shortcuts.
+
+When `$webapp-testing` / Playwright is available, verify **Declared Spec vs Rendered Measurements** directly on the live DOM (including Tier A narrow widths `360px`–`420px`) alongside screenshots—catching overflow, tight buttons, bare icon controls, dead placeholder copy, missing ARIA states, mid-token line breaks, and clipped copy automatically rather than eyeballing from source CSS alone:
+
+```js
+// Quick read-only Declared-vs-Rendered QA probe inside Playwright / CDP
+(() => {
+  const overflow = document.documentElement.scrollWidth - window.innerWidth;
+  const bareIconBtns = [...document.querySelectorAll('button,[role="button"]')]
+    .filter(b => !b.innerText.trim() && !b.getAttribute('aria-label') && !b.getAttribute('title')).length;
+  const badButtons = [...document.querySelectorAll('button,[role="button"]')]
+    .filter(b => {
+      const s = getComputedStyle(b);
+      const px = parseFloat(s.paddingLeft) + parseFloat(s.paddingRight);
+      const py = parseFloat(s.paddingTop) + parseFloat(s.paddingBottom);
+      return b.innerText.trim().length > 0 && s.whiteSpace === 'nowrap' && py > 0 && px <= py;
+    }).length;
+  const clipped = [...document.querySelectorAll('h1,h2,h3,button,a,label,span')]
+    .filter(el => el.clientWidth > 0 && el.scrollWidth > el.clientWidth + 2).length;
+  const deadPlaceholders = /No recent activity|\b(?:Mode|Role)\s+[AB]\b|digital alchemy/i.test(document.body.innerText);
+  const svgMissingAriaHidden = [...document.querySelectorAll('button svg,a svg')]
+    .filter(svg => svg.getAttribute('aria-hidden') !== 'true' && !svg.getAttribute('aria-label')).length;
+  return { innerWidth: window.innerWidth, overflow, bareIconBtns, badButtons, clipped, deadPlaceholders, svgMissingAriaHidden };
+})();
+```
 
 For example, a comparison page with eight DOM rows can pass click/count tests while showing only one readable row after history opens. A 10px title and 8px model label are not excused by the viewport being small or the artifact being a draft. Reduce redundant chrome, change the summary/detail allocation or expose the actual capacity tradeoff; do not shrink the task into compliance. Inspect the title/metadata's computed sizes again after that affected change, rather than rerunning unrelated flows.
 
-For literal CSS/Tailwind sizes, the existing `python -X utf8 <skill-folder>/scripts/frontend_preflight.py <affected-style-file> --format json` can quickly locate small-text declarations. Use it as targeted triage when helpful, not another mandatory whole-project scan. Resolve each relevant warning against its actual role/computed rendering; `rem`, transforms and inherited styles still need the browser check. Passing this scan cannot certify layout, motion or aesthetic quality. Keep only decision-changing results in the normal handoff; no new report or approval meeting is required.
+For literal CSS/Tailwind sizes and Tier A panel/copy/a11y heuristics, run `python -X utf8 <skill-folder>/scripts/frontend_preflight.py <affected-target> --format json` (pass `--offline` for single-file/`file://` builds and `--panel-max-width 420` for Tier A panels). Resolve each relevant warning against its actual role/computed rendering; passing this scan cannot certify layout, motion or aesthetic quality. Keep only decision-changing results in the normal handoff; no new report or approval meeting is required.
 
 ## Runtime checks
 
@@ -231,7 +256,9 @@ Never accept the first render simply because it loads.
 
 ## Acceptance record
 
-Use the handoff in `../SKILL.md` as the single acceptance summary. Identify the actual build/entry, browser, sizes, actions, observed results, and untested scope. Reference existing selection, provenance, exemption, and design-variety decisions instead of duplicating them here. Link screenshots only when useful artifacts were retained; do not create a full evidence package by default.
+Use the handoff in `../SKILL.md` as the single acceptance summary. Identify the actual build/entry, browser, sizes, `preserved:` feature-parity outcome, observed results, and explicit untested runtime dimensions. Reference existing selection, provenance, exemption, and design-variety decisions instead of duplicating them here. Link screenshots only when useful artifacts were retained; do not create a full evidence package by default.
+
+**Mandatory `UNVERIFIED` Runtime Ledger:** Never allow a static screenshot, build pass, or `frontend_preflight.py` output to imply full pass across runtime axes that were never actively exercised. Explicitly list every untested dimension in `ui-done ｜ unverified runtime:` (and state `待验证 / UNVERIFIED` in any written review) across: `Keyboard/Tab focus order`, `VoiceOver/Screen Reader semantic readout`, `Narrow-sidebar live resize (360-480px)`, `Prefers-reduced-motion toggle`, `Offline / timeout / stale connectivity fallback`, and `Reload / draft persistence`.
 
 Separate implementation, scoped verification, and normal-entry adoption when they differ. For example: “The candidate now preserves readable video and waveform at the checked viewport; the selection/save flow passed there. The normal entry still serves the prior build and has not been switched.” Use that wording only for actions actually observed; if only code or static checks were reviewed, say so. Do not call the whole experience accepted while a known core-task defect remains, even if the particular script passed.
 

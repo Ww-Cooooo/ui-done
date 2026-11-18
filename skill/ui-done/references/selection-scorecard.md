@@ -19,10 +19,20 @@ Reject or pause a candidate when any applicable gate fails:
 - Keyboard, screen reader, touch, reduced-motion, or essential static fallback cannot be made usable.
 - Maintenance/security evidence is inadequate for the role it would occupy.
 - It adds hidden install scripts, native binaries, telemetry, or operational burden disproportionate to its benefit.
+- A layout or UI concept relies on hero-only Dribbble concept shots ("concept fluff") lacking multi-state, long-label, empty/error, or real workflow capacity.
+- Setup or verification flows permit deceptive completion: default pre-selected high-error choices with always-enabled primary actions, permissive `Skip` actions marking setup as complete without verification, or simulated progress/audio waveforms presented as authentic signal telemetry.
 
 ## Required capability plan
 
-For every new page or substantial redesign, start the eight rows in `../SKILL.md` while forming the whole-interface direction, refine them through [layered selection](layered-design-selection.md), and settle them before full implementation. This is an inclusion plan, not a menu to minimize: React/primary UI, typography/icons/assets, GSAP motion, Lenis scrolling, separate 2D Canvas, one visualization owner, performance, and the conditional 3D evaluation. For each default row record one compatible owner, its existing host and shipped job, what the user can observe or what infrastructure measurably improves, and the applicable fallback on the declared devices. Reuse verified current owners. Typography includes inspected specimens, role/language/symbol coverage, exact license/source, and local packaging; it is not satisfied by inheriting a system stack. The 3D row records all four suitability results before naming an owner/job.
+For every new page or substantial redesign, first classify the surface tier objectively from the host/delivery contract (`SKILL.md#surface-tiers-and-capability-contract`) so compact sidebars are not weighed down by unrelated ceremony, while standalone apps still honor every authentic role:
+
+| Tier | Objective trigger | Always mandatory | Conditional / Tier-exempt unless task owns it |
+|---|---|---|---|
+| **Tier A-panel** | Docked plugin sidebar, IDE drawer, extension webview (`<=520px`), or scoped repair | React + primary UI owner, self-hosted fonts + 1 icon family, optical/contrast rules, `<=0.1s` micro-feedback, `360px` & `640px+` reflow, `preserved:` parity lock | Lenis smooth scrolling, 2D Canvas, 3D/WebGL, marketing 5-source & Demo Hub showcase passes (exempt unless view explicitly owns real canvas/chart/scroll objects) |
+| **Tier B-workspace** | Standalone web app, SaaS console, analytics/review workspace | All applicable rows of the 8-row plan (AntD/existing React owner, typography, GSAP, Lenis if real scroll, Canvas/AntV on authentic objects/data, perf, 3D gate) | Omit 3D cleanly via gate; omit Canvas/AntV only via inspected no-real-object exemption |
+| **Tier C-expressive** | Landing page, product launch, showcase, portfolio | All 8 capability rows + 5-source creative pass + official GSAP Demo Hub/Showcase check + `3-5` structural alternatives when open | Omit conditional 3D only via 4-gate check |
+
+For every applicable row in the classified Tier above, refine choices through [layered selection](layered-design-selection.md), and settle them before full implementation. Keep React/primary UI, typography/icons/assets, GSAP motion, Lenis scrolling, separate 2D Canvas, one visualization owner, performance, and the conditional 3D evaluation explicit rather than hiding omissions:
 
 Coverage must reinforce the composition, not determine a row of library demonstration sections. For an experience-level motion upgrade, retain unaffected owners and apply the GSAP row, research and outcome requirements to the affected sequence even without a static-layout redesign; do not expand to every unrelated category or shrink the assignment to a press effect. A behavioral role can be prominent; an accent may be bounded but must remain meaningful and perceptible. “Smallest honest footprint” preserves the intended result and visual ambition, not the smallest proof of installation. A blank row, unused import, token fade, or unexplained decorative pixel is not success. Apply the integration method in `page-composition.md` within this same plan.
 

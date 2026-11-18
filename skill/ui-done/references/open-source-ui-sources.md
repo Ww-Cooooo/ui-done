@@ -18,7 +18,7 @@ Run this after the product role, real content, device needs, and delivery mode a
 
 Keep the record compact: exact item/URL, what was observed, intended host and meaning, adopt/adapt/idea-only/reject, dependency and license boundary, and how the result changes for the product's tone and devices. If an accessible MotionSites Prompt cannot be copied because it is locked, requires unauthorized access, lacks a relevant public entry, or the site fails after bounded attempts, record `hard prompt-access exemption` and still inspect safely visible works. Apply the existing hard demo-review exemptions to the other four sources.
 
-The pass must widen decisions, not dictate a collage. A rejected candidate still counts when the official Demo/Code was genuinely inspected. An unused import, copied example section, fake dataset, remote sample asset, or second motion/component owner does not count. Never upload private code, screenshots, data, credentials, or user assets to any source site.
+The pass must widen decisions, not dictate a collage. A rejected candidate still counts when the official Demo/Code was genuinely inspected. **Shipped live-product flows (real error/empty/long-text/multi-state patterns) strictly outrank concept-only "aircraft-carrier mockups" (Dribbble shots with pretty covers and zero state depth)**; Tier A sidebar/plugin fixes are exempt from this 5-source pass unless exploring an authentic custom component. An unused import, copied example section, fake dataset, remote sample asset, or second motion/component owner does not count. Never upload private code, screenshots, data, credentials, or user assets to any source site.
 
 ## Turn reference research into a working page
 
