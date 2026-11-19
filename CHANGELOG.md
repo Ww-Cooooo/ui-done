@@ -1,5 +1,13 @@
 # 更新记录
 
+## 2026.11.19
+
+Skill 版本：`2026.11.19`。从“面向弱模型的硬性施工规则手册”彻底转型为“面向强模型的超轻设计品味与 UX 顾问”（全建议制 · 零硬规定）：
+
+- **移除全部强约束与门禁**：彻底取消首尾机械输出格式行（`ui-done ｜ ...` / `verified on` / `unverified runtime`）、取消 `preserved:` 锁定语法与强制三段停顿审批流、解除对 React / Ant Design / GSAP / Lenis / AntV 的默认绑定，并移除一切 `2-3-4` / `>=1.25x` / 间距比定量条文。
+- **大幅瘦身包体、仅留纯可选小工具**：移出 `14` 份流程与技术选型类重型参考手册（含 `selection-scorecard.md`、`layered-design-selection.md`、`open-source-ui-sources.md`、`page-composition.md`、`visual-qa.md` 等）、`660 KB` Motion Prompt 字典、教学配图与目录脚本（历史文件均留存于 Git `95dde27`）。
+- **聚焦核心品味与可选工具箱**：[`SKILL.md`](skill/ui-done/SKILL.md) 浓缩为约 60 行高频高信噪比审美与空间因果思考视角，搭配纯可选的 [ux-craft-playbook.md](skill/ui-done/references/ux-craft-playbook.md)（非指令型 UX 盲区备忘）与 [frontend_preflight.py](skill/ui-done/scripts/frontend_preflight.py)（按需使用的静态排查脚手架）。
+
 ## 2026-11-01
 
 Skill 版本：`2026.11.01`。新增完整动效参考及可播放网页，合并本地已存在的可读性、独立 Canvas 和状态连续指导；保留仓库最新的阶段交付要求。
