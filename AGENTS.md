@@ -1,23 +1,23 @@
 # UI Done maintenance instructions
 
-These instructions govern this repository and Skill maintenance. They are not an extra frontend execution workflow.
+These instructions govern maintenance of this repository and its Skill. They are not a frontend execution workflow.
 
-## Scope and implementation
+## What the Skill is
 
-- Work with **全面思考和架构；精炼实现；精准验证；果断执行**. Remove unnecessary engineering and process, not the agreed design, motion, typography, truthful data, or distinctness requirements.
-- `skill/ui-done/SKILL.md` owns the vendor-neutral runtime contract; host adapters mirror it. Keep each rule in its existing owner instead of duplicating it here or in new checklists.
-- Inspect the affected files, callers/entry and working-tree changes before editing; preserve unrelated user work. Expand inspection only for a concrete dependency, failure or unresolved question. Reuse useful existing parts; add architecture, dependencies or tooling only for a demonstrated task need.
-- Do not create planning files, reports, benchmark environments, multi-Agent exercises or evidence packages by default. Use them when the task actually needs them. For continuity, retain a short current-state note and retrieve relevant history rather than repeatedly rereading everything.
+- `skill/ui-done/SKILL.md` is a lightweight design advisor for strong models: perspectives, trade-offs, and common blind spots. It is not a rulebook. Do not reintroduce mandatory stacks, numeric red lines, fixed approval stages, required output lines, or "missing X = failure" wording.
+- Keep the entry readable in one screen. Put optional depth in `references/` and deterministic checks in optional `scripts/`; never make them mandatory pre-reads.
+- Be careful that advice does not itself become an aesthetic default. Naming a specific look (e.g. dark glass, glow, a particular layout) as "good" tends to make every output converge on it; prefer describing where distinctiveness comes from.
+- Write for an executor that has only the published folder and the user's task — no private chats, local paths, or companion Skills as required dependencies.
 
-## Write a self-contained public Skill
+## Editing
 
-- Write for an executor with only the published folder and its user's task, not this chat, private reports or an unavailable companion Skill. Keep essential requirements and explicit reading conditions in `SKILL.md`; put conditional methods and examples in the relevant reference and link it where needed.
-- Preserve actionable requirements, conditions, exceptions and observable outcomes. Do not replace specific positions, proportions, motion targets or rejected layouts with slogans such as "preserve intent" or "make it distinctive." Keep decisive user words and selected reference artifacts in the task handoff; retain a concrete counterexample when needed to prevent misreading.
-- Make public examples independent of private paths, services, media and personal data. For external references, retain the primary source, concrete observation, application and limits without copying whole articles. Repair conflicting wording at its owner rather than appending another rule layer.
+- Inspect affected files and working-tree changes first; preserve unrelated user work.
+- Fix conflicting wording at its owner instead of appending another rule layer. Keep `README.md`, `CHANGELOG.md`, `VERSION`, `metadata.version`, `agents/openai.yaml`, and `assets/agents-snippet.md` consistent with `SKILL.md`.
+- Do not create planning files, reports, or benchmark environments by default.
 
-## Verify and finish
+## Verifying
 
-- Wording, README facts and link-only edits: check the affected text/links; do not run an unrelated application. Validate package structure when metadata or resource layout changes. Classify a Skill change by the behavior it changes, not by its Markdown file extension. A change to design choices, reference use, implementation or acceptance is a method/workflow change even when it edits only instructions.
-- Frontend changes: use the scope-selection table in `skill/ui-done/references/visual-qa.md`. Script/tooling changes: check the affected behavior. Packaging/install changes: exercise the affected artifact, entry and resources, not merely the source.
-- Trigger changes: check the affected explicit, implicit, mid-task, delegated or vendor-neutral entry, not every route by default. For a reported execution failure, follow a representative case from the changed decision to the user-visible result it is meant to improve. A correct first question does not verify later design, implementation or motion. When independent use is the question, give the executor the published package and normal task inputs without the author's diagnosis; keep ordinary user answers distinct from author coaching. Reuse historical evidence for unchanged parts. A full benchmark is not required, and unavailable runtime/visual evidence stays explicitly unverified rather than becoming a text-only pass.
-- Reuse passing evidence while relevant code/artifacts/conditions remain unchanged. Rerun or expand only for a new change, failure or unresolved concrete doubt. Distinguish instructions changed, behavior checked, user acceptance and entry actually updated; neither valid Markdown nor a passing build proves design quality or universal Agent compliance.
+- Wording and link edits: check the affected text and that package-relative links resolve.
+- Script changes: run `python -X utf8 skill/ui-done/scripts/frontend_preflight.py --self-test` plus the affected behavior.
+- Changes to the Skill's design direction: when practical, give a clean-context executor the published package and a representative task (ideally alongside a no-Skill baseline) and look at the rendered result. Report what was and was not verified; a valid Markdown file or passing build is not evidence of design quality.
+- Showcase changes: build with `pnpm run check` and check the affected page; do not rerun everything for unrelated edits.

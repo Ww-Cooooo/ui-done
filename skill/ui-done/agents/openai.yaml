@@ -1,8 +1,8 @@
 # Optional OpenAI host adapter. Core guidance lives in ../SKILL.md.
 interface:
   display_name: "UI Done"
-  short_description: "面向强模型的轻量前端品味、空间构图与 UX 暗坑顾问"
-  default_prompt: "Use $ui-done as a lightweight product UX and visual craft advisor: judge spatial relationships, avoid placeholder shortcuts, and execute with the cleanest architecture for the task."
+  short_description: "面向强模型的界面设计顾问：设计感、少字易懂与 UX 暗坑"
+  default_prompt: "Use $ui-done as a design advisor: grow the concept from the subject, keep screens low-text and instantly understandable, guard product UX blind spots, and choose your own stack and workflow."
 
 policy:
   allow_implicit_invocation: true

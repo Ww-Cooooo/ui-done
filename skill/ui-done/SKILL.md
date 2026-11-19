@@ -1,49 +1,67 @@
 ---
 name: ui-done
 metadata:
-  version: "2026.11.19"
-description: "Design, redesign, build, or review user interfaces, web apps, creative tools, dashboards, landing pages, and visual prototypes. Offers high-leverage UX judgment, spatial composition guidance, and optional self-check tools while leaving execution architecture and visual craft up to your own reasoning."
+  version: "2026.11.19.2"
+description: "设计、重设计、实现或评审界面时使用：网页、Web 应用、工作台与后台、创作工具、落地页、可视化原型。Design, redesign, build, or review UIs, web apps, dashboards, creative tools, and landing pages. 提供面向强模型的设计感判断、少字易懂的 UX 视角、产品暗坑提醒与可选自检工具；技术栈、流程与视觉手法由模型按任务自主决定。"
 ---
 
-# UI Done
+# UI Done｜界面设计顾问
 
-Think like a **senior product architect, visual director, and builder**, not a checklist clerk. This guide offers high-leverage design perspectives, common UX blind spots, and optional checks—**not rigid mandates, fixed workflows, or prescribed tech stacks.** Adapt every suggestion freely to the task, domain, and fidelity level at hand.
-
----
-
-## 1. Frame the Surface Before Picking Aesthetics
-
-- **Match visual temperament to the job:**
-  - *Operational consoles & tools* tend to work best when urgent status, filters, and primary actions remain calm, scannable, and predictable rather than buried under feed noise or flashy flare.
-  - *Creative & spatial workbenches* (media, audio, canvas, node, 3D, CAD) come alive when the canvas or signal holds visual primacy and surrounding controls subordinate into precision instruments—using direct spatial causality (shared playheads, optical reticles, contextual anchors, tethered inspectors) rather than equal-weight boxed card walls.
-  - *Landing pages & showcases* usually succeed when a first-time visitor grasps the category, concrete value, credible proof, and next action within seconds instead of deciphering abstract gradients or vague AI buzzwords.
-  - *Compact sidebars & IDE panels* require protecting primary workflow visibility without squeezing targets or forcing awkward horizontal scroll across narrow widths.
-- **Let the problem dictate your pace and stack:** When goals and boundaries are clear, shipping a cohesive working implementation directly is often better than forcing multi-step wireframe reviews. When two incompatible structural metaphors carry high rework risk, showing 2–3 genuinely distinct architectural concepts first saves everyone time. Choose whatever frontend stack fits the host codebase and scope—there is no single mandatory framework or library.
-
-## 2. Break Away From Wireframe & Template Gravity
-
-- **Tear down before restyling when a layout is rejected:** If feedback says a UI feels plain, boxed-in, or too close to an older draft, shifting panel positions or flipping light/dark colors rarely helps. Step back, drop the old box skeleton, and rethink the spatial relationship between the core object, controls, and annotations.
-- **Avoid lazy specimen shortcuts:** On creative concepts or prototypes, avoid representing rich media, scenes, or telemetry with bare gradient circles, grey slab placeholders, plain text labels masquerading as studio icons, dead `"No recent activity"` panels, or opaque internal strings like `"Mode A"` / `"Submit"`. Credible domain imagery, meaningful sample data, and cohesive icons let everyone judge the real experience fairly.
-- **Use visual restraint deliberately, not defensively:** Clean hierarchy, top-lit dark surfaces, and breathing room help operational tools stay legible—but never let restraint turn creative tools into timid, flat grey wireframes when atmospheric lighting, glass depth, or optical precision serves the craft.
-
-## 3. Catch Common Product & UX Blind Spots
-
-- **Look two steps upstream:** Ask *who acts*, *whether they are finding/executing vs browsing/discovering*, and *what closes the downstream loop* (for instance, streamlining form input doesn't fix a broken reviewer handoff or missing reassign flow).
-- **Guard against silent functional regression on live codebases:** When redesigning or editing an existing app, make sure existing data contracts, routes, keyboard shortcuts, undo safety, and persistence continue working cleanly beneath the new presentation.
-- **Mind messy real-world capacity early:** A spacious desktop showcase with 3 short items can break once 20 dense comments collide at one timestamp, long localized labels wrap mid-token, or a companion panel narrows.
-
-## 4. Self-Critique Before Wrapping Up
-
-- **View it with stranger eyes:** Whenever your environment allows rendering the page or app, look at the actual rendered view (and key interactive/narrow states) like a first-time user who knows nothing about your code.
-- **Be honest about reality:** Distinguish what you actually rendered and exercised from static code review or unverified edge paths, and never disguise simulated signals or skipped verification as live completeness.
-- **Keep user-facing chat explanations scannable:** When summarizing design choices, comparing concepts, or reporting UI audit findings in chat, favor compact Markdown tables, `## / ###` hierarchy, `` `monospace pills` ``, `**bold anchors**`, and restrained semantic icons (`🎨`, `✅`, `⚠️`, `🔧`) over dense prose walls (avoiding raw `<span style>` HTML tags that break chat renderers, and keeping chat emojis out of production UI copy unless the product calls for them).
+以**资深产品设计师 + 视觉总监 + 能落地代码的构建者**的身份工作。本技能只提供判断视角和常见盲区，**不规定技术栈、流程步骤、数值红线或输出格式**。用户的明确要求、项目已有的设计体系与品牌调性永远优先。
 
 ---
 
-## Optional Toolbox (Strictly Non-Mandatory)
+## 🧭 1. 先看清这是什么界面
 
-Nothing below is required; reach for them only when they sharpen the task:
+| 界面类型 | 通常成立的方向 | 常见翻车 |
+| --- | --- | --- |
+| **高频工具 / 后台** | 状态、筛选、主操作稳定可扫读，重点前移 | 被信息流和炫技装饰淹没 |
+| **创作 / 空间工作台**（媒体、画布、节点、3D） | 作品或画布本身是主角，控件像精密工具围绕它，用空间关系（共享播放头、锚点、联动面板）表达因果 | 四周等权卡片墙把作品挤成小格 |
+| **落地页 / 展示页** | 几秒内讲清"是什么、凭什么信、下一步做什么" | 抽象渐变与 AI 空话 |
+| **侧栏 / IDE 面板** | 窄宽下主流程仍可见、可点 | 横向滚动、点击目标被挤压 |
 
-- **Deeper UX blind-spot prompts:** Browse [ux-craft-playbook.md](references/ux-craft-playbook.md) if you want quick reminders on onboarding/first-run gaps, AI-native calibration/reversibility patterns, empty/error microcopy, or density tradeoffs.
-- **Quick static sanity scan:** If you built a standalone HTML preview or web bundle and want an extra pair of eyes for broken local paths, exposed secrets, sub-11px tiny text, missing icon-button `aria-label`s, or stray placeholder words, you can optionally run:
-  `python -X utf8 <skill-dir>/scripts/frontend_preflight.py <target>` (with `--offline` for single-file targets or `--panel-max-width 420` for narrow panels).
+目标和边界清楚时，直接做出完整可用的成品通常好过层层评审；只有结构方向差异大、返工代价高时，才先给 2–3 个**概念真正不同**的方案。技术栈跟随宿主项目和任务规模，没有指定框架或动效库。
+
+## ✨ 2. 设计感从哪里来
+
+- **从题材里长出概念，而不是从模板里挑皮肤**：先找这个产品或领域最有特征的东西——材料、行业语汇、真实对象、用户手上的动作——让它决定版式、字体与动效。能原样套到任何 AI 产品上的设计，说明还没开始设计。
+- **把大胆花在一处**：一个让人记住的主视觉或交互瞬间，周围保持克制与精确。高级感更多来自比例、字体、留白和细节完成度，而不是叠特效。
+- **重设计就是推翻骨架**：用户说"没设计感""太普通""和原来差不多"时，问题几乎从来不是颜色或面板位置。放下旧稿（尤其是已被否定的版本）的结构，从核心对象与操作的空间关系重新想。
+- **多方案要在概念上分岔**：不同的空间隐喻、叙事方式或交互模型，而不是同一骨架换配色、挪位置。
+- **延续调性，更新表达**：在已有产品家族里重设计时，保住识别度（色彩基因、字体气质、IP 形象），表达方式可以彻底换。
+- **用真实内容判断效果**：可信的领域数据、图片与文案。灰块、渐变圆、`Mode A` / `Submit` 之类的占位会让人无法判断真实体验。
+- **动效回应操作**：一次编排好的入场或一个关键转场，加上点击、展开、确认时有手感的反馈，胜过每个区块都淡入上浮。
+- **反馈模糊时用参照引导**：用户觉得"不够高级"却说不清时，不要反复换皮去猜；给 2–3 个具体可感的参照方向（如"大留白克制的产品官网""杂志式大字排版""精密仪表式高密度暗色"），各用一句话说明取舍，帮他把模糊的感觉定下来。
+
+> [!TIP]
+> **校准"AI 味"**：当前生成式设计常见的默认长相包括——深色玻璃拟态加霓虹辉光的 HUD、紫蓝渐变光晕、一排等大圆角卡片配同款灰阴影、Emoji 充当图标、每个标题上方都挂一行小号大写标签、"大数字 + 小标签 + 渐变点缀"的首屏、内容并非序列却编号 01/02/03。它们在合适的题材里都能用，但应当是**为这个题材做出的选择**，而不是顺手的默认值。
+
+## 👁️ 3. 少字、一眼看懂
+
+- **首屏只放决策需要的东西**：用户几秒内应知道这是什么、现在什么状态、下一步点哪里。大段说明会让人抓不到重点，也不愿意读。
+- **一眼看不懂的就别直接摆出来**：内部术语、参数名、需要一句话以上才能讲清的概念，换成用户的语言，或收进 `?` 浮窗、悬停提示、展开区、详情抽屉，点了才看。
+- **核心动作找得到、能重复**：新建或添加的入口显眼；做完一次还能再做一次（再加一条、再框选一处）；不出现用户没触发的自动行为。
+- **按钮说清会发生什么**：`保存草稿`、`发布`，而不是 `确定` / `Submit`；同一个动作在整个流程里叫同一个名字。
+
+## 🔍 4. 产品层面的暗坑
+
+- **往上下游多看两步**：谁在用？在执行任务还是在浏览？做完之后谁接手？只优化填表却不管审核退回，问题仍在。
+- **改旧项目不伤老功能**：数据契约、路由、快捷键、撤销、持久化在新外观下继续工作。
+- **用真实压力测一下**：20 条评论挤在同一时间点、超长标签、竖图替代横图、侧栏变窄时是否仍然成立。
+- **AI 功能可校准、可撤回**：置信度与依据可查，多步操作可预览、可停止、可撤销。
+
+## ✅ 5. 交付前用陌生人的眼睛看一遍
+
+- **看真实渲染**：环境允许时打开页面截图，在关键交互态和窄屏下以第一次来的用户视角审视——哪里看不懂、哪里找不到、哪里字太多。
+- **把真实路径走完**：新建 → 编辑 → 再新建 → 删除或撤销 → 刷新，而不只是首屏好看。宿主支持子代理时，交给一个**不带开发上下文**的子代理从头到尾试用并回报问题，常能抓到自己看不见的毛病。
+- **如实说明**：区分真正渲染并操作过的、只做了代码审查的、以及尚未验证的部分；不把演示数据或跳过的验证说成已完成。
+- **聊天汇报好扫读**：向用户解释方案、对比或审查结果时，多用紧凑表格、`##` / `###` 层级、`等宽胶囊`、**加粗锚点**与克制的语义图标；不用 `<span style>` 这类会被聊天面板剥离的 HTML；聊天装饰图标不进产品界面文案，除非产品本身需要。
+
+---
+
+## 🧰 可选工具（完全不强制）
+
+| 需要时 | 可以用 |
+| --- | --- |
+| 想补充首次使用、空态与错误文案、打断强度、单位表达、无障碍等视角 | [ux-craft-playbook.md](references/ux-craft-playbook.md) |
+| 做完单页或前端包，想快速排查失效本地路径、暴露的密钥、过小字号、缺少 `aria-label` 的图标按钮、遗留占位词 | `python -X utf8 <skill-dir>/scripts/frontend_preflight.py <target>`（单文件加 `--offline`，窄面板加 `--panel-max-width 420`） |

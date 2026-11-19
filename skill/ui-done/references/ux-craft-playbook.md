@@ -1,29 +1,28 @@
-# UX Craft Playbook (Optional Perspectives & Blind-Spot Memo)
+# UX 视角备忘（可选）
 
-Browse this only when it adds clarity—treat every note as an experienced lens to think with, never as a rigid rulebook or mandatory checklist.
+需要时翻一翻即可。每一条都是有经验的人会问的问题，不是必须逐项打勾的清单。
 
 ---
 
-## 1. Upstream Product & Flow Questions
+## 1. 流程与首次体验
 
-- **Closing the full loop:** Before polishing UI controls, ask what happens right after the user finishes on this screen. Speeding up data entry or generation fails in practice if downstream review, reassignment, approval, or export still breaks down outside the app.
-- **Leading UX clarity over surface buzz:** Ask what a first-time visitor or busy operator actually needs in the first 5 seconds (*what is this, what changed, what deserves action next?*) rather than decorating an unclear state with extra metrics or slogans.
-- **First-run vs returning posture:** Someone arriving with an empty workspace benefits from a low-friction starting example or clear guided preview—not a cold `"No recent activity"` box; returning power users usually benefit more from immediate task resumption and stable control placement.
+- **闭环在哪里结束**：用户在这一屏做完之后发生什么？录入或生成提速了，但审核、再分派、审批、导出仍然卡在应用之外，体验并没有变好。
+- **第一次来的人看到什么**：空工作区更需要一个低门槛的示例或引导预览，而不是一句冷冰冰的"暂无数据"；回访的熟练用户更需要直接续上上次的任务和稳定的控件位置。
+- **空态与错误也是引导**：说清发生了什么、怎么修复；错误提示出现在出错的输入旁边，比顶部模糊横幅或开发者错误码更容易恢复。
 
-## 2. Interaction Friction & Prevention Traps
+## 2. 交互摩擦与防误操作
 
-- **High-consequence choices & muscle memory:** Ask whether pre-selecting a risky option, hiding `<7` everyday options inside nested menus, dumping `>15` items in an unsearchable select, or letting an unverified `"Skip"` mark setup complete could cause silent errors or fake progress.
-- **Action phrasing & recovery:** Labels like `"Save"` / `"Confirm"` work better when they reflect what actually happens next (distinct from copying, drafting, or publishing). Inline error hints right where input blurred help people recover faster than vague top banners or developer error codes.
-- **Units & urgency:** Raw percentages (like `14% remaining`) often force mental math compared to concrete action units (`~35 km left` or `26 min until SLA`), though technical diagnostics can benefit from pairing both.
-- **Interruption weight:** Non-blocking status pills or contextual popovers work well while users are mid-focus; reserve heavy modals or full-screen dialogs for choices that genuinely deserve stopping the workflow.
+- **高风险选项别默认选中**；日常几个选项别藏进多级菜单；选项很多时给搜索；未经验证的"跳过"不要把配置标成已完成。
+- **打断的分量要匹配**：用户专注时用不阻断的状态标签或就地浮层；真正值得停下来的决定才用模态框或全屏对话。
+- **用行动单位代替心算**：`还剩 14%` 不如 `约 35 km` 或 `距 SLA 26 分钟`；技术诊断场景可两者并列。
 
-## 3. AI-Native & Spatial Inspection Patterns
+## 3. AI 功能与就地反馈
 
-- **Calibrated uncertainty over black-box precision:** On AI estimates or scores, showing a confidence interval alongside a quick in-place calibration control (or explaining what evidence supports a tag via clickable anchors) builds far more trust than a single unverified number.
-- **Reversibility & batch safety:** For multi-step AI actions, consider letting people inspect/edit the planned items or retain clear Stop/Undo control rather than running silently with zero exit hatch.
-- **In-situ context beats distant prompting:** When reviewing media, canvases, logs, or designs, anchoring notes directly to coordinates, frames, timecodes, or highlighted selections cuts translation guesswork compared to typing long descriptions in a disconnected sidebar box.
+- **校准的不确定性胜过黑盒精度**：AI 评分或估计配上置信范围、可点开的依据，以及就地校准入口，比一个孤零零的数字更可信。
+- **批量 AI 操作留出口**：执行前可查看、编辑计划项，执行中可停止，执行后可撤销。
+- **意见锚在对象上**：评审媒体、画布、日志、设计稿时，把批注挂在坐标、帧、时间码或选区上，比在远处侧栏里打一长段描述省掉大量转译。
 
-## 4. Stress-Testing Against Messy Reality
+## 4. 真实世界的压力
 
-- **When content scales uncomfortably:** Ask what happens when labels are unexpectedly long (`_UI / D8849201` wrapping awkwardly), 15 items cluster at the same coordinate, an image loads portrait instead of landscape, or a companion panel shrinks down.
-- **Accessibility without sacrificing visual craft:** Visual icons and expressive controls feel much cleaner when interactive triggers stay keyboard-reachable, icon-only controls carry clear accessible labels, and purely decorative artwork stays out of screen-reader noise.
+- **内容超出预期时**：超长标签断行、十几个标记挤在同一坐标、竖图替代横图、伴随面板变窄，布局是否还站得住？
+- **无障碍不必牺牲质感**：可交互元素键盘可达，纯图标按钮带可读标签，装饰性图形不进入读屏，尊重"减少动态效果"设置。
